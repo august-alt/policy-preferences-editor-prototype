@@ -1,0 +1,15 @@
+# PREFERENCES_EDITOR cmake configuration file
+#
+# the following variables are defined:
+#   PREFERENCES_EDITOR_LIBRARIES  - list of enabled preferences editor libraries
+
+# directory where the preferences editor libraries are installed
+set(PREFERENCES_EDITOR_LIBRARY_DIR @CMAKE_INSTALL_PREFIX@/lib)
+
+# set PREFERENCES_EDITOR_LIBRARY variables
+set(PREFERENCES_EDITOR_GUI_LIBRARY preferences_editor-gui)
+set(PREFERENCES_EDITOR_IO_LIBRARY preferences_editor-io)
+set(PREFERENCES_EDITOR_CORE_LIBRARY preferences_editor-core)
+
+set(PREFERENCES_EDITOR_LIBRARIES ${PREFERENCES_EDITOR_GUI_LIBRARY} ${PREFERENCES_EDITOR_IO_LIBRARY}
+    ${PREFERENCES_EDITOR_CORE_LIBRARY})

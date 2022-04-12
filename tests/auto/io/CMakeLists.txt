@@ -1,0 +1,5 @@
+find_package(PREFERENCES_EDITOR COMPONENTS io model REQUIRED)
+include_directories(${PREFERENCES_EDITOR_INCLUDE_DIRS})
+
+find_package(Qt5 COMPONENTS Core Test REQUIRED)
+set(QT_USE_QTTEST TRUE)
