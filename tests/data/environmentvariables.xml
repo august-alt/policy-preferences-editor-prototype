@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnvironmentVariables clsid="{BF141A63-327B-438a-B9BF-2C188F13B7AD}">
+  <EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}"
+                       name="VAR"
+                       status="VAR = value_1"
+                       image="0"
+                       changed="2020-06-05 12:16:20"
+                       uid="{6738058D-5455-4D9A-9B84-78E87DDD18D7}"
+                       desc="environment variable example"
+                       bypassErrors="1">
+    <Properties action="C"
+                name="VAR"
+                value="value_1"
+                user="1"
+                partial="0"/>
+  </EnvironmentVariable>
+  <EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}"
+                       name="PATH"
+                       status="PATH = value_2"
+                       image="2"
+                       changed="2020-06-05 12:16:48"
+                       uid="{15E854D6-C338-4AD2-BF8D-72292B364BA3}">
+    <Properties action="U"
+                name="PATH"
+                value="value_2"
+                user="0"
+                partial="1"/>
+  </EnvironmentVariable>
+</EnvironmentVariables>

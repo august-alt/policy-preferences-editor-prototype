@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Printers clsid="{1F577D12-3D1B-471e-A1B7-060317597B9C}">
+  <LocalPrinter clsid="{F08996D5-568B-45f5-BB7A-D3FB1E370B0A}"
+                name="Local Printer"
+                status=""
+                image="2"
+                bypassErrors="1"
+                changed="2020-06-01 10:36:56"
+                uid="{ADCD5D95-7AD2-40D2-918D-A15CC74BB87F}">
+    <Properties action="U"
+                name="Local Printer"
+                port="USB001"
+                path="\\dc0\printer"
+                default="0"
+                deleteAll="0"
+                location=""
+                comment=""/>
+  </LocalPrinter>
+
+  <SharedPrinter clsid="{9A5E9697-9095-436d-A0EE-4D128FDFBCE5}"
+                 name="printer"
+                 status="printer"
+                 image="0"
+                 changed="2020-06-01 12:49:03"
+                 uid="{99266805-79B6-489C-968F-2FA01B6E7C6D}">
+    <Properties action="C"
+                comment=""
+                path="\\dc0\printer"
+                location=""
+                default="0"
+                skipLocal="0"
+                deleteAll="0"
+                persistent="0"
+                deleteMaps="0"
+                port="LPT1:"/>
+  </SharedPrinter>
+
+  <PortPrinter clsid="{C3A739D2-4A44-401e-9F9D-88E5E77DFB3E}"
+               name="dc0.domain.alt/printer"
+               status="dc0.domain.alt/printer"
+               image="0"
+               changed="2020-06-01 12:49:46"
+               uid="{4A07895A-70AD-4413-8099-938135F0FEE1}">
+    <Properties ipAddress="dc0.domain.alt/printer"
+                action="C"
+                location=""
+                localName="ip-printer"
+                comment=""
+                default="0"
+                skipLocal="0"
+                useDNS="1"
+                path="\\dc0\printer1"
+                deleteAll="0"/>
+  </PortPrinter>
+</Printers>

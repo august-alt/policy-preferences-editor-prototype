@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folders clsid="{77CC39E7-3D16-4f8f-AF86-EC0BBEE2C861}">
+  <Folder clsid="{07DA02F5-F9CD-4397-A550-4AE21B6B4BD3}"
+          name="test1"
+          status="test1"
+          image="0"
+          bypassErrors="1"
+          changed="2020-05-14 20:52:12"
+          uid="{3E959D8C-2349-4361-B6BF-62B451C26D0E}">
+    <Properties action="C"
+                path="C:\test1"
+                readOnly="0"
+                archive="1"
+                hidden="0"/>
+  </Folder>
+</Folders>
