@@ -26,6 +26,8 @@ BuildRequires: boost-devel-headers
 
 BuildRequires: desktop-file-utils ImageMagick-tools
 
+BuildRequires: libqt-mvvm-devel
+
 Requires: admx-basealt
 
 Source0: %name-%version.tar
