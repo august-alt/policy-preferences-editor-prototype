@@ -18,9 +18,9 @@
 **
 ***********************************************************************************************************************/
 
-#include "../gui/commandlineparser.h"
-#include "../gui/mainwindow.h"
-#include "../core/pluginstorage.h"
+#include "../../gui/commandlineparser.h"
+#include "../../gui/mainwindow.h"
+#include "../../core/pluginstorage.h"
 
 #include <QApplication>
 

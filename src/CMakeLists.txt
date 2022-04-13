@@ -28,7 +28,7 @@ macro(add_preferences_editor_library name)
 
 endmacro(add_preferences_editor_library)
 
-add_subdirectory(app)
+add_subdirectory(apps)
 add_subdirectory(core)
 add_subdirectory(gui)
 add_subdirectory(io)
