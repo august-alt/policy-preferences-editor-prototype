@@ -28,8 +28,9 @@
 #include <mvvm/viewmodel/defaultviewmodel.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 
+#include "preferenceswidget.h"
+
 #include "folderitem.h"
-#include "folderview.h"
 
 using namespace ModelView;
 
@@ -40,18 +41,14 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
 
     SessionModel model;    
-    auto item = model.insertItem<mvvm_folders::FolderItem>();
-    DefaultViewModel viewmodel(&model);
-    ViewModelDelegate delegate;
+    model.insertItem<mvvm_folders::FolderItem>();
+    model.insertItem<mvvm_folders::FolderItem>();
+    model.insertItem<mvvm_folders::FolderItem>();
+    model.insertItem<mvvm_folders::FolderItem>();
 
-    QTreeView view;
 
-    view.setModel(&viewmodel);
-    view.setItemDelegate(&delegate);
-    view.show();
-
-    mvvm_folders::FolderView folderView(item);
-    folderView.show();
+    mvvm_folders::PreferencesWidget widget(&model);
+    widget.show();
 
     return app.exec();
 }

@@ -9,6 +9,7 @@ set(HEADERS
     folderitem.h
     folderitemcontroller.h
     folderview.h
+    preferenceswidget.h
 )
 
 set(SOURCES
@@ -17,10 +18,12 @@ set(SOURCES
     folderview.cpp
     folderviewslots.cpp
     main.cpp
+    preferenceswidget.cpp
 )
 
 set(UI_FORMS
     foldersview.ui
+    preferenceswidget.ui
 )
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
