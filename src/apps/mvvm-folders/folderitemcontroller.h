@@ -18,40 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#ifndef NODEEDITORCORE_FolderItemCONTROLLER_H
+#define NODEEDITORCORE_FolderItemCONTROLLER_H
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include <mvvm/signals/itemlistener.h>
+#include <memory>
 
-#include "folderitem.h"
-#include "folderview.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+class FolderItem;
+class FolderView;
 
-    SessionModel model;    
-    auto item = model.insertItem<mvvm_folders::FolderItem>();
-    DefaultViewModel viewmodel(&model);
-    ViewModelDelegate delegate;
+//! Establishes communications between FolderItem and FolderView.
+//! Provides updates of view content, when underlying item changes.
+//! Similarly, provides update of item's properties while view is updated.
 
-    QTreeView view;
+class FolderItemController : public ModelView::ItemListener<FolderItem> {
+public:
+    FolderItemController(FolderItem* item, FolderView* view);
+    ~FolderItemController() override;
 
-    view.setModel(&viewmodel);
-    view.setItemDelegate(&delegate);
-    view.show();
+    void updateItemFromView();
+    void updateViewFromItem();
 
-    mvvm_folders::FolderView folderView(item);
-    folderView.show();
+protected:
+    void subscribe() override;
 
-    return app.exec();
-}
+private:
+    struct FolderItemControllerImpl;
+
+    std::unique_ptr<FolderItemControllerImpl> p_impl;
+};
+
+} // namespace NodeEditor
+
+#endif // NODEEDITORCORE_FolderItemCONTROLLER_H

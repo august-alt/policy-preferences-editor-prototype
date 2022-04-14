@@ -1,11 +1,29 @@
 find_package(MVVM REQUIRED)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+
 set(HEADERS
+    folderitem.h
+    folderitemcontroller.h
+    folderview.h
 )
 
 set(SOURCES
+    folderitem.cpp
+    folderitemcontroller.cpp
+    folderview.cpp
+    folderviewslots.cpp
     main.cpp
 )
+
+set(UI_FORMS
+    foldersview.ui
+)
+
+set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
 
 add_preferences_editor_executable(mvvm-folders ${SOURCES})
 
