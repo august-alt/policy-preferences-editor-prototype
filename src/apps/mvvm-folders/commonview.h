@@ -18,37 +18,38 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#ifndef MVVM_FOLDERS_COMMONVIEW_H
+#define MVVM_FOLDERS_COMMONVIEW_H
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include <QtWidgets>
 
-#include "preferenceswidget.h"
+QT_BEGIN_NAMESPACE
+namespace Ui { class CommonView; }
+QT_END_NAMESPACE
 
-#include "folderitem.h"
-#include "folderview.h"
 
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+class CommonView : public QWidget
+{
+public:
+    Q_OBJECT
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
+public:
+    explicit CommonView(QWidget* parent = nullptr);
+    ~CommonView() override;
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+private:
+    CommonView(const CommonView&)            = delete;   // copy ctor
+    CommonView(CommonView&&)                 = delete;   // move ctor
+    CommonView& operator=(const CommonView&) = delete;   // copy assignment
+    CommonView& operator=(CommonView&&)      = delete;   // move assignment
 
-    return app.exec();
+private:
+    Ui::CommonView *ui {nullptr};
+};
+
 }
+
+#endif//MVVM_FOLDERS_COMMONVIEW_H

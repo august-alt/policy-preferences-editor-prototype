@@ -42,7 +42,7 @@ struct FolderItemController::FolderItemControllerImpl
     {
         m_blockOnPropertyChanged = true;
 
-        m_item->setAction(m_view->action());
+//        m_item->setAction(m_view->action());
         m_item->setArchive(m_view->archive());
         m_item->setDeleteFiles(m_view->deleteFiles());
         m_item->setDeleteFolder(m_view->deleteFolder());
@@ -59,7 +59,7 @@ struct FolderItemController::FolderItemControllerImpl
 
     void updateViewFromItem()
     {
-        m_view->setAction(m_item->action());
+//        m_view->setAction(m_item->action());
         m_view->setArchive(m_item->archive());
         m_view->setDeleteFiles(m_item->deleteFiles());
         m_view->setDeleteFolder(m_item->deleteFolder());

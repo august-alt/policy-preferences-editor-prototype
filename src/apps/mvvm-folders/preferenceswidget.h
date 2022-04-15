@@ -56,6 +56,7 @@ private:
 private:
     std::unique_ptr<::ModelView::ViewModel> m_verticalViewModel;
     std::unique_ptr<::ModelView::ViewModel> m_horizontalViewModel;
+    std::unique_ptr<QItemSelectionModel> m_selectionModel;
     std::unique_ptr<::ModelView::ViewModelDelegate> m_delegate;
 
 private:

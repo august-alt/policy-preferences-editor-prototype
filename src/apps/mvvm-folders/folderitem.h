@@ -43,8 +43,8 @@ public:
 
     explicit FolderItem();
 
-    int action() const;
-    void setAction(int action);
+    QString action() const;
+    void setAction(QString action);
 
     QString path() const;
     void setPath(const QString& path);

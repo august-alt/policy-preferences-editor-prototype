@@ -36,11 +36,14 @@ PreferencesWidget::PreferencesWidget(ModelView::SessionModel *model, QWidget *pa
     , ui(new Ui::PreferencesWidget())
     , m_verticalViewModel(nullptr)
     , m_horizontalViewModel(nullptr)
+    , m_selectionModel(std::make_unique<QItemSelectionModel>())
     , m_delegate(std::make_unique<ModelView::ViewModelDelegate>())
 {
     ui->setupUi(this);
 
     setModel(model);
+
+    setupConnections();
 }
 
 PreferencesWidget::~PreferencesWidget()
@@ -51,7 +54,9 @@ PreferencesWidget::~PreferencesWidget()
 void PreferencesWidget::setModel(ModelView::SessionModel *model)
 {
     if (!model)
+    {
         return;
+    }
 
     // setting up left tree
     m_verticalViewModel = std::make_unique<ModelView::DefaultViewModel>(model);
@@ -60,14 +65,32 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->expandAll();
     ui->treeView->resizeColumnToContents(0);
 
-    // setting up right tree
-    m_horizontalViewModel = std::make_unique<ModelView::PropertyTableViewModel>(model);
-
-
     // setting up right table
+    m_horizontalViewModel = std::make_unique<ModelView::PropertyTableViewModel>(model);
     ui->tableView->setModel(m_horizontalViewModel.get());
     ui->tableView->setItemDelegate(m_delegate.get());
     ui->tableView->header()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
+void PreferencesWidget::setupConnections()
+{
+    connect(ui->treeView->selectionModel(),
+                    &QItemSelectionModel::selectionChanged,
+            [&](const QItemSelection &selected, const QItemSelection &deselected)
+    {
+        Q_UNUSED(deselected);
+        if (selected.isEmpty() || selected.first().indexes().isEmpty())
+        {
+            return;
+        }
+
+        auto indexes = selected.indexes();
+        if (!indexes.empty())
+        {
+            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
+            ui->folderWidget->setItem(item);
+        }
+    });
 }
 
 }

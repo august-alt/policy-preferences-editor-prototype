@@ -18,37 +18,22 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "commonview.h"
+#include "ui_commonview.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
-
-#include "preferenceswidget.h"
-
-#include "folderitem.h"
-#include "folderview.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+CommonView::CommonView(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::CommonView())
+{
+    ui->setupUi(this);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
-    model.insertItem<mvvm_folders::FolderItem>();
+CommonView::~CommonView()
+{
+    delete ui;
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
-
-    return app.exec();
 }

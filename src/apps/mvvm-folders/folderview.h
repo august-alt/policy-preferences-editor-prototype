@@ -29,6 +29,15 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class FoldersView; }
 QT_END_NAMESPACE
 
+class QDataWidgetMapper;
+
+namespace ModelView
+{
+    class ViewModel;
+    class ViewModelDelegate;
+    class SessionItem;
+}
+
 namespace mvvm_folders
 {
 
@@ -43,7 +52,7 @@ public:
     Q_OBJECT
 
 public:
-    explicit FolderView(FolderItem* item);
+    explicit FolderView(QWidget* parent = nullptr, FolderItem* item = nullptr);
     ~FolderView() override;
 
     char action() const;
@@ -73,6 +82,8 @@ public:
     bool deleteFolder() const;
     void setDeleteFolder(bool state);
 
+    void setItem(ModelView::SessionItem *item);
+
 private slots:
     void on_pathToolButton_clicked();
 
@@ -90,6 +101,10 @@ private:
     FolderItem* m_item {nullptr};
 
     std::unique_ptr<FolderItemController> m_controller;
+
+    std::unique_ptr<ModelView::ViewModel> view_model;
+    std::unique_ptr<ModelView::ViewModelDelegate> delegate;
+    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::FoldersView *ui {nullptr};

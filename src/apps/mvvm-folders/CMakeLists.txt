@@ -6,6 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(HEADERS
+    commonview.h
     folderitem.h
     folderitemcontroller.h
     folderview.h
@@ -13,6 +14,7 @@ set(HEADERS
 )
 
 set(SOURCES
+    commonview.cpp
     folderitem.cpp
     folderitemcontroller.cpp
     folderview.cpp
@@ -22,6 +24,7 @@ set(SOURCES
 )
 
 set(UI_FORMS
+    commonview.ui
     foldersview.ui
     preferenceswidget.ui
 )

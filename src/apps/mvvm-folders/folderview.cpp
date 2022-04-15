@@ -22,19 +22,28 @@
 #include "ui_foldersview.h"
 
 #include "folderitemcontroller.h"
+#include "folderitem.h"
+
+#include <mvvm/factories/viewmodelfactory.h>
+#include <mvvm/viewmodel/viewmodeldelegate.h>
+
+#include <QDataWidgetMapper>
 
 namespace  mvvm_folders
 {
 
-FolderView::FolderView(FolderItem *item)
-    : QWidget()
+FolderView::FolderView(QWidget *parent, FolderItem *item)
+    : QWidget(parent)
     , m_item(item)
     , m_controller(nullptr)
+    , view_model(nullptr)
+    , delegate(std::make_unique<ModelView::ViewModelDelegate>())
+    , mapper(nullptr)
     , ui(new Ui::FoldersView())
 {
     ui->setupUi(this);
 
-    m_controller = std::make_unique<FolderItemController>(item, this);
+//    m_controller = std::make_unique<FolderItemController>(item, this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
@@ -132,6 +141,35 @@ bool FolderView::deleteFolder() const
 void FolderView::setDeleteFolder(bool state)
 {
     ui->deleteThisFolder->setChecked(state);
+}
+
+void FolderView::setItem(ModelView::SessionItem* item)
+{
+    view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
+    view_model->setRootSessionItem(item);
+
+    mapper = std::make_unique<QDataWidgetMapper>();
+
+    mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
+    mapper->setOrientation(Qt::Vertical);
+
+    mapper->setModel(view_model.get());
+    mapper->setItemDelegate(delegate.get());
+    mapper->setRootIndex(QModelIndex());    
+
+    mapper->addMapping(ui->actionComboBox, 0);
+    mapper->addMapping(ui->pathLineEdit, 1);
+    mapper->addMapping(ui->readOnly, 2);
+    mapper->addMapping(ui->archive, 3);
+    mapper->addMapping(ui->hidden, 4);
+    mapper->addMapping(ui->ignoreErrors, 5);
+    mapper->addMapping(ui->deleteAllFiles, 6);
+    mapper->addMapping(ui->recursiveDelete, 7);
+    mapper->addMapping(ui->deleteThisFolder, 8);
+
+    mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    connect(ui->buttonBox, &QDialogButtonBox::accepted, mapper.get(), &QDataWidgetMapper::submit);
 }
 
 }

@@ -26,7 +26,7 @@ namespace mvvm_folders
 FolderItem::FolderItem()
     : ModelView::CompoundItem("FolderItem")
 {
-    addProperty(ACTION, 0);
+    addProperty(ACTION, "");
     addProperty(PATH, "");
     addProperty(READONLY, false);
     addProperty(ARCHIVE, false);
@@ -37,12 +37,12 @@ FolderItem::FolderItem()
     addProperty(DELETE_FOLDER, false);
 }
 
-int FolderItem::action() const
+QString FolderItem::action() const
 {
-    return property<int>(ACTION);
+    return property<QString>(ACTION);
 }
 
-void FolderItem::setAction(int newAction)
+void FolderItem::setAction(QString newAction)
 {
     setProperty(ACTION, newAction);
 }
