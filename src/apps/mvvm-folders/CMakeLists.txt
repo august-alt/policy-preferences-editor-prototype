@@ -6,7 +6,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(HEADERS
+    commonitem.h
     commonview.h
+    containeritem.h
+    foldercontaineritem.h
     folderitem.h
     folderitemcontroller.h
     folderview.h
@@ -14,7 +17,10 @@ set(HEADERS
 )
 
 set(SOURCES
+    commonitem.cpp
     commonview.cpp
+    containeritem.cpp
+    foldercontaineritem.cpp
     folderitem.cpp
     folderitemcontroller.cpp
     folderview.cpp
