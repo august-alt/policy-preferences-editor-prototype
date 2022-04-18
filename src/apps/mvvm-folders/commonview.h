@@ -27,6 +27,12 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class CommonView; }
 QT_END_NAMESPACE
 
+namespace ModelView
+{
+    class ViewModel;
+    class ViewModelDelegate;
+    class SessionItem;
+}
 
 namespace mvvm_folders
 {
@@ -40,6 +46,11 @@ public:
     explicit CommonView(QWidget* parent = nullptr);
     ~CommonView() override;
 
+    void setItem(ModelView::SessionItem *item);
+
+public slots:
+    void submit();
+
 private:
     CommonView(const CommonView&)            = delete;   // copy ctor
     CommonView(CommonView&&)                 = delete;   // move ctor
@@ -48,6 +59,11 @@ private:
 
 private:
     Ui::CommonView *ui {nullptr};
+
+private:
+    std::unique_ptr<ModelView::ViewModel> view_model;
+    std::unique_ptr<ModelView::ViewModelDelegate> delegate;
+    std::unique_ptr<QDataWidgetMapper> mapper;
 };
 
 }

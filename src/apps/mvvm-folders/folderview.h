@@ -84,6 +84,9 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+public slots:
+    void submit();
+
 private slots:
     void on_pathToolButton_clicked();
 

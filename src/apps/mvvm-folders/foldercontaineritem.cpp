@@ -20,8 +20,8 @@
 
 #include "foldercontaineritem.h"
 
-#include "folderitem.h"
 #include "commonitem.h"
+#include "folderitem.h"
 
 namespace mvvm_folders
 {
@@ -29,6 +29,28 @@ namespace mvvm_folders
 FolderContainerItem::FolderContainerItem()
     : ModelView::CompoundItem("FolderContainerItem")
 {
+    addProperty<CommonItem>(COMMON);
+    addProperty<FolderItem>(FOLDER);
+}
+
+CommonItem FolderContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
+
+void FolderContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
+
+FolderItem FolderContainerItem::getFolder() const
+{
+    return property<FolderItem>(FOLDER);
+}
+
+void FolderContainerItem::setFolder(const FolderItem &item)
+{
+    setProperty(FOLDER, item);
 }
 
 }

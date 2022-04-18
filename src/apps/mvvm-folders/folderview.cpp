@@ -168,8 +168,14 @@ void FolderView::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->deleteThisFolder, 8);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+}
 
-    connect(ui->buttonBox, &QDialogButtonBox::accepted, mapper.get(), &QDataWidgetMapper::submit);
+void FolderView::submit()
+{
+    if (mapper)
+    {
+        mapper->submit();
+    }
 }
 
 }

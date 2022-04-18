@@ -41,7 +41,8 @@ public:
     static inline const std::string DELETE_SUB_FOLDERS = "deleteSubFolders";
     static inline const std::string DELETE_FOLDER = "deleteFolder";
 
-    explicit FolderItem();
+    FolderItem();
+    FolderItem(const FolderItem &other);
 
     QString action() const;
     void setAction(QString action);
@@ -72,5 +73,7 @@ public:
 };
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::FolderItem)
 
 #endif//MVVM_FOLDERS_FOLDERITEM_H

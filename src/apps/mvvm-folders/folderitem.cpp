@@ -37,6 +37,20 @@ FolderItem::FolderItem()
     addProperty(DELETE_FOLDER, false);
 }
 
+FolderItem::FolderItem(const FolderItem &other)
+    : ModelView::CompoundItem("FolderItem")
+{
+    addProperty(ACTION, other.action());
+    addProperty(PATH, other.path());
+    addProperty(READONLY, other.readOnly());
+    addProperty(ARCHIVE, other.archive());
+    addProperty(HIDDEN, other.hidden());
+    addProperty(DELETE_IGNORE_ERRORS, other.deleteIgnoreErrors());
+    addProperty(DELETE_FILES, other.deleteFiles());
+    addProperty(DELETE_SUB_FOLDERS, other.deleteSubFolders());
+    addProperty(DELETE_FOLDER, other.deleteFolder());
+}
+
 QString FolderItem::action() const
 {
     return property<QString>(ACTION);

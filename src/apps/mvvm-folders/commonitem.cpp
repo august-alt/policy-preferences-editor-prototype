@@ -34,6 +34,17 @@ CommonItem::CommonItem()
     addProperty(REMOVE_POLICY, false);
 }
 
+CommonItem::CommonItem(const CommonItem &other)
+    : ModelView::CompoundItem("CommonItem")
+{
+    addProperty(NAME, other.name());
+    addProperty(CHANGED, other.changed());
+    addProperty(DESC, other.desc());
+    addProperty(BYPASS_ERRORS, other.bypassErrors());
+    addProperty(USER_CONTEXT, other.userContext());
+    addProperty(REMOVE_POLICY, other.removePolicy());
+}
+
 QString CommonItem::name() const
 {
     return property<QString>(NAME);

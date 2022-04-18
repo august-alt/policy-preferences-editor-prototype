@@ -38,7 +38,8 @@ public:
     static inline const std::string USER_CONTEXT = "userContext";
     static inline const std::string REMOVE_POLICY = "removePolicy";
 
-    explicit CommonItem();
+    CommonItem();
+    CommonItem(const CommonItem &other);
 
     QString name() const;
     void setName(const QString& path);
@@ -60,5 +61,7 @@ public:
 };
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::CommonItem)
 
 #endif//MVVM_FOLDERS_COMMONITEM_H

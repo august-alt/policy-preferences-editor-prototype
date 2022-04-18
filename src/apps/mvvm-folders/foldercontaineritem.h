@@ -38,6 +38,12 @@ public:
     static inline const std::string FOLDER = "folder";
 
     explicit FolderContainerItem();
+
+    CommonItem getCommon() const;
+    void setCommon(const CommonItem& item);
+
+    FolderItem getFolder() const;
+    void setFolder(const FolderItem& item);
 };
 
 }

@@ -25,6 +25,7 @@
 #include <mvvm/model/sessionmodel.h>
 #include <mvvm/signals/itemmapper.h>
 #include <mvvm/viewmodel/defaultviewmodel.h>
+#include <mvvm/viewmodel/topitemsviewmodel.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
 
@@ -59,7 +60,7 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     }
 
     // setting up left tree
-    m_verticalViewModel = std::make_unique<ModelView::DefaultViewModel>(model);
+    m_verticalViewModel = std::make_unique<ModelView::TopItemsViewModel>(model);
     ui->treeView->setModel(m_verticalViewModel.get());
     ui->treeView->setItemDelegate(m_delegate.get());
     ui->treeView->expandAll();
@@ -88,7 +89,8 @@ void PreferencesWidget::setupConnections()
         if (!indexes.empty())
         {
             auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
-            ui->folderWidget->setItem(item);
+            ui->commonWidget->setItem(item->children().front());
+            ui->folderWidget->setItem(item->children().back());
         }
     });
 }

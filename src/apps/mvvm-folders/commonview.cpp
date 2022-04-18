@@ -21,12 +21,20 @@
 #include "commonview.h"
 #include "ui_commonview.h"
 
+#include "commonitem.h"
+
+#include <mvvm/factories/viewmodelfactory.h>
+#include <mvvm/viewmodel/viewmodeldelegate.h>
+
 namespace mvvm_folders
 {
 
 CommonView::CommonView(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::CommonView())
+    , view_model(nullptr)
+    , delegate(std::make_unique<ModelView::ViewModelDelegate>())
+    , mapper(nullptr)
 {
     ui->setupUi(this);
 }
@@ -34,6 +42,36 @@ CommonView::CommonView(QWidget *parent)
 CommonView::~CommonView()
 {
     delete ui;
+}
+
+void CommonView::setItem(ModelView::SessionItem *item)
+{
+    view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
+    view_model->setRootSessionItem(item);
+
+    mapper = std::make_unique<QDataWidgetMapper>();
+
+    mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
+    mapper->setOrientation(Qt::Vertical);
+
+    mapper->setModel(view_model.get());
+    mapper->setItemDelegate(delegate.get());
+    mapper->setRootIndex(QModelIndex());
+
+    mapper->addMapping(ui->descriptionTextEdit, 2);
+    mapper->addMapping(ui->stopOnErrorCheckBox, 3);
+    mapper->addMapping(ui->userContextCheckBox, 4);
+    mapper->addMapping(ui->removeThisCheckBox,  5);
+
+    mapper->setCurrentModelIndex(view_model->index(0, 1));
+}
+
+void CommonView::submit()
+{
+    if (mapper)
+    {
+        mapper->submit();
+    }
 }
 
 }
