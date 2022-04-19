@@ -18,36 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "drivescontaineritem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include "commonitem.h"
+#include "drivesitem.h"
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+DrivesContainerItem::DrivesContainerItem()
+    : ModelView::CompoundItem("DrivesContainerItem")
+{
+    addProperty<CommonItem>(COMMON);
+    addProperty<DrivesItem>(DRIVES);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+CommonItem DrivesContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+void DrivesContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
 
-    return app.exec();
+DrivesItem DrivesContainerItem::getDrives() const
+{
+    return property<DrivesItem>(DRIVES);
+}
+
+void DrivesContainerItem::setDrives(const DrivesItem &item)
+{
+    setProperty(DRIVES, item);
+}
+
 }

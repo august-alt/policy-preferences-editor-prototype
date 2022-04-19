@@ -9,10 +9,36 @@ set(HEADERS
     commonitem.h
     commonview.h
     containeritem.h
-    foldercontaineritem.h
-    folderitem.h
-    folderitemcontroller.h
-    folderview.h
+
+    drives/drivesitem.h
+    drives/drivescontaineritem.h
+    drives/driveswidget.h
+
+    folders/foldercontaineritem.h
+    folders/folderitem.h
+    folders/folderitemcontroller.h
+    folders/folderview.h
+
+    files/filesitem.h
+    files/filescontaineritem.h
+    files/fileswidget.h
+
+    ini/iniitem.h
+    ini/inicontaineritem.h
+    ini/iniwidget.h
+
+    shares/sharesitem.h
+    shares/sharescontaineritem.h
+    shares/shareswidget.h
+
+    shortcuts/shortcutsitem.h
+    shortcuts/shortcutscontaineritem.h
+    shortcuts/shortcutswidget.h
+
+    variables/variablesitem.h
+    variables/variablescontaineritem.h
+    variables/variableswidget.h
+
     preferenceswidget.h
 )
 
@@ -20,18 +46,50 @@ set(SOURCES
     commonitem.cpp
     commonview.cpp
     containeritem.cpp
-    foldercontaineritem.cpp
-    folderitem.cpp
-    folderitemcontroller.cpp
-    folderview.cpp
-    folderviewslots.cpp
+
+    drives/drivesitem.cpp
+    drives/drivescontaineritem.cpp
+    drives/driveswidget.cpp
+
+    folders/foldercontaineritem.cpp
+    folders/folderitem.cpp
+    folders/folderitemcontroller.cpp
+    folders/folderview.cpp
+    folders/folderviewslots.cpp
+
+    files/filesitem.cpp
+    files/filescontaineritem.cpp
+    files/fileswidget.cpp
+
+    ini/iniitem.cpp
+    ini/inicontaineritem.cpp
+    ini/iniwidget.cpp
+
+    shares/sharesitem.cpp
+    shares/sharescontaineritem.cpp
+    shares/shareswidget.cpp
+
+    shortcuts/shortcutsitem.cpp
+    shortcuts/shortcutscontaineritem.cpp
+    shortcuts/shortcutswidget.cpp
+
+    variables/variablesitem.cpp
+    variables/variablescontaineritem.cpp
+    variables/variableswidget.cpp
+
     main.cpp
     preferenceswidget.cpp
 )
 
 set(UI_FORMS
     commonview.ui
-    foldersview.ui
+    drives/driveswidget.ui
+    folders/foldersview.ui
+    files/fileswidget.ui
+    ini/iniwidget.ui
+    shares/shareswidget.ui
+    shortcuts/shortcutswidget.ui
+    variables/variableswidget.ui
     preferenceswidget.ui
 )
 

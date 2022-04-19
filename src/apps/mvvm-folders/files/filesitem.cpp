@@ -18,36 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "filesitem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
-
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+FilesItem::FilesItem()
+    : ModelView::CompoundItem("FilesItem")
+{
+    addProperty(ACTION, "");
+    addProperty(FROM_PATH, "");
+    addProperty(TARGET_PATH, "");
+    addProperty(SUPPRESS, false);
+    addProperty(READONLY, false);
+    addProperty(ARCHIVE, false);
+    addProperty(HIDDEN, false);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+FilesItem::FilesItem(const FilesItem &other)
+    : ModelView::CompoundItem("FilesItem")
+{
+    addProperty(ACTION, other.property<QString>(ACTION));
+    addProperty(FROM_PATH, other.property<QString>(FROM_PATH));
+    addProperty(TARGET_PATH, other.property<QString>(TARGET_PATH));
+    addProperty(SUPPRESS, other.property<bool>(SUPPRESS));
+    addProperty(READONLY, other.property<bool>(READONLY));
+    addProperty(ARCHIVE, other.property<bool>(ARCHIVE));
+    addProperty(HIDDEN, other.property<bool>(HIDDEN));
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
-
-    return app.exec();
 }

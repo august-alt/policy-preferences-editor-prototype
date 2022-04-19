@@ -18,36 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "variablescontaineritem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include "commonitem.h"
+#include "variablesitem.h"
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+VariablesContainerItem::VariablesContainerItem()
+    : ModelView::CompoundItem("VariablesContainerItem")
+{
+    addProperty<CommonItem>(COMMON);
+    addProperty<VariablesItem>(VARIABLES);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+CommonItem VariablesContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+void VariablesContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
 
-    return app.exec();
+VariablesItem VariablesContainerItem::getVariables() const
+{
+    return property<VariablesItem>(VARIABLES);
+}
+
+void VariablesContainerItem::setVariables(const VariablesItem &item)
+{
+    setProperty(VARIABLES, item);
+}
+
 }

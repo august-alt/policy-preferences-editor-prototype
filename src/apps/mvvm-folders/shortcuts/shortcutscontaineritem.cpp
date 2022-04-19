@@ -18,36 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "shortcutscontaineritem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include "commonitem.h"
+#include "shortcutsitem.h"
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+ShortcutsContainerItem::ShortcutsContainerItem()
+    : ModelView::CompoundItem("ShortcutsContainerItem")
+{
+    addProperty<CommonItem>(COMMON);
+    addProperty<ShortcutsItem>(SHORTCUTS);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+CommonItem ShortcutsContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+void ShortcutsContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
 
-    return app.exec();
+ShortcutsItem ShortcutsContainerItem::getShortcuts() const
+{
+    return property<ShortcutsItem>(SHORTCUTS);
+}
+
+void ShortcutsContainerItem::setShortcuts(const ShortcutsItem &item)
+{
+    setProperty(SHORTCUTS, item);
+}
+
 }

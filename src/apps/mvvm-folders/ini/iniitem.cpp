@@ -18,36 +18,29 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "iniitem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
-
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+IniItem::IniItem()
+    : ModelView::CompoundItem("IniItem")
+{
+    addProperty(ACTION, "");
+    addProperty(PATH, "");
+    addProperty(SECTION, "");
+    addProperty(VALUE, "");
+    addProperty(PROPERTY, "");
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+IniItem::IniItem(const IniItem &other)
+    : ModelView::CompoundItem("IniItem")
+{
+    addProperty(ACTION, other.property<QString>(ACTION));
+    addProperty(PATH, other.property<QString>(PATH));
+    addProperty(SECTION, other.property<QString>(SECTION));
+    addProperty(VALUE, other.property<QString>(VALUE));
+    addProperty(PROPERTY, other.property<QString>(PROPERTY));
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
-
-    return app.exec();
 }

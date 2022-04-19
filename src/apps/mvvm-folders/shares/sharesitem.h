@@ -18,36 +18,36 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#ifndef MVVM_FOLDERS_SHARES_ITEM_H
+#define MVVM_FOLDERS_SHARES_ITEM_H
 
 #include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+//! Drives item representation for editor.
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+class SharesItem : public ModelView::CompoundItem
+{
+public:
+    static inline const std::string ACTION = "action";
+    static inline const std::string NAME = "name";
+    static inline const std::string PATH = "path";
+    static inline const std::string COMMENT = "comment";
+    static inline const std::string ALL_REGULAR = "allRegular";
+    static inline const std::string ALL_HIDDEN = "allHidden";
+    static inline const std::string ALL_ADMIN_DRIVE = "allAdminDrive";
+    static inline const std::string LIMIT_USERS = "limitUsers";
+    static inline const std::string USER_LIMIT = "userLimit";
+    static inline const std::string ACCESS_BASED_ENUMERATION = "abe";
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+    SharesItem();
+    SharesItem(const SharesItem &other);
+};
 
-    return app.exec();
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::SharesItem)
+
+#endif//MVVM_FOLDERS_SHARES_ITEM_H

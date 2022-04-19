@@ -18,36 +18,31 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#ifndef MVVM_FOLDERS_INI_ITEM_H
+#define MVVM_FOLDERS_INI_ITEM_H
 
 #include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+//! Drives item representation for editor.
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+class IniItem : public ModelView::CompoundItem
+{
+public:
+    static inline const std::string ACTION = "action";
+    static inline const std::string PATH = "path";
+    static inline const std::string SECTION = "section";
+    static inline const std::string VALUE = "value";
+    static inline const std::string PROPERTY = "property";
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+    IniItem();
+    IniItem(const IniItem &other);
+};
 
-    return app.exec();
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::IniItem)
+
+#endif//MVVM_FOLDERS_INI_ITEM_H

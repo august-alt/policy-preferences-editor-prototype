@@ -18,36 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "inicontaineritem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include "commonitem.h"
+#include "iniitem.h"
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+IniContainerItem::IniContainerItem()
+    : ModelView::CompoundItem("IniContainerItem")
+{
+    addProperty<CommonItem>(COMMON);
+    addProperty<IniItem>(INI);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+CommonItem IniContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+void IniContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
 
-    return app.exec();
+IniItem IniContainerItem::getIni() const
+{
+    return property<IniItem>(INI);
+}
+
+void IniContainerItem::setIni(const IniItem &item)
+{
+    setProperty(INI, item);
+}
+
 }

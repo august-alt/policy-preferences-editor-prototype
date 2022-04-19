@@ -18,36 +18,30 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "variablesitem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
-
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+VariablesItem::VariablesItem()
+    : ModelView::CompoundItem("VariablesItem")
+{
+    addProperty(ACTION, "");
+    addProperty(USER, false);
+    addProperty(NAME, "");
+    addProperty(PARTIAL, false);
+    addProperty(VALUE, "");
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+VariablesItem::VariablesItem(const VariablesItem &other)
+    : ModelView::CompoundItem("VariablesItem")
+{
+    addProperty(ACTION, other.property<QString>(ACTION));
+    addProperty(USER, other.property<bool>(USER));
+    addProperty(NAME, other.property<QString>(NAME));
+    addProperty(PARTIAL, other.property<bool>(PARTIAL));
+    addProperty(VALUE, other.property<QString>(VALUE));
+}
 
-    return app.exec();
 }

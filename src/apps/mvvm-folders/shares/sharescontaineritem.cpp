@@ -18,36 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#include "sharescontaineritem.h"
 
-#include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
+#include "commonitem.h"
+#include "sharesitem.h"
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+SharesContainerItem::SharesContainerItem()
+    : ModelView::CompoundItem("SharesContainerItem")
+{
+    addProperty<CommonItem>(COMMON);
+    addProperty<SharesItem>(SHARES);
+}
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+CommonItem SharesContainerItem::getCommon() const
+{
+    return property<CommonItem>(COMMON);
+}
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+void SharesContainerItem::setCommon(const CommonItem &item)
+{
+    setProperty(COMMON, item);
+}
 
-    return app.exec();
+SharesItem SharesContainerItem::getShares() const
+{
+    return property<SharesItem>(SHARES);
+}
+
+void SharesContainerItem::setShares(const SharesItem &item)
+{
+    setProperty(SHARES, item);
+}
+
 }

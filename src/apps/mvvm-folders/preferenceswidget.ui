@@ -89,7 +89,7 @@
   <customwidget>
    <class>mvvm_folders::FolderView</class>
    <extends>QWidget</extends>
-   <header>folderview.h</header>
+   <header>folders/folderview.h</header>
    <container>1</container>
    <slots>
     <slot>submit()</slot>

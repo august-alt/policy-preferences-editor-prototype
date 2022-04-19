@@ -18,36 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include <QLocale>
-#include <QTreeView>
+#ifndef MVVM_FOLDERS_FILES_ITEM_H
+#define MVVM_FOLDERS_FILES_ITEM_H
 
 #include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
 
-#include "preferenceswidget.h"
-
-#include "folders/foldercontaineritem.h"
-
-using namespace ModelView;
-
-int main(int argc, char** argv)
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+//! Drives item representation for editor.
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
-    model.insertItem<mvvm_folders::FolderContainerItem>();
+class FilesItem : public ModelView::CompoundItem
+{
+public:
+    static inline const std::string ACTION = "action";
+    static inline const std::string FROM_PATH = "fromPath";
+    static inline const std::string TARGET_PATH = "targetPath";
+    static inline const std::string SUPPRESS = "suppress";
+    static inline const std::string READONLY = "readonly";
+    static inline const std::string ARCHIVE = "archive";
+    static inline const std::string HIDDEN = "hidden";
 
-    mvvm_folders::PreferencesWidget widget(&model);
-    widget.show();
+    FilesItem();
+    FilesItem(const FilesItem &other);
+};
 
-    return app.exec();
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::FilesItem)
+
+#endif//MVVM_FOLDERS_FILES_ITEM_H
