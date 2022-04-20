@@ -67,6 +67,7 @@ set(SOURCES
     ini/iniitem.cpp
     ini/inicontaineritem.cpp
     ini/iniwidget.cpp
+    ini/iniwidgetslots.cpp
 
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp

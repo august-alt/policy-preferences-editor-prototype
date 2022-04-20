@@ -22,6 +22,7 @@
 #include "ui_iniwidget.h"
 
 #include "iniitem.h"
+#include "../commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -72,17 +73,24 @@ void IniWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void IniWidget::submit()
+bool IniWidget::validate()
 {
-    if (mapper)
+    if (!CommonUtils::validateLineEdit(ui->pathLineEdit, tr("Please input path value.")))
     {
-        mapper->submit();
+        return false;
     }
-}
 
-void IniWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+    if (!CommonUtils::validateLineEdit(ui->sectionLineEdit, tr("Please input section value.")))
+    {
+        return false;
+    }
+
+    if (!CommonUtils::validateLineEdit(ui->propertyLineEdit, tr("Please input property value.")))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 }

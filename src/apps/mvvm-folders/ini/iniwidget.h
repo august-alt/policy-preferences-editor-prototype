@@ -55,11 +55,20 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+    bool validate();
+
+signals:
+    void dataChanged();
+
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_pathLineEdit_textChanged(const QString &text);
+    void on_propertyLineEdit_textChanged(const QString &text);
+    void on_sectionLineEdit_textChanged(const QString &text);
+    void on_pathToolButton_clicked();
 
 private:
     IniWidget(const IniWidget&)            = delete;   // copy ctor
