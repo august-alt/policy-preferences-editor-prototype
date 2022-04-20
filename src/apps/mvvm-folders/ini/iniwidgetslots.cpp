@@ -46,6 +46,7 @@ void IniWidget::on_actionComboBox_currentIndexChanged(int index)
         break;
     case ViewMode::DELETE__MODE:
         ui->valueLineEdit->setEnabled(false);
+        ui->valueLineEdit->clear();
         break;
     default:
         break;
