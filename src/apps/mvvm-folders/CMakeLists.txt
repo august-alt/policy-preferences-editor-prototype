@@ -80,6 +80,7 @@ set(SOURCES
     variables/variablesitem.cpp
     variables/variablescontaineritem.cpp
     variables/variableswidget.cpp
+    variables/variableswidgetslots.cpp
 
     main.cpp
     preferenceswidget.cpp

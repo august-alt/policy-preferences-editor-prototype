@@ -22,6 +22,7 @@
 #include "ui_variableswidget.h"
 
 #include "variablesitem.h"
+#include "../commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -64,26 +65,27 @@ void VariablesWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, 0);
+    mapper->addMapping(ui->userVariableRadio, 1);
     mapper->addMapping(ui->nameLineEdit, 2);
     mapper->addMapping(ui->partialCheckBox, 3);
     mapper->addMapping(ui->valueLineEdit, 4);
-    // TODO: Implement user/system model.
-    // TODO: Implement path check box.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void VariablesWidget::submit()
+bool VariablesWidget::validate()
 {
-    if (mapper)
+    if (!CommonUtils::validateLineEdit(ui->nameLineEdit, tr("Please input name value.")))
     {
-        mapper->submit();
+        return false;
     }
-}
 
-void VariablesWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+    if (!CommonUtils::validateLineEdit(ui->valueLineEdit, tr("A blank value is reserved for delete mode. Use delete mode.")))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 }

@@ -55,11 +55,21 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+    bool validate();
+
+signals:
+    void dataChanged();
+
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_pathCheckBox_stateChanged(int state);
+    void on_systemVariableRadio_clicked();
+    void on_userVariableRadio_clicked();
+
+    void setDetailsText(int index);
 
 private:
     VariablesWidget(const VariablesWidget&)            = delete;   // copy ctor

@@ -40,6 +40,9 @@
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -114,6 +117,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QCheckBox" name="pathCheckBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>PATH</string>
            </property>
@@ -121,6 +127,9 @@
          </item>
          <item>
           <widget class="QCheckBox" name="partialCheckBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Partial</string>
            </property>
@@ -156,6 +165,11 @@
       </item>
       <item>
        <property name="text">
+        <string>Replace</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>Update</string>
        </property>
       </item>
@@ -186,6 +200,9 @@
        <widget class="QRadioButton" name="userVariableRadio">
         <property name="text">
          <string>User Variable</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
