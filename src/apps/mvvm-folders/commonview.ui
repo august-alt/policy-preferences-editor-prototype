@@ -108,12 +108,12 @@ context (user policy option).</string>
       <string>Description:</string>
      </property>
      <property name="buddy">
-      <cstring>descriptionTextEdit</cstring>
+      <cstring>descriptionPlainTextEdit</cstring>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QTextEdit" name="descriptionTextEdit"/>
+    <widget class="QPlainTextEdit" name="descriptionPlainTextEdit"/>
    </item>
   </layout>
  </widget>

@@ -58,7 +58,7 @@ void CommonView::setItem(ModelView::SessionItem *item)
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());
 
-    mapper->addMapping(ui->descriptionTextEdit, 2);
+    mapper->addMapping(ui->descriptionPlainTextEdit, 2);
     mapper->addMapping(ui->stopOnErrorCheckBox, 3);
     mapper->addMapping(ui->userContextCheckBox, 4);
     mapper->addMapping(ui->removeThisCheckBox,  5);
