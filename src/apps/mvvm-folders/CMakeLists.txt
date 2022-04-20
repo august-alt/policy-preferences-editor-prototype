@@ -72,6 +72,7 @@ set(SOURCES
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp
     shares/shareswidget.cpp
+    shares/shareswidgetslots.cpp
 
     shortcuts/shortcutsitem.cpp
     shortcuts/shortcutscontaineritem.cpp

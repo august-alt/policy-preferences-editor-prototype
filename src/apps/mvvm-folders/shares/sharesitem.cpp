@@ -33,9 +33,9 @@ SharesItem::SharesItem()
     addProperty(ALL_REGULAR, false);
     addProperty(ALL_HIDDEN, false);
     addProperty(ALL_ADMIN_DRIVE, false);
-    addProperty(LIMIT_USERS, false);
+    addProperty(LIMIT_USERS, "NO_CHANGE");
     addProperty(USER_LIMIT, 0);
-    addProperty(ACCESS_BASED_ENUMERATION, false);
+    addProperty(ACCESS_BASED_ENUMERATION, "NO_CHANGE");
 }
 
 SharesItem::SharesItem(const SharesItem &other)
@@ -48,9 +48,9 @@ SharesItem::SharesItem(const SharesItem &other)
     addProperty(ALL_REGULAR, other.property<bool>(ALL_REGULAR));
     addProperty(ALL_HIDDEN, other.property<bool>(ALL_HIDDEN));
     addProperty(ALL_ADMIN_DRIVE, other.property<bool>(ALL_ADMIN_DRIVE));
-    addProperty(LIMIT_USERS, other.property<bool>(LIMIT_USERS));
+    addProperty(LIMIT_USERS, other.property<QString>(LIMIT_USERS));
     addProperty(USER_LIMIT, other.property<int>(USER_LIMIT));
-    addProperty(ACCESS_BASED_ENUMERATION, other.property<bool>(ACCESS_BASED_ENUMERATION));
+    addProperty(ACCESS_BASED_ENUMERATION, other.property<QString>(ACCESS_BASED_ENUMERATION));
 }
 
 }

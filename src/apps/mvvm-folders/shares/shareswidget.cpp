@@ -22,6 +22,7 @@
 #include "ui_shareswidget.h"
 
 #include "sharesitem.h"
+#include "../commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -41,6 +42,11 @@ SharesWidget::SharesWidget(QWidget *parent, SharesItem *item)
 {
     ui->setupUi(this);
 
+    if (m_item)
+    {
+        setItem(item);
+    }
+
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
@@ -51,6 +57,8 @@ SharesWidget::~SharesWidget()
 
 void SharesWidget::setItem(ModelView::SessionItem* item)
 {
+    m_item = dynamic_cast<SharesItem*>(item);
+
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
 
@@ -70,25 +78,27 @@ void SharesWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->updateAllRegularShares, 4);
     mapper->addMapping(ui->updateAllHiddenShares, 5);
     mapper->addMapping(ui->updateAllAdministrativeDrives, 6);
-    mapper->addMapping(ui->allowThisNumberOfUsers, 7);
-    mapper->addMapping(ui->userLimitLabel, 8);
-    // TODO: Implement user limit.
-    // TODO: Implement access based enumeration.
+    mapper->addMapping(ui->numberOfUsers, 8);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    setInitialUserFrameRadioButton(view_model->index(7, 1).data().toString());
+    setInitialAccessFrameRadioButton(view_model->index(9, 1).data().toString());
 }
 
-void SharesWidget::submit()
+bool SharesWidget::validate()
 {
-    if (mapper)
+    if (!CommonUtils::validateLineEdit(ui->shareNameLineEdit, tr("Please input name value.")))
     {
-        mapper->submit();
+        return false;
     }
-}
 
-void SharesWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+    if (!CommonUtils::validateLineEdit(ui->folderPathLineEdit, tr("Please input folder path value.")))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 }

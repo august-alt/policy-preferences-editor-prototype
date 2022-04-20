@@ -55,11 +55,20 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+    bool validate();
+
+signals:
+    void dataChanged();
+
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_allowThisNumberOfUsers_clicked();
+    void on_folderToolButton_clicked();
+    void on_maximumAllowedUsers_clicked();
+    void on_noChangeUsers_clicked();
 
 private:
     SharesWidget(const SharesWidget&)            = delete;   // copy ctor
@@ -77,6 +86,10 @@ private:
 
 private:
     Ui::SharesWidget *ui {nullptr};
+
+private:
+    void setInitialUserFrameRadioButton(const QString current);
+    void setInitialAccessFrameRadioButton(const QString current);
 };
 
 }
