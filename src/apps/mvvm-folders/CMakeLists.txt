@@ -7,6 +7,7 @@ set(CMAKE_AUTOUIC ON)
 
 set(HEADERS
     commonitem.h
+    commonutils.h
     commonview.h
     containeritem.h
 
@@ -44,6 +45,7 @@ set(HEADERS
 
 set(SOURCES
     commonitem.cpp
+    commonutils.cpp
     commonview.cpp
     containeritem.cpp
 
@@ -60,6 +62,7 @@ set(SOURCES
     files/filesitem.cpp
     files/filescontaineritem.cpp
     files/fileswidget.cpp
+    files/fileswidgetslots.cpp
 
     ini/iniitem.cpp
     ini/inicontaineritem.cpp
