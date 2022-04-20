@@ -22,6 +22,7 @@
 #include "ui_fileswidget.h"
 
 #include "filesitem.h"
+#include "../commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -74,17 +75,23 @@ void FilesWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void FilesWidget::submit()
+bool FilesWidget::validate()
 {
-    if (mapper)
+    if (ui->sourceLineEdit->isEnabled() && ui->sourceLineEdit->text().isEmpty())
     {
-        mapper->submit();
-    }
-}
+        CommonUtils::showErrorMessageBox(tr("Please enter source file(s) value."));
 
-void FilesWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+        return false;
+    }
+
+    if (ui->destinationLineEdit->isEnabled() && ui->destinationLineEdit->text().isEmpty())
+    {
+        CommonUtils::showErrorMessageBox(tr("Please enter destination file(s) value."));
+
+        return false;
+    }
+
+    return true;
 }
 
 }

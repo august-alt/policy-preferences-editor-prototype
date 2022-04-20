@@ -55,11 +55,19 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+    bool validate();
+
+signals:
+    void dataChanged();
+
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_destinationToolButton_clicked();
+    void on_sourceLineEdit_textChanged(const QString &text);
+    void on_sourceToolButton_clicked();
 
 private:
     FilesWidget(const FilesWidget&)            = delete;   // copy ctor
@@ -74,6 +82,8 @@ private:
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
+
+    bool fileMode {true};
 
 private:
     Ui::FilesWidget *ui {nullptr};
