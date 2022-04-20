@@ -22,6 +22,7 @@
 #define MVVM_FOLDERS_COMMON_UTILS_H
 
 class QString;
+class QLineEdit;
 
 namespace mvvm_folders
 {
@@ -29,6 +30,8 @@ namespace mvvm_folders
     {
     public:
         static void showErrorMessageBox(const QString& message);
+
+        static bool validateLineEdit(const QLineEdit *edit, const QString& message);
     };
 }
 

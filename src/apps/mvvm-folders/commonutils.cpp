@@ -21,6 +21,7 @@
 #include "commonutils.h"
 
 #include <QString>
+#include <QLineEdit>
 #include <QMessageBox>
 
 namespace mvvm_folders
@@ -29,6 +30,18 @@ namespace mvvm_folders
 void CommonUtils::showErrorMessageBox(const QString &message)
 {
     QMessageBox::warning(0, QMessageBox::tr("Empty Data Field"), message);
+}
+
+bool CommonUtils::validateLineEdit(const QLineEdit* edit, const QString &message)
+{
+    if (edit->isEnabled() && edit->text().isEmpty())
+    {
+        showErrorMessageBox(message);
+
+        return false;
+    }
+
+    return true;
 }
 
 }
