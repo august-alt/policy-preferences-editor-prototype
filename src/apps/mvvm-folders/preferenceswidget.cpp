@@ -29,6 +29,8 @@
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
 
+#include "files/fileswidget.h"
+
 namespace mvvm_folders
 {
 
@@ -71,6 +73,8 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     ui->tableView->setModel(m_horizontalViewModel.get());
     ui->tableView->setItemDelegate(m_delegate.get());
     ui->tableView->header()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tableView->selectionModel()->select(QModelIndex(), QItemSelectionModel::Select);
 }
 
 void PreferencesWidget::setupConnections()
@@ -88,9 +92,17 @@ void PreferencesWidget::setupConnections()
         auto indexes = selected.indexes();
         if (!indexes.empty())
         {
+            if (ui->contentScrollArea->widget()->layout())
+            {
+                delete ui->contentScrollArea->takeWidget();
+            }
+
+            auto files_widget = new mvvm_folders::FilesWidget(this);
+            ui->contentScrollArea->setWidget(files_widget);
+
             auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
             ui->commonWidget->setItem(item->children().front());
-            ui->folderWidget->setItem(item->children().back());
+            files_widget->setItem(item->children().back());
         }
     });
 }
