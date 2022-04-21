@@ -55,11 +55,25 @@ public:
 
     void setItem(ModelView::SessionItem *item);
 
+    bool validate();
+
+signals:
+    void dataChanged();
+
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_iconFilePathLineEdit_textChanged(const QString &text);
+    void on_iconFilePathToolButton_clicked();
+    void on_locationComboBox_currentIndexChanged(int index);
+    void on_nameToolButton_clicked();
+    void on_startInToolButton_clicked();
+    void on_targetPathToolButton_clicked();
+
+private:
+    QString openFileOrFolder(bool folderMode);
 
 private:
     ShortcutsWidget(const ShortcutsWidget&)            = delete;   // copy ctor

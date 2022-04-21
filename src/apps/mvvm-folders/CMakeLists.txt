@@ -78,6 +78,7 @@ set(SOURCES
     shortcuts/shortcutsitem.cpp
     shortcuts/shortcutscontaineritem.cpp
     shortcuts/shortcutswidget.cpp
+    shortcuts/shortcutswidgetslots.cpp
 
     variables/variablesitem.cpp
     variables/variablescontaineritem.cpp

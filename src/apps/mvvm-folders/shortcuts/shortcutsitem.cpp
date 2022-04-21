@@ -20,6 +20,8 @@
 
 #include "shortcutsitem.h"
 
+#include <QKeySequence>
+
 namespace mvvm_folders
 {
 
@@ -33,7 +35,7 @@ ShortcutsItem::ShortcutsItem()
     addProperty(TARGET_PATH, "");
     addProperty(ARGUMENTS, "");
     addProperty(START_IN, "");
-    addProperty(SHORTCUT_KEY, "");
+    addProperty(SHORTCUT_KEY, QKeySequence());
     addProperty(WINDOW, "");
     addProperty(COMMENT, "");
     addProperty(ICON_PATH, "");
@@ -50,7 +52,7 @@ ShortcutsItem::ShortcutsItem(const ShortcutsItem &other)
     addProperty(TARGET_PATH, other.property<QString>(TARGET_PATH));
     addProperty(ARGUMENTS, other.property<QString>(ARGUMENTS));
     addProperty(START_IN, other.property<QString>(START_IN));
-    addProperty(SHORTCUT_KEY, other.property<QString>(SHORTCUT_KEY));
+    addProperty(SHORTCUT_KEY, other.property<QKeySequence>(SHORTCUT_KEY));
     addProperty(WINDOW, other.property<QString>(WINDOW));
     addProperty(COMMENT, other.property<QString>(COMMENT));
     addProperty(ICON_PATH, other.property<QString>(ICON_PATH));

@@ -22,6 +22,7 @@
 #include "ui_shortcutswidget.h"
 
 #include "shortcutsitem.h"
+#include "../commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -78,17 +79,19 @@ void ShortcutsWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void ShortcutsWidget::submit()
+bool ShortcutsWidget::validate()
 {
-    if (mapper)
+    if (!CommonUtils::validateLineEdit(ui->nameLineEdit, tr("Please input name value.")))
     {
-        mapper->submit();
+        return false;
     }
-}
 
-void ShortcutsWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+    if (!CommonUtils::validateLineEdit(ui->targetPathLineEdit, tr("Please input target path value.")))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 }
