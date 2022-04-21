@@ -52,6 +52,7 @@ set(SOURCES
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
     drives/driveswidget.cpp
+    drives/driveswidgetslots.cpp
 
     folders/foldercontaineritem.cpp
     folders/folderitem.cpp

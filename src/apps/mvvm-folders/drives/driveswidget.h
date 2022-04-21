@@ -50,16 +50,37 @@ public:
     Q_OBJECT
 
 public:
+    enum DrivesWidgetMode
+    {
+        CREATE       = 0,
+        USE_EXISTING = 1,
+        DELETE       = 3
+    };
+
+public:
     explicit DrivesWidget(QWidget* parent = nullptr, DrivesItem* item = nullptr);
     ~DrivesWidget() override;
 
     void setItem(ModelView::SessionItem *item);
+
+    bool validate();
+
+signals:
+    void dataChanged();
 
 public slots:
     void submit();
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
+    void on_pathLineEdit_textChanged(const QString &text);
+    void on_pathToolButton_clicked();
+
+private:
+    void setDriveRadioButtonText(DrivesWidgetMode mode);
+    void disableLetterWidgets(const QString& text, int index);
+    void setThisDriveCheckBox(const int index);
+    void setAllDrivesCheckBox(const int index);
 
 private:
     DrivesWidget(const DrivesWidget&)            = delete;   // copy ctor

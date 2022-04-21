@@ -31,16 +31,17 @@ namespace mvvm_folders
 class DrivesItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION     = "action";
-    static inline const std::string PATH       = "path";
-    static inline const std::string PERSISTENT = "persistent";
-    static inline const std::string LABEL      = "label";
-    static inline const std::string LETTER     = "letter";
-    static inline const std::string USER_NAME  = "userName";
-    static inline const std::string CPASSWORD  = "cpassword";
-    static inline const std::string USE_LETTER = "useLetter";
-    static inline const std::string THIS_DRIVE = "thisDrive";
-    static inline const std::string ALL_DRIVES = "allDrives";
+    static inline const std::string ACTION       = "action";
+    static inline const std::string PATH         = "path";
+    static inline const std::string PERSISTENT   = "persistent";
+    static inline const std::string LABEL        = "label";
+    static inline const std::string LETTER       = "letter";
+    static inline const std::string USER_NAME    = "userName";
+    static inline const std::string CPASSWORD    = "cpassword";
+    static inline const std::string USE_LETTER   = "useLetter";
+    static inline const std::string THIS_DRIVE   = "thisDrive";
+    static inline const std::string ALL_DRIVES   = "allDrives";
+    static inline const std::string USE_EXISTING = "useExisting";
 
     DrivesItem();
     DrivesItem(const DrivesItem &other);

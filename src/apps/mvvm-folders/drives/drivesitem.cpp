@@ -33,9 +33,10 @@ DrivesItem::DrivesItem()
     addProperty(LETTER, "");
     addProperty(USER_NAME, "");
     addProperty(CPASSWORD, "");
-    addProperty(USE_LETTER, "");
-    addProperty(THIS_DRIVE, "");
-    addProperty(ALL_DRIVES, false);
+    addProperty(USE_LETTER, true);
+    addProperty(THIS_DRIVE, 0);
+    addProperty(ALL_DRIVES, 0);
+    addProperty(USE_EXISTING, !property<bool>(USE_LETTER));
 }
 
 DrivesItem::DrivesItem(const DrivesItem &other)
@@ -48,9 +49,10 @@ DrivesItem::DrivesItem(const DrivesItem &other)
     addProperty(LETTER, other.property<QString>(LETTER));
     addProperty(USER_NAME, other.property<QString>(USER_NAME));
     addProperty(CPASSWORD, other.property<QString>(CPASSWORD));
-    addProperty(USE_LETTER, other.property<QString>(USE_LETTER));
-    addProperty(THIS_DRIVE, other.property<QString>(THIS_DRIVE));
-    addProperty(ALL_DRIVES, other.property<bool>(ALL_DRIVES));
+    addProperty(USE_LETTER, other.property<bool>(USE_LETTER));
+    addProperty(THIS_DRIVE, other.property<int>(THIS_DRIVE));
+    addProperty(ALL_DRIVES, other.property<int>(ALL_DRIVES));
+    addProperty(USE_EXISTING, other.property<bool>(USE_EXISTING));
 }
 
 }

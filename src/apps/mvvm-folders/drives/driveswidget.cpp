@@ -41,6 +41,14 @@ DrivesWidget::DrivesWidget(QWidget *parent, DrivesItem *item)
 {
     ui->setupUi(this);
 
+    ui->thisButtonGroup->setId(ui->noChangeThisRadioButton, 0);
+    ui->thisButtonGroup->setId(ui->hideThisRadioButton, 1);
+    ui->thisButtonGroup->setId(ui->showThisRadioButton, 2);
+
+    ui->allButtonGroup->setId(ui->noChangeAllRadioButton, 0);
+    ui->allButtonGroup->setId(ui->hideAllRadioButton, 1);
+    ui->allButtonGroup->setId(ui->showAllRadioButton, 2);
+
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
@@ -51,6 +59,8 @@ DrivesWidget::~DrivesWidget()
 
 void DrivesWidget::setItem(ModelView::SessionItem* item)
 {
+    m_item = dynamic_cast<DrivesItem*>(item);
+
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
 
@@ -67,23 +77,19 @@ void DrivesWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->pathLineEdit, 1);
     mapper->addMapping(ui->reconnectCheckBox, 2);
     mapper->addMapping(ui->labelLineEdit, 3);
-    mapper->addMapping(ui->driveLetterGroupBox, 4);
-    // TODO: Implement.
+    mapper->addMapping(ui->driveComboBox, 4);
+    mapper->addMapping(ui->driveRadioButton, 7);
+    mapper->addMapping(ui->firstAvailableRadioButton, 10);
+
+    setThisDriveCheckBox(view_model->index(8, 1).data().toInt());
+    setAllDrivesCheckBox(view_model->index(9, 1).data().toInt());
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void DrivesWidget::submit()
+bool DrivesWidget::validate()
 {
-    if (mapper)
-    {
-        mapper->submit();
-    }
-}
-
-void DrivesWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
+    return true;
 }
 
 }
