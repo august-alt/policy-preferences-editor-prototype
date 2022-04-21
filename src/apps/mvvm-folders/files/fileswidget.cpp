@@ -77,17 +77,13 @@ void FilesWidget::setItem(ModelView::SessionItem* item)
 
 bool FilesWidget::validate()
 {
-    if (ui->sourceLineEdit->isEnabled() && ui->sourceLineEdit->text().isEmpty())
+    if (!CommonUtils::validateLineEdit(ui->sourceLineEdit, tr("Please enter source file(s) value.")))
     {
-        CommonUtils::showErrorMessageBox(tr("Please enter source file(s) value."));
-
         return false;
     }
 
-    if (ui->destinationLineEdit->isEnabled() && ui->destinationLineEdit->text().isEmpty())
+    if (!CommonUtils::validateLineEdit(ui->destinationLineEdit, tr("Please enter destination file(s) value.")))
     {
-        CommonUtils::showErrorMessageBox(tr("Please enter destination file(s) value."));
-
         return false;
     }
 
