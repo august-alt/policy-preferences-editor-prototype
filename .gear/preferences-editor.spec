@@ -60,6 +60,7 @@ done
 %doc README.md
 %doc INSTALL.md
 %_bindir/preferences_editor-main
+%_bindir/preferences_editor-mvvm-folders
 
 %_libdir/libpreferences_editor-gui.so
 %_libdir/libpreferences_editor-io.so
