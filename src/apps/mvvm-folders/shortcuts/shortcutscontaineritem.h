@@ -33,9 +33,14 @@ class ShortcutsItem;
 
 class ShortcutsContainerItem : public ModelView::CompoundItem
 {
-public:
-    static inline const std::string COMMON = "common";
-    static inline const std::string SHORTCUTS = "shortcuts";
+public:    
+    static inline const std::string SHORTCUT_PATH = "shortcutPath";
+    static inline const std::string ORDER         = "order";
+    static inline const std::string ACTION        = "action";
+    static inline const std::string TARGET_PATH   = "targetPath";
+
+    static inline const std::string COMMON        = "common";
+    static inline const std::string SHORTCUTS     = "shortcuts";
 
     explicit ShortcutsContainerItem();
 
@@ -44,6 +49,8 @@ public:
 
     ShortcutsItem getShortcuts() const;
     void setShortcuts(const ShortcutsItem& item);
+
+    void setupListeners();
 };
 
 }

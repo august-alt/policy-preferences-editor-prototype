@@ -70,7 +70,7 @@ void ShortcutsWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->targetPathLineEdit, 4);
     mapper->addMapping(ui->argumentsLineEdit, 5);
     mapper->addMapping(ui->startInLineEdit, 6);
-    mapper->addMapping(ui->shortkutKeySequenceEdit, 7);
+//    mapper->addMapping(ui->shortkutKeySequenceEdit, 7);
     mapper->addMapping(ui->runComboBox, 8);
     mapper->addMapping(ui->commentLineEdit, 9);
     mapper->addMapping(ui->iconFilePathLineEdit, 10);

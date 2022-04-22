@@ -23,14 +23,24 @@
 #include "common/commonitem.h"
 #include "shortcutsitem.h"
 
+#include <mvvm/model/externalproperty.h>
+#include <mvvm/signals/itemmapper.h>
+
+#include <QDebug>
+
 namespace mvvm_folders
 {
 
 ShortcutsContainerItem::ShortcutsContainerItem()
     : ModelView::CompoundItem("ShortcutsContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<ShortcutsItem>(SHORTCUTS);
+    addProperty(SHORTCUT_PATH, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(TARGET_PATH, "")->setDisplayName(QObject::tr("Target").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<ShortcutsItem>(SHORTCUTS)->setVisible(false);
 }
 
 CommonItem ShortcutsContainerItem::getCommon() const
@@ -51,6 +61,32 @@ ShortcutsItem ShortcutsContainerItem::getShortcuts() const
 void ShortcutsContainerItem::setShortcuts(const ShortcutsItem &item)
 {
     setProperty(SHORTCUTS, item);
+}
+
+void ShortcutsContainerItem::setupListeners()
+{
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto shortcutsItem = dynamic_cast<ShortcutsItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, shortcutsItem->property<std::string>(ACTION));
+            }
+
+            if (property == SHORTCUT_PATH)
+            {
+                setProperty(SHORTCUT_PATH, shortcutsItem->property<std::string>(SHORTCUT_PATH));
+            }
+
+            if (property == TARGET_PATH)
+            {
+                setProperty(TARGET_PATH, shortcutsItem->property<std::string>(TARGET_PATH));
+            }
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }
