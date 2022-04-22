@@ -69,7 +69,7 @@
             <x>0</x>
             <y>0</y>
             <width>150</width>
-            <height>64</height>
+            <height>93</height>
            </rect>
           </property>
          </widget>
@@ -92,7 +92,7 @@
             <x>0</x>
             <y>0</y>
             <width>151</width>
-            <height>64</height>
+            <height>93</height>
            </rect>
           </property>
          </widget>
@@ -115,7 +115,7 @@
   <customwidget>
    <class>mvvm_folders::CommonView</class>
    <extends>QWidget</extends>
-   <header>commonview.h</header>
+   <header>common/commonview.h</header>
    <container>1</container>
    <slots>
     <slot>submit()</slot>

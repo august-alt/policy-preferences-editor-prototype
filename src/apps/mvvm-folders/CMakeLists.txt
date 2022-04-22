@@ -6,10 +6,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(HEADERS
-    commonitem.h
-    commonutils.h
-    commonview.h
-    containeritem.h
+    common/commonitem.h
+    common/commonutils.h
+    common/commonview.h
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
@@ -44,10 +43,9 @@ set(HEADERS
 )
 
 set(SOURCES
-    commonitem.cpp
-    commonutils.cpp
-    commonview.cpp
-    containeritem.cpp
+    common/commonitem.cpp
+    common/commonutils.cpp
+    common/commonview.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
@@ -90,7 +88,7 @@ set(SOURCES
 )
 
 set(UI_FORMS
-    commonview.ui
+    common/commonview.ui
     drives/driveswidget.ui
     folders/foldersview.ui
     files/fileswidget.ui

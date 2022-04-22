@@ -20,7 +20,7 @@
 
 #include "shortcutscontaineritem.h"
 
-#include "commonitem.h"
+#include "common/commonitem.h"
 #include "shortcutsitem.h"
 
 namespace mvvm_folders

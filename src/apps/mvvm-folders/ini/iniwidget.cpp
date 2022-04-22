@@ -22,7 +22,7 @@
 #include "ui_iniwidget.h"
 
 #include "iniitem.h"
-#include "../commonutils.h"
+#include "common/commonutils.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>

@@ -29,7 +29,7 @@
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
 
-#include "files/fileswidget.h"
+#include "shortcuts/shortcutswidget.h"
 
 namespace mvvm_folders
 {
@@ -69,7 +69,7 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->resizeColumnToContents(0);
 
     // setting up right table
-    m_horizontalViewModel = std::make_unique<ModelView::PropertyTableViewModel>(model);
+    m_horizontalViewModel = std::make_unique<ModelView::DefaultViewModel>(model);
     ui->tableView->setModel(m_horizontalViewModel.get());
     ui->tableView->setItemDelegate(m_delegate.get());
     ui->tableView->header()->setSectionResizeMode(QHeaderView::Stretch);
@@ -79,6 +79,8 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
 
 void PreferencesWidget::setupConnections()
 {
+    connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->commonWidget, &mvvm_folders::CommonView::submit);
+
     connect(ui->treeView->selectionModel(),
                     &QItemSelectionModel::selectionChanged,
             [&](const QItemSelection &selected, const QItemSelection &deselected)
@@ -97,12 +99,14 @@ void PreferencesWidget::setupConnections()
                 delete ui->contentScrollArea->takeWidget();
             }
 
-            auto files_widget = new mvvm_folders::FilesWidget(this);
-            ui->contentScrollArea->setWidget(files_widget);
+            auto widget = new mvvm_folders::ShortcutsWidget(this);
+            ui->contentScrollArea->setWidget(widget);
 
             auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
             ui->commonWidget->setItem(item->children().front());
-            files_widget->setItem(item->children().back());
+            widget->setItem(item->children().back());
+
+            connect(ui->buttonBox, &QDialogButtonBox::accepted, widget, &mvvm_folders::ShortcutsWidget::submit);
         }
     });
 }

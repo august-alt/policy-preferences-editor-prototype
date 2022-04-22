@@ -20,7 +20,7 @@
 
 #include "variablescontaineritem.h"
 
-#include "commonitem.h"
+#include "common/commonitem.h"
 #include "variablesitem.h"
 
 namespace mvvm_folders

@@ -20,7 +20,7 @@
 
 #include "sharescontaineritem.h"
 
-#include "commonitem.h"
+#include "common/commonitem.h"
 #include "sharesitem.h"
 
 namespace mvvm_folders

@@ -20,7 +20,7 @@
 
 #include "inicontaineritem.h"
 
-#include "commonitem.h"
+#include "common/commonitem.h"
 #include "iniitem.h"
 
 namespace mvvm_folders

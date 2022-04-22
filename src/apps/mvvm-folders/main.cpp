@@ -30,7 +30,7 @@
 
 #include "preferenceswidget.h"
 
-#include "files/filescontaineritem.h"
+#include "shortcuts/shortcutscontaineritem.h"
 
 using namespace ModelView;
 
@@ -41,10 +41,10 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
 
     SessionModel model;    
-    model.insertItem<mvvm_folders::FilesContainerItem>();
-    model.insertItem<mvvm_folders::FilesContainerItem>();
-    model.insertItem<mvvm_folders::FilesContainerItem>();
-    model.insertItem<mvvm_folders::FilesContainerItem>();
+    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
+    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
+    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
+    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
 
     mvvm_folders::PreferencesWidget widget(&model);
     widget.show();

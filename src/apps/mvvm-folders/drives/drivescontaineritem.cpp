@@ -20,7 +20,7 @@
 
 #include "drivescontaineritem.h"
 
-#include "commonitem.h"
+#include "common/commonitem.h"
 #include "drivesitem.h"
 
 namespace mvvm_folders
