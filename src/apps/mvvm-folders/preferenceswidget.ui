@@ -31,14 +31,7 @@
         </sizepolicy>
        </property>
       </widget>
-      <widget class="QTreeView" name="tableView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>2</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
+      <widget class="mvvm_folders::TableDetailsWidget" name="detailsWidget" native="true"/>
      </widget>
      <widget class="QWidget" name="widget" native="true">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -120,6 +113,12 @@
    <slots>
     <slot>submit()</slot>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>mvvm_folders::TableDetailsWidget</class>
+   <extends>QWidget</extends>
+   <header>common/tabledetailswidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

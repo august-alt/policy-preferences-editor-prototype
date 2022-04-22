@@ -69,12 +69,7 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->resizeColumnToContents(0);
 
     // setting up right table
-    m_horizontalViewModel = std::make_unique<ModelView::DefaultViewModel>(model);
-    ui->tableView->setModel(m_horizontalViewModel.get());
-    ui->tableView->setItemDelegate(m_delegate.get());
-    ui->tableView->header()->setSectionResizeMode(QHeaderView::Stretch);
-
-    ui->tableView->selectionModel()->select(QModelIndex(), QItemSelectionModel::Select);
+    ui->detailsWidget->setModel(model);
 }
 
 void PreferencesWidget::setupConnections()

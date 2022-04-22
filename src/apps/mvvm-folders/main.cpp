@@ -25,14 +25,17 @@
 #include <mvvm/model/compounditem.h>
 #include <mvvm/model/sessionmodel.h>
 #include <mvvm/signals/itemmapper.h>
+#include <mvvm/signals/modelmapper.h>
 #include <mvvm/viewmodel/defaultviewmodel.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 
 #include "preferenceswidget.h"
 
 #include "shortcuts/shortcutscontaineritem.h"
+#include "shortcuts/shortcutsitem.h"
 
 using namespace ModelView;
+using namespace mvvm_folders;
 
 int main(int argc, char** argv)
 {
@@ -40,11 +43,19 @@ int main(int argc, char** argv)
 
     QApplication app(argc, argv);
 
-    SessionModel model;    
-    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
-    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
-    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
-    model.insertItem<mvvm_folders::ShortcutsContainerItem>();
+    SessionModel model;
+
+    model.registerItem<mvvm_folders::ShortcutsContainerItem>();
+
+    auto onItemInserted = [](SessionItem* item, TagRow)
+    {
+        if (auto shortcutsItem = dynamic_cast<ShortcutsContainerItem*>(item))
+        {
+            shortcutsItem->setupListeners();
+        }
+    };
+
+    model.mapper()->setOnItemInserted(onItemInserted, nullptr);
 
     mvvm_folders::PreferencesWidget widget(&model);
     widget.show();
