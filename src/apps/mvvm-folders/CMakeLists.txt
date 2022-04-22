@@ -9,6 +9,7 @@ set(HEADERS
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
+    common/tabledetailswidget.h
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
@@ -46,6 +47,7 @@ set(SOURCES
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
+    common/tabledetailswidget.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
@@ -89,6 +91,7 @@ set(SOURCES
 
 set(UI_FORMS
     common/commonview.ui
+    common/tabledetailswidget.ui
     drives/driveswidget.ui
     folders/foldersview.ui
     files/fileswidget.ui
