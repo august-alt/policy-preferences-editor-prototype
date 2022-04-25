@@ -36,6 +36,12 @@ class DrivesItem;
 class DrivesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
+    static inline const std::string NAME       = "name";
+    static inline const std::string ORDER      = "order";
+    static inline const std::string ACTION     = "action";
+    static inline const std::string PATH       = "path";
+    static inline const std::string PERSISTENT = "persistent";
+
     static inline const std::string COMMON = "common";
     static inline const std::string DRIVES = "drives";
 

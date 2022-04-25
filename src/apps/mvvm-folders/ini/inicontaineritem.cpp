@@ -23,14 +23,24 @@
 #include "common/commonitem.h"
 #include "iniitem.h"
 
+#include <mvvm/signals/itemmapper.h>
+
 namespace mvvm_folders
 {
 
 IniContainerItem::IniContainerItem()
     : ModelView::CompoundItem("IniContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<IniItem>(INI);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(PATH, "")->setDisplayName(QObject::tr("Path").toStdString())->setEditable(false);
+    addProperty(SECTION, "")->setDisplayName(QObject::tr("Section").toStdString())->setEditable(false);
+    addProperty(PROPERTY, "")->setDisplayName(QObject::tr("Property").toStdString())->setEditable(false);
+    addProperty(VALUE, "")->setDisplayName(QObject::tr("Value").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<IniItem>(INI)->setVisible(false);
 }
 
 CommonItem IniContainerItem::getCommon() const
@@ -55,7 +65,39 @@ void IniContainerItem::setIni(const IniItem &item)
 
 void IniContainerItem::setupListeners()
 {
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto iniItem = dynamic_cast<IniItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, iniItem->property<std::string>(ACTION));
+            }
 
+            if (property == PATH)
+            {
+                setProperty(NAME, iniItem->property<std::string>(PATH));
+                setProperty(PATH, iniItem->property<std::string>(PATH));
+            }
+
+            if (property == SECTION)
+            {
+                setProperty(SECTION, iniItem->property<std::string>(SECTION));
+            }
+
+            if (property == PROPERTY)
+            {
+                setProperty(PROPERTY, iniItem->property<std::string>(PROPERTY));
+            }
+
+            if (property == VALUE)
+            {
+                setProperty(VALUE, iniItem->property<std::string>(VALUE));
+            }
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }

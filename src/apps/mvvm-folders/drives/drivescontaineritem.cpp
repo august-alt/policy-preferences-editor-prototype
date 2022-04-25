@@ -23,14 +23,22 @@
 #include "common/commonitem.h"
 #include "drivesitem.h"
 
+#include <mvvm/signals/itemmapper.h>
+
 namespace mvvm_folders
 {
 
 DrivesContainerItem::DrivesContainerItem()
     : ModelView::CompoundItem("DrivesContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<DrivesItem>(DRIVES);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(PATH, "")->setDisplayName(QObject::tr("Path").toStdString())->setEditable(false);
+    addProperty(PERSISTENT, "")->setDisplayName(QObject::tr("Reconnect").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<DrivesItem>(DRIVES)->setVisible(false);
 }
 
 CommonItem DrivesContainerItem::getCommon() const
@@ -55,7 +63,30 @@ void DrivesContainerItem::setDrives(const DrivesItem &item)
 
 void DrivesContainerItem::setupListeners()
 {
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto drivesItem = dynamic_cast<DrivesItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, drivesItem->property<std::string>(ACTION));
+            }
 
+            if (property == PATH)
+            {
+                setProperty(NAME, drivesItem->property<std::string>(PATH));
+                setProperty(PATH, drivesItem->property<std::string>(PATH));
+            }
+
+            if (property == PERSISTENT)
+            {
+                setProperty(PERSISTENT, drivesItem->property<std::string>(PERSISTENT));
+            }
+
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }

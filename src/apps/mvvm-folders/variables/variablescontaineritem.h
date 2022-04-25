@@ -36,6 +36,12 @@ class VariablesItem;
 class VariablesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
+    static inline const std::string NAME   = "name";
+    static inline const std::string ORDER  = "order";
+    static inline const std::string ACTION = "action";
+    static inline const std::string VALUE  = "value";
+    static inline const std::string USER   = "user";
+
     static inline const std::string COMMON = "common";
     static inline const std::string VARIABLES = "variables";
 

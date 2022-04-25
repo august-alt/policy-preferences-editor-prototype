@@ -23,14 +23,22 @@
 #include "common/commonitem.h"
 #include "variablesitem.h"
 
+#include <mvvm/signals/itemmapper.h>
+
 namespace mvvm_folders
 {
 
 VariablesContainerItem::VariablesContainerItem()
     : ModelView::CompoundItem("VariablesContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<VariablesItem>(VARIABLES);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(VALUE, "")->setDisplayName(QObject::tr("Value").toStdString())->setEditable(false);
+    addProperty(USER, "")->setDisplayName(QObject::tr("User").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<VariablesItem>(VARIABLES)->setVisible(false);
 }
 
 CommonItem VariablesContainerItem::getCommon() const
@@ -55,7 +63,28 @@ void VariablesContainerItem::setVariables(const VariablesItem &item)
 
 void VariablesContainerItem::setupListeners()
 {
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto variablesItem = dynamic_cast<VariablesItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, variablesItem->property<std::string>(ACTION));
+            }
 
+            if (property == VALUE)
+            {
+                setProperty(VALUE, variablesItem->property<std::string>(VALUE));
+            }
+
+            if (property == USER)
+            {
+                setProperty(USER, variablesItem->property<std::string>(USER));
+            }
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }

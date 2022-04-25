@@ -23,14 +23,22 @@
 #include "common/commonitem.h"
 #include "filesitem.h"
 
+#include <mvvm/signals/itemmapper.h>
+
 namespace mvvm_folders
 {
 
 FilesContainerItem::FilesContainerItem()
     : ModelView::CompoundItem("FilesContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<FilesItem>(FILES);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(FROM_PATH, "")->setDisplayName(QObject::tr("Source").toStdString())->setEditable(false);
+    addProperty(TARGET_PATH, "")->setDisplayName(QObject::tr("Target").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<FilesItem>(FILES)->setVisible(false);
 }
 
 CommonItem FilesContainerItem::getCommon() const
@@ -55,7 +63,29 @@ void FilesContainerItem::setFiles(const FilesItem &item)
 
 void FilesContainerItem::setupListeners()
 {
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto filesItem = dynamic_cast<FilesItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, filesItem->property<std::string>(ACTION));
+            }
 
+            if (property == FROM_PATH)
+            {
+                setProperty(FROM_PATH, filesItem->property<std::string>(FROM_PATH));
+            }
+
+            if (property == TARGET_PATH)
+            {
+                setProperty(NAME, filesItem->property<std::string>(TARGET_PATH));
+                setProperty(TARGET_PATH, filesItem->property<std::string>(TARGET_PATH));
+            }
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }

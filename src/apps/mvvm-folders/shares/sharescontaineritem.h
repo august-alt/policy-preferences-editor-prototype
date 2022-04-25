@@ -36,6 +36,13 @@ class SharesItem;
 class SharesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
+    static inline const std::string NAME   = "name";
+    static inline const std::string ORDER  = "order";
+    static inline const std::string ACTION = "action";
+    static inline const std::string PATH   = "path";
+    static inline const std::string USER_LIMIT = "userLimit";
+    static inline const std::string ACCESS_BASED_ENUMERATION = "abe";
+
     static inline const std::string COMMON = "common";
     static inline const std::string SHARES = "shares";
 

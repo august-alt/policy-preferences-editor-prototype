@@ -23,14 +23,23 @@
 #include "common/commonitem.h"
 #include "sharesitem.h"
 
+#include <mvvm/signals/itemmapper.h>
+
 namespace mvvm_folders
 {
 
 SharesContainerItem::SharesContainerItem()
     : ModelView::CompoundItem("SharesContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<SharesItem>(SHARES);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(PATH, "")->setDisplayName(QObject::tr("Path").toStdString())->setEditable(false);
+    addProperty(USER_LIMIT, "")->setDisplayName(QObject::tr("User Limit").toStdString())->setEditable(false);
+    addProperty(ACCESS_BASED_ENUMERATION, "")->setDisplayName(QObject::tr("ABE").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<SharesItem>(SHARES)->setVisible(false);
 }
 
 CommonItem SharesContainerItem::getCommon() const
@@ -55,7 +64,34 @@ void SharesContainerItem::setShares(const SharesItem &item)
 
 void SharesContainerItem::setupListeners()
 {
+    auto onChildPropertyChange = [&](SessionItem* item, std::string property)
+    {
+        if (auto sharesItem = dynamic_cast<SharesItem*>(item))
+        {
+            if (property == ACTION)
+            {
+                setProperty(ACTION, sharesItem->property<std::string>(ACTION));
+            }
 
+            if (property == PATH)
+            {
+                setProperty(NAME, sharesItem->property<std::string>(PATH));
+                setProperty(PATH, sharesItem->property<std::string>(PATH));
+            }
+
+            if (property == USER_LIMIT)
+            {
+                setProperty(USER_LIMIT, sharesItem->property<int>(USER_LIMIT));
+            }
+
+            if (property == ACCESS_BASED_ENUMERATION)
+            {
+                setProperty(ACCESS_BASED_ENUMERATION, sharesItem->property<std::string>(ACCESS_BASED_ENUMERATION));
+            }
+        }
+    };
+
+    this->mapper()->setOnChildPropertyChange(onChildPropertyChange, nullptr);
 }
 
 }
