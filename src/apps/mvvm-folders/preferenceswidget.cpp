@@ -24,11 +24,13 @@
 #include <mvvm/model/compounditem.h>
 #include <mvvm/model/sessionmodel.h>
 #include <mvvm/signals/itemmapper.h>
+#include <mvvm/viewmodel/viewmodel.h>
 #include <mvvm/viewmodel/defaultviewmodel.h>
 #include <mvvm/viewmodel/topitemsviewmodel.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
 
+#include "common/preferencesmodel.h"
 #include "shortcuts/shortcutswidget.h"
 
 namespace mvvm_folders
@@ -41,6 +43,7 @@ PreferencesWidget::PreferencesWidget(ModelView::SessionModel *model, QWidget *pa
     , m_horizontalViewModel(nullptr)
     , m_selectionModel(std::make_unique<QItemSelectionModel>())
     , m_delegate(std::make_unique<ModelView::ViewModelDelegate>())
+    , m_modelsMap(std::make_unique<std::map<std::string, ::ModelView::SessionModel*> >())
 {
     ui->setupUi(this);
 
@@ -69,41 +72,39 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->resizeColumnToContents(0);
 
     // setting up right table
-    ui->detailsWidget->setModel(model);
+//
 }
 
 void PreferencesWidget::setupConnections()
 {
-//    connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->commonWidget, &mvvm_folders::CommonView::submit);
+    connect(ui->treeView->selectionModel(),
+                    &QItemSelectionModel::selectionChanged,
+            [&](const QItemSelection &selected, const QItemSelection &deselected)
+    {
+        Q_UNUSED(deselected);
+        if (selected.isEmpty() || selected.first().indexes().isEmpty())
+        {
+            return;
+        }
 
-//    connect(ui->treeView->selectionModel(),
-//                    &QItemSelectionModel::selectionChanged,
-//            [&](const QItemSelection &selected, const QItemSelection &deselected)
-//    {
-//        Q_UNUSED(deselected);
-//        if (selected.isEmpty() || selected.first().indexes().isEmpty())
-//        {
-//            return;
-//        }
+        auto indexes = selected.indexes();
+        if (!indexes.empty())
+        {
+            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
+            std::string type = item->property<std::string>("type");
+            ui->detailsWidget->onItemTypeChange(type);
 
-//        auto indexes = selected.indexes();
-//        if (!indexes.empty())
-//        {
-//            if (ui->contentScrollArea->widget()->layout())
-//            {
-//                delete ui->contentScrollArea->takeWidget();
-//            }
+            auto model = m_modelsMap->find(type);
 
-//            auto widget = new mvvm_folders::ShortcutsWidget(this);
-//            ui->contentScrollArea->setWidget(widget);
+            if (model == m_modelsMap->end())
+            {
+                m_modelsMap->insert(std::pair(type, new PreferencesModel()));
+                model = m_modelsMap->find(type);
+            }
 
-//            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
-//            ui->commonWidget->setItem(item->children().front());
-//            widget->setItem(item->children().back());
-
-//            connect(ui->buttonBox, &QDialogButtonBox::accepted, widget, &mvvm_folders::ShortcutsWidget::submit);
-//        }
-//    });
+            ui->detailsWidget->setModel(model->second);
+        }
+    });
 }
 
 }

@@ -34,6 +34,8 @@
 #include "shortcuts/shortcutscontaineritem.h"
 #include "shortcuts/shortcutsitem.h"
 
+#include "common/preferencecategoryitem.h"
+
 using namespace ModelView;
 using namespace mvvm_folders;
 
@@ -45,17 +47,29 @@ int main(int argc, char** argv)
 
     SessionModel model;
 
-    model.registerItem<mvvm_folders::ShortcutsContainerItem>();
+    auto drivesItem = model.insertItem<PreferenceCategoryItem>();
+    drivesItem->setDisplayName("Drives");
+    drivesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DrivesContainerItem");
 
-    auto onItemInserted = [](SessionItem* item, TagRow)
-    {
-        if (auto shortcutsItem = dynamic_cast<ShortcutsContainerItem*>(item))
-        {
-            shortcutsItem->setupListeners();
-        }
-    };
+    auto filesItem = model.insertItem<PreferenceCategoryItem>();
+    filesItem->setDisplayName("Files");
+    filesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FilesContainerItem");
 
-    model.mapper()->setOnItemInserted(onItemInserted, nullptr);
+    auto iniItem = model.insertItem<PreferenceCategoryItem>();
+    iniItem->setDisplayName("Ini");
+    iniItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "IniContainerItem");
+
+    auto sharesItem = model.insertItem<PreferenceCategoryItem>();
+    sharesItem->setDisplayName("Shares");
+    sharesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "SharesContainerItem");
+
+    auto shortcutsItems = model.insertItem<PreferenceCategoryItem>();
+    shortcutsItems->setDisplayName("Shortcuts");
+    shortcutsItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "ShortcutsContainerItem");
+
+    auto variablesItems = model.insertItem<PreferenceCategoryItem>();
+    variablesItems->setDisplayName("Variables");
+    variablesItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "VariablesContainerItem");
 
     mvvm_folders::PreferencesWidget widget(&model);
     widget.show();
