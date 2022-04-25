@@ -11,6 +11,7 @@ set(HEADERS
     common/commonview.h
     common/preferencesdialog.h
     common/tabledetailswidget.h
+    common/widgetfactory.h
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
@@ -54,6 +55,7 @@ set(SOURCES
     common/commonview.cpp
     common/preferencesdialog.cpp
     common/tabledetailswidget.cpp
+    common/widgetfactory.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
