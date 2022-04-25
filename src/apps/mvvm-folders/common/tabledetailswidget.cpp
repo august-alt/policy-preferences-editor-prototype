@@ -21,18 +21,15 @@
 #include "tabledetailswidget.h"
 #include "ui_tabledetailswidget.h"
 
-#include "../shortcuts/shortcutscontaineritem.h"
+#include "common/preferencesdialog.h"
+#include "interfaces/containeriteminterface.h"
+#include "shortcuts/shortcutscontaineritem.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
-#include <mvvm/model/compounditem.h>
 #include <mvvm/model/sessionmodel.h>
-#include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/propertyviewmodel.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
-#include <mvvm/viewmodel/topitemsviewmodel.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
-#include <mvvm/viewmodel/standardviewitems.h>
+#include <mvvm/viewmodel/viewitem.h>
 
 namespace mvvm_folders
 {
@@ -43,6 +40,7 @@ TableDetailsWidget::TableDetailsWidget(QWidget *parent)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
+    , itemType("")
 {
     ui->setupUi(this);
 }
@@ -64,6 +62,21 @@ void TableDetailsWidget::setModel(ModelView::SessionModel *model)
 
     ui->treeView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->treeView, &QTreeView::customContextMenuRequested, this, &TableDetailsWidget::onContextMenuRequest);
+
+    connect(ui->treeView, &QTreeView::doubleClicked, [&](const QModelIndex &index)
+    {
+        if (index.isValid())
+        {
+            auto item = view_model->sessionItemFromIndex(index);
+            auto sessionItem = PreferencesDialog(item->parent(), nullptr);
+            sessionItem.exec();
+        }
+    });
+}
+
+void TableDetailsWidget::onItemTypeChange(const std::string &newItemType)
+{
+    itemType = newItemType;
 }
 
 void TableDetailsWidget::onContextMenuRequest(const QPoint &point)
@@ -81,10 +94,11 @@ void TableDetailsWidget::onContextMenuRequest(const QPoint &point)
         auto addItemAction = menu.addAction("Add item");
         auto add_item = [&]() {
             // TODO: Add item type selection.
-            auto newItem = view_model->sessionModel()->insertNewItem("ShortcutsContainerItem", view_model->sessionModel()->rootItem());
-            if (auto shortcutContainer = dynamic_cast<ShortcutsContainerItem*>(newItem))
+            auto newItem = view_model->sessionModel()->insertNewItem(itemType,
+                                                                     view_model->sessionModel()->rootItem());
+            if (auto containerItemInterface = dynamic_cast<ContainerItemInterface*>(newItem))
             {
-                shortcutContainer->setupListeners();
+                containerItemInterface->setupListeners();
             }
 
         };

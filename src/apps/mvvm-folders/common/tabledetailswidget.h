@@ -48,6 +48,9 @@ public:
 
     void setModel(ModelView::SessionModel *model);
 
+public slots:
+    void onItemTypeChange(const std::string& itemType);
+
 private:
     void onContextMenuRequest(const QPoint& point);
 
@@ -64,6 +67,8 @@ private:
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
+
+    std::string itemType;
 };
 
 }

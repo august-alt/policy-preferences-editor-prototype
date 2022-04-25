@@ -74,36 +74,36 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
 
 void PreferencesWidget::setupConnections()
 {
-    connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->commonWidget, &mvvm_folders::CommonView::submit);
+//    connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->commonWidget, &mvvm_folders::CommonView::submit);
 
-    connect(ui->treeView->selectionModel(),
-                    &QItemSelectionModel::selectionChanged,
-            [&](const QItemSelection &selected, const QItemSelection &deselected)
-    {
-        Q_UNUSED(deselected);
-        if (selected.isEmpty() || selected.first().indexes().isEmpty())
-        {
-            return;
-        }
+//    connect(ui->treeView->selectionModel(),
+//                    &QItemSelectionModel::selectionChanged,
+//            [&](const QItemSelection &selected, const QItemSelection &deselected)
+//    {
+//        Q_UNUSED(deselected);
+//        if (selected.isEmpty() || selected.first().indexes().isEmpty())
+//        {
+//            return;
+//        }
 
-        auto indexes = selected.indexes();
-        if (!indexes.empty())
-        {
-            if (ui->contentScrollArea->widget()->layout())
-            {
-                delete ui->contentScrollArea->takeWidget();
-            }
+//        auto indexes = selected.indexes();
+//        if (!indexes.empty())
+//        {
+//            if (ui->contentScrollArea->widget()->layout())
+//            {
+//                delete ui->contentScrollArea->takeWidget();
+//            }
 
-            auto widget = new mvvm_folders::ShortcutsWidget(this);
-            ui->contentScrollArea->setWidget(widget);
+//            auto widget = new mvvm_folders::ShortcutsWidget(this);
+//            ui->contentScrollArea->setWidget(widget);
 
-            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
-            ui->commonWidget->setItem(item->children().front());
-            widget->setItem(item->children().back());
+//            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
+//            ui->commonWidget->setItem(item->children().front());
+//            widget->setItem(item->children().back());
 
-            connect(ui->buttonBox, &QDialogButtonBox::accepted, widget, &mvvm_folders::ShortcutsWidget::submit);
-        }
-    });
+//            connect(ui->buttonBox, &QDialogButtonBox::accepted, widget, &mvvm_folders::ShortcutsWidget::submit);
+//        }
+//    });
 }
 
 }
