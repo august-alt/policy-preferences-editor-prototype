@@ -28,6 +28,10 @@ set(HEADERS
     ini/inicontaineritem.h
     ini/iniwidget.h
 
+    interfaces/containeriteminterface.h
+    interfaces/preferenceswidgetinterface.h
+    interfaces/widgetfactoryinterface.h
+
     shares/sharesitem.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
