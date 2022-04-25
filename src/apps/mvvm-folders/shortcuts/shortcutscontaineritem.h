@@ -23,6 +23,8 @@
 
 #include <mvvm/model/compounditem.h>
 
+#include "interfaces/containeriteminterface.h"
+
 namespace mvvm_folders
 {
 
@@ -31,7 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class ShortcutsItem;
 
-class ShortcutsContainerItem : public ModelView::CompoundItem
+class ShortcutsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:    
     static inline const std::string SHORTCUT_PATH = "shortcutPath";
@@ -50,7 +52,7 @@ public:
     ShortcutsItem getShortcuts() const;
     void setShortcuts(const ShortcutsItem& item);
 
-    void setupListeners();
+    void setupListeners() override;
 };
 
 }

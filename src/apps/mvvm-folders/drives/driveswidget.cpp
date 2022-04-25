@@ -32,7 +32,7 @@ namespace  mvvm_folders
 {
 
 DrivesWidget::DrivesWidget(QWidget *parent, DrivesItem *item)
-    : QWidget(parent)
+    : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())

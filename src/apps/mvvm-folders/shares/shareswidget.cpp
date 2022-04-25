@@ -33,7 +33,7 @@ namespace  mvvm_folders
 {
 
 SharesWidget::SharesWidget(QWidget *parent, SharesItem *item)
-    : QWidget(parent)
+    : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())

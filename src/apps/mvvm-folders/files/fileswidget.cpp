@@ -33,7 +33,7 @@ namespace  mvvm_folders
 {
 
 FilesWidget::FilesWidget(QWidget *parent, FilesItem *item)
-    : QWidget(parent)
+    : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())

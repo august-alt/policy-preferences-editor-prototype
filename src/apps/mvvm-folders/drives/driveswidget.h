@@ -23,6 +23,8 @@
 
 #include <QtWidgets>
 
+#include "interfaces/preferenceswidgetinterface.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class DrivesWidget; }
 QT_END_NAMESPACE
@@ -44,7 +46,7 @@ class DrivesItemController;
 
 //! Folder item representation for editor.
 
-class DrivesWidget : public QWidget
+class DrivesWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
@@ -61,15 +63,15 @@ public:
     explicit DrivesWidget(QWidget* parent = nullptr, DrivesItem* item = nullptr);
     ~DrivesWidget() override;
 
-    void setItem(ModelView::SessionItem *item);
+    void setItem(ModelView::SessionItem *item) override;
 
-    bool validate();
+    bool validate() override;
 
 signals:
-    void dataChanged();
+    void dataChanged() override;
 
 public slots:
-    void submit();
+    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);

@@ -23,6 +23,8 @@
 
 #include <QtWidgets>
 
+#include "interfaces/preferenceswidgetinterface.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class IniWidget; }
 QT_END_NAMESPACE
@@ -44,7 +46,7 @@ class IniItemController;
 
 //! Folder item representation for editor.
 
-class IniWidget : public QWidget
+class IniWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
@@ -53,15 +55,15 @@ public:
     explicit IniWidget(QWidget* parent = nullptr, IniItem* item = nullptr);
     ~IniWidget() override;
 
-    void setItem(ModelView::SessionItem *item);
+    void setItem(ModelView::SessionItem *item) override;
 
-    bool validate();
+    bool validate() override;
 
 signals:
-    void dataChanged();
+    void dataChanged() override;
 
 public slots:
-    void submit();
+    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
