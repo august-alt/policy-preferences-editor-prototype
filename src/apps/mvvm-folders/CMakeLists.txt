@@ -9,6 +9,7 @@ set(HEADERS
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
+    common/preferencecategoryitem.h
     common/preferencesdialog.h
     common/preferencesmodel.h
     common/tabledetailswidget.h
@@ -54,6 +55,7 @@ set(SOURCES
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
+    common/preferencecategoryitem.cpp
     common/preferencesdialog.cpp
     common/preferencesmodel.cpp
     common/tabledetailswidget.cpp
