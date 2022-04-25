@@ -23,6 +23,8 @@
 
 #include <mvvm/model/compounditem.h>
 
+#include "interfaces/containeriteminterface.h"
+
 namespace mvvm_folders
 {
 
@@ -31,7 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class FolderItem;
 
-class FolderContainerItem : public ModelView::CompoundItem
+class FolderContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
     static inline const std::string COMMON = "common";
@@ -44,6 +46,8 @@ public:
 
     FolderItem getFolder() const;
     void setFolder(const FolderItem& item);
+
+    void setupListeners() override;
 };
 
 }

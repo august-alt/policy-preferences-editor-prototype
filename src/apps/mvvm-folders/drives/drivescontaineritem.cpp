@@ -53,4 +53,9 @@ void DrivesContainerItem::setDrives(const DrivesItem &item)
     setProperty(DRIVES, item);
 }
 
+void DrivesContainerItem::setupListeners()
+{
+
+}
+
 }

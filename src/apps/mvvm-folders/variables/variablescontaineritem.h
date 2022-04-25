@@ -23,6 +23,8 @@
 
 #include <mvvm/model/compounditem.h>
 
+#include "interfaces/containeriteminterface.h"
+
 namespace mvvm_folders
 {
 
@@ -31,7 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class VariablesItem;
 
-class VariablesContainerItem : public ModelView::CompoundItem
+class VariablesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
     static inline const std::string COMMON = "common";
@@ -44,6 +46,8 @@ public:
 
     VariablesItem getVariables() const;
     void setVariables(const VariablesItem& item);
+
+    void setupListeners() override;
 };
 
 }

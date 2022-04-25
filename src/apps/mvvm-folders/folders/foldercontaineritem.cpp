@@ -53,4 +53,9 @@ void FolderContainerItem::setFolder(const FolderItem &item)
     setProperty(FOLDER, item);
 }
 
+void FolderContainerItem::setupListeners()
+{
+
+}
+
 }

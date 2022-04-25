@@ -53,4 +53,9 @@ void SharesContainerItem::setShares(const SharesItem &item)
     setProperty(SHARES, item);
 }
 
+void SharesContainerItem::setupListeners()
+{
+
+}
+
 }

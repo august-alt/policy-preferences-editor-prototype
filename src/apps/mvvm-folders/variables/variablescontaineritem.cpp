@@ -53,4 +53,9 @@ void VariablesContainerItem::setVariables(const VariablesItem &item)
     setProperty(VARIABLES, item);
 }
 
+void VariablesContainerItem::setupListeners()
+{
+
+}
+
 }

@@ -53,4 +53,9 @@ void IniContainerItem::setIni(const IniItem &item)
     setProperty(INI, item);
 }
 
+void IniContainerItem::setupListeners()
+{
+
+}
+
 }

@@ -53,4 +53,9 @@ void FilesContainerItem::setFiles(const FilesItem &item)
     setProperty(FILES, item);
 }
 
+void FilesContainerItem::setupListeners()
+{
+
+}
+
 }
