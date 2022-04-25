@@ -10,6 +10,7 @@ set(HEADERS
     common/commonutils.h
     common/commonview.h
     common/preferencesdialog.h
+    common/preferencesmodel.h
     common/tabledetailswidget.h
     common/widgetfactory.h
 
@@ -54,6 +55,7 @@ set(SOURCES
     common/commonutils.cpp
     common/commonview.cpp
     common/preferencesdialog.cpp
+    common/preferencesmodel.cpp
     common/tabledetailswidget.cpp
     common/widgetfactory.cpp
 
