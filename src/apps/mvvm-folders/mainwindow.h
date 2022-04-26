@@ -18,17 +18,30 @@
 **
 ***********************************************************************************************************************/
 
-#include <QApplication>
-#include "mainwindow.h"
+#ifndef MVVM_FOLDERS_MAIN_WINDOW_H
+#define MVVM_FOLDERS_MAIN_WINDOW_H
 
-int main(int argc, char** argv)
+#include <QMainWindow>
+
+namespace mvvm_folders
 {
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
-    QApplication app(argc, argv);
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
 
-    mvvm_folders::MainWindow window;
-    window.show();
+public:
+    MainWindow();
+    ~MainWindow();
 
-    return app.exec();
+protected:
+    void closeEvent(QCloseEvent* event);
+
+private:
+    void initApplication();
+    void writeSettings();
+};
+
 }
+
+#endif//MVVM_FOLDERS_MAIN_WINDOW_H

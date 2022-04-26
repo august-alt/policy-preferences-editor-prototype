@@ -48,6 +48,9 @@ set(HEADERS
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
+    mainwindow.h
+    preferencestreemodel.h
+
     preferenceswidget.h
 )
 
@@ -98,6 +101,9 @@ set(SOURCES
     variables/variableswidgetslots.cpp
 
     main.cpp
+    mainwindow.cpp
+    preferencestreemodel.cpp
+
     preferenceswidget.cpp
 )
 
@@ -112,7 +118,7 @@ set(UI_FORMS
     shares/shareswidget.ui
     shortcuts/shortcutswidget.ui
     variables/variableswidget.ui
-    preferenceswidget.ui
+    preferenceswidget.ui    
 )
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
