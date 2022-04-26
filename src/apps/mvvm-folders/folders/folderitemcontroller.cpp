@@ -20,7 +20,7 @@
 
 #include "folderitemcontroller.h"
 #include "folderitem.h"
-#include "folderview.h"
+#include "folderwidget.h"
 
 namespace mvvm_folders
 {
@@ -28,10 +28,10 @@ namespace mvvm_folders
 struct FolderItemController::FolderItemControllerImpl
 {
     FolderItem* m_item {nullptr};
-    FolderView* m_view {nullptr};
+    FolderWidget* m_view {nullptr};
     bool m_blockOnPropertyChanged {false};
 
-    FolderItemControllerImpl(FolderItem* item, FolderView* view)
+    FolderItemControllerImpl(FolderItem* item, FolderWidget* view)
         : m_item(item), m_view(view)
     {
     }
@@ -71,7 +71,7 @@ struct FolderItemController::FolderItemControllerImpl
     }
 };
 
-FolderItemController::FolderItemController(FolderItem* item, FolderView* view)
+FolderItemController::FolderItemController(FolderItem* item, FolderWidget *view)
     : p_impl(std::make_unique<FolderItemControllerImpl>(item, view))
 {
     setItem(item);

@@ -28,7 +28,7 @@ namespace mvvm_folders
 {
 
 class FolderItem;
-class FolderView;
+class FolderWidget;
 
 //! Establishes communications between FolderItem and FolderView.
 //! Provides updates of view content, when underlying item changes.
@@ -36,7 +36,7 @@ class FolderView;
 
 class FolderItemController : public ModelView::ItemListener<FolderItem> {
 public:
-    FolderItemController(FolderItem* item, FolderView* view);
+    FolderItemController(FolderItem* item, FolderWidget* view);
     ~FolderItemController() override;
 
     void updateItemFromView();

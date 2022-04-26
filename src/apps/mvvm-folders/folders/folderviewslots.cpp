@@ -18,8 +18,8 @@
 **
 ***********************************************************************************************************************/
 
-#include "folderview.h"
-#include "ui_foldersview.h"
+#include "folderwidget.h"
+#include "ui_folderswidget.h"
 
 #include "folderitemcontroller.h"
 
@@ -34,7 +34,7 @@ enum ViewMode
     DELETE__MODE = 3
 };
 
-void FolderView::on_actionComboBox_currentIndexChanged(int index)
+void FolderWidget::on_actionComboBox_currentIndexChanged(int index)
 {
     switch (index)
     {
@@ -52,7 +52,7 @@ void FolderView::on_actionComboBox_currentIndexChanged(int index)
 }
 
 
-void FolderView::on_pathToolButton_clicked()
+void FolderWidget::on_pathToolButton_clicked()
 {
     std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
 

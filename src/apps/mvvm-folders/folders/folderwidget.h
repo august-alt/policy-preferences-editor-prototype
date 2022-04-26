@@ -18,15 +18,17 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_FOLDERVIEW_H
-#define MVVM_FOLDERS_FOLDERVIEW_H
+#ifndef MVVM_FOLDERS_FolderWidget_H
+#define MVVM_FOLDERS_FolderWidget_H
 
 #include <mvvm/model/compounditem.h>
+
+#include "interfaces/preferenceswidgetinterface.h"
 
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class FoldersView; }
+namespace Ui { class FoldersWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -46,14 +48,14 @@ class FolderItemController;
 
 //! Folder item representation for editor.
 
-class FolderView : public QWidget
+class FolderWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit FolderView(QWidget* parent = nullptr, FolderItem* item = nullptr);
-    ~FolderView() override;
+    explicit FolderWidget(QWidget* parent = nullptr, FolderItem* item = nullptr);
+    ~FolderWidget() override;
 
     char action() const;
     void setAction(int action);
@@ -82,10 +84,15 @@ public:
     bool deleteFolder() const;
     void setDeleteFolder(bool state);
 
-    void setItem(ModelView::SessionItem *item);
+    void setItem(ModelView::SessionItem *item) override;
+
+    bool validate() override;
+
+signals:
+    void dataChanged() override;
 
 public slots:
-    void submit();
+    void submit() override;
 
 private slots:
     void on_pathToolButton_clicked();
@@ -94,10 +101,10 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    FolderView(const FolderView&)            = delete;   // copy ctor
-    FolderView(FolderView&&)                 = delete;   // move ctor
-    FolderView& operator=(const FolderView&) = delete;   // copy assignment
-    FolderView& operator=(FolderView&&)      = delete;   // move assignment
+    FolderWidget(const FolderWidget&)            = delete;   // copy ctor
+    FolderWidget(FolderWidget&&)                 = delete;   // move ctor
+    FolderWidget& operator=(const FolderWidget&) = delete;   // copy assignment
+    FolderWidget& operator=(FolderWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
@@ -110,9 +117,9 @@ private:
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::FoldersView *ui {nullptr};
+    Ui::FoldersWidget *ui {nullptr};
 };
 
 }
 
-#endif//MVVM_FOLDERS_FOLDERVIEW_H
+#endif//MVVM_FOLDERS_FolderWidget_H

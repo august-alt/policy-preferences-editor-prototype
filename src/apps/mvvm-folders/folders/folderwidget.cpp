@@ -18,8 +18,8 @@
 **
 ***********************************************************************************************************************/
 
-#include "folderview.h"
-#include "ui_foldersview.h"
+#include "folderwidget.h"
+#include "ui_folderswidget.h"
 
 #include "folderitemcontroller.h"
 #include "folderitem.h"
@@ -32,14 +32,14 @@
 namespace  mvvm_folders
 {
 
-FolderView::FolderView(QWidget *parent, FolderItem *item)
-    : QWidget(parent)
+FolderWidget::FolderWidget(QWidget *parent, FolderItem *item)
+    : PreferenceWidgetInterface(parent)
     , m_item(item)
     , m_controller(nullptr)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::FoldersView())
+    , ui(new Ui::FoldersWidget())
 {
     ui->setupUi(this);
 
@@ -48,102 +48,102 @@ FolderView::FolderView(QWidget *parent, FolderItem *item)
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-FolderView::~FolderView()
+FolderWidget::~FolderWidget()
 {
     delete ui;
 }
 
-char FolderView::action() const
+char FolderWidget::action() const
 {
     return ui->actionComboBox->currentIndex();
 }
 
-void FolderView::setAction(int newAction)
+void FolderWidget::setAction(int newAction)
 {
     ui->actionComboBox->setCurrentIndex(newAction);
 }
 
-QString FolderView::path() const
+QString FolderWidget::path() const
 {
     return ui->pathLineEdit->text();
 }
 
-void FolderView::setPath(const QString &newPath)
+void FolderWidget::setPath(const QString &newPath)
 {
     ui->pathLineEdit->setText(newPath);
 }
 
-bool FolderView::readOnly() const
+bool FolderWidget::readOnly() const
 {
     return ui->readOnly->isChecked();
 }
 
-void FolderView::setReadOnly(bool state)
+void FolderWidget::setReadOnly(bool state)
 {
     ui->readOnly->setChecked(state);
 }
 
-bool FolderView::archive() const
+bool FolderWidget::archive() const
 {
     return ui->archive->isChecked();
 }
 
-void FolderView::setArchive(bool state)
+void FolderWidget::setArchive(bool state)
 {
     ui->archive->setChecked(state);
 }
 
-bool FolderView::hidden() const
+bool FolderWidget::hidden() const
 {
     return ui->hidden->isChecked();
 }
 
-void FolderView::setHidden(bool state)
+void FolderWidget::setHidden(bool state)
 {
     ui->hidden->setChecked(state);
 }
 
-bool FolderView::deleteIgnoreErrors() const
+bool FolderWidget::deleteIgnoreErrors() const
 {
     return ui->ignoreErrors->isChecked();
 }
 
-void FolderView::setDeleteIgnoreErrors(bool state)
+void FolderWidget::setDeleteIgnoreErrors(bool state)
 {
     ui->ignoreErrors->setChecked(state);
 }
 
-bool FolderView::deleteFiles() const
+bool FolderWidget::deleteFiles() const
 {
     return ui->deleteAllFiles->isChecked();
 }
 
-void FolderView::setDeleteFiles(bool state)
+void FolderWidget::setDeleteFiles(bool state)
 {
     ui->deleteAllFiles->setChecked(state);
 }
 
-bool FolderView::deleteSubFolders() const
+bool FolderWidget::deleteSubFolders() const
 {
     return ui->recursiveDelete->isChecked();
 }
 
-void FolderView::setDeleteSubFolders(bool state)
+void FolderWidget::setDeleteSubFolders(bool state)
 {
     ui->recursiveDelete->setChecked(state);
 }
 
-bool FolderView::deleteFolder() const
+bool FolderWidget::deleteFolder() const
 {
     return ui->deleteThisFolder->isChecked();
 }
 
-void FolderView::setDeleteFolder(bool state)
+void FolderWidget::setDeleteFolder(bool state)
 {
     ui->deleteThisFolder->setChecked(state);
 }
 
-void FolderView::setItem(ModelView::SessionItem* item)
+void FolderWidget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -170,11 +170,18 @@ void FolderView::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void FolderView::submit()
+bool FolderWidget::validate()
 {
-    if (mapper)
+    return true;
+}
+
+void FolderWidget::submit()
+{
+    if (mapper && validate())
     {
         mapper->submit();
+
+        emit dataChanged();
     }
 }
 

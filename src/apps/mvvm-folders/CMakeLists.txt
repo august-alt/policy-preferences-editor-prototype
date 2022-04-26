@@ -22,7 +22,7 @@ set(HEADERS
     folders/foldercontaineritem.h
     folders/folderitem.h
     folders/folderitemcontroller.h
-    folders/folderview.h
+    folders/folderwidget.h
 
     files/filesitem.h
     files/filescontaineritem.h
@@ -72,7 +72,7 @@ set(SOURCES
     folders/foldercontaineritem.cpp
     folders/folderitem.cpp
     folders/folderitemcontroller.cpp
-    folders/folderview.cpp
+    folders/folderwidget.cpp
     folders/folderviewslots.cpp
 
     files/filesitem.cpp
@@ -112,7 +112,7 @@ set(UI_FORMS
     common/preferencesdialog.ui
     common/tabledetailswidget.ui
     drives/driveswidget.ui
-    folders/foldersview.ui
+    folders/folderswidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
     shares/shareswidget.ui
