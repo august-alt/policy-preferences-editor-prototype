@@ -56,6 +56,9 @@ private slots:
     void on_treeView_doubleClicked(const QModelIndex &index);
 
 private:
+    void setupConnections();
+
+private:
     TableDetailsWidget(const TableDetailsWidget&)            = delete;   // copy ctor
     TableDetailsWidget(TableDetailsWidget&&)                 = delete;   // move ctor
     TableDetailsWidget& operator=(const TableDetailsWidget&) = delete;   // copy assignment

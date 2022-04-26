@@ -31,6 +31,8 @@
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/viewitem.h>
 
+#include <QDebug>
+
 namespace mvvm_folders
 {
 
@@ -60,7 +62,9 @@ void TableDetailsWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->setItemDelegate(delegate.get());
     ui->treeView->header()->setSectionResizeMode(QHeaderView::Stretch);
 
-    ui->treeView->selectionModel()->select(QModelIndex(), QItemSelectionModel::Select);
+    setupConnections();
+
+    ui->treeView->setCurrentIndex(view_model->index(0, 0));
 }
 
 void TableDetailsWidget::onItemTypeChange(const std::string &newItemType)
@@ -123,9 +127,28 @@ void TableDetailsWidget::on_treeView_doubleClicked(const QModelIndex &index)
     if (index.isValid())
     {
         auto item = view_model->sessionItemFromIndex(index);
-        auto sessionItem = PreferencesDialog(item->parent(), nullptr);
-        sessionItem.exec();
+        PreferencesDialog(item->parent(), nullptr).exec();
     }
+}
+
+void TableDetailsWidget::setupConnections()
+{
+    connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [&](const QItemSelection &selected, const QItemSelection &deselected)
+    {
+        Q_UNUSED(deselected);
+        if (selected.isEmpty() || selected.first().indexes().isEmpty())
+        {
+            return;
+        }
+
+        auto indexes = selected.indexes();
+        if (!indexes.empty())
+        {
+            auto item = view_model->sessionItemFromIndex(indexes.at(0));
+            ui->propertiesWidget->setItem(item->parent()->children()[item->parent()->children().size() - 2]);
+        }
+    });
 }
 
 }
