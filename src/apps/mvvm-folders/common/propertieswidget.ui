@@ -6,32 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>232</width>
-    <height>208</height>
+    <width>248</width>
+    <height>681</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0">
+   <item>
+    <widget class="QLabel" name="propertiesLabel">
+     <property name="text">
+      <string>Properties:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QFrame" name="propertiesFrame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <layout class="QGridLayout">
+      <property name="topMargin">
+       <number>8</number>
+      </property>
+      <property name="rightMargin">
+       <number>8</number>
+      </property>
+      <property name="bottomMargin">
+       <number>8</number>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="stopProcessingLabel">
         <property name="sizePolicy">
@@ -250,6 +257,23 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="descriptionLabel">
+     <property name="text">
+      <string>Description:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="plainTextEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>No description provided.</string>
+     </property>
     </widget>
    </item>
   </layout>

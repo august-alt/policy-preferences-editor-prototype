@@ -68,6 +68,8 @@ void PropertiesWidget::setItem(ModelView::SessionItem *item)
     mapper->addMapping(ui->runInUsersContextStatusLabel, 4, "text");
     mapper->addMapping(ui->removeIfNotAppliedStatusLabel, 5, "text");
 
+    mapper->addMapping(ui->plainTextEdit, 2);
+
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 
 }
