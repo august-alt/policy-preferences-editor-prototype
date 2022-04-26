@@ -35,7 +35,7 @@ VariablesContainerItem::VariablesContainerItem()
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
     addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
     addProperty(VALUE, "")->setDisplayName(QObject::tr("Value").toStdString())->setEditable(false);
-    addProperty(USER, "")->setDisplayName(QObject::tr("User").toStdString())->setEditable(false);
+    addProperty(USER, "No")->setDisplayName(QObject::tr("User").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
     addProperty<VariablesItem>(VARIABLES)->setVisible(false);
@@ -79,7 +79,12 @@ void VariablesContainerItem::setupListeners()
 
             if (property == USER)
             {
-                setProperty(USER, variablesItem->property<std::string>(USER));
+                setProperty(USER, variablesItem->property<bool>(USER) ? "Yes" : "No");
+            }
+
+            if (property == NAME)
+            {
+                setProperty(NAME, variablesItem->property<std::string>(NAME));
             }
         }
     };
