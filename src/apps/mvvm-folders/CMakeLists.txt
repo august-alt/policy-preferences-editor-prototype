@@ -12,6 +12,7 @@ set(HEADERS
     common/preferencecategoryitem.h
     common/preferencesdialog.h
     common/preferencesmodel.h
+    common/propertieswidget.h
     common/tabledetailswidget.h
     common/widgetfactory.h
 
@@ -61,6 +62,7 @@ set(SOURCES
     common/preferencecategoryitem.cpp
     common/preferencesdialog.cpp
     common/preferencesmodel.cpp
+    common/propertieswidget.cpp
     common/tabledetailswidget.cpp
     common/widgetfactory.cpp
 
@@ -110,6 +112,7 @@ set(SOURCES
 set(UI_FORMS
     common/commonview.ui
     common/preferencesdialog.ui
+    common/propertieswidget.ui
     common/tabledetailswidget.ui
     drives/driveswidget.ui
     folders/folderswidget.ui
