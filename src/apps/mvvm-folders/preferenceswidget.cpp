@@ -23,6 +23,7 @@
 
 #include <mvvm/model/compounditem.h>
 #include <mvvm/model/sessionmodel.h>
+#include <mvvm/model/sessionitemtags.h>
 #include <mvvm/signals/itemmapper.h>
 #include <mvvm/viewmodel/viewmodel.h>
 #include <mvvm/viewmodel/defaultviewmodel.h>
@@ -67,12 +68,10 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
     // setting up left tree
     m_verticalViewModel = std::make_unique<ModelView::TopItemsViewModel>(model);
     ui->treeView->setModel(m_verticalViewModel.get());
+    ui->treeView->setColumnHidden(1, true);
     ui->treeView->setItemDelegate(m_delegate.get());
     ui->treeView->expandAll();
     ui->treeView->resizeColumnToContents(0);
-
-    // setting up right table
-//
 }
 
 void PreferencesWidget::setupConnections()
@@ -91,7 +90,14 @@ void PreferencesWidget::setupConnections()
         if (!indexes.empty())
         {
             auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
+
+            if (!item->itemTags()->isTag("type"))
+            {
+                return;
+            }
+
             std::string type = item->property<std::string>("type");
+
             ui->detailsWidget->onItemTypeChange(type);
 
             auto model = m_modelsMap->find(type);

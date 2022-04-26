@@ -25,10 +25,19 @@
       </property>
       <widget class="QTreeView" name="treeView">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
          <horstretch>1</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>256</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="headerHidden">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="mvvm_folders::TableDetailsWidget" name="detailsWidget" native="true"/>
