@@ -51,8 +51,9 @@ public:
 public slots:
     void onItemTypeChange(const std::string& itemType);
 
-private:
-    void onContextMenuRequest(const QPoint& point);
+private slots:
+    void on_treeView_customContextMenuRequested(const QPoint &pos);
+    void on_treeView_doubleClicked(const QModelIndex &index);
 
 private:
     TableDetailsWidget(const TableDetailsWidget&)            = delete;   // copy ctor
