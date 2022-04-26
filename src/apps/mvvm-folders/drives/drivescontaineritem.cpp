@@ -35,7 +35,7 @@ DrivesContainerItem::DrivesContainerItem()
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
     addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
     addProperty(PATH, "")->setDisplayName(QObject::tr("Path").toStdString())->setEditable(false);
-    addProperty(PERSISTENT, "")->setDisplayName(QObject::tr("Reconnect").toStdString())->setEditable(false);
+    addProperty(PERSISTENT, "No")->setDisplayName(QObject::tr("Reconnect").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
     addProperty<DrivesItem>(DRIVES)->setVisible(false);
@@ -80,7 +80,7 @@ void DrivesContainerItem::setupListeners()
 
             if (property == PERSISTENT)
             {
-                setProperty(PERSISTENT, drivesItem->property<std::string>(PERSISTENT));
+                setProperty(PERSISTENT, drivesItem->property<bool>(PERSISTENT) ? "Yes" : "No");
             }
 
         }
