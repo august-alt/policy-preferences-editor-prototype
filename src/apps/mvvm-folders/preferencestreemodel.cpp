@@ -68,7 +68,7 @@ void PreferencesTreeModel::populateModel()
 
     auto machineFoldersItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
     machineFoldersItem->setDisplayName("Folders");
-    machineFoldersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FoldersContainerItem");
+    machineFoldersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FolderContainerItem");
 
     auto machineIniItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
     machineIniItem->setDisplayName("Ini Files");
