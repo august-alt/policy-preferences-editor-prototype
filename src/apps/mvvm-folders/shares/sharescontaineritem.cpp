@@ -25,6 +25,8 @@
 
 #include <mvvm/signals/itemmapper.h>
 
+static inline const std::string LIMIT_USERS = "limitUsers";
+
 namespace mvvm_folders
 {
 
@@ -35,8 +37,10 @@ SharesContainerItem::SharesContainerItem()
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
     addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
     addProperty(PATH, "")->setDisplayName(QObject::tr("Path").toStdString())->setEditable(false);
-    addProperty(USER_LIMIT, "")->setDisplayName(QObject::tr("User Limit").toStdString())->setEditable(false);
-    addProperty(ACCESS_BASED_ENUMERATION, "")->setDisplayName(QObject::tr("ABE").toStdString())->setEditable(false);
+    addProperty(USER_LIMIT, QObject::tr("Unchanged").toStdString())
+            ->setDisplayName(QObject::tr("User Limit").toStdString())->setEditable(false);
+    addProperty(ACCESS_BASED_ENUMERATION, QObject::tr("Unchanged").toStdString())
+            ->setDisplayName(QObject::tr("ABE").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
     addProperty<SharesItem>(SHARES)->setVisible(false);
@@ -73,20 +77,50 @@ void SharesContainerItem::setupListeners()
                 setProperty(ACTION, sharesItem->property<std::string>(ACTION));
             }
 
+            if (property == NAME)
+            {
+                setProperty(NAME, sharesItem->property<std::string>(NAME));
+            }
+
             if (property == PATH)
             {
-                setProperty(NAME, sharesItem->property<std::string>(PATH));
                 setProperty(PATH, sharesItem->property<std::string>(PATH));
             }
 
-            if (property == USER_LIMIT)
+            if (property == LIMIT_USERS)
             {
-                setProperty(USER_LIMIT, sharesItem->property<int>(USER_LIMIT));
+                auto limitUsers = sharesItem->property<std::string>(LIMIT_USERS);
+
+                if (limitUsers.compare("NO_CHANGE") == 0)
+                {
+                    setProperty(USER_LIMIT, QObject::tr("Unchanged").toStdString());
+                }
+                else if (limitUsers.compare("MAX_ALLOWED") == 0)
+                {
+                    setProperty(USER_LIMIT, QObject::tr("Maximum").toStdString());
+                }
+                else
+                {
+                    setProperty(USER_LIMIT, QString::number(sharesItem->property<int>(USER_LIMIT)).toStdString());
+                }
             }
 
             if (property == ACCESS_BASED_ENUMERATION)
             {
-                setProperty(ACCESS_BASED_ENUMERATION, sharesItem->property<std::string>(ACCESS_BASED_ENUMERATION));
+                auto abe = sharesItem->property<std::string>(ACCESS_BASED_ENUMERATION);
+
+                if (abe.compare("NO_CHANGE") == 0)
+                {
+                    setProperty(ACCESS_BASED_ENUMERATION, QObject::tr("Unchanged").toStdString());
+                }
+                else if (abe.compare("ENABLE") == 0)
+                {
+                    setProperty(ACCESS_BASED_ENUMERATION, QObject::tr("Enabled").toStdString());
+                }
+                else
+                {
+                    setProperty(ACCESS_BASED_ENUMERATION, QObject::tr("Disabled").toStdString());
+                }
             }
         }
     };
