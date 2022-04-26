@@ -25,7 +25,7 @@
 
 #include "drives/driveswidget.h"
 #include "files/fileswidget.h"
-#include "folders/folderview.h"
+#include "folders/folderwidget.h"
 #include "ini/iniwidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
@@ -45,7 +45,7 @@ WidgetFactory::WidgetFactory()
 {
     registerItem("DrivesItem", [](){ return std::make_unique<DrivesWidget>(); });
     registerItem("FilesItem", [](){ return std::make_unique<FilesWidget>(); });
-    // TODO: FoldersWidget
+    registerItem("FolderItem", [](){ return std::make_unique<FolderWidget>(); });
     registerItem("IniItem", [](){ return std::make_unique<IniWidget>(); });
     registerItem("SharesItem", [](){ return std::make_unique<SharesWidget>(); });
     registerItem("ShortcutsItem", [](){ return std::make_unique<ShortcutsWidget>(); });
