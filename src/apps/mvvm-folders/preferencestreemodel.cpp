@@ -74,6 +74,10 @@ void PreferencesTreeModel::populateModel()
     machineIniItem->setDisplayName("Ini Files");
     machineIniItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "IniContainerItem");
 
+    auto machineRegistryItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    machineRegistryItem->setDisplayName("Registry");
+    machineRegistryItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "RegistryContainerItem");
+
     auto sharesItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
     sharesItem->setDisplayName("Network Shares");
     sharesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "SharesContainerItem");
@@ -109,6 +113,10 @@ void PreferencesTreeModel::populateModel()
     auto userIniItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
     userIniItem->setDisplayName("Ini Files");
     userIniItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "IniContainerItem");
+
+    auto userRegistryItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    userRegistryItem->setDisplayName("Registry");
+    userRegistryItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "RegistryContainerItem");
 
     auto userShortcutsItems = insertItem<PreferenceCategoryItem>(userPreferencesItem);
     userShortcutsItems->setDisplayName("Shortcuts");

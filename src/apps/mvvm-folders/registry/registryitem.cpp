@@ -18,31 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
-
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "registryitem.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+RegistryItem::RegistryItem()
+    : ModelView::CompoundItem("RegistryItem")
 {
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
+    addProperty(ACTION, "");
+    addProperty(HIVE, "");
+    addProperty(KEY, "");
+    addProperty(NAME, "");
+    addProperty(TYPE, "");
+    addProperty(VALUE, "");
+    addProperty(DEFAULT, false);
+}
+
+RegistryItem::RegistryItem(const RegistryItem &other)
+    : ModelView::CompoundItem("RegistryItem")
+{
+    addProperty(ACTION, other.property<std::string>(ACTION));
+    addProperty(HIVE, other.property<std::string>(HIVE));
+    addProperty(KEY, other.property<std::string>(KEY));
+    addProperty(NAME, other.property<std::string>(NAME));
+    addProperty(TYPE, other.property<std::string>(TYPE));
+    addProperty(VALUE, other.property<std::string>(VALUE));
+    addProperty(DEFAULT, other.property<bool>(DEFAULT));
 }
 
 }

@@ -18,31 +18,44 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_REGISTRY_CONTAINER_ITEM_H
+#define MVVM_FOLDERS_REGISTRY_CONTAINER_ITEM_H
 
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "interfaces/containeriteminterface.h"
+
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Folder item representation for editor.
+
+class CommonItem;
+class RegistryItem;
+
+class RegistryContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-}
+public:
+    static inline const std::string NAME = "name";
+    static inline const std::string ORDER = "order";
+    static inline const std::string ACTION = "action";
+    static inline const std::string HIVE   = "hive";
+    static inline const std::string KEY    = "key";
+
+    static inline const std::string COMMON = "common";
+    static inline const std::string REGISTRY = "registry";
+
+    explicit RegistryContainerItem();
+
+    CommonItem getCommon() const;
+    void setCommon(const CommonItem& item);
+
+    RegistryItem getRegistry() const;
+    void setRegistry(const RegistryItem& item);
+
+    void setupListeners() override;
+};
 
 }
+
+#endif//MVVM_FOLDERS_REGISTRY_CONTAINER_ITEM_H

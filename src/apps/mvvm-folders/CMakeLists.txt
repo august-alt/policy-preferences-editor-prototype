@@ -37,6 +37,10 @@ set(HEADERS
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
 
+    registry/registrycontaineritem.h
+    registry/registryitem.h
+    registry/registrywidget.h
+
     shares/sharesitem.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
@@ -87,6 +91,11 @@ set(SOURCES
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
 
+    registry/registrycontaineritem.cpp
+    registry/registryitem.cpp
+    registry/registrywidget.cpp
+    registry/registrywidgetslots.cpp
+
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp
     shares/shareswidget.cpp
@@ -118,6 +127,7 @@ set(UI_FORMS
     folders/folderswidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
+    registry/registrywidget.ui
     shares/shareswidget.ui
     shortcuts/shortcutswidget.ui
     variables/variableswidget.ui

@@ -18,31 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_REGISTRY_ITEM_H
+#define MVVM_FOLDERS_REGISTRY_ITEM_H
 
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Drives item representation for editor.
+
+class RegistryItem : public ModelView::CompoundItem
 {
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-}
+public:
+    static inline const std::string ACTION   = "action";
+    static inline const std::string HIVE     = "hive";
+    static inline const std::string KEY      = "key";
+    static inline const std::string NAME     = "name";
+    static inline const std::string TYPE     = "type";
+    static inline const std::string VALUE    = "value";
+    static inline const std::string DEFAULT  = "default";
+
+    RegistryItem();
+    RegistryItem(const RegistryItem &other);
+};
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::RegistryItem)
+
+#endif//MVVM_FOLDERS_REGISTRY_ITEM_H

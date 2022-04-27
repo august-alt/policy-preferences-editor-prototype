@@ -27,6 +27,7 @@
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
 #include "ini/iniwidget.h"
+#include "registry/registrywidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
 #include "variables/variableswidget.h"
@@ -47,6 +48,7 @@ WidgetFactory::WidgetFactory()
     registerItem("FilesItem", [](){ return std::make_unique<FilesWidget>(); });
     registerItem("FolderItem", [](){ return std::make_unique<FolderWidget>(); });
     registerItem("IniItem", [](){ return std::make_unique<IniWidget>(); });
+    registerItem("RegistryItem", [](){ return std::make_unique<RegistryWidget>(); });
     registerItem("SharesItem", [](){ return std::make_unique<SharesWidget>(); });
     registerItem("ShortcutsItem", [](){ return std::make_unique<ShortcutsWidget>(); });
     registerItem("VariablesItem", [](){ return std::make_unique<VariablesWidget>(); });

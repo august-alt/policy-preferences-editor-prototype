@@ -18,31 +18,57 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
-
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "registrywidget.h"
+#include "ui_registrywidget.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+const QString DEFAULT_VALUE = "(Default)";
+
+enum ViewMode
 {
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
+    CREATE__MODE = 0,
+    REPLACE_MODE = 1,
+    UPDATE__MODE = 2,
+    DELETE__MODE = 3
+};
+
+void RegistryWidget::on_actionComboBox_currentIndexChanged(int index)
+{
+    ui->valueFormLayout->setEnabled(index != DELETE__MODE);
+}
+
+void RegistryWidget::on_defaultValueNameCheckBox_stateChanged(int state)
+{
+    if (state == Qt::CheckState::Checked)
+    {
+        ui->valueNameLineEdit->setText(DEFAULT_VALUE);
+        ui->valueNameLineEdit->setEnabled(false);
+    }
+    else
+    {
+        ui->valueNameLineEdit->clear();
+        ui->valueNameLineEdit->setEnabled(true);
+    }
+}
+
+void RegistryWidget::setInitialState()
+{
+    if (ui->valueNameLineEdit->text().compare(DEFAULT_VALUE) == 0)
+    {
+        ui->defaultValueNameCheckBox->setChecked(true);
+    }
+}
+
+void RegistryWidget::submit()
+{
+    if (mapper && validate())
+    {
+        mapper->submit();
+
+        emit dataChanged();
+    }
 }
 
 }
