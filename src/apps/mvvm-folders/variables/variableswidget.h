@@ -74,6 +74,9 @@ private slots:
     void setDetailsText(int index);
 
 private:
+    void setDefaultValues();
+
+private:
     VariablesWidget(const VariablesWidget&)            = delete;   // copy ctor
     VariablesWidget(VariablesWidget&&)                 = delete;   // move ctor
     VariablesWidget& operator=(const VariablesWidget&) = delete;   // copy assignment

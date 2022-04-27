@@ -27,11 +27,11 @@ VariablesItem::VariablesItem()
     : ModelView::CompoundItem("VariablesItem")
 {
     addProperty(ACTION, "");
-    addProperty(USER, false);
+    addProperty(USER, true);
     addProperty(NAME, "");
     addProperty(PARTIAL, false);
     addProperty(VALUE, "");
-
+    addProperty(SYSTEM, !property<bool>(USER));
 }
 
 VariablesItem::VariablesItem(const VariablesItem &other)
@@ -42,6 +42,7 @@ VariablesItem::VariablesItem(const VariablesItem &other)
     addProperty(NAME, other.property<QString>(NAME));
     addProperty(PARTIAL, other.property<bool>(PARTIAL));
     addProperty(VALUE, other.property<QString>(VALUE));
+    addProperty(SYSTEM, !other.property<bool>(USER));
 }
 
 }

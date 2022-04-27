@@ -43,6 +43,8 @@ VariablesWidget::VariablesWidget(QWidget *parent, VariablesItem *item)
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
+
+    setDefaultValues();
 }
 
 VariablesWidget::~VariablesWidget()
@@ -69,8 +71,11 @@ void VariablesWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->nameLineEdit, 2);
     mapper->addMapping(ui->partialCheckBox, 3);
     mapper->addMapping(ui->valueLineEdit, 4);
+    mapper->addMapping(ui->systemVariableRadio, 5);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    setDefaultValues();
 }
 
 bool VariablesWidget::validate()

@@ -31,11 +31,12 @@ namespace mvvm_folders
 class VariablesItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION = "action";
-    static inline const std::string USER = "user";
-    static inline const std::string NAME = "name";
+    static inline const std::string ACTION  = "action";
+    static inline const std::string USER    = "user";
+    static inline const std::string NAME    = "name";
     static inline const std::string PARTIAL = "partial";
-    static inline const std::string VALUE = "value";
+    static inline const std::string VALUE   = "value";
+    static inline const std::string SYSTEM  = "system";
 
     VariablesItem();
     VariablesItem(const VariablesItem &other);

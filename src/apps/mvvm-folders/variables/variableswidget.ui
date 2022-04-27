@@ -211,6 +211,9 @@
         <property name="text">
          <string>System Variable</string>
         </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
      </layout>

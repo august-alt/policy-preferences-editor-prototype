@@ -24,6 +24,8 @@
 namespace mvvm_folders
 {
 
+const QString PATH = "PATH";
+
 enum ViewMode
 {
     CREATE__MODE = 0,
@@ -65,7 +67,7 @@ void VariablesWidget::on_pathCheckBox_stateChanged(int state)
 {
     if (state == Qt::CheckState::Checked)
     {
-        ui->nameLineEdit->setText("PATH");
+        ui->nameLineEdit->setText(PATH);
         ui->nameLineEdit->setDisabled(true);
 
         ui->partialCheckBox->setEnabled(true);
@@ -202,6 +204,14 @@ void VariablesWidget::setDetailsText(int index)
         break;
     default:
         break;
+    }
+}
+
+void VariablesWidget::setDefaultValues()
+{
+    if (ui->nameLineEdit->text().compare(PATH) == 0)
+    {
+        ui->pathCheckBox->setChecked(true);
     }
 }
 
