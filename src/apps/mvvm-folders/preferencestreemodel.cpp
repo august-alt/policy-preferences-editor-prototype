@@ -58,31 +58,34 @@ void PreferencesTreeModel::populateModel()
     auto machinePreferencesItem = insertItem<FolderItem>(machineNamespace);
     machinePreferencesItem->setDisplayName("Preferences");
 
-    auto machineVariablesItems = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineSystemSettingsItem = insertItem<FolderItem>(machinePreferencesItem);
+    machineSystemSettingsItem->setDisplayName("System Settings");
+
+    auto machineVariablesItems = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineVariablesItems->setDisplayName("Environment");
     machineVariablesItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "VariablesContainerItem");
 
-    auto machineFilesItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineFilesItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineFilesItem->setDisplayName("Files");
     machineFilesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FilesContainerItem");
 
-    auto machineFoldersItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineFoldersItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineFoldersItem->setDisplayName("Folders");
     machineFoldersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FolderContainerItem");
 
-    auto machineIniItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineIniItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineIniItem->setDisplayName("Ini Files");
     machineIniItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "IniContainerItem");
 
-    auto machineRegistryItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineRegistryItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineRegistryItem->setDisplayName("Registry");
     machineRegistryItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "RegistryContainerItem");
 
-    auto sharesItem = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto sharesItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     sharesItem->setDisplayName("Network Shares");
     sharesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "SharesContainerItem");
 
-    auto machineShortcutsItems = insertItem<PreferenceCategoryItem>(machinePreferencesItem);
+    auto machineShortcutsItems = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineShortcutsItems->setDisplayName("Shortcuts");
     machineShortcutsItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "ShortcutsContainerItem");
 
@@ -94,31 +97,34 @@ void PreferencesTreeModel::populateModel()
     auto userPreferencesItem = insertItem<FolderItem>(userNamespace);
     userPreferencesItem->setDisplayName("Preferences");
 
-    auto userDrivesItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userSystemSettingsItem = insertItem<FolderItem>(userPreferencesItem);
+    userSystemSettingsItem->setDisplayName("System Settings");
+
+    auto userDrivesItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userDrivesItem->setDisplayName("Drive Maps");
     userDrivesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DrivesContainerItem");
 
-    auto userVariablesItems = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userVariablesItems = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userVariablesItems->setDisplayName("Environment");
     userVariablesItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "VariablesContainerItem");
 
-    auto userFilesItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userFilesItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userFilesItem->setDisplayName("Files");
     userFilesItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FilesContainerItem");
 
-    auto userFoldersItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userFoldersItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userFoldersItem->setDisplayName("Folders");
     userFoldersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "FolderContainerItem");
 
-    auto userIniItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userIniItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userIniItem->setDisplayName("Ini Files");
     userIniItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "IniContainerItem");
 
-    auto userRegistryItem = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userRegistryItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userRegistryItem->setDisplayName("Registry");
     userRegistryItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "RegistryContainerItem");
 
-    auto userShortcutsItems = insertItem<PreferenceCategoryItem>(userPreferencesItem);
+    auto userShortcutsItems = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userShortcutsItems->setDisplayName("Shortcuts");
     userShortcutsItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "ShortcutsContainerItem");
 }
