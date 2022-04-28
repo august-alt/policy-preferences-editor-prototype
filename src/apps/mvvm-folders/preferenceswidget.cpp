@@ -34,6 +34,11 @@
 #include "common/preferencesmodel.h"
 #include "shortcuts/shortcutswidget.h"
 
+namespace
+{
+const std::string TYPE = "type";
+}
+
 namespace mvvm_folders
 {
 
@@ -91,12 +96,12 @@ void PreferencesWidget::setupConnections()
         {
             auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
 
-            if (!item->itemTags()->isTag("type"))
+            if (!item->itemTags()->isTag(TYPE))
             {
                 return;
             }
 
-            std::string type = item->property<std::string>("type");
+            std::string type = item->property<std::string>(TYPE);
 
             ui->detailsWidget->onItemTypeChange(type);
 

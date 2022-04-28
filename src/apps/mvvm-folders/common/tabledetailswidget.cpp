@@ -87,9 +87,22 @@ void TableDetailsWidget::on_treeView_customContextMenuRequested(const QPoint &po
 
     QMenu menu;
 
+    auto newMenuItem = menu.addMenu("New");
+    menu.addMenu("All Tasks");
+    menu.addSeparator();
+    menu.addAction("Paste");
+    menu.addAction("Refresh");
+    menu.addAction("Export List...");
+    menu.addMenu("View");
+    menu.addSeparator();
+    menu.addMenu("Arrange Icons");
+    menu.addAction("Line Up Icons");
+    menu.addSeparator();
+    menu.addAction("Help");
+
     if (!view_item)
     {
-        auto addItemAction = menu.addAction("Add item");
+        auto addItemAction = newMenuItem->addAction("Add item");
         auto add_item = [&]() {
             auto newItem = view_model->sessionModel()->insertNewItem(itemType,
                                                                      view_model->sessionModel()->rootItem());
@@ -107,14 +120,14 @@ void TableDetailsWidget::on_treeView_customContextMenuRequested(const QPoint &po
         auto tagrow = item->tagRow();
 
         // inserting item of same type after given item
-        auto addItemAction = menu.addAction("Add item");
+        auto addItemAction = newMenuItem->addAction("Add item");
         auto add_item = [&]() {
             view_model->sessionModel()->insertNewItem(item->modelType(), item->parent(), tagrow.next());
         };
         connect(addItemAction, &QAction::triggered, add_item);
 
         // removing item under the mouse
-        auto removeItemAction = menu.addAction("Remove item");
+        auto removeItemAction = newMenuItem->addAction("Remove item");
         auto remove_item = [&]() { view_model->sessionModel()->removeItem(item->parent(), tagrow); };
         connect(removeItemAction, &QAction::triggered, remove_item);
     }
