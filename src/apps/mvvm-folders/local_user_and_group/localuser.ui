@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FilesWidget</class>
- <widget class="QWidget" name="FilesWidget">
+ <class>LocalUsersWidget</class>
+ <widget class="QWidget" name="LocalUsersWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,9 +13,130 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
-    <widget class="QSplitter" name="splitter_2">
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="2" column="0" colspan="2">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="userNameLabel">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>User Name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>sourceLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="sourceLineEdit">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QToolButton" name="sourceToolButton">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="renameLabel">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Rename to:</string>
+       </property>
+       <property name="buddy">
+        <cstring>renameLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLineEdit" name="renameLineEdit">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="fullNameLabel">
+       <property name="text">
+        <string>Full name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fullNameLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="fullNameLineEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="descriptionLabel">
+       <property name="text">
+        <string>Description:</string>
+       </property>
+       <property name="buddy">
+        <cstring>descriptionLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QLineEdit" name="descriptionLineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="passwordLabel">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+       <property name="buddy">
+        <cstring>passwordLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1" colspan="2">
+      <widget class="QLineEdit" name="passwordLineEdit"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="confirmLabel">
+       <property name="text">
+        <string>Confirm password:</string>
+       </property>
+       <property name="buddy">
+        <cstring>confirmLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1" colspan="2">
+      <widget class="QLineEdit" name="confirmLineEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="accountHorizontalLayout">
+     <item>
+      <widget class="QLabel" name="accountExpireLabel">
+       <property name="text">
+        <string>Account expires:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDateEdit" name="accountExripeDateEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QSplitter" name="actionSplitter">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -54,124 +175,8 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="userNameLabel">
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>User Name:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="sourceLineEdit">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="sourceToolButton">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="renameLabel">
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Rename to:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="renameLineEdit">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLabel" name="fullNameLabel">
-       <property name="text">
-        <string>Full name:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="fullNameLineEdit"/>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QLabel" name="descriptionLabel">
-       <property name="text">
-        <string>Description:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="descriptionLineEdit"/>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
-      <widget class="QLabel" name="passwordLabel">
-       <property name="text">
-        <string>Password:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="passwordLineEdit"/>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
-     <item>
-      <widget class="QLabel" name="confirmLabel">
-       <property name="text">
-        <string>Confirm password:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="confirmLineEdit"/>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+   <item row="3" column="0" colspan="2">
+    <layout class="QVBoxLayout" name="userSettingsVerticalLayout">
      <item>
       <widget class="QCheckBox" name="userMustCheckBox">
        <property name="text">
@@ -209,38 +214,44 @@
      </item>
     </layout>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
-     <item>
-      <widget class="QLabel" name="accountExpireLabel">
-       <property name="text">
-        <string>Account expires:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDateEdit" name="accountExripeDateEdit"/>
-     </item>
-    </layout>
+   <item row="1" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
-   <item>
+   <item row="5" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::MinimumExpanding</enum>
-     </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>104</height>
+       <height>111</height>
       </size>
      </property>
     </spacer>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>actionComboBox</tabstop>
+  <tabstop>sourceLineEdit</tabstop>
+  <tabstop>sourceToolButton</tabstop>
+  <tabstop>renameLineEdit</tabstop>
+  <tabstop>fullNameLineEdit</tabstop>
+  <tabstop>descriptionLineEdit</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+  <tabstop>confirmLineEdit</tabstop>
+  <tabstop>userMustCheckBox</tabstop>
+  <tabstop>userCannotCheckBox</tabstop>
+  <tabstop>passwordNeverCheckBox</tabstop>
+  <tabstop>accountDisabledCheckBox</tabstop>
+  <tabstop>accountNeverCheckBox</tabstop>
+  <tabstop>accountExripeDateEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
