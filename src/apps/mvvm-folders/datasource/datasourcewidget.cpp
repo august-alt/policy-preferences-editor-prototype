@@ -69,6 +69,7 @@ void DataSourceWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->descriptionLineEdit, 4);
     mapper->addMapping(ui->userNameLineEdit, 5);
     mapper->addMapping(ui->passwordLineEdit, 6);
+    mapper->addMapping(ui->confirmPasswordLineEdit, 6);
     mapper->addMapping(ui->userDataSourceRadioButton, 7);
     mapper->addMapping(ui->systemDataSourceRadioButton, 8);
 
