@@ -19,6 +19,9 @@
      <property name="text">
       <string>Type of VPN:</string>
      </property>
+     <property name="buddy">
+      <cstring>typeComboBox</cstring>
+     </property>
     </widget>
    </item>
    <item row="1" column="0">
@@ -57,7 +60,4 @@
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

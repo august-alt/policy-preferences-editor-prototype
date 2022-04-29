@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>vpnConnectionSecurityWidget</class>
- <widget class="QWidget" name="vpnConnectionSecurityWidget">
+ <class>VpnConnectionSecurityWidget</class>
+ <widget class="QWidget" name="VpnConnectionSecurityWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -119,6 +119,9 @@
          <widget class="QLabel" name="dataLabel">
           <property name="text">
            <string>Data encryption:</string>
+          </property>
+          <property name="buddy">
+           <cstring>dataComboBox</cstring>
           </property>
          </widget>
         </item>
@@ -342,16 +345,26 @@
    </item>
   </layout>
   <zorder>frame</zorder>
-  <zorder>typicalRadioButton</zorder>
   <zorder>advancedRadioButton</zorder>
-  <zorder>passwordCheckBox</zorder>
-  <zorder>encryptioncheckBox</zorder>
-  <zorder>dataLabel</zorder>
-  <zorder>dataComboBox</zorder>
   <zorder>useLogonCheckBox</zorder>
-  <zorder>horizontalSpacer</zorder>
   <zorder>verticalSpacer</zorder>
  </widget>
+ <tabstops>
+  <tabstop>typicalRadioButton</tabstop>
+  <tabstop>passwordCheckBox</tabstop>
+  <tabstop>encryptioncheckBox</tabstop>
+  <tabstop>advancedRadioButton</tabstop>
+  <tabstop>dataComboBox</tabstop>
+  <tabstop>eapRadioButton</tabstop>
+  <tabstop>otherRadioButton</tabstop>
+  <tabstop>papCheckBox</tabstop>
+  <tabstop>spapCheckBox</tabstop>
+  <tabstop>chapCheckBox</tabstop>
+  <tabstop>mschapCheckBox</tabstop>
+  <tabstop>oldMschapCheckBox</tabstop>
+  <tabstop>mschap2CheckBox</tabstop>
+  <tabstop>useLogonCheckBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

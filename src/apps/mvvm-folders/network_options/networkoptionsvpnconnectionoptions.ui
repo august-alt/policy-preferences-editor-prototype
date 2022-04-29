@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>vpnConnectionOptionWidget</class>
- <widget class="QWidget" name="vpnConnectionOptionWidget">
+ <class>VpnConnectionOptionWidget</class>
+ <widget class="QWidget" name="VpnConnectionOptionWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -219,10 +219,6 @@
   <tabstop>timeComboBox</tabstop>
   <tabstop>idleTimeComboBox</tabstop>
   <tabstop>redailCheckBox</tabstop>
-  <tabstop>spinBox_5</tabstop>
-  <tabstop>spinBox_6</tabstop>
-  <tabstop>spinBox_4</tabstop>
-  <tabstop>checkBox_5</tabstop>
  </tabstops>
  <resources/>
  <connections/>
