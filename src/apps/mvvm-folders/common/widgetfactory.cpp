@@ -23,6 +23,7 @@
 #include <map>
 #include <memory>
 
+#include "datasource/datasourcewidget.h"
 #include "drives/driveswidget.h"
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
@@ -52,6 +53,7 @@ WidgetFactory::WidgetFactory()
     registerItem("SharesItem", [](){ return std::make_unique<SharesWidget>(); });
     registerItem("ShortcutsItem", [](){ return std::make_unique<ShortcutsWidget>(); });
     registerItem("VariablesItem", [](){ return std::make_unique<VariablesWidget>(); });
+    registerItem("DataSourceItem", [](){ return std::make_unique<DataSourceWidget>(); });
 }
 
 WidgetFactory::~WidgetFactory() = default;

@@ -6,6 +6,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(HEADERS
+    attributes/attributesitem.h
+
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
@@ -15,6 +17,10 @@ set(HEADERS
     common/propertieswidget.h
     common/tabledetailswidget.h
     common/widgetfactory.h
+
+    datasource/datasourceitem.h
+    datasource/datasourcecontaineritem.h
+    datasource/datasourcewidget.h
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
@@ -60,6 +66,8 @@ set(HEADERS
 )
 
 set(SOURCES
+    attributes/attributesitem.cpp
+
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
@@ -69,6 +77,11 @@ set(SOURCES
     common/propertieswidget.cpp
     common/tabledetailswidget.cpp
     common/widgetfactory.cpp
+
+    datasource/datasourceitem.cpp
+    datasource/datasourcecontaineritem.cpp
+    datasource/datasourcewidget.cpp
+    datasource/datasourcewidgetslots.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
@@ -123,6 +136,7 @@ set(UI_FORMS
     common/preferencesdialog.ui
     common/propertieswidget.ui
     common/tabledetailswidget.ui
+    datasource/datasourcewidget.ui
     drives/driveswidget.ui
     folders/folderswidget.ui
     files/fileswidget.ui

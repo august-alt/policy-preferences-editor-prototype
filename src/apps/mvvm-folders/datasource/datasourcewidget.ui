@@ -62,14 +62,14 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QRadioButton" name="userDataSourceLabel">
+    <widget class="QRadioButton" name="userDataSourceRadioButton">
      <property name="text">
       <string>User Data Source</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
-    <widget class="QRadioButton" name="systemDataSourceLabel">
+    <widget class="QRadioButton" name="systemDataSourceRadioButton">
      <property name="text">
       <string>System Data Source</string>
      </property>
@@ -88,14 +88,14 @@
       <widget class="QLineEdit" name="descriptionLineEdit"/>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="sourceLineEdit">
+      <widget class="QLineEdit" name="dataSourceLineEdit">
        <property name="text">
         <string>Placeholder</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QToolButton" name="sourceToolButton">
+      <widget class="QToolButton" name="dataSourceToolButton">
        <property name="text">
         <string>...</string>
        </property>
@@ -127,7 +127,7 @@
         <string>Data Source Name(DSN):</string>
        </property>
        <property name="buddy">
-        <cstring>sourceLineEdit</cstring>
+        <cstring>dataSourceLineEdit</cstring>
        </property>
       </widget>
      </item>
@@ -196,11 +196,19 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="passwordLineEdit"/>
+     <item row="4" column="1" colspan="2">
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="confirmPasswordLineEdit"/>
+     <item row="5" column="1" colspan="2">
+      <widget class="QLineEdit" name="confirmPasswordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -212,7 +220,7 @@
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="attributesGroupBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -249,7 +257,7 @@
        </widget>
       </item>
       <item row="0" column="0" colspan="3">
-       <widget class="QTableView" name="tableView">
+       <widget class="QTableView" name="attributesTableView">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -281,17 +289,17 @@
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>userDataSourceLabel</tabstop>
-  <tabstop>systemDataSourceLabel</tabstop>
-  <tabstop>sourceLineEdit</tabstop>
-  <tabstop>sourceToolButton</tabstop>
+  <tabstop>userDataSourceRadioButton</tabstop>
+  <tabstop>systemDataSourceRadioButton</tabstop>
+  <tabstop>dataSourceLineEdit</tabstop>
+  <tabstop>dataSourceToolButton</tabstop>
   <tabstop>driverLineEdit</tabstop>
   <tabstop>destinationToolButton</tabstop>
   <tabstop>descriptionLineEdit</tabstop>
   <tabstop>userNameLineEdit</tabstop>
   <tabstop>passwordLineEdit</tabstop>
   <tabstop>confirmPasswordLineEdit</tabstop>
-  <tabstop>tableView</tabstop>
+  <tabstop>attributesTableView</tabstop>
   <tabstop>addButton</tabstop>
   <tabstop>removeButton</tabstop>
   <tabstop>changeButton</tabstop>
