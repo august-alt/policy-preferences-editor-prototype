@@ -18,15 +18,15 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_SHARES_WIDGET_H
-#define MVVM_FOLDERS_SHARES_WIDGET_H
-
-#include <QtWidgets>
+#ifndef MVVM_FOLDERS_DATASOURCE_WIDGET_H
+#define MVVM_FOLDERS_DATASOURCE_WIDGET_H
 
 #include "interfaces/preferenceswidgetinterface.h"
 
+#include <QtWidgets>
+
 QT_BEGIN_NAMESPACE
-namespace Ui { class SharesWidget; }
+namespace Ui { class DataSourceWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,19 +41,19 @@ class SessionItem;
 namespace mvvm_folders
 {
 
-class SharesItem;
-class SharesItemController;
+class DataSourceItem;
+class DataSourceItemController;
 
 //! Folder item representation for editor.
 
-class SharesWidget : public PreferenceWidgetInterface
+class DataSourceWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit SharesWidget(QWidget* parent = nullptr, SharesItem* item = nullptr);
-    ~SharesWidget() override;
+    explicit DataSourceWidget(QWidget* parent = nullptr, DataSourceItem* item = nullptr);
+    ~DataSourceWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -64,33 +64,25 @@ public slots:
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
-    void on_allowThisNumberOfUsers_clicked();
-    void on_folderToolButton_clicked();
-    void on_maximumAllowedUsers_clicked();
-    void on_noChangeUsers_clicked();
 
 private:
-    SharesWidget(const SharesWidget&)            = delete;   // copy ctor
-    SharesWidget(SharesWidget&&)                 = delete;   // move ctor
-    SharesWidget& operator=(const SharesWidget&) = delete;   // copy assignment
-    SharesWidget& operator=(SharesWidget&&)      = delete;   // move assignment
+    DataSourceWidget(const DataSourceWidget&)            = delete;   // copy ctor
+    DataSourceWidget(DataSourceWidget&&)                 = delete;   // move ctor
+    DataSourceWidget& operator=(const DataSourceWidget&) = delete;   // copy assignment
+    DataSourceWidget& operator=(DataSourceWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    SharesItem* m_item {nullptr};
+    DataSourceItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::SharesWidget *ui {nullptr};
-
-private:
-    void setInitialUserFrameRadioButton(const QString current);
-    void setInitialAccessFrameRadioButton(const QString current);
+    Ui::DataSourceWidget *ui {nullptr};
 };
 
 }
 
-#endif//MVVM_FOLDERS_SHARES_WIDGET_H
+#endif//MVVM_FOLDERS_DATASOURCE_WIDGET_H

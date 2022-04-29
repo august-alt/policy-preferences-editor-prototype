@@ -89,6 +89,13 @@ void PreferencesTreeModel::populateModel()
     machineShortcutsItems->setDisplayName("Shortcuts");
     machineShortcutsItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "ShortcutsContainerItem");
 
+    auto machineControlPanelSettingsItem = insertItem<FolderItem>(machinePreferencesItem);
+    machineControlPanelSettingsItem->setDisplayName("Control Panel Settings");
+
+    auto machineDataSourceItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machineDataSourceItem->setDisplayName("Data Sources");
+    machineDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
+
 //======================================================================================================================
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
@@ -127,6 +134,13 @@ void PreferencesTreeModel::populateModel()
     auto userShortcutsItems = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userShortcutsItems->setDisplayName("Shortcuts");
     userShortcutsItems->setProperty<std::string>(PreferenceCategoryItem::TYPE, "ShortcutsContainerItem");
+
+    auto userControlPanelSettingsItem = insertItem<FolderItem>(userPreferencesItem);
+    userControlPanelSettingsItem->setDisplayName("Control Panel Settings");
+
+    auto userDataSourceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userDataSourceItem->setDisplayName("Data Sources");
+    userDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
 }
 
 }

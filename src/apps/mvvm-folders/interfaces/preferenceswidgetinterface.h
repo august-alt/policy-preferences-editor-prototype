@@ -47,7 +47,7 @@ namespace mvvm_folders
         virtual bool validate() = 0;
 
     signals:
-        virtual void dataChanged();
+        void dataChanged();
 
     public slots:
         virtual void submit() = 0;

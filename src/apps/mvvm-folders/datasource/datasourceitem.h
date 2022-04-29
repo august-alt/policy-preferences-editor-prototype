@@ -18,33 +18,36 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_DATASOURCE_ITEM_H
+#define MVVM_FOLDERS_DATASOURCE_ITEM_H
 
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Drives item representation for editor.
+
+class DataSourceItem : public ModelView::CompoundItem
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-}
+public:
+    static inline const std::string ACTION       = "action";
+    static inline const std::string USERDSN      = "userDSN";
+    static inline const std::string DSN          = "dsn";
+    static inline const std::string DRIVER       = "driver";
+    static inline const std::string DESCRIPTION  = "description";
+    static inline const std::string USERNAME     = "username";
+    static inline const std::string CPASSWORD    = "cpassword";
+    static inline const std::string ATTRIBUTES   = "Attributes";
+    static inline const std::string USERSOURCE   = "userSource";
+    static inline const std::string SYSTEMSOURCE = "systemSource";
+
+    DataSourceItem();
+    DataSourceItem(const DataSourceItem &other);
+};
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::DataSourceItem)
+
+#endif//MVVM_FOLDERS_DATASOURCE_ITEM_H

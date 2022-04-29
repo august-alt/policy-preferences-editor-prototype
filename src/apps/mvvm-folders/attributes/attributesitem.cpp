@@ -18,33 +18,21 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
-
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "attributesitem.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+AttributesItem::AttributesItem()
+    : ModelView::CompoundItem("AttributesItem")
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
+    addProperty(CONTENT, std::map<std::string, std::string>());
+}
+
+AttributesItem::AttributesItem(const AttributesItem &other)
+    : ModelView::CompoundItem("AttributesItem")
+{
+    addProperty(CONTENT, other.property<std::map<std::string, std::string> >(CONTENT));
 }
 
 }

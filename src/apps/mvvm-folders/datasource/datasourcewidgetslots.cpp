@@ -18,33 +18,46 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#include "datasourcewidget.h"
+#include "ui_datasourcewidget.h"
 
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include <array>
+
+#include "datasourceitem.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+enum ViewMode
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
+    CREATE__MODE = 0,
+    REPLACE_MODE = 1,
+    UPDATE__MODE = 2,
+    DELETE__MODE = 3
+};
+
+void DataSourceWidget::on_actionComboBox_currentIndexChanged(int index)
+{
+    bool deleteMode = index == ViewMode::DELETE__MODE;
+
+    ui->dataSourceLabel->setDisabled(deleteMode);
+    ui->dataSourceLineEdit->setDisabled(deleteMode);
+    ui->userNameLabel->setDisabled(deleteMode);
+    ui->userNameLineEdit->setDisabled(deleteMode);
+    ui->passwordLabel->setDisabled(deleteMode);
+    ui->passwordLineEdit->setDisabled(deleteMode);
+
+    ui->attributesGroupBox->setDisabled(deleteMode);
+}
+
+void DataSourceWidget::submit()
+{
+    if (mapper && validate())
+    {
+        mapper->submit();
+
+        emit dataChanged();
+    }
 }
 
 }

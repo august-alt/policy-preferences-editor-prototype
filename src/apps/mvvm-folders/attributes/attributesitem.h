@@ -18,33 +18,27 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_ATTRIBUTES_ITEM_H
+#define MVVM_FOLDERS_ATTRIBUTES_ITEM_H
 
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Drives item representation for editor.
+
+class AttributesItem : public ModelView::CompoundItem
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-}
+public:
+    static inline const std::string CONTENT = "action";
+
+    AttributesItem();
+    AttributesItem(const AttributesItem &other);
+};
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::AttributesItem)
+
+#endif//MVVM_FOLDERS_Attributes_ITEM_H

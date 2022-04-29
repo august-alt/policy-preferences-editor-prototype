@@ -88,9 +88,6 @@ public:
 
     bool validate() override;
 
-signals:
-    void dataChanged() override;
-
 public slots:
     void submit() override;
 
