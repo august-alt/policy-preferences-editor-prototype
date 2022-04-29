@@ -128,6 +128,9 @@
        <property name="text">
         <string>Account expires:</string>
        </property>
+       <property name="buddy">
+        <cstring>accountExripeDateEdit</cstring>
+       </property>
       </widget>
      </item>
      <item>
