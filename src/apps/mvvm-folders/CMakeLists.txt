@@ -143,6 +143,10 @@ set(UI_FORMS
     ini/iniwidget.ui
     local_users_and_groups/localuserwidget.ui
     local_users_and_groups/localgroupwidget.ui
+    network_options/vpnnetworkingwidget.ui
+    network_options/vpnoptionswidget.ui
+    network_options/vpnsecuritywidget.ui
+    network_options/vpnwidget.ui
     registry/registrywidget.ui
     shares/shareswidget.ui
     shortcuts/shortcutswidget.ui
