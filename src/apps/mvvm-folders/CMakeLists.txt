@@ -140,6 +140,8 @@ set(UI_FORMS
     drives/driveswidget.ui
     device/devicewidget.ui
     folders/folderswidget.ui
+    folder_options/folderoptionswidget.ui
+    folder_options/openwithwidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
     local_users_and_groups/localuserwidget.ui
