@@ -138,6 +138,7 @@ set(UI_FORMS
     common/tabledetailswidget.ui
     datasource/datasourcewidget.ui
     drives/driveswidget.ui
+    device/devicewidget.ui
     folders/folderswidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
