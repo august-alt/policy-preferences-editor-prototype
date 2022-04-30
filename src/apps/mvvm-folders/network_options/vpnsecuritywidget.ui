@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>VpnConnectionSecurityWidget</class>
- <widget class="QWidget" name="VpnConnectionSecurityWidget">
+ <class>VpnSecurityWidget</class>
+ <widget class="QWidget" name="VpnSecurityWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>429</width>
+    <width>458</width>
     <height>519</height>
    </rect>
   </property>

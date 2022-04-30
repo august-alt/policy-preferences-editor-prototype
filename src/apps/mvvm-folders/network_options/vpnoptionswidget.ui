@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>VpnConnectionOptionWidget</class>
- <widget class="QWidget" name="VpnConnectionOptionWidget">
+ <class>VpnOptionWidget</class>
+ <widget class="QWidget" name="VpnOptionWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
