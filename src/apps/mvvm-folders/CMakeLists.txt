@@ -141,6 +141,8 @@ set(UI_FORMS
     folders/folderswidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
+    local_users_and_groups/localuserwidget.ui
+    local_users_and_groups/localgroupwidget.ui
     registry/registrywidget.ui
     shares/shareswidget.ui
     shortcuts/shortcutswidget.ui
