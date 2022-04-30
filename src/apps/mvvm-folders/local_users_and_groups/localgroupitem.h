@@ -18,35 +18,36 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_LOCALGROUP_ITEM_H
+#define MVVM_FOLDERS_LOCALGROUP_ITEM_H
 
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "local_users_and_groups/localgroupcontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "baselocalitem.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Drives item representation for editor.
+
+class LocalGroupItem : public BaseLocalItem
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-    registerItem<LocalGroupContainerItem>();
-}
+public:
+    static inline const std::string ACTION = "action";
+    static inline const std::string GROUP_NAME = "groupName";
+    static inline const std::string GROUP_SID = "groupSid";
+    static inline const std::string NEW_NAME = "newName";
+    static inline const std::string DESCRIPTION = "description";
+    static inline const std::string USER_ACTION = "userAction";
+    static inline const std::string REMOVE_ACCOUNTS = "removeAccounts";
+    static inline const std::string DELETE_ALL_USERS = "deleteAllUsers";
+    static inline const std::string DELETE_ALL_GROUPS = "deleteAllGroups";
+    static inline const std::string MEMBERS = "Members";
+
+    LocalGroupItem();
+    LocalGroupItem(const LocalGroupItem &other);
+};
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::LocalGroupItem)
+
+#endif//MVVM_FOLDERS_LocalGroup_ITEM_H

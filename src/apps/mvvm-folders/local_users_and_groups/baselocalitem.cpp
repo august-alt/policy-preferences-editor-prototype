@@ -18,35 +18,25 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
-
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "local_users_and_groups/localgroupcontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "baselocalitem.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+BaseLocalItem::BaseLocalItem()
+    : ModelView::CompoundItem("BaseLocalItem")
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-    registerItem<LocalGroupContainerItem>();
+}
+
+BaseLocalItem::BaseLocalItem(const std::string name)
+    : ModelView::CompoundItem(name)
+{
+}
+
+BaseLocalItem::BaseLocalItem(const BaseLocalItem &other)
+    : ModelView::CompoundItem(other.displayName())
+{
 }
 
 }
+

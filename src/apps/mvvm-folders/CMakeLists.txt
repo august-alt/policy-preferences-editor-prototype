@@ -39,6 +39,13 @@ set(HEADERS
     ini/inicontaineritem.h
     ini/iniwidget.h
 
+    local_users_and_groups/baselocalitem.h
+    local_users_and_groups/localgroupcontaineritem.h
+    local_users_and_groups/localgroupitem.h
+    local_users_and_groups/localgroupwidget.h
+    local_users_and_groups/localuseritem.h
+    local_users_and_groups/localuserwidget.h
+
     interfaces/containeriteminterface.h
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
@@ -103,6 +110,15 @@ set(SOURCES
     ini/inicontaineritem.cpp
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
+
+    local_users_and_groups/baselocalitem.cpp
+    local_users_and_groups/localgroupcontaineritem.cpp
+    local_users_and_groups/localgroupitem.cpp
+    local_users_and_groups/localgroupwidget.cpp
+    local_users_and_groups/localgroupwidgetslots.cpp
+    local_users_and_groups/localuseritem.cpp
+    local_users_and_groups/localuserwidget.cpp
+    local_users_and_groups/localuserwidgetslots.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp

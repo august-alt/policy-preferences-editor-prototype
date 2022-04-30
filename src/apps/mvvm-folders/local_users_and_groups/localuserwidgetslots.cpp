@@ -18,35 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
-
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "local_users_and_groups/localgroupcontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include "localuserwidget.h"
+#include "ui_localuserwidget.h"
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+enum ViewMode
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-    registerItem<LocalGroupContainerItem>();
+    CREATE__MODE = 0,
+    REPLACE_MODE = 1,
+    UPDATE__MODE = 2,
+    DELETE__MODE = 3
+};
+
+void LocalUserWidget::on_actionComboBox_currentIndexChanged(int index)
+{
+    Q_UNUSED(index);
+}
+
+void LocalUserWidget::submit()
+{
+    if (mapper && validate())
+    {
+        mapper->submit();
+
+        emit dataChanged();
+    }
 }
 
 }

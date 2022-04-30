@@ -28,6 +28,8 @@
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
 #include "ini/iniwidget.h"
+#include "local_users_and_groups/localgroupwidget.h"
+#include "local_users_and_groups/localuserwidget.h"
 #include "registry/registrywidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
@@ -54,6 +56,8 @@ WidgetFactory::WidgetFactory()
     registerItem("ShortcutsItem", [](){ return std::make_unique<ShortcutsWidget>(); });
     registerItem("VariablesItem", [](){ return std::make_unique<VariablesWidget>(); });
     registerItem("DataSourceItem", [](){ return std::make_unique<DataSourceWidget>(); });
+    registerItem("LocalGroupItem", [](){ return std::make_unique<LocalGroupWidget>(); });
+    registerItem("LocalUserItem", [](){ return std::make_unique<LocalUserWidget>(); });
 }
 
 WidgetFactory::~WidgetFactory() = default;

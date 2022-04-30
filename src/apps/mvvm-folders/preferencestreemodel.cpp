@@ -96,6 +96,10 @@ void PreferencesTreeModel::populateModel()
     machineDataSourceItem->setDisplayName("Data Sources");
     machineDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
 
+    auto machineLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machineLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
+    machineLocalUsersAndGroupsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "LocalGroupContainerItem");
+
 //======================================================================================================================
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
@@ -141,6 +145,10 @@ void PreferencesTreeModel::populateModel()
     auto userDataSourceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userDataSourceItem->setDisplayName("Data Sources");
     userDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
+
+    auto userLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
+    userLocalUsersAndGroupsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "LocalGroupContainerItem");
 }
 
 }

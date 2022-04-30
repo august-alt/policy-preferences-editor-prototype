@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LocalUsersWidget</class>
- <widget class="QWidget" name="LocalUsersWidget">
+ <class>LocalUserWidget</class>
+ <widget class="QWidget" name="LocalUserWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -27,12 +27,12 @@
         <string>User Name:</string>
        </property>
        <property name="buddy">
-        <cstring>sourceLineEdit</cstring>
+        <cstring>userNameLineEdit</cstring>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="sourceLineEdit">
+      <widget class="QLineEdit" name="userNameLineEdit">
        <property name="text">
         <string/>
        </property>
@@ -104,37 +104,52 @@
       </widget>
      </item>
      <item row="4" column="1" colspan="2">
-      <widget class="QLineEdit" name="passwordLineEdit"/>
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
      <item row="5" column="0">
-      <widget class="QLabel" name="confirmLabel">
+      <widget class="QLabel" name="confirmPasswordLabel">
        <property name="text">
         <string>Confirm password:</string>
        </property>
        <property name="buddy">
-        <cstring>confirmLineEdit</cstring>
+        <cstring>confirmPasswordLineEdit</cstring>
        </property>
       </widget>
      </item>
      <item row="5" column="1" colspan="2">
-      <widget class="QLineEdit" name="confirmLineEdit"/>
+      <widget class="QLineEdit" name="confirmPasswordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
    <item row="4" column="0" colspan="2">
     <layout class="QHBoxLayout" name="accountHorizontalLayout">
      <item>
-      <widget class="QLabel" name="accountExpireLabel">
+      <widget class="QLabel" name="accountExpiresLabel">
        <property name="text">
         <string>Account expires:</string>
        </property>
        <property name="buddy">
-        <cstring>accountExripeDateEdit</cstring>
+        <cstring>accountExpiresDateEdit</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDateEdit" name="accountExripeDateEdit"/>
+      <widget class="QDateEdit" name="accountExpiresDateEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -181,7 +196,7 @@
    <item row="3" column="0" colspan="2">
     <layout class="QVBoxLayout" name="userSettingsVerticalLayout">
      <item>
-      <widget class="QCheckBox" name="userMustCheckBox">
+      <widget class="QCheckBox" name="changeLogonCheckBox">
        <property name="text">
         <string>User must change password at last logon</string>
        </property>
@@ -211,7 +226,10 @@
      <item>
       <widget class="QCheckBox" name="accountNeverCheckBox">
        <property name="text">
-        <string>Account never disabled</string>
+        <string>Account never expires</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -241,20 +259,37 @@
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>sourceLineEdit</tabstop>
+  <tabstop>userNameLineEdit</tabstop>
   <tabstop>sourceToolButton</tabstop>
   <tabstop>renameLineEdit</tabstop>
   <tabstop>fullNameLineEdit</tabstop>
   <tabstop>descriptionLineEdit</tabstop>
   <tabstop>passwordLineEdit</tabstop>
-  <tabstop>confirmLineEdit</tabstop>
-  <tabstop>userMustCheckBox</tabstop>
+  <tabstop>confirmPasswordLineEdit</tabstop>
+  <tabstop>changeLogonCheckBox</tabstop>
   <tabstop>userCannotCheckBox</tabstop>
   <tabstop>passwordNeverCheckBox</tabstop>
   <tabstop>accountDisabledCheckBox</tabstop>
   <tabstop>accountNeverCheckBox</tabstop>
-  <tabstop>accountExripeDateEdit</tabstop>
+  <tabstop>accountExpiresDateEdit</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>accountNeverCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>accountExpiresDateEdit</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

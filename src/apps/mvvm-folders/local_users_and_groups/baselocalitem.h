@@ -18,35 +18,26 @@
 **
 ***********************************************************************************************************************/
 
-#include "preferencesmodel.h"
+#ifndef MVVM_FOLDERS_BASELOCAL_ITEM_H
+#define MVVM_FOLDERS_BASELOCAL_ITEM_H
 
-#include "datasource/datasourcecontaineritem.h"
-#include "drives/drivescontaineritem.h"
-#include "files/filescontaineritem.h"
-#include "folders/foldercontaineritem.h"
-#include "ini/inicontaineritem.h"
-#include "local_users_and_groups/localgroupcontaineritem.h"
-#include "registry/registrycontaineritem.h"
-#include "shares/sharescontaineritem.h"
-#include "shortcuts/shortcutscontaineritem.h"
-#include "variables/variablescontaineritem.h"
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PreferencesModel::PreferencesModel()
-    : ::ModelView::SessionModel("PreferencesModel")
+//! Drives item representation for editor.
+
+class BaseLocalItem : public ModelView::CompoundItem
 {
-    registerItem<DataSourceContainerItem>();
-    registerItem<DrivesContainerItem>();
-    registerItem<FilesContainerItem>();
-    registerItem<FolderContainerItem>();
-    registerItem<IniContainerItem>();
-    registerItem<RegistryContainerItem>();
-    registerItem<SharesContainerItem>();
-    registerItem<ShortcutsContainerItem>();
-    registerItem<VariablesContainerItem>();
-    registerItem<LocalGroupContainerItem>();
-}
+public:
+    BaseLocalItem();
+    BaseLocalItem(const std::string name);
+    BaseLocalItem(const BaseLocalItem& other);
+};
 
 }
+
+Q_DECLARE_METATYPE(::mvvm_folders::BaseLocalItem)
+
+#endif//MVVM_FOLDERS_BaseLocal_ITEM_H
