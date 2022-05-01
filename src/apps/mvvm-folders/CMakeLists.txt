@@ -40,6 +40,10 @@ set(HEADERS
     ini/iniwidget.h
 
     local_users_and_groups/baselocalitem.h
+    local_users_and_groups/groupmemberdialog.h
+    local_users_and_groups/groupmemberitem.h
+    local_users_and_groups/groupmemberswidget.h
+    local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
     local_users_and_groups/localgroupitem.h
     local_users_and_groups/localgroupwidget.h
@@ -112,6 +116,10 @@ set(SOURCES
     ini/iniwidgetslots.cpp
 
     local_users_and_groups/baselocalitem.cpp
+    local_users_and_groups/groupmemberdialog.cpp
+    local_users_and_groups/groupmemberitem.cpp
+    local_users_and_groups/groupmemberswidget.cpp
+    local_users_and_groups/groupmemberswidgetslots.cpp
     local_users_and_groups/localgroupcontaineritem.cpp
     local_users_and_groups/localgroupitem.cpp
     local_users_and_groups/localgroupwidget.cpp
@@ -160,6 +168,8 @@ set(UI_FORMS
     folder_options/openwithwidget.ui
     files/fileswidget.ui
     ini/iniwidget.ui
+    local_users_and_groups/groupmemberswidget.ui
+    local_users_and_groups/groupmemberdialog.ui
     local_users_and_groups/localuserwidget.ui
     local_users_and_groups/localgroupwidget.ui
     network_options/vpnnetworkingwidget.ui

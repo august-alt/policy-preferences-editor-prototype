@@ -18,33 +18,26 @@
 **
 ***********************************************************************************************************************/
 
-#include "localgroupwidget.h"
-#include "ui_localgroupwidget.h"
+#include "groupmemberitem.h"
 
 namespace mvvm_folders
 {
 
-enum ViewMode
+GroupMemberItem::GroupMemberItem()
+    : ModelView::CompoundItem("GroupMemberItem")
 {
-    CREATE__MODE = 0,
-    REPLACE_MODE = 1,
-    UPDATE__MODE = 2,
-    DELETE__MODE = 3
-};
-
-void LocalGroupWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    ui->parametersFrame->setDisabled(index == DELETE__MODE);
+    addProperty(NAME, "")->setEditable(false);
+    addProperty(ACTION, "")->setEditable(false);
+    addProperty(SID, "")->setEditable(false);
 }
 
-void LocalGroupWidget::submit()
+GroupMemberItem::GroupMemberItem(const GroupMemberItem &other)
+    : ModelView::CompoundItem("GroupMemberItem")
 {
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
+    addProperty(NAME, other.property<std::string>(NAME));
+    addProperty(ACTION, other.property<std::string>(ACTION));
+    addProperty(SID, other.property<std::string>(SID));
 }
 
 }
+

@@ -18,12 +18,10 @@
 **
 ***********************************************************************************************************************/
 
-#include "localgroupwidget.h"
-#include "ui_localgroupwidget.h"
-
 #include "groupmemberswidget.h"
+#include "ui_groupmemberswidget.h"
+
 #include "groupmemberscontaineritem.h"
-#include "localgroupitem.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -33,58 +31,51 @@
 namespace  mvvm_folders
 {
 
-LocalGroupWidget::LocalGroupWidget(QWidget *parent, LocalGroupItem *item)
+GroupMembersWidget::GroupMembersWidget(QWidget *parent, GroupMembersContainerItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::LocalGroupWidget())
+    , ui(new Ui::GroupMembersWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-LocalGroupWidget::~LocalGroupWidget()
+GroupMembersWidget::~GroupMembersWidget()
 {
     delete ui;
 }
 
-void LocalGroupWidget::setItem(ModelView::SessionItem* item)
+void GroupMembersWidget::setItem(ModelView::SessionItem* item)
 {
-    view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
+    m_item = dynamic_cast<GroupMembersContainerItem*>(item);
+
+    view_model = ModelView::Factory::CreateDefaultViewModel(item->model());
     view_model->setRootSessionItem(item);
 
-    mapper = std::make_unique<QDataWidgetMapper>();
+    ui->membersTreeView->setModel(view_model.get());
+    ui->membersTreeView->setItemDelegate(delegate.get());
+    ui->membersTreeView->header()->setSectionResizeMode(QHeaderView::Stretch);
 
-    mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
-    mapper->setOrientation(Qt::Vertical);
-
-    mapper->setModel(view_model.get());
-    mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());
-
-    mapper->addMapping(ui->actionComboBox, 0);
-    mapper->addMapping(ui->groupLineEdit, 1);
-    mapper->addMapping(ui->renameLineEdit, 3);
-    mapper->addMapping(ui->descriptionLineEdit, 4);
-    mapper->addMapping(ui->deleteUsersCheckBox, 6);
-    mapper->addMapping(ui->deleteGroupCheckBox, 7);
-
-    mapper->setCurrentModelIndex(view_model->index(0, 1));
-
-    if (auto groupItem = dynamic_cast<LocalGroupItem*>(item); groupItem)
-    {
-        ui->membersWidget->setItem(groupItem->getMembers());
-    }
+    mapper->setCurrentModelIndex(view_model->index(0, 0));
 }
 
-bool LocalGroupWidget::validate()
+bool GroupMembersWidget::validate()
 {
     // TODO: Implement.
 
     return true;
+}
+
+void GroupMembersWidget::submit()
+{
+    if (mapper && validate())
+    {
+        mapper->submit();
+
+        emit dataChanged();
+    }
 }
 
 }

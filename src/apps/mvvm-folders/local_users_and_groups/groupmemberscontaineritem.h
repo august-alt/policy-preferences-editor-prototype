@@ -18,33 +18,37 @@
 **
 ***********************************************************************************************************************/
 
-#include "localgroupwidget.h"
-#include "ui_localgroupwidget.h"
+#ifndef MVVM_FOLDERS_GROUPMEMBERSCONTAINER_ITEM_H
+#define MVVM_FOLDERS_GROUPMEMBERSCONTAINER_ITEM_H
+
+#include <mvvm/model/groupitem.h>
+#include <mvvm/model/compounditem.h>
+#include <mvvm/model/sessionitemcontainer.h>
+#include <mvvm/model/sessionitemtags.h>
+#include <mvvm/model/taginfo.h>
 
 namespace mvvm_folders
 {
 
-enum ViewMode
+class GroupMemberItem;
+
+class GroupMembersContainerItem : public ModelView::GroupItem
 {
-    CREATE__MODE = 0,
-    REPLACE_MODE = 1,
-    UPDATE__MODE = 2,
-    DELETE__MODE = 3
+public:
+    GroupMembersContainerItem()
+        : ModelView::GroupItem("GroupMembersContainerItem")
+    {        
+    }
+
+    GroupMembersContainerItem(const GroupMembersContainerItem& other)
+        : ModelView::GroupItem("GroupMembersContainerItem")
+    {
+        Q_UNUSED(other);
+    }
 };
 
-void LocalGroupWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    ui->parametersFrame->setDisabled(index == DELETE__MODE);
 }
 
-void LocalGroupWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
+Q_DECLARE_METATYPE(::mvvm_folders::GroupMembersContainerItem)
 
-        emit dataChanged();
-    }
-}
-
-}
+#endif//MVVM_FOLDERS_GROUPMEMBERSCONTAINER_ITEM_H

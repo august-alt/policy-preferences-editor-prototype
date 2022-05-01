@@ -18,40 +18,29 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_LOCALGROUP_ITEM_H
-#define MVVM_FOLDERS_LOCALGROUP_ITEM_H
+#ifndef MVVM_FOLDERS_GROUPMEMBER_ITEM_H
+#define MVVM_FOLDERS_GROUPMEMBER_ITEM_H
 
-#include "baselocalitem.h"
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-class GroupMembersContainerItem;
-
 //! Drives item representation for editor.
 
-class LocalGroupItem : public BaseLocalItem
+class GroupMemberItem : public ModelView::CompoundItem
 {
 public:
+    static inline const std::string NAME = "name";
     static inline const std::string ACTION = "action";
-    static inline const std::string GROUP_NAME = "groupName";
-    static inline const std::string GROUP_SID = "groupSid";
-    static inline const std::string NEW_NAME = "newName";
-    static inline const std::string DESCRIPTION = "description";
-    static inline const std::string USER_ACTION = "userAction";
-    static inline const std::string REMOVE_ACCOUNTS = "removeAccounts";
-    static inline const std::string DELETE_ALL_USERS = "deleteAllUsers";
-    static inline const std::string DELETE_ALL_GROUPS = "deleteAllGroups";
-    static inline const std::string MEMBERS = "Members";
+    static inline const std::string SID = "SID";
 
-    LocalGroupItem();
-    LocalGroupItem(const LocalGroupItem &other);
-
-    GroupMembersContainerItem* getMembers() const;
+    GroupMemberItem();
+    GroupMemberItem(const GroupMemberItem &other);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::LocalGroupItem)
+Q_DECLARE_METATYPE(::mvvm_folders::GroupMemberItem)
 
-#endif//MVVM_FOLDERS_LocalGroup_ITEM_H
+#endif//MVVM_FOLDERS_GROUPMEMBER_ITEM_H

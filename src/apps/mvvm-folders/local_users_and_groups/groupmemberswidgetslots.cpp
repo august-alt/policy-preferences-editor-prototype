@@ -18,32 +18,42 @@
 **
 ***********************************************************************************************************************/
 
-#include "localgroupwidget.h"
-#include "ui_localgroupwidget.h"
+#include "groupmemberswidget.h"
+#include "ui_groupmemberswidget.h"
+
+#include "groupmemberitem.h"
+#include "groupmemberscontaineritem.h"
+#include "groupmemberdialog.h"
+
+#include <mvvm/model/sessionmodel.h>
+#include <mvvm/viewmodel/viewmodel.h>
+
+#include <QDebug>
 
 namespace mvvm_folders
 {
 
-enum ViewMode
+void GroupMembersWidget::on_addPushButton_clicked()
 {
-    CREATE__MODE = 0,
-    REPLACE_MODE = 1,
-    UPDATE__MODE = 2,
-    DELETE__MODE = 3
-};
-
-void LocalGroupWidget::on_actionComboBox_currentIndexChanged(int index)
-{
-    ui->parametersFrame->setDisabled(index == DELETE__MODE);
+    // TODO: Implement item insertion.
 }
 
-void LocalGroupWidget::submit()
+void GroupMembersWidget::on_removePushButton_clicked()
 {
-    if (mapper && validate())
+    auto item = view_model->sessionItemFromIndex(ui->membersTreeView->currentIndex());
+    if (item)
     {
-        mapper->submit();
+        view_model->sessionModel()->removeItem(item->parent(), item->tagRow());
+    }
+}
 
-        emit dataChanged();
+void GroupMembersWidget::on_changePushButton_clicked()
+{
+    auto item = view_model->sessionItemFromIndex(ui->membersTreeView->currentIndex());
+    if (item)
+    {
+        auto dialog = GroupMemberDialog(this, item);
+        dialog.exec();
     }
 }
 

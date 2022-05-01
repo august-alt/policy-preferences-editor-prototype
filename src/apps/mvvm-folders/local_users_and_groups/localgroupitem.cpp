@@ -20,6 +20,8 @@
 
 #include "localgroupitem.h"
 
+#include "groupmemberscontaineritem.h"
+
 namespace mvvm_folders
 {
 
@@ -35,7 +37,8 @@ LocalGroupItem::LocalGroupItem()
     addProperty(REMOVE_ACCOUNTS, false);
     addProperty(DELETE_ALL_USERS, false);
     addProperty(DELETE_ALL_GROUPS, false);
-    addProperty(MEMBERS, "");
+
+    addProperty<GroupMembersContainerItem>(MEMBERS)->setVisible(false);
 }
 
 LocalGroupItem::LocalGroupItem(const LocalGroupItem &other)
@@ -50,7 +53,12 @@ LocalGroupItem::LocalGroupItem(const LocalGroupItem &other)
     addProperty(REMOVE_ACCOUNTS, other.property<bool>(REMOVE_ACCOUNTS));
     addProperty(DELETE_ALL_USERS, other.property<bool>(DELETE_ALL_USERS));
     addProperty(DELETE_ALL_GROUPS, other.property<bool>(DELETE_ALL_GROUPS));
-    addProperty(MEMBERS, other.property<std::string>(MEMBERS));
+    addProperty(MEMBERS, other.property<GroupMembersContainerItem>(MEMBERS));
+}
+
+GroupMembersContainerItem *LocalGroupItem::getMembers() const
+{
+    return dynamic_cast<GroupMembersContainerItem*>(children().back());
 }
 
 }

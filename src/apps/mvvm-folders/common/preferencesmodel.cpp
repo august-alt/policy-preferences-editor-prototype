@@ -26,6 +26,8 @@
 #include "folders/foldercontaineritem.h"
 #include "ini/inicontaineritem.h"
 #include "local_users_and_groups/localgroupcontaineritem.h"
+#include "local_users_and_groups/groupmemberitem.h"
+#include "local_users_and_groups/groupmemberscontaineritem.h"
 #include "registry/registrycontaineritem.h"
 #include "shares/sharescontaineritem.h"
 #include "shortcuts/shortcutscontaineritem.h"
@@ -47,6 +49,8 @@ PreferencesModel::PreferencesModel()
     registerItem<ShortcutsContainerItem>();
     registerItem<VariablesContainerItem>();
     registerItem<LocalGroupContainerItem>();
+    registerItem<GroupMemberItem>();
+    registerItem<GroupMembersContainerItem>();
 }
 
 }
