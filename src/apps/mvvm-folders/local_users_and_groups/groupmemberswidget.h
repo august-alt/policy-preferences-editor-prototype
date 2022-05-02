@@ -76,14 +76,14 @@ private:
 private:
     //!< Underlying item of this view.
     GroupMembersContainerItem* m_item {nullptr};
-    QModelIndex* m_selectedItem {nullptr};
+    ModelView::SessionItem* m_selectedItem {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::GroupMembersWidget *ui {nullptr};
+    void setupConnections();
 };
 
 }

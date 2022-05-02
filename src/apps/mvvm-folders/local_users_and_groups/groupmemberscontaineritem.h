@@ -32,18 +32,17 @@ namespace mvvm_folders
 
 class GroupMemberItem;
 
-class GroupMembersContainerItem : public ModelView::GroupItem
+class GroupMembersContainerItem : public ModelView::CompoundItem
 {
 public:
     GroupMembersContainerItem()
-        : ModelView::GroupItem("GroupMembersContainerItem")
-    {        
+        : ModelView::CompoundItem("GroupMembersContainerItem")
+    {
     }
 
-    GroupMembersContainerItem(const GroupMembersContainerItem& other)
-        : ModelView::GroupItem("GroupMembersContainerItem")
+    GroupMembersContainerItem(const GroupMembersContainerItem&)
+        : ModelView::CompoundItem("GroupMembersContainerItem")
     {
-        Q_UNUSED(other);
     }
 };
 

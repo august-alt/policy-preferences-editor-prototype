@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>98</height>
+    <height>100</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,5 +91,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>GroupMemberDialog</receiver>
+   <slot>submit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>submit()</slot>
+ </slots>
 </ui>

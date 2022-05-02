@@ -27,6 +27,7 @@
 
 #include <mvvm/model/sessionmodel.h>
 #include <mvvm/viewmodel/viewmodel.h>
+#include <mvvm/factories/viewmodelfactory.h>
 
 #include <QDebug>
 
@@ -35,25 +36,43 @@ namespace mvvm_folders
 
 void GroupMembersWidget::on_addPushButton_clicked()
 {
-    // TODO: Implement item insertion.
+    if (!m_item)
+    {
+        qWarning() << "Invalid m_item";
+    }
+
+    static int index = 0;
+
+    auto item = m_item->addProperty<GroupMemberItem>(QString::number(index++).toStdString());
+    if (item)
+    {
+        auto dialog = GroupMemberDialog(this, item);
+        dialog.exec();
+    }
 }
 
 void GroupMembersWidget::on_removePushButton_clicked()
 {
-    auto item = view_model->sessionItemFromIndex(ui->membersTreeView->currentIndex());
-    if (item)
+    if (m_selectedItem)
     {
-        view_model->sessionModel()->removeItem(item->parent(), item->tagRow());
+        m_selectedItem->model()->removeItem(m_selectedItem->parent(), m_selectedItem->tagRow());
+    }
+    else
+    {
+        qWarning() << "GroupMembersWidget::on_removePushButton_clicked" << "No item selected.";
     }
 }
 
 void GroupMembersWidget::on_changePushButton_clicked()
 {
-    auto item = view_model->sessionItemFromIndex(ui->membersTreeView->currentIndex());
-    if (item)
+    if (m_selectedItem)
     {
-        auto dialog = GroupMemberDialog(this, item);
+        auto dialog = GroupMemberDialog(this, m_selectedItem);
         dialog.exec();
+    }
+    else
+    {
+        qWarning() << "GroupMembersWidget::on_changePushButton_clicked" << "No item selected.";
     }
 }
 

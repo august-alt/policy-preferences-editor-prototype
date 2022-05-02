@@ -26,6 +26,10 @@
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 
+#include <mvvm/viewmodel/propertyviewmodel.h>
+#include <mvvm/viewmodel/propertyflatviewmodel.h>
+#include <mvvm/viewmodel/propertytableviewmodel.h>
+
 #include <QDataWidgetMapper>
 
 namespace  mvvm_folders
@@ -36,7 +40,6 @@ GroupMembersWidget::GroupMembersWidget(QWidget *parent, GroupMembersContainerIte
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::GroupMembersWidget())
 {
     ui->setupUi(this);
@@ -47,35 +50,42 @@ GroupMembersWidget::~GroupMembersWidget()
     delete ui;
 }
 
+void mvvm_folders::GroupMembersWidget::setupConnections()
+{
+    connect(ui->membersTableView->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [&](const QItemSelection &selected, const QItemSelection &deselected)
+    {
+        Q_UNUSED(deselected);
+
+        if (view_model && selected.indexes().size() > 0)
+        {
+            QModelIndex selectedIndex = selected.indexes().at(0);
+            m_selectedItem = view_model->sessionItemFromIndex(selectedIndex);
+        }
+    });
+}
+
 void GroupMembersWidget::setItem(ModelView::SessionItem* item)
 {
     m_item = dynamic_cast<GroupMembersContainerItem*>(item);
 
-    view_model = ModelView::Factory::CreateDefaultViewModel(item->model());
+    view_model = ModelView::Factory::CreateTopItemsViewModel(item->model());
     view_model->setRootSessionItem(item);
 
-    ui->membersTreeView->setModel(view_model.get());
-    ui->membersTreeView->setItemDelegate(delegate.get());
-    ui->membersTreeView->header()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->membersTableView->setModel(view_model.get());
+    ui->membersTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    mapper->setCurrentModelIndex(view_model->index(0, 0));
+    setupConnections();
 }
 
 bool GroupMembersWidget::validate()
-{
-    // TODO: Implement.
-
+{    
     return true;
 }
 
 void GroupMembersWidget::submit()
 {
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
+    emit dataChanged();
 }
 
 }
