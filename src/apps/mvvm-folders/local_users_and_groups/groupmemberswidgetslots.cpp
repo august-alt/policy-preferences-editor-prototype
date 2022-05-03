@@ -41,9 +41,7 @@ void GroupMembersWidget::on_addPushButton_clicked()
         qWarning() << "Invalid m_item";
     }
 
-    static int index = 0;
-
-    auto item = m_item->addProperty<GroupMemberItem>(QString::number(index++).toStdString());
+    auto item = m_item->model()->insertItem<GroupMemberItem>(m_item);
     if (item)
     {
         auto dialog = GroupMemberDialog(this, item);
@@ -55,7 +53,8 @@ void GroupMembersWidget::on_removePushButton_clicked()
 {
     if (m_selectedItem)
     {
-        m_selectedItem->model()->removeItem(m_selectedItem->parent(), m_selectedItem->tagRow());
+        auto parent = m_selectedItem->parent();
+        m_selectedItem->model()->removeItem(parent->parent(), parent->tagRow());
     }
     else
     {
@@ -67,7 +66,7 @@ void GroupMembersWidget::on_changePushButton_clicked()
 {
     if (m_selectedItem)
     {
-        auto dialog = GroupMemberDialog(this, m_selectedItem);
+        auto dialog = GroupMemberDialog(this, m_selectedItem->parent());
         dialog.exec();
     }
     else

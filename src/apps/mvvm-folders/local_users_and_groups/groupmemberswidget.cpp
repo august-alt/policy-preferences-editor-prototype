@@ -69,7 +69,7 @@ void GroupMembersWidget::setItem(ModelView::SessionItem* item)
 {
     m_item = dynamic_cast<GroupMembersContainerItem*>(item);
 
-    view_model = ModelView::Factory::CreateTopItemsViewModel(item->model());
+    view_model = ModelView::Factory::CreatePropertyTableViewModel(item->model());
     view_model->setRootSessionItem(item);
 
     ui->membersTableView->setModel(view_model.get());

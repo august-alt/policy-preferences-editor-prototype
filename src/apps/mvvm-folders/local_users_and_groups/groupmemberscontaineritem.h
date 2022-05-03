@@ -35,14 +35,19 @@ class GroupMemberItem;
 class GroupMembersContainerItem : public ModelView::CompoundItem
 {
 public:
+    static inline const std::string ITEMS = "ITEMS";
+    static inline const std::string GROUP_ITEM_MEMBER_TYPE = "GroupMemberItem";
+
     GroupMembersContainerItem()
         : ModelView::CompoundItem("GroupMembersContainerItem")
     {
+        registerTag(ModelView::TagInfo::universalTag(ITEMS, {GROUP_ITEM_MEMBER_TYPE}), true);
     }
 
     GroupMembersContainerItem(const GroupMembersContainerItem&)
         : ModelView::CompoundItem("GroupMembersContainerItem")
     {
+        registerTag(ModelView::TagInfo::universalTag(ITEMS, {GROUP_ITEM_MEMBER_TYPE}), true);
     }
 };
 
