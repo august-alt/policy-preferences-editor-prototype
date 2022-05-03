@@ -96,6 +96,10 @@ void PreferencesTreeModel::populateModel()
     machineDataSourceItem->setDisplayName("Data Sources");
     machineDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
 
+    auto machineDeviceItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machineDeviceItem->setDisplayName("Devices");
+    machineDeviceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DeviceContainerItem");
+
     auto machineLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
     machineLocalUsersAndGroupsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "LocalGroupContainerItem");
@@ -145,6 +149,10 @@ void PreferencesTreeModel::populateModel()
     auto userDataSourceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userDataSourceItem->setDisplayName("Data Sources");
     userDataSourceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DataSourceContainerItem");
+
+    auto userDeviceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userDeviceItem->setDisplayName("Devices");
+    userDeviceItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "DeviceContainerItem");
 
     auto userLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");

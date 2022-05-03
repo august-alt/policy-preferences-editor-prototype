@@ -21,6 +21,7 @@
 #include "preferencesmodel.h"
 
 #include "datasource/datasourcecontaineritem.h"
+#include "device/devicecontaineritem.h"
 #include "drives/drivescontaineritem.h"
 #include "files/filescontaineritem.h"
 #include "folders/foldercontaineritem.h"
@@ -41,6 +42,7 @@ PreferencesModel::PreferencesModel()
 {
     registerItem<DataSourceContainerItem>();
     registerItem<DrivesContainerItem>();
+    registerItem<DeviceContainerItem>();
     registerItem<FilesContainerItem>();
     registerItem<FolderContainerItem>();
     registerItem<IniContainerItem>();

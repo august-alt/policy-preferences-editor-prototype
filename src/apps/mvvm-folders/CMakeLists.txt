@@ -22,6 +22,10 @@ set(HEADERS
     datasource/datasourcecontaineritem.h
     datasource/datasourcewidget.h
 
+    device/deviceitem.h
+    device/devicecontaineritem.h
+    device/devicewidget.h
+
     drives/drivesitem.h
     drives/drivescontaineritem.h
     drives/driveswidget.h
@@ -93,6 +97,10 @@ set(SOURCES
     datasource/datasourcecontaineritem.cpp
     datasource/datasourcewidget.cpp
     datasource/datasourcewidgetslots.cpp
+
+    device/deviceitem.cpp
+    device/devicecontaineritem.cpp
+    device/devicewidget.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp

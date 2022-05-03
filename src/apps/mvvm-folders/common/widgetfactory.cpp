@@ -24,6 +24,7 @@
 #include <memory>
 
 #include "datasource/datasourcewidget.h"
+#include "device/devicewidget.h"
 #include "drives/driveswidget.h"
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
@@ -48,6 +49,7 @@ WidgetFactory::WidgetFactory()
     : d(std::make_unique<WidgetFactoryPrivate>())
 {
     registerItem("DrivesItem", [](){ return std::make_unique<DrivesWidget>(); });
+    registerItem("DeviceItem", [](){ return std::make_unique<DeviceWidget>(); });
     registerItem("FilesItem", [](){ return std::make_unique<FilesWidget>(); });
     registerItem("FolderItem", [](){ return std::make_unique<FolderWidget>(); });
     registerItem("IniItem", [](){ return std::make_unique<IniWidget>(); });
