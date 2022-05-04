@@ -73,7 +73,7 @@
     </widget>
    </item>
    <item row="4" column="0" colspan="3">
-    <widget class="QCheckBox" name="setAsDefaultCheckBox">
+    <widget class="QCheckBox" name="defaultCheckBox">
      <property name="text">
       <string>Set as default</string>
      </property>
@@ -142,7 +142,7 @@
   <tabstop>fileLineEdit</tabstop>
   <tabstop>associatedProgramLineEdit</tabstop>
   <tabstop>associatedProgramToolButton</tabstop>
-  <tabstop>setAsDefaultCheckBox</tabstop>
+  <tabstop>defaultCheckBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

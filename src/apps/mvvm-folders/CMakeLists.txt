@@ -35,6 +35,12 @@ set(HEADERS
     folders/folderitemcontroller.h
     folders/folderwidget.h
 
+    folder_options/folderoptionscontaineritem.h
+    folder_options/folderoptionswidget.h
+    folder_options/folderoptionsitem.h
+    folder_options/openwithitem.h
+    folder_options/openwithwidget.h
+
     files/filesitem.h
     files/filescontaineritem.h
     files/fileswidget.h
@@ -112,6 +118,13 @@ set(SOURCES
     folders/folderitemcontroller.cpp
     folders/folderwidget.cpp
     folders/folderviewslots.cpp
+
+    folder_options/folderoptionscontaineritem.cpp
+    folder_options/folderoptionswidget.cpp
+    folder_options/folderoptionsitem.cpp
+    folder_options/openwithitem.cpp
+    folder_options/openwithwidget.cpp
+    folder_options/openwithwidgetslots.cpp
 
     files/filesitem.cpp
     files/filescontaineritem.cpp
