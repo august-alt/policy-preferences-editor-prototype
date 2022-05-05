@@ -60,6 +60,14 @@ set(HEADERS
     local_users_and_groups/localuseritem.h
     local_users_and_groups/localuserwidget.h
 
+    network_options/basenetworkitem.h
+    network_options/networkcontaineritem.h
+    network_options/vpnitem.h
+    network_options/vpnnetworkingwidget.h
+    network_options/vpnoptionswidget.h
+    network_options/vpnsecuritywidget.h
+    network_options/vpnwidget.h
+
     interfaces/containeriteminterface.h
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
@@ -148,6 +156,15 @@ set(SOURCES
     local_users_and_groups/localuseritem.cpp
     local_users_and_groups/localuserwidget.cpp
     local_users_and_groups/localuserwidgetslots.cpp
+
+    network_options/basenetworkitem.cpp
+    network_options/networkcontaineritem.cpp
+    network_options/vpnitem.cpp
+    network_options/vpnnetworkingwidget.cpp
+    network_options/vpnoptionswidget.cpp
+    network_options/vpnsecuritywidget.cpp
+    network_options/vpnwidget.cpp
+    network_options/vpnwidgetslots.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
