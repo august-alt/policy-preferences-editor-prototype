@@ -34,6 +34,24 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QLabel" name="actionLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>86</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>86</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="text">
        <string>Action:</string>
       </property>
@@ -43,26 +61,16 @@
      </widget>
      <widget class="QComboBox" name="actionComboBox">
       <property name="currentText">
-       <string>Create</string>
+       <string>Use this device (enable)</string>
       </property>
       <item>
        <property name="text">
-        <string>Create</string>
+        <string>Use this device (enable)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Replace</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Update</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Delete</string>
+        <string>Do not user this device (disable)</string>
        </property>
       </item>
      </widget>
