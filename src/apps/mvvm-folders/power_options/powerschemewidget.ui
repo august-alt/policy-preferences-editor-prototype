@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PowerOptionsSchemeWidget</class>
- <widget class="QWidget" name="PowerOptionsSchemeWidget">
+ <class>PowerSchemeWidget</class>
+ <widget class="QWidget" name="PowerSchemeWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>385</width>
+    <width>424</width>
     <height>443</height>
    </rect>
   </property>

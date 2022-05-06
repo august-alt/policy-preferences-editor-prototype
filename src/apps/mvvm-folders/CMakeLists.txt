@@ -74,6 +74,13 @@ set(HEADERS
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
 
+    power_options/poweroptionsitem.h
+    power_options/poweroptionswidget.h
+    power_options/powerplanitem.h
+    power_options/powerplanwidget.h
+    power_options/powerschemeitem.h
+    power_options/powerschemewidget.h
+
     registry/registrycontaineritem.h
     registry/registryitem.h
     registry/registrywidget.h
@@ -171,6 +178,13 @@ set(SOURCES
     network_options/vpnwidget.cpp
     network_options/vpnwidgetslots.cpp
 
+    power_options/poweroptionsitem.cpp
+    power_options/poweroptionswidget.cpp
+    power_options/powerplanitem.cpp
+    power_options/powerplanwidget.cpp
+    power_options/powerschemeitem.cpp
+    power_options/powerschemewidget.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrywidget.cpp
@@ -203,27 +217,45 @@ set(UI_FORMS
     common/preferencesdialog.ui
     common/propertieswidget.ui
     common/tabledetailswidget.ui
+
     datasource/datasourcewidget.ui
+
     drives/driveswidget.ui
+
     device/devicewidget.ui
+
     folders/folderswidget.ui
+
     folder_options/folderoptionswidget.ui
     folder_options/openwithwidget.ui
+
     files/fileswidget.ui
+
     ini/iniwidget.ui
+
     local_users_and_groups/groupmemberswidget.ui
     local_users_and_groups/groupmemberdialog.ui
     local_users_and_groups/localuserwidget.ui
     local_users_and_groups/localgroupwidget.ui
+
     network_options/dialupwidget.ui
     network_options/vpnnetworkingwidget.ui
     network_options/vpnoptionswidget.ui
     network_options/vpnsecuritywidget.ui
     network_options/vpnwidget.ui
+
+    power_options/poweroptionswidget.ui
+    power_options/powerplanwidget.ui
+    power_options/powerschemewidget.ui
+
     registry/registrywidget.ui
+
     shares/shareswidget.ui
+
     shortcuts/shortcutswidget.ui
+
     variables/variableswidget.ui
+
     preferenceswidget.ui
 )
 
