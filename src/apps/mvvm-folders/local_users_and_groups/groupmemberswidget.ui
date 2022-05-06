@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>191</height>
+    <width>380</width>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,6 +50,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>membersTableView</tabstop>
+  <tabstop>addPushButton</tabstop>
+  <tabstop>removePushButton</tabstop>
+  <tabstop>changePushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
