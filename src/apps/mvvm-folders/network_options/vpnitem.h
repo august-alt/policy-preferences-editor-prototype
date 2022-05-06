@@ -59,7 +59,11 @@ public:
         CHAP            = 23,
         MS_CHAP         = 24,
         OLD_MS_CHAP     = 25,
-        MS_CHAP_V2      = 26
+        MS_CHAP_V2      = 26,
+        SYSTEM          = 27,
+        TYPICAL         = 28,
+        ADVANCED        = 29,
+        USE_OTHER       = 30
     };
 
 public:
@@ -78,6 +82,11 @@ template<typename T>
 void VpnItem::copyProperty(const VpnItem::PropertyType &type, const VpnItem &other)
 {
     addProperty(propertyToString(type), other.property<T>(propertyToString(type)));
+}
+
+inline constexpr int VpnItem::propertyToInt(const VpnItem::PropertyType &type)
+{
+    return static_cast<int>(type);
 }
 
 }

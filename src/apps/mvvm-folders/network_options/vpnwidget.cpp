@@ -63,8 +63,13 @@ void VpnWidget::setItem(ModelView::SessionItem* item)
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());
 
-    mapper->addMapping(ui->actionComboBox, 0);
-    // TODO: Implement.
+    mapper->addMapping(ui->actionComboBox, VpnItem::propertyToInt(VpnItem::ACTION));
+    mapper->addMapping(ui->userConnerctionRadioButton, VpnItem::propertyToInt(VpnItem::USER));
+    mapper->addMapping(ui->connectionNameLineEdit, VpnItem::propertyToInt(VpnItem::NAME));
+    mapper->addMapping(ui->ipaddressLineEdit, VpnItem::propertyToInt(VpnItem::IP_ADDRESS));
+    mapper->addMapping(ui->useDnsCheckBox, VpnItem::propertyToInt(VpnItem::USE_DNS));
+    mapper->addMapping(ui->dialLineEdit, VpnItem::propertyToInt(VpnItem::DIAL_FIRST));
+    mapper->addMapping(ui->showIconCheckBox, VpnItem::propertyToInt(VpnItem::TRAY_ICON));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }

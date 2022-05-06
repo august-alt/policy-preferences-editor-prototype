@@ -61,8 +61,25 @@ void NetworkContainerItem::setupListeners()
     {
         if (auto networkItem = dynamic_cast<BaseNetworkItem*>(item))
         {
-            // TODO: Implement.
-            Q_UNUSED(property);
+            if (property == ACTION)
+            {
+                setProperty(ACTION, networkItem->property<std::string>(ACTION));
+            }
+
+            if (property == NAME)
+            {
+                setProperty(NAME, networkItem->property<std::string>(NAME));
+            }
+
+            if (property == IP_ADDRESS)
+            {
+                setProperty(ADDRESS, networkItem->property<std::string>(IP_ADDRESS));
+            }
+
+            if (property == PHONE_NUMBER)
+            {
+                setProperty(ADDRESS, networkItem->property<std::string>(PHONE_NUMBER));
+            }
         }
     };
 

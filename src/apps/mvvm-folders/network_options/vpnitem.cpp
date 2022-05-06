@@ -27,7 +27,7 @@ VpnItem::VpnItem()
     : BaseNetworkItem("VpnItem")
 {
     addProperty(propertyToString(ACTION), "");
-    addProperty(propertyToString(USER), "");
+    addProperty(propertyToString(USER), false);
     addProperty(propertyToString(NAME), "");
     addProperty(propertyToString(IP_ADDRESS), "");
     addProperty(propertyToString(USE_DNS), false);
@@ -52,13 +52,14 @@ VpnItem::VpnItem()
     addProperty(propertyToString(MS_CHAP), false);
     addProperty(propertyToString(OLD_MS_CHAP), false);
     addProperty(propertyToString(MS_CHAP_V2), false);
+    addProperty(propertyToString(SYSTEM), false);
 }
 
 VpnItem::VpnItem(const VpnItem &other)
     : BaseNetworkItem("VpnItem")
 {
     copyProperty<std::string>(ACTION, other);
-    copyProperty<std::string>(USER, other);
+    copyProperty<bool>(USER, other);
     copyProperty<std::string>(NAME, other);
     copyProperty<std::string>(IP_ADDRESS, other);
     copyProperty<bool>(USE_DNS, other);
@@ -83,11 +84,7 @@ VpnItem::VpnItem(const VpnItem &other)
     copyProperty<bool>(MS_CHAP, other);
     copyProperty<bool>(OLD_MS_CHAP, other);
     copyProperty<bool>(MS_CHAP_V2, other);
-}
-
-constexpr int VpnItem::propertyToInt(const VpnItem::PropertyType &type)
-{
-    return static_cast<int>(type);
+    copyProperty<bool>(SYSTEM, other);
 }
 
 constexpr const char *VpnItem::propertyToString(const VpnItem::PropertyType &type)
@@ -148,6 +145,14 @@ constexpr const char *VpnItem::propertyToString(const VpnItem::PropertyType &typ
         return "oldMsChap";
     case MS_CHAP_V2:
         return "msChapV2";
+    case SYSTEM:
+        return "system";
+    case TYPICAL:
+        return "typical";
+    case ADVANCED:
+        return "advanced";
+    case USE_OTHER:
+        return "useOther";
     default:
         break;
     }

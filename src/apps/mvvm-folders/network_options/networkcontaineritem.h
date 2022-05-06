@@ -36,6 +36,13 @@ class BaseNetworkItem;
 class NetworkContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
+    static inline const std::string NAME = "name";
+    static inline const std::string ORDER = "order";
+    static inline const std::string ACTION = "action";
+    static inline const std::string ADDRESS = "address";
+    static inline const std::string IP_ADDRESS = "ipAddress";
+    static inline const std::string PHONE_NUMBER = "phoneNumber";
+
     static inline const std::string COMMON = "common";
     static inline const std::string NETWORK = "network";
 
