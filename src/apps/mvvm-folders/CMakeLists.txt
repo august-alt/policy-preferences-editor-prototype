@@ -60,9 +60,26 @@ set(HEADERS
     local_users_and_groups/localuseritem.h
     local_users_and_groups/localuserwidget.h
 
+    network_options/basenetworkitem.h
+    network_options/dialupitem.h
+    network_options/dialupwidget.h
+    network_options/networkcontaineritem.h
+    network_options/vpnitem.h
+    network_options/vpnnetworkingwidget.h
+    network_options/vpnoptionswidget.h
+    network_options/vpnsecuritywidget.h
+    network_options/vpnwidget.h
+
     interfaces/containeriteminterface.h
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
+
+    power_options/poweroptionsitem.h
+    power_options/poweroptionswidget.h
+    power_options/powerplanitem.h
+    power_options/powerplanwidget.h
+    power_options/powerschemeitem.h
+    power_options/powerschemewidget.h
 
     registry/registrycontaineritem.h
     registry/registryitem.h
@@ -149,6 +166,25 @@ set(SOURCES
     local_users_and_groups/localuserwidget.cpp
     local_users_and_groups/localuserwidgetslots.cpp
 
+    network_options/basenetworkitem.cpp
+    network_options/dialupitem.cpp
+    network_options/dialupwidget.cpp
+    network_options/dialupwidgetslots.cpp
+    network_options/networkcontaineritem.cpp
+    network_options/vpnitem.cpp
+    network_options/vpnnetworkingwidget.cpp
+    network_options/vpnoptionswidget.cpp
+    network_options/vpnsecuritywidget.cpp
+    network_options/vpnwidget.cpp
+    network_options/vpnwidgetslots.cpp
+
+    power_options/poweroptionsitem.cpp
+    power_options/poweroptionswidget.cpp
+    power_options/powerplanitem.cpp
+    power_options/powerplanwidget.cpp
+    power_options/powerschemeitem.cpp
+    power_options/powerschemewidget.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrywidget.cpp
@@ -181,27 +217,46 @@ set(UI_FORMS
     common/preferencesdialog.ui
     common/propertieswidget.ui
     common/tabledetailswidget.ui
+
     datasource/datasourcewidget.ui
+
     drives/driveswidget.ui
+
     device/devicewidget.ui
+
     folders/folderswidget.ui
+
     folder_options/folderoptionswidget.ui
     folder_options/openwithwidget.ui
+
     files/fileswidget.ui
+
     ini/iniwidget.ui
+
     local_users_and_groups/groupmemberswidget.ui
     local_users_and_groups/groupmemberdialog.ui
     local_users_and_groups/localuserwidget.ui
     local_users_and_groups/localgroupwidget.ui
+
+    network_options/dialupwidget.ui
     network_options/vpnnetworkingwidget.ui
     network_options/vpnoptionswidget.ui
     network_options/vpnsecuritywidget.ui
     network_options/vpnwidget.ui
+
+    power_options/poweroptionswidget.ui
+    power_options/powerplanwidget.ui
+    power_options/powerschemewidget.ui
+
     registry/registrywidget.ui
+
     shares/shareswidget.ui
+
     shortcuts/shortcutswidget.ui
+
     variables/variableswidget.ui
-    preferenceswidget.ui    
+
+    preferenceswidget.ui
 )
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})

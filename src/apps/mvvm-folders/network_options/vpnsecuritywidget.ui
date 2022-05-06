@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
+    <width>461</width>
     <height>519</height>
    </rect>
   </property>
@@ -77,7 +77,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QCheckBox" name="encryptioncheckBox">
+      <widget class="QCheckBox" name="encryptionCheckBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -352,7 +352,7 @@
  <tabstops>
   <tabstop>typicalRadioButton</tabstop>
   <tabstop>passwordCheckBox</tabstop>
-  <tabstop>encryptioncheckBox</tabstop>
+  <tabstop>encryptionCheckBox</tabstop>
   <tabstop>advancedRadioButton</tabstop>
   <tabstop>dataComboBox</tabstop>
   <tabstop>eapRadioButton</tabstop>
@@ -370,7 +370,7 @@
   <connection>
    <sender>typicalRadioButton</sender>
    <signal>toggled(bool)</signal>
-   <receiver>encryptioncheckBox</receiver>
+   <receiver>encryptionCheckBox</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
