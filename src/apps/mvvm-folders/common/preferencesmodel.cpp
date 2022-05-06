@@ -29,6 +29,7 @@
 #include "local_users_and_groups/localgroupcontaineritem.h"
 #include "local_users_and_groups/groupmemberitem.h"
 #include "local_users_and_groups/groupmemberscontaineritem.h"
+#include "network_options/networkcontaineritem.h"
 #include "registry/registrycontaineritem.h"
 #include "shares/sharescontaineritem.h"
 #include "shortcuts/shortcutscontaineritem.h"
@@ -53,6 +54,7 @@ PreferencesModel::PreferencesModel()
     registerItem<LocalGroupContainerItem>();
     registerItem<GroupMemberItem>();
     registerItem<GroupMembersContainerItem>();
+    registerItem<NetworkContainerItem>();
 }
 
 }

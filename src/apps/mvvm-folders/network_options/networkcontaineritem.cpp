@@ -23,6 +23,8 @@
 #include "common/commonitem.h"
 #include "basenetworkitem.h"
 
+#include "dialupitem.h"
+
 #include <mvvm/signals/itemmapper.h>
 
 namespace mvvm_folders
@@ -31,8 +33,13 @@ namespace mvvm_folders
 NetworkContainerItem::NetworkContainerItem()
     : ModelView::CompoundItem("NetworkContainerItem")
 {
-    addProperty<CommonItem>(COMMON);
-    addProperty<BaseNetworkItem>(NETWORK);
+    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
+    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(ADDRESS, "")->setDisplayName(QObject::tr("Address").toStdString())->setEditable(false);
+
+    addProperty<CommonItem>(COMMON)->setVisible(false);
+    addProperty<DialUpItem>(NETWORK)->setVisible(false);
 }
 
 CommonItem NetworkContainerItem::getCommon() const
@@ -45,12 +52,12 @@ void NetworkContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-BaseNetworkItem NetworkContainerItem::getNetwork() const
+DialUpItem NetworkContainerItem::getNetwork() const
 {
-    return property<BaseNetworkItem>(NETWORK);
+    return property<DialUpItem>(NETWORK);
 }
 
-void NetworkContainerItem::setNetwork(const BaseNetworkItem &item)
+void NetworkContainerItem::setNetwork(const DialUpItem &item)
 {
     setProperty(NETWORK, item);
 }

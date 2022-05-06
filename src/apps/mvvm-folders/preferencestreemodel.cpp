@@ -104,6 +104,10 @@ void PreferencesTreeModel::populateModel()
     machineLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
     machineLocalUsersAndGroupsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "LocalGroupContainerItem");
 
+    auto machineNetworkOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machineNetworkOptionsItem->setDisplayName("Network Options");
+    machineNetworkOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "NetworkContainerItem");
+
 //======================================================================================================================
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
@@ -157,6 +161,10 @@ void PreferencesTreeModel::populateModel()
     auto userLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
     userLocalUsersAndGroupsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "LocalGroupContainerItem");
+
+    auto userNetworkOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userNetworkOptionsItem->setDisplayName("Network Options");
+    userNetworkOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "NetworkContainerItem");
 }
 
 }

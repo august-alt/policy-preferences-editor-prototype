@@ -18,46 +18,53 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_NETWORK_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_NETWORK_CONTAINER_ITEM_H
+#ifndef MVVM_FOLDERS_DIAL_UP_ITEM_H
+#define MVVM_FOLDERS_DIAL_UP_ITEM_H
 
 #include <mvvm/model/compounditem.h>
-
-#include "interfaces/containeriteminterface.h"
 
 namespace mvvm_folders
 {
 
-//! Network container item representation for editor.
+//! Drives item representation for editor.
 
-class CommonItem;
-class BaseNetworkItem;
-class DialUpItem;
-
-class NetworkContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+class DialUpItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string NAME = "name";
-    static inline const std::string ORDER = "order";
-    static inline const std::string ACTION = "action";
-    static inline const std::string ADDRESS = "address";
-    static inline const std::string IP_ADDRESS = "ipAddress";
-    static inline const std::string PHONE_NUMBER = "phoneNumber";
+    enum PropertyType
+    {
+        ACTION       = 0,
+        USER         = 1,
+        NAME         = 2,
+        PHONE_NUMBER = 3,
+        SYSTEM       = 4
+    };
 
-    static inline const std::string COMMON = "common";
-    static inline const std::string NETWORK = "network";
+public:
+    DialUpItem();
+    DialUpItem(const DialUpItem &other);
 
-    explicit NetworkContainerItem();
+    constexpr static int propertyToInt(const PropertyType& type);
+    constexpr static const char* propertyToString(const PropertyType& type);
 
-    CommonItem getCommon() const;
-    void setCommon(const CommonItem& item);
-
-    DialUpItem getNetwork() const;
-    void setNetwork(const DialUpItem &item);
-
-    void setupListeners() override;
+private:
+    template <typename T>
+    inline void copyProperty(const PropertyType& type, const DialUpItem &other);
 };
+
+template<typename T>
+void DialUpItem::copyProperty(const DialUpItem::PropertyType &type, const DialUpItem &other)
+{
+    addProperty(propertyToString(type), other.property<T>(propertyToString(type)));
+}
+
+inline constexpr int DialUpItem::propertyToInt(const DialUpItem::PropertyType &type)
+{
+    return static_cast<int>(type);
+}
 
 }
 
-#endif//MVVM_FOLDERS_NETWORK_CONTAINER_ITEM_H
+Q_DECLARE_METATYPE(::mvvm_folders::DialUpItem)
+
+#endif//MVVM_FOLDERS_DIAL_UP_ITEM_H
