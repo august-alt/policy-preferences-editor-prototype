@@ -19,724 +19,699 @@
      <property name="title">
       <string>Settings for Home/Office Desk power scheme</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="2" column="0">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="standbyLabel">
-            <property name="text">
-             <string>System stand by:</string>
-            </property>
-            <property name="buddy">
-             <cstring>standbyPlugComboBox</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="standbyPlugComboBox">
-            <item>
-             <property name="text">
-              <string>After 1 min</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="standbyButterycomboBox">
-            <item>
-             <property name="text">
-              <string>After 1 min</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QLabel" name="hiberLabel">
-            <property name="text">
-             <string>System hebirnations:</string>
-            </property>
-            <property name="buddy">
-             <cstring>hiberPlugComboBox</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="hiberPlugComboBox">
-            <item>
-             <property name="text">
-              <string>After 1 min</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="hiberButteryComboBox">
-            <item>
-             <property name="text">
-              <string>After 1 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="whenLabel">
+        <property name="text">
+         <string>When computer is:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="pluggedLabel">
+        <property name="text">
+         <string>Plugged in:</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
+       <widget class="QLabel" name="monitorLabel">
+        <property name="text">
+         <string>Turn off monitor:</string>
+        </property>
+        <property name="buddy">
+         <cstring>monitorPlugComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <widget class="QComboBox" name="monitorPlugComboBox">
+        <item>
+         <property name="text">
+          <string>After 1 min</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QComboBox" name="batteryComboBox">
+        <item>
+         <property name="text">
+          <string>After 1 min</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="diskLabel">
+        <property name="text">
+         <string>Turn off hard disks:</string>
+        </property>
+        <property name="buddy">
+         <cstring>diskPlugComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2">
+       <widget class="QComboBox" name="diskPlugComboBox">
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never.</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QComboBox" name="diskButteryComboBox">
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="4">
        <widget class="Line" name="line_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="whenLabel">
-            <property name="text">
-             <string>When computer is:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="pluggedLabel">
-            <property name="text">
-             <string>Plugged in</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="butteryLabel">
-            <property name="text">
-             <string>Running on batteties</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+      <item row="4" column="0">
+       <widget class="QLabel" name="standbyLabel">
+        <property name="text">
+         <string>System stand by:</string>
+        </property>
+        <property name="buddy">
+         <cstring>standbyPlugComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="2">
+       <widget class="QComboBox" name="standbyPlugComboBox">
+        <item>
+         <property name="text">
+          <string>After 1 min</string>
+         </property>
         </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="monitorLabel">
-            <property name="text">
-             <string>Turn off monitor:</string>
-            </property>
-            <property name="buddy">
-             <cstring>monitorPlugComboBox</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="monitorPlugComboBox">
-            <item>
-             <property name="text">
-              <string>After 1 min</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="batteryComboBox">
-            <item>
-             <property name="text">
-              <string>After 1 min</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
         </item>
-        <item row="2" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="diskLabel">
-            <property name="text">
-             <string>Turn off hard disks:</string>
-            </property>
-            <property name="buddy">
-             <cstring>diskPlugComboBox</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="diskPlugComboBox">
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never.</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="diskButteryComboBox">
-            <item>
-             <property name="text">
-              <string>After 3 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 10 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 15 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 20 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 25 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 30 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 45 mins</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 1 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 2 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 3 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 4 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>After 5 hours</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Never</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
         </item>
-       </layout>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QComboBox" name="standbyButterycomboBox">
+        <item>
+         <property name="text">
+          <string>After 1 min</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="hiberLabel">
+        <property name="text">
+         <string>System hebirnations:</string>
+        </property>
+        <property name="buddy">
+         <cstring>hiberPlugComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="2">
+       <widget class="QComboBox" name="hiberPlugComboBox">
+        <item>
+         <property name="text">
+          <string>After 1 min</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QComboBox" name="hiberButteryComboBox">
+        <item>
+         <property name="text">
+          <string>After 1 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 10 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 15 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 20 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 25 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 30 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 45 mins</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 1 hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 2 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 3 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 4 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>After 5 hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Never</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="butteryLabel">
+        <property name="text">
+         <string>Running on battaries:</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -777,57 +752,53 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="closeLidLabel">
-          <property name="text">
-           <string>When I close the lid of my portable computer:</string>
-          </property>
-          <property name="buddy">
-           <cstring>closeLidcomboBox</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="closeLidcomboBox">
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <item>
-           <property name="text">
-            <string>Home/Office desk</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Portable/Laptop</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Presentation</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Always On</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Minomal Power Management</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Max Battery</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QLabel" name="closeLidLabel">
+        <property name="text">
+         <string>When I close the lid of my portable computer:</string>
+        </property>
+        <property name="buddy">
+         <cstring>closeLidcomboBox</cstring>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
+       <widget class="QComboBox" name="closeLidcomboBox">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Home/Office desk</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Portable/Laptop</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Presentation</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Always On</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Minomal Power Management</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Max Battery</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
        <widget class="QCheckBox" name="makeCheckBox">
         <property name="text">
          <string>Make this the active Power Scheme</string>
@@ -841,6 +812,24 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="actionLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>92</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>92</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string>Action:</string>
        </property>
