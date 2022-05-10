@@ -8,6 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(HEADERS
     attributes/attributesitem.h
 
+    common/basepreferenceitem.h
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
@@ -74,6 +75,7 @@ set(HEADERS
     interfaces/preferenceswidgetinterface.h
     interfaces/widgetfactoryinterface.h
 
+    power_options/powercontaineritem.h
     power_options/poweroptionsitem.h
     power_options/poweroptionswidget.h
     power_options/powerplanitem.h
@@ -178,6 +180,7 @@ set(SOURCES
     network_options/vpnwidget.cpp
     network_options/vpnwidgetslots.cpp
 
+    power_options/powercontaineritem.cpp
     power_options/poweroptionsitem.cpp
     power_options/poweroptionswidget.cpp
     power_options/powerplanitem.cpp

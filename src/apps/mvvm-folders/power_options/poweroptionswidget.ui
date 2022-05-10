@@ -32,35 +32,47 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QFrame" name="locationFrame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <layout class="QFormLayout" name="formLayout">
+     <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="alwaysCheckBox">
+       <widget class="QCheckBox" name="showIconCheckBox">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="showIconLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Always show icon on the taskbar</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QCheckBox" name="promptCheckBox">
+       <widget class="QCheckBox" name="promptPasswordCheckBox">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="promptPasswordLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Prompt for password when computers resumes from standby</string>
         </property>
@@ -70,14 +82,20 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QCheckBox" name="enableCheckBox">
+       <widget class="QCheckBox" name="enableHibernationCheckBox">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="enableHibernationLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Enable hibernation</string>
         </property>
@@ -86,73 +104,20 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="Line" name="line">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QLabel" name="actionLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>92</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Action:</string>
-       </property>
-       <property name="buddy">
-        <cstring>actionComboBox</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="actionComboBox">
-       <property name="currentText">
-        <string>Create</string>
-       </property>
-       <item>
-        <property name="text">
-         <string>Create</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Replace</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Update</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Delete</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="3" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0">
     <widget class="QGroupBox" name="powerGroupBox">
      <property name="title">
       <string>Power buttons</string>
@@ -164,12 +129,12 @@
          <string>When I close the lid of my portable computer:</string>
         </property>
         <property name="buddy">
-         <cstring>closeLidcomboBox</cstring>
+         <cstring>closeLidComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QComboBox" name="closeLidcomboBox">
+       <widget class="QComboBox" name="closeLidComboBox">
         <property name="currentIndex">
          <number>1</number>
         </property>
@@ -191,17 +156,17 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="powerLabel">
+       <widget class="QLabel" name="pressPowerBtnLabel">
         <property name="text">
          <string>When I press the power button on my computer:</string>
         </property>
         <property name="buddy">
-         <cstring>powerComboBox</cstring>
+         <cstring>pressPowerBtnComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QComboBox" name="powerComboBox">
+       <widget class="QComboBox" name="pressPowerBtnComboBox">
         <property name="currentIndex">
          <number>3</number>
         </property>
@@ -233,17 +198,17 @@
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="sleepLabel">
+       <widget class="QLabel" name="pressSleepBtnLabel">
         <property name="text">
          <string>When I press the sleep button on my computer:</string>
         </property>
         <property name="buddy">
-         <cstring>sleepComboBox</cstring>
+         <cstring>pressSleepBtnComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QComboBox" name="sleepComboBox">
+       <widget class="QComboBox" name="pressSleepBtnComboBox">
         <property name="currentIndex">
          <number>3</number>
         </property>
@@ -277,29 +242,22 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Select the power saving settings you want to use.</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>actionComboBox</tabstop>
-  <tabstop>alwaysCheckBox</tabstop>
-  <tabstop>promptCheckBox</tabstop>
-  <tabstop>enableCheckBox</tabstop>
-  <tabstop>closeLidcomboBox</tabstop>
-  <tabstop>powerComboBox</tabstop>
-  <tabstop>sleepComboBox</tabstop>
+  <tabstop>showIconCheckBox</tabstop>
+  <tabstop>promptPasswordCheckBox</tabstop>
+  <tabstop>enableHibernationCheckBox</tabstop>
+  <tabstop>closeLidComboBox</tabstop>
+  <tabstop>pressPowerBtnComboBox</tabstop>
+  <tabstop>pressSleepBtnComboBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

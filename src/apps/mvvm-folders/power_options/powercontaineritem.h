@@ -18,27 +18,42 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_POWER_PLAN_ITEM_H
-#define MVVM_FOLDERS_POWER_PLAN_ITEM_H
+#ifndef MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
+#define MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
 
 #include <mvvm/model/compounditem.h>
+
+#include "interfaces/containeriteminterface.h"
 
 namespace mvvm_folders
 {
 
-//! Drives item representation for editor.
+//! Power container item representation for editor.
 
-class PowerPlanItem : public ModelView::CompoundItem
+class CommonItem;
+class PowerOptionsItem;
+
+class PowerContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
+    static inline const std::string NAME = "name";
+    static inline const std::string ORDER = "order";
     static inline const std::string ACTION = "action";
 
-    PowerPlanItem();
-    PowerPlanItem(const PowerPlanItem &other);
+    static inline const std::string COMMON = "common";
+    static inline const std::string POWER = "power";
+
+    explicit PowerContainerItem();
+
+    CommonItem getCommon() const;
+    void setCommon(const CommonItem& item);
+
+    PowerOptionsItem getPower() const;
+    void setPower(const PowerOptionsItem& item);
+
+    void setupListeners() override;
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::PowerPlanItem)
-
-#endif//MVVM_FOLDERS_POWER_PLAN_ITEM_H
+#endif//MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
