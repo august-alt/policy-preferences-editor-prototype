@@ -32,6 +32,7 @@ class PowerPlanItem : public ModelView::CompoundItem
 {
 public:
     static inline const std::string ACTION = "action";
+    static inline const std::string NAME = "name";
 
     PowerPlanItem();
     PowerPlanItem(const PowerPlanItem &other);

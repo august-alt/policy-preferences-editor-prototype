@@ -29,9 +29,10 @@ template <typename PowerItemType>
 PowerContainerItem<PowerItemType>::PowerContainerItem()
     : ModelView::CompoundItem(typeid(PowerContainerItem<PowerItemType>).name())
 {
-    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
+    addProperty(NAME, PowerItemType().template property<std::string>(NAME))
+            ->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
-    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
+    addProperty(ACTION, "N/A")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
     addProperty<PowerItemType>(POWER)->setVisible(false);
