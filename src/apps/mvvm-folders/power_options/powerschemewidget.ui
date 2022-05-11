@@ -17,18 +17,18 @@
    <item row="3" column="0">
     <widget class="QGroupBox" name="settingGroupBox">
      <property name="title">
-      <string>Settings for Home/Office Desk power scheme</string>
+      <string>Settings for power scheme</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QLabel" name="whenLabel">
+       <widget class="QLabel" name="computerLabel">
         <property name="text">
          <string>When computer is:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLabel" name="pluggedLabel">
+       <widget class="QLabel" name="dcPowerLabel">
         <property name="text">
          <string>Plugged in:</string>
         </property>
@@ -40,12 +40,12 @@
          <string>Turn off monitor:</string>
         </property>
         <property name="buddy">
-         <cstring>monitorPlugComboBox</cstring>
+         <cstring>monitorDcComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="QComboBox" name="monitorPlugComboBox">
+       <widget class="QComboBox" name="monitorDcComboBox">
         <item>
          <property name="text">
           <string>After 1 min</string>
@@ -124,7 +124,7 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QComboBox" name="batteryComboBox">
+       <widget class="QComboBox" name="monitorAcComboBox">
         <item>
          <property name="text">
           <string>After 1 min</string>
@@ -203,17 +203,17 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="diskLabel">
+       <widget class="QLabel" name="hardDiskLabel">
         <property name="text">
          <string>Turn off hard disks:</string>
         </property>
         <property name="buddy">
-         <cstring>diskPlugComboBox</cstring>
+         <cstring>hardDiskDcComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="2" column="1" colspan="2">
-       <widget class="QComboBox" name="diskPlugComboBox">
+       <widget class="QComboBox" name="hardDiskDcComboBox">
         <item>
          <property name="text">
           <string>After 3 mins</string>
@@ -287,7 +287,7 @@
        </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QComboBox" name="diskButteryComboBox">
+       <widget class="QComboBox" name="hardDiskAcComboBox">
         <item>
          <property name="text">
           <string>After 3 mins</string>
@@ -361,7 +361,7 @@
        </widget>
       </item>
       <item row="3" column="0" colspan="4">
-       <widget class="Line" name="line_2">
+       <widget class="Line" name="schemeSettingsLine">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -373,12 +373,12 @@
          <string>System stand by:</string>
         </property>
         <property name="buddy">
-         <cstring>standbyPlugComboBox</cstring>
+         <cstring>standbyDcComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="4" column="1" colspan="2">
-       <widget class="QComboBox" name="standbyPlugComboBox">
+       <widget class="QComboBox" name="standbyDcComboBox">
         <item>
          <property name="text">
           <string>After 1 min</string>
@@ -457,7 +457,7 @@
        </widget>
       </item>
       <item row="4" column="3">
-       <widget class="QComboBox" name="standbyButterycomboBox">
+       <widget class="QComboBox" name="standbyAcComboBox">
         <item>
          <property name="text">
           <string>After 1 min</string>
@@ -536,17 +536,17 @@
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="hiberLabel">
+       <widget class="QLabel" name="hibernateLabel">
         <property name="text">
          <string>System hebirnations:</string>
         </property>
         <property name="buddy">
-         <cstring>hiberPlugComboBox</cstring>
+         <cstring>hibernateDcComboBox</cstring>
         </property>
        </widget>
       </item>
       <item row="5" column="1" colspan="2">
-       <widget class="QComboBox" name="hiberPlugComboBox">
+       <widget class="QComboBox" name="hibernateDcComboBox">
         <item>
          <property name="text">
           <string>After 1 min</string>
@@ -625,7 +625,7 @@
        </widget>
       </item>
       <item row="5" column="3">
-       <widget class="QComboBox" name="hiberButteryComboBox">
+       <widget class="QComboBox" name="hibernateAcComboBox">
         <item>
          <property name="text">
           <string>After 1 mins</string>
@@ -704,9 +704,9 @@
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QLabel" name="butteryLabel">
+       <widget class="QLabel" name="acPowerLabel">
         <property name="text">
-         <string>Running on battaries:</string>
+         <string>Running on batteries:</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -751,18 +751,15 @@
       <string>Power schemes</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="QLabel" name="closeLidLabel">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="defaultCheckBox">
         <property name="text">
-         <string>When I close the lid of my portable computer:</string>
-        </property>
-        <property name="buddy">
-         <cstring>closeLidcomboBox</cstring>
+         <string>Make this the active Power Scheme</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QComboBox" name="closeLidcomboBox">
+      <item row="0" column="0">
+       <widget class="QComboBox" name="nameComboBox">
         <property name="currentIndex">
          <number>0</number>
         </property>
@@ -796,13 +793,6 @@
           <string>Max Battery</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="makeCheckBox">
-        <property name="text">
-         <string>Make this the active Power Scheme</string>
-        </property>
        </widget>
       </item>
      </layout>
@@ -871,16 +861,16 @@
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>closeLidcomboBox</tabstop>
-  <tabstop>makeCheckBox</tabstop>
-  <tabstop>monitorPlugComboBox</tabstop>
-  <tabstop>batteryComboBox</tabstop>
-  <tabstop>diskPlugComboBox</tabstop>
-  <tabstop>diskButteryComboBox</tabstop>
-  <tabstop>standbyPlugComboBox</tabstop>
-  <tabstop>standbyButterycomboBox</tabstop>
-  <tabstop>hiberPlugComboBox</tabstop>
-  <tabstop>hiberButteryComboBox</tabstop>
+  <tabstop>nameComboBox</tabstop>
+  <tabstop>defaultCheckBox</tabstop>
+  <tabstop>monitorDcComboBox</tabstop>
+  <tabstop>monitorAcComboBox</tabstop>
+  <tabstop>hardDiskDcComboBox</tabstop>
+  <tabstop>hardDiskAcComboBox</tabstop>
+  <tabstop>standbyDcComboBox</tabstop>
+  <tabstop>standbyAcComboBox</tabstop>
+  <tabstop>hibernateDcComboBox</tabstop>
+  <tabstop>hibernateAcComboBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

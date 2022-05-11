@@ -24,6 +24,10 @@
 
 #include <mvvm/model/groupitem.h>
 
+#include "power_options/powercontaineritem.h"
+#include "power_options/poweroptionsitem.h"
+#include "power_options/powerschemeitem.h"
+
 namespace
 {
 
@@ -108,6 +112,10 @@ void PreferencesTreeModel::populateModel()
     machineNetworkOptionsItem->setDisplayName("Network Options");
     machineNetworkOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "NetworkContainerItem");
 
+    auto machinePowerOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machinePowerOptionsItem->setDisplayName("Power Options");
+    machinePowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerSchemeItem>).name());
+
 //======================================================================================================================
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
@@ -165,6 +173,10 @@ void PreferencesTreeModel::populateModel()
     auto userNetworkOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userNetworkOptionsItem->setDisplayName("Network Options");
     userNetworkOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "NetworkContainerItem");
+
+    auto userPowerOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userPowerOptionsItem->setDisplayName("Power Options");
+    userPowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerOptionsItem>).name());
 }
 
 }

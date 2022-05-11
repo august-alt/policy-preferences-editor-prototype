@@ -33,6 +33,9 @@
 #include "local_users_and_groups/localuserwidget.h"
 #include "network_options/dialupwidget.h"
 #include "network_options/vpnwidget.h"
+#include "power_options/poweroptionswidget.h"
+#include "power_options/powerplanwidget.h"
+#include "power_options/powerschemewidget.h"
 #include "registry/registrywidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
@@ -64,6 +67,9 @@ WidgetFactory::WidgetFactory()
     registerItem("LocalUserItem", [](){ return std::make_unique<LocalUserWidget>(); });
     registerItem("VpnItem", [](){ return std::make_unique<VpnWidget>(); });
     registerItem("DialUpItem", [](){ return std::make_unique<DialUpWidget>(); });
+    registerItem("PowerOptionsItem", [](){ return std::make_unique<PowerOptionsWidget>(); });
+    registerItem("PowerPlanItem", [](){ return std::make_unique<PowerPlanWidget>(); });
+    registerItem("PowerSchemeItem", [](){ return std::make_unique<PowerSchemeWidget>(); });
 }
 
 WidgetFactory::~WidgetFactory() = default;

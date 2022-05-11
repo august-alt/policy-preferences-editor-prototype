@@ -18,24 +18,36 @@
 **
 ***********************************************************************************************************************/
 
-#include "powerplanitem.h"
+#ifndef MVVM_FOLDERS_BASE_PREFERENCE_ITEM_H
+#define MVVM_FOLDERS_BASE_PREFERENCE_ITEM_H
+
+#include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-PowerPlanItem::PowerPlanItem()
-    : ModelView::CompoundItem("PowerPlanItem")
+template <typename T>
+class BasePreferenceItem : public ModelView::CompoundItem
 {
-    addProperty(ACTION, "");
-    addProperty(NAME, "");
+public:
+    BasePreferenceItem(const std::string& modelType)
+        : ModelView::CompoundItem(modelType) {}
+
+    template <typename EnumType>
+    constexpr static int propertyToInt(const EnumType& type)
+    {
+        return static_cast<int>(type);
+    }
+
+protected:
+    template <typename PropertyType, typename EnumType>
+    inline void copyProperty(const EnumType& type, const T &other)
+    {
+        std::string property = other.propertyToString(type);
+        addProperty(property, other.template property<PropertyType>(property));
+    }
+};
+
 }
 
-PowerPlanItem::PowerPlanItem(const PowerPlanItem &other)
-    : ModelView::CompoundItem("PowerPlanItem")
-{
-    Q_UNUSED(other);
-    addProperty(ACTION, "");
-    addProperty(NAME, "");
-}
-
-}
+#endif//MVVM_FOLDERS_BASE_PREFERENCE_ITEM_H
