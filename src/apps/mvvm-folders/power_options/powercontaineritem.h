@@ -33,6 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class PowerOptionsItem;
 
+template <typename PowerItemType>
 class PowerContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
@@ -48,12 +49,14 @@ public:
     CommonItem getCommon() const;
     void setCommon(const CommonItem& item);
 
-    PowerOptionsItem getPower() const;
-    void setPower(const PowerOptionsItem& item);
+    PowerItemType getPower() const;
+    void setPower(const PowerItemType& item);
 
     void setupListeners() override;
 };
 
 }
+
+#include "powercontaineritem.inl"
 
 #endif//MVVM_FOLDERS_POWER_CONTAINER_ITEM_H

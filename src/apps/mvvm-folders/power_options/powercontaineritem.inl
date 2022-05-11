@@ -18,61 +18,64 @@
 **
 ***********************************************************************************************************************/
 
-#include "powercontaineritem.h"
-
 #include "common/commonitem.h"
-#include "poweroptionsitem.h"
 
 #include <mvvm/signals/itemmapper.h>
 
 namespace mvvm_folders
 {
 
-PowerContainerItem::PowerContainerItem()
-    : ModelView::CompoundItem("PowerContainerItem")
+template <typename PowerItemType>
+PowerContainerItem<PowerItemType>::PowerContainerItem()
+    : ModelView::CompoundItem(typeid(PowerContainerItem<PowerItemType>).name())
 {
     addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
     addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
-    addProperty<PowerOptionsItem>(POWER)->setVisible(false);
+    addProperty<PowerItemType>(POWER)->setVisible(false);
 }
 
-CommonItem PowerContainerItem::getCommon() const
+template <typename PowerItemType>
+CommonItem PowerContainerItem<PowerItemType>::getCommon() const
 {
     return property<CommonItem>(COMMON);
 }
 
-void PowerContainerItem::setCommon(const CommonItem &item)
+template <typename PowerItemType>
+void PowerContainerItem<PowerItemType>::setCommon(const CommonItem &item)
 {
     setProperty(COMMON, item);
 }
 
-PowerOptionsItem PowerContainerItem::getPower() const
+template <typename PowerItemType>
+PowerItemType PowerContainerItem<PowerItemType>::getPower() const
 {
-    return property<PowerOptionsItem>(POWER);
+    return property<PowerItemType>(POWER);
 }
 
-void PowerContainerItem::setPower(const PowerOptionsItem &item)
+template <typename PowerItemType>
+void PowerContainerItem<PowerItemType>::setPower(const PowerItemType& item)
 {
     setProperty(POWER, item);
 }
 
-void PowerContainerItem::setupListeners()
+template <typename PowerItemType>
+void PowerContainerItem<PowerItemType>::setupListeners()
 {
     auto onChildPropertyChange = [&](SessionItem* item, std::string property)
     {
-        if (auto powerItem = dynamic_cast<PowerOptionsItem*>(item))
+        if (auto powerItem = dynamic_cast<PowerItemType*>(item))
         {
             if (property == ACTION)
             {
-                setProperty(ACTION, powerItem->property<std::string>(ACTION));
+                setProperty(ACTION, powerItem->template property<std::string>(ACTION));
             }
 
             if (property == NAME)
             {
-                setProperty(NAME, powerItem->property<std::string>(NAME));
+                setProperty(NAME, powerItem->template property<std::string>(NAME));
             }
         }
     };

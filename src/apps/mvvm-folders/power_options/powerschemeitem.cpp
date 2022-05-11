@@ -29,14 +29,14 @@ PowerSchemeItem::PowerSchemeItem()
     addProperty(propertyToString(ACTION), "");
     addProperty(propertyToString(NAME), "");
     addProperty(propertyToString(DEFAULT), false);
-    addProperty(propertyToString(MONITOR_AC), 0);
-    addProperty(propertyToString(HARD_DISK_AC), 0);
-    addProperty(propertyToString(STANDBY_AC), 0);
-    addProperty(propertyToString(HIBERNATE_AC), 0);
-    addProperty(propertyToString(MONITOR_DC), 0);
-    addProperty(propertyToString(HARD_DISK_DC), 0);
-    addProperty(propertyToString(STANDBY_DC), 0);
-    addProperty(propertyToString(HIBERNATE_DC), 0);
+    addProperty(propertyToString(MONITOR_AC), "");
+    addProperty(propertyToString(HARD_DISK_AC), "");
+    addProperty(propertyToString(STANDBY_AC), "");
+    addProperty(propertyToString(HIBERNATE_AC), "");
+    addProperty(propertyToString(MONITOR_DC), "");
+    addProperty(propertyToString(HARD_DISK_DC), "");
+    addProperty(propertyToString(STANDBY_DC), "");
+    addProperty(propertyToString(HIBERNATE_DC), "");
 }
 
 PowerSchemeItem::PowerSchemeItem(const PowerSchemeItem &other)
@@ -45,14 +45,14 @@ PowerSchemeItem::PowerSchemeItem(const PowerSchemeItem &other)
     copyProperty<std::string>(ACTION, other);
     copyProperty<std::string>(NAME, other);
     copyProperty<bool>(DEFAULT, other);
-    copyProperty<int>(MONITOR_AC, other);
-    copyProperty<int>(HARD_DISK_AC, other);
-    copyProperty<int>(STANDBY_AC, other);
-    copyProperty<int>(HIBERNATE_AC, other);
-    copyProperty<int>(MONITOR_DC, other);
-    copyProperty<int>(HARD_DISK_DC, other);
-    copyProperty<int>(STANDBY_DC, other);
-    copyProperty<int>(HIBERNATE_DC, other);
+    copyProperty<std::string>(MONITOR_AC, other);
+    copyProperty<std::string>(HARD_DISK_AC, other);
+    copyProperty<std::string>(STANDBY_AC, other);
+    copyProperty<std::string>(HIBERNATE_AC, other);
+    copyProperty<std::string>(MONITOR_DC, other);
+    copyProperty<std::string>(HARD_DISK_DC, other);
+    copyProperty<std::string>(STANDBY_DC, other);
+    copyProperty<std::string>(HIBERNATE_DC, other);
 }
 
 constexpr const char *PowerSchemeItem::propertyToString(const PowerSchemeItem::PropertyType &type)

@@ -180,7 +180,7 @@ set(SOURCES
     network_options/vpnwidget.cpp
     network_options/vpnwidgetslots.cpp
 
-    power_options/powercontaineritem.cpp
+    power_options/powercontaineritem.inl
     power_options/poweroptionsitem.cpp
     power_options/poweroptionswidget.cpp
     power_options/powerplanitem.cpp

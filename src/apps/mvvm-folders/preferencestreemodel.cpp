@@ -24,6 +24,10 @@
 
 #include <mvvm/model/groupitem.h>
 
+#include "power_options/powercontaineritem.h"
+#include "power_options/poweroptionsitem.h"
+#include "power_options/powerschemeitem.h"
+
 namespace
 {
 
@@ -110,7 +114,7 @@ void PreferencesTreeModel::populateModel()
 
     auto machinePowerOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machinePowerOptionsItem->setDisplayName("Power Options");
-    machinePowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PowerContainerItem");
+    machinePowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerSchemeItem>).name());
 
 //======================================================================================================================
 
@@ -172,7 +176,7 @@ void PreferencesTreeModel::populateModel()
 
     auto userPowerOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userPowerOptionsItem->setDisplayName("Power Options");
-    userPowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PowerContainerItem");
+    userPowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerOptionsItem>).name());
 }
 
 }
