@@ -30,6 +30,10 @@
 #include "local_users_and_groups/groupmemberitem.h"
 #include "local_users_and_groups/groupmemberscontaineritem.h"
 #include "network_options/networkcontaineritem.h"
+#include "power_options/powercontaineritem.h"
+#include "power_options/poweroptionsitem.h"
+#include "power_options/powerplanitem.h"
+#include "power_options/powerschemeitem.h"
 #include "registry/registrycontaineritem.h"
 #include "shares/sharescontaineritem.h"
 #include "shortcuts/shortcutscontaineritem.h"
@@ -55,6 +59,9 @@ PreferencesModel::PreferencesModel()
     registerItem<GroupMemberItem>();
     registerItem<GroupMembersContainerItem>();
     registerItem<NetworkContainerItem>();
+    registerItem<PowerContainerItem<PowerOptionsItem>>();
+    registerItem<PowerContainerItem<PowerPlanItem>>();
+    registerItem<PowerContainerItem<PowerSchemeItem>>();
 }
 
 }

@@ -18,24 +18,45 @@
 **
 ***********************************************************************************************************************/
 
-#include "powerplanitem.h"
+#ifndef MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
+#define MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
+
+#include <mvvm/model/compounditem.h>
+
+#include "interfaces/containeriteminterface.h"
 
 namespace mvvm_folders
 {
 
-PowerPlanItem::PowerPlanItem()
-    : ModelView::CompoundItem("PowerPlanItem")
+//! Power container item representation for editor.
+
+class CommonItem;
+class PowerOptionsItem;
+
+template <typename PowerItemType>
+class PowerContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
-    addProperty(ACTION, "");
-    addProperty(NAME, "");
+public:
+    static inline const std::string NAME = "name";
+    static inline const std::string ORDER = "order";
+    static inline const std::string ACTION = "action";
+
+    static inline const std::string COMMON = "common";
+    static inline const std::string POWER = "power";
+
+    explicit PowerContainerItem();
+
+    CommonItem getCommon() const;
+    void setCommon(const CommonItem& item);
+
+    PowerItemType getPower() const;
+    void setPower(const PowerItemType& item);
+
+    void setupListeners() override;
+};
+
 }
 
-PowerPlanItem::PowerPlanItem(const PowerPlanItem &other)
-    : ModelView::CompoundItem("PowerPlanItem")
-{
-    Q_UNUSED(other);
-    addProperty(ACTION, "");
-    addProperty(NAME, "");
-}
+#include "powercontaineritem.inl"
 
-}
+#endif//MVVM_FOLDERS_POWER_CONTAINER_ITEM_H
