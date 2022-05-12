@@ -83,6 +83,10 @@ set(HEADERS
     power_options/powerschemeitem.h
     power_options/powerschemewidget.h
 
+    printers/localprinteritem.h
+    printers/localprinterwidget.h
+    printers/printercontaineritem.h
+
     registry/registrycontaineritem.h
     registry/registryitem.h
     registry/registrywidget.h
@@ -188,6 +192,10 @@ set(SOURCES
     power_options/powerschemeitem.cpp
     power_options/powerschemewidget.cpp
 
+    printers/localprinteritem.cpp
+    printers/localprinterwidget.cpp
+    printers/printercontaineritem.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrywidget.cpp
@@ -250,6 +258,8 @@ set(UI_FORMS
     power_options/poweroptionswidget.ui
     power_options/powerplanwidget.ui
     power_options/powerschemewidget.ui
+
+    printers/localprinterwidget.ui
 
     registry/registrywidget.ui
 

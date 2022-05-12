@@ -116,6 +116,10 @@ void PreferencesTreeModel::populateModel()
     machinePowerOptionsItem->setDisplayName("Power Options");
     machinePowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerSchemeItem>).name());
 
+    auto machinePrintersItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machinePrintersItem->setDisplayName("Printers");
+    machinePrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PrinterContainerItem");
+
 //======================================================================================================================
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
@@ -177,6 +181,10 @@ void PreferencesTreeModel::populateModel()
     auto userPowerOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userPowerOptionsItem->setDisplayName("Power Options");
     userPowerOptionsItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PowerContainerItem<PowerOptionsItem>).name());
+
+    auto userPrintersItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userPrintersItem->setDisplayName("Printers");
+    userPrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PrinterContainerItem");
 }
 
 }

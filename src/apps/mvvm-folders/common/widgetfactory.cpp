@@ -36,6 +36,7 @@
 #include "power_options/poweroptionswidget.h"
 #include "power_options/powerplanwidget.h"
 #include "power_options/powerschemewidget.h"
+#include "printers/localprinterwidget.h"
 #include "registry/registrywidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
@@ -70,6 +71,7 @@ WidgetFactory::WidgetFactory()
     registerItem("PowerOptionsItem", [](){ return std::make_unique<PowerOptionsWidget>(); });
     registerItem("PowerPlanItem", [](){ return std::make_unique<PowerPlanWidget>(); });
     registerItem("PowerSchemeItem", [](){ return std::make_unique<PowerSchemeWidget>(); });
+    registerItem("LocalPrinterItem", [](){ return std::make_unique<LocalPrinterWidget>(); });
 }
 
 WidgetFactory::~WidgetFactory() = default;
