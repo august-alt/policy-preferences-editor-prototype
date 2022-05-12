@@ -35,6 +35,7 @@
 #include "power_options/powerplanitem.h"
 #include "power_options/powerschemeitem.h"
 #include "registry/registrycontaineritem.h"
+#include "printers/printercontaineritem.h"
 #include "shares/sharescontaineritem.h"
 #include "shortcuts/shortcutscontaineritem.h"
 #include "variables/variablescontaineritem.h"
@@ -62,6 +63,7 @@ PreferencesModel::PreferencesModel()
     registerItem<PowerContainerItem<PowerOptionsItem>>();
     registerItem<PowerContainerItem<PowerPlanItem>>();
     registerItem<PowerContainerItem<PowerSchemeItem>>();
+    registerItem<PrinterContainerItem>();
 }
 
 }

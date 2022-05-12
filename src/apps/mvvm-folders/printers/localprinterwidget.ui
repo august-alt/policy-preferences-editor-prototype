@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LocalGeneralWidget</class>
- <widget class="QWidget" name="LocalGeneralWidget">
+ <class>LocalPrinterWidget</class>
+ <widget class="QWidget" name="LocalPrinterWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -209,7 +209,7 @@
     </spacer>
    </item>
    <item row="4" column="0">
-    <widget class="QCheckBox" name="deleteCheckBox">
+    <widget class="QCheckBox" name="defaultCheckBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -320,7 +320,7 @@
   <tabstop>portComboBox</tabstop>
   <tabstop>pathLineEdit</tabstop>
   <tabstop>pathToolButton</tabstop>
-  <tabstop>deleteCheckBox</tabstop>
+  <tabstop>defaultCheckBox</tabstop>
   <tabstop>locationLineEdit</tabstop>
   <tabstop>commentLineEdit</tabstop>
  </tabstops>
