@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Registry clsid="{9CD4B2F4-923D-47f5-A062-E897DD1DAD50}" name="param" status="param" image="7" changed="2022-05-12 09:47:26" uid="{C7EA692F-E407-4241-B286-AA25AC0D95F8}"><Properties action="U" displayDecimal="0" default="0" hive="HKEY_LOCAL_MACHINE" key="123" name="param" type="REG_SZ" value="string"/></Registry>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Printers clsid="{1F577D12-3D1B-471e-A1B7-060317597B9C}"><SharedPrinter clsid="{9A5E9697-9095-436d-A0EE-4D128FDFBCE5}" name="path" status="path" image="2" changed="2022-05-12 13:45:40" uid="{3CBDFF6D-F94A-499C-A6E8-125BA4B93107}"><Properties action="U" comment="" path="path" location="" default="1" skipLocal="0" deleteAll="0" persistent="0" deleteMaps="0" port="123"/></SharedPrinter>
+</Printers>

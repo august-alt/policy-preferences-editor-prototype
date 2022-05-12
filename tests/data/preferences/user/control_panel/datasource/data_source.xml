@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSource clsid="{5C209626-D820-4d69-8D50-1FACD6214488}" userContext="1" name="source" image="1" changed="2022-05-12 13:10:12" uid="{D3D30FCA-43C7-477B-BA2B-7B3EEB15F83F}"><Properties action="R" userDSN="1" dsn="source" driver="driver" description="description" username="" cpassword=""/></DataSource>
