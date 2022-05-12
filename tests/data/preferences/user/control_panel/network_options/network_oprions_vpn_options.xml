@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VPN clsid="{0532F359-3205-4d32-ADB7-9AEC6402BECF}" name="name" userContext="1" image="2" changed="2022-05-12 13:31:57" uid="{8187FC79-4663-4792-8AC8-58D9270AA52A}"><Properties action="U" user="1" name="name" ipAddress="192.168.0.1" useDNS="0" useIPv6="0" dialFirst="123456789" trayIcon="0"/></VPN>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PortPrinter clsid="{C3A739D2-4A44-401e-9F9D-88E5E77DFB3E}" name="192.168.0.1" status="192.168.0.1" image="2" changed="2022-05-12 12:23:49" uid="{DC1A8423-5BC5-4686-AD4A-11382883BB62}"><Properties ipAddress="192.168.0.1" action="U" location="localization" localName="name" comment="comment" default="0" skipLocal="0" useDNS="0" useIPv6="0" path="path" deleteAll="0"/></PortPrinter>

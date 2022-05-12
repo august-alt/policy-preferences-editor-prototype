@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}" name="envTest" status="envTest = 123env" image="2" changed="2022-05-12 09:37:04" uid="{908B3222-7F0E-413A-8FD2-EF6ECFE4D2AE}"><Properties action="U" name="envTest" value="123env" user="0" partial="0"/></EnvironmentVariable>

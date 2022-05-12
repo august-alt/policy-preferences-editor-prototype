@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Registry clsid="{9CD4B2F4-923D-47f5-A062-E897DD1DAD50}" name="name" status="name" image="8" changed="2022-05-12 12:55:06" uid="{26579285-6DF8-4D27-A7F7-588B20F825EE}"><Properties action="D" displayDecimal="0" default="0" hive="HKEY_CURRENT_USER" key="path" name="name" type="REG_SZ" value=""/></Registry>
