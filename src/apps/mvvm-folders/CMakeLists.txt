@@ -86,6 +86,8 @@ set(HEADERS
     printers/localprinteritem.h
     printers/localprinterwidget.h
     printers/printercontaineritem.h
+    printers/sharedprinteritem.h
+    printers/sharedprinterwidget.h
 
     registry/registrycontaineritem.h
     registry/registryitem.h
@@ -195,6 +197,8 @@ set(SOURCES
     printers/localprinteritem.cpp
     printers/localprinterwidget.cpp
     printers/printercontaineritem.cpp
+    printers/sharedprinteritem.cpp
+    printers/sharedprinterwidget.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
@@ -260,6 +264,7 @@ set(UI_FORMS
     power_options/powerschemewidget.ui
 
     printers/localprinterwidget.ui
+    printers/sharedprinterwidget.ui
 
     registry/registrywidget.ui
 

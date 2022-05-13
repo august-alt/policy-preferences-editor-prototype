@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SharedWidget</class>
- <widget class="QWidget" name="SharedWidget">
+ <class>SharedPrinterWidget</class>
+ <widget class="QWidget" name="SharedPrinterWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
+    <width>395</width>
     <height>443</height>
    </rect>
   </property>
