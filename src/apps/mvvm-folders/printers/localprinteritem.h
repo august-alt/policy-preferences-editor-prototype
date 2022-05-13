@@ -47,7 +47,7 @@ public:
     LocalPrinterItem();
     LocalPrinterItem(const LocalPrinterItem &other);
 
-	constexpr static const char* propertyToString(const PropertyType& type);
+    constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
