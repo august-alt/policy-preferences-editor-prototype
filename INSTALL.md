@@ -21,3 +21,10 @@ cd build && make -j `nproc`
 ```
 gear-rpm -ba
 ```
+
+# Installing RPM
+Execute:
+```
+cd ~/RPM/RPMS/x86_64/ && sudo apt-get install ./preferences-editor.rpm
+```
+
