@@ -88,6 +88,9 @@ set(HEADERS
     printers/printercontaineritem.h
     printers/sharedprinteritem.h
     printers/sharedprinterwidget.h
+    printers/tcpprintergeneralwidget.h
+    printers/tcpprinteritem.h
+    printers/tcpprinterportwidget.h
 
     registry/registrycontaineritem.h
     registry/registryitem.h
@@ -199,6 +202,9 @@ set(SOURCES
     printers/printercontaineritem.cpp
     printers/sharedprinteritem.cpp
     printers/sharedprinterwidget.cpp
+    printers/tcpprintergeneralwidget.cpp
+    printers/tcpprinteritem.cpp
+    printers/tcpprinterportwidget.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
@@ -265,6 +271,8 @@ set(UI_FORMS
 
     printers/localprinterwidget.ui
     printers/sharedprinterwidget.ui
+    printers/tcpprintergeneralwidget.ui
+    printers/tcpprinterportwidget.ui
 
     registry/registrywidget.ui
 

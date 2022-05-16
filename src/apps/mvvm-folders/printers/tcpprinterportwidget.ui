@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TcpPortWidget</class>
- <widget class="QWidget" name="TcpPortWidget">
+ <class>TcpPrinterPortWidget</class>
+ <widget class="QWidget" name="TcpPrinterPortWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
+    <width>460</width>
     <height>443</height>
    </rect>
   </property>
@@ -205,12 +205,12 @@
          <string>Community Name:</string>
         </property>
         <property name="buddy">
-         <cstring>communityineEdit</cstring>
+         <cstring>communityLineEdit</cstring>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="communityineEdit"/>
+       <widget class="QLineEdit" name="communityLineEdit"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="snmpLabel">
@@ -251,7 +251,7 @@
   <tabstop>queueLineEdit</tabstop>
   <tabstop>lprCheckBox</tabstop>
   <tabstop>snmpCheckBox</tabstop>
-  <tabstop>communityineEdit</tabstop>
+  <tabstop>communityLineEdit</tabstop>
   <tabstop>snmpSpinBox</tabstop>
  </tabstops>
  <resources/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TcpGeneralWidget</class>
- <widget class="QWidget" name="TcpGeneralWidget">
+ <class>TcpPrinterGeneralWidget</class>
+ <widget class="QWidget" name="TcpPrinterGeneralWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
+    <width>384</width>
     <height>443</height>
    </rect>
   </property>
@@ -105,7 +105,7 @@
     </widget>
    </item>
    <item row="7" column="1" colspan="3">
-    <widget class="QCheckBox" name="setPrinterCheckBox">
+    <widget class="QCheckBox" name="defaultCheckBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -118,7 +118,7 @@
     </widget>
    </item>
    <item row="8" column="1" colspan="3">
-    <widget class="QCheckBox" name="onlyIfCheckBox">
+    <widget class="QCheckBox" name="skipLocalCheckBox">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -262,17 +262,17 @@
   <tabstop>localNameLineEdit</tabstop>
   <tabstop>pathLineEdit</tabstop>
   <tabstop>sharedPathToolButton</tabstop>
-  <tabstop>setPrinterCheckBox</tabstop>
-  <tabstop>onlyIfCheckBox</tabstop>
+  <tabstop>defaultCheckBox</tabstop>
+  <tabstop>skipLocalCheckBox</tabstop>
   <tabstop>locationLineEdit</tabstop>
   <tabstop>commentLineEdit</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>setPrinterCheckBox</sender>
+   <sender>defaultCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>onlyIfCheckBox</receiver>
+   <receiver>skipLocalCheckBox</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
