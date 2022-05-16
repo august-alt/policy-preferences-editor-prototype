@@ -86,6 +86,7 @@ set(HEADERS
     printers/localprinteritem.h
     printers/localprinterwidget.h
     printers/printercontaineritem.h
+    printers/printercontaineritem.inl
     printers/sharedprinteritem.h
     printers/sharedprinterwidget.h
     printers/tcpprintergeneralwidget.h
@@ -199,7 +200,6 @@ set(SOURCES
 
     printers/localprinteritem.cpp
     printers/localprinterwidget.cpp
-    printers/printercontaineritem.cpp
     printers/sharedprinteritem.cpp
     printers/sharedprinterwidget.cpp
     printers/tcpprintergeneralwidget.cpp

@@ -28,6 +28,9 @@
 #include "power_options/poweroptionsitem.h"
 #include "power_options/powerschemeitem.h"
 
+#include "printers/printercontaineritem.h"
+#include "printers/localprinteritem.h"
+
 namespace
 {
 
@@ -118,7 +121,7 @@ void PreferencesTreeModel::populateModel()
 
     auto machinePrintersItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machinePrintersItem->setDisplayName("Printers");
-    machinePrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PrinterContainerItem");
+    machinePrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PrinterContainerItem<LocalPrinterItem>).name());
 
 //======================================================================================================================
 
@@ -184,7 +187,7 @@ void PreferencesTreeModel::populateModel()
 
     auto userPrintersItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userPrintersItem->setDisplayName("Printers");
-    userPrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, "PrinterContainerItem");
+    userPrintersItem->setProperty<std::string>(PreferenceCategoryItem::TYPE, typeid(PrinterContainerItem<LocalPrinterItem>).name());
 }
 
 }

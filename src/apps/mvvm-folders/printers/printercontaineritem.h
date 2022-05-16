@@ -33,6 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class LocalPrinterItem;
 
+template <typename PrinterItemType>
 class PrinterContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
@@ -50,12 +51,14 @@ public:
     CommonItem getCommon() const;
     void setCommon(const CommonItem& item);
 
-    LocalPrinterItem getPrinter() const;
-    void setPrinter(const LocalPrinterItem& item);
+    PrinterItemType getPrinter() const;
+    void setPrinter(const PrinterItemType& item);
 
     void setupListeners() override;
 };
 
 }
+
+#include "printercontaineritem.inl"
 
 #endif//MVVM_FOLDERS_PRINTER_CONTAINER_ITEM_H

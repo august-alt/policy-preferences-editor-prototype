@@ -28,8 +28,9 @@
 namespace mvvm_folders
 {
 
-PrinterContainerItem::PrinterContainerItem()
-    : ModelView::CompoundItem("PrinterContainerItem")
+template <typename PrinterItemType>
+PrinterContainerItem<PrinterItemType>::PrinterContainerItem()
+    : ModelView::CompoundItem(typeid(PrinterContainerItem<PrinterItemType>).name())
 {
     addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
@@ -38,53 +39,58 @@ PrinterContainerItem::PrinterContainerItem()
     addProperty(DEFAULT, QObject::tr("N/A").toStdString())->setDisplayName(QObject::tr("Default").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
-    addProperty<LocalPrinterItem>(PRINTER)->setVisible(false);
+    addProperty<PrinterItemType>(PRINTER)->setVisible(false);
 }
 
-CommonItem PrinterContainerItem::getCommon() const
+template <typename PrinterItemType>
+CommonItem PrinterContainerItem<PrinterItemType>::getCommon() const
 {
     return property<CommonItem>(COMMON);
 }
 
-void PrinterContainerItem::setCommon(const CommonItem &item)
+template <typename PrinterItemType>
+void PrinterContainerItem<PrinterItemType>::setCommon(const CommonItem &item)
 {
     setProperty(COMMON, item);
 }
 
-LocalPrinterItem PrinterContainerItem::getPrinter() const
+template <typename PrinterItemType>
+PrinterItemType PrinterContainerItem<PrinterItemType>::getPrinter() const
 {
-    return property<LocalPrinterItem>(PRINTER);
+    return property<PrinterItemType>(PRINTER);
 }
 
-void PrinterContainerItem::setPrinter(const LocalPrinterItem &item)
+template <typename PrinterItemType>
+void PrinterContainerItem<PrinterItemType>::setPrinter(const PrinterItemType &item)
 {
     setProperty(PRINTER, item);
 }
 
-void PrinterContainerItem::setupListeners()
+template <typename PrinterItemType>
+void PrinterContainerItem<PrinterItemType>::setupListeners()
 {
     auto onChildPropertyChange = [&](SessionItem* item, std::string property)
     {
-        if (auto localPrinterItem = dynamic_cast<LocalPrinterItem*>(item))
+        if (auto printerItem = dynamic_cast<PrinterItemType*>(item))
         {
             if (property == ACTION)
             {
-                setProperty(ACTION, localPrinterItem->property<std::string>(ACTION));
+                setProperty(ACTION, printerItem->template property<std::string>(ACTION));
             }
 
             if (property == NAME)
             {
-                setProperty(NAME, localPrinterItem->property<std::string>(NAME));
+                setProperty(NAME, printerItem->template property<std::string>(NAME));
             }
 
             if (property == PATH)
             {
-                setProperty(PATH, localPrinterItem->property<std::string>(PATH));
+                setProperty(PATH, printerItem->template property<std::string>(PATH));
             }
 
             if (property == DEFAULT)
             {
-                setProperty(DEFAULT, localPrinterItem->property<bool>(DEFAULT)
+                setProperty(DEFAULT, printerItem->template property<bool>(DEFAULT)
                             ? "Yes"
                             : "No");
             }
