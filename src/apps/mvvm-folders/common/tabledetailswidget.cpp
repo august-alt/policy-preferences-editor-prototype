@@ -42,7 +42,7 @@ TableDetailsWidget::TableDetailsWidget(QWidget *parent)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , itemType("")
+    , itemTypes()
 {
     ui->setupUi(this);
 
@@ -67,9 +67,9 @@ void TableDetailsWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->setCurrentIndex(view_model->index(0, 0));
 }
 
-void TableDetailsWidget::onItemTypeChange(const std::string &newItemType)
+void TableDetailsWidget::onItemTypeChange(const std::vector<std::string> &newItemTypes)
 {
-    itemType = newItemType;
+    itemTypes = newItemTypes;
 }
 
 void TableDetailsWidget::on_treeView_customContextMenuRequested(const QPoint &point)
@@ -102,17 +102,20 @@ void TableDetailsWidget::on_treeView_customContextMenuRequested(const QPoint &po
 
     if (!view_item)
     {
-        auto addItemAction = newMenuItem->addAction("Add item");
-        auto add_item = [&]() {
-            auto newItem = view_model->sessionModel()->insertNewItem(itemType,
-                                                                     view_model->sessionModel()->rootItem());
-            if (auto containerItemInterface = dynamic_cast<ContainerItemInterface*>(newItem))
-            {
-                containerItemInterface->setupListeners();
-            }
+        for (const auto& itemType : itemTypes)
+        {
+            auto addItemAction = newMenuItem->addAction(QString("Add item %1").arg(itemType.c_str()));
+            auto add_item = [&]() {
+                auto newItem = view_model->sessionModel()->insertNewItem(itemType,
+                                                                         view_model->sessionModel()->rootItem());
+                if (auto containerItemInterface = dynamic_cast<ContainerItemInterface*>(newItem))
+                {
+                    containerItemInterface->setupListeners();
+                }
 
-        };
-        connect(addItemAction, &QAction::triggered, add_item);
+            };
+            connect(addItemAction, &QAction::triggered, add_item);
+        }
     }
     else
     {

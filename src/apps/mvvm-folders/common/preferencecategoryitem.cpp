@@ -28,7 +28,7 @@ PreferenceCategoryItem::PreferenceCategoryItem()
 {
     setDisplayName("");
 
-    addProperty(TYPE, "");
+    addProperty(TYPE, std::vector<std::string>());
 }
 
 PreferenceCategoryItem::PreferenceCategoryItem(const std::string &name, const std::string& type)
@@ -44,7 +44,7 @@ PreferenceCategoryItem::PreferenceCategoryItem(const PreferenceCategoryItem &oth
 {
     setDisplayName(other.displayName());
 
-    setProperty(TYPE, other.property<std::string>(TYPE));
+    setProperty(TYPE, other.property<std::vector<std::string>>(TYPE));
 }
 
 }
