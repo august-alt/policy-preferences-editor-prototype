@@ -85,4 +85,9 @@ void TcpPrinterPortWidget::submit()
 
 }
 
+QString TcpPrinterPortWidget::name() const
+{
+    return "Port";
+}
+
 }

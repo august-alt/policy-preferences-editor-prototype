@@ -87,4 +87,9 @@ bool LocalGroupWidget::validate()
     return true;
 }
 
+QString LocalGroupWidget::name() const
+{
+    return "General";
+}
+
 }

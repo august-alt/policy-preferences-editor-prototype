@@ -58,6 +58,8 @@ public:
 
     bool validate() override;
 
+    QString name() const override;
+
 public slots:
     void submit() override;
 

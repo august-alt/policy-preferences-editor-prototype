@@ -38,9 +38,9 @@ namespace mvvm_folders
         WidgetFactory();
         ~WidgetFactory();
 
-        void registerItem(const std::string &type, std::function<std::unique_ptr<PreferenceWidgetInterface>()> func);
+        void registerItem(const std::string &type, std::function<std::unique_ptr<PreferenceWidgetInterface>()> func) override;
 
-        std::unique_ptr<PreferenceWidgetInterface> create(const std::string& type) const;
+        std::vector<std::unique_ptr<PreferenceWidgetInterface> > create(const std::string& type) const override;
 
     private:
         WidgetFactory(const WidgetFactory& other) = delete;

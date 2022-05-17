@@ -81,4 +81,9 @@ void FolderOptionsWidget::submit()
     }
 }
 
+QString FolderOptionsWidget::name() const
+{
+    return "General";
+}
+
 }

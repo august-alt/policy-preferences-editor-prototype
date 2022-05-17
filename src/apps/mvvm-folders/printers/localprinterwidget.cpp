@@ -96,5 +96,10 @@ void LocalPrinterWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
+QString LocalPrinterWidget::name() const
+{
+    return "General";
+}
+
 }
 

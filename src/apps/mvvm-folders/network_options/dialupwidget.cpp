@@ -89,4 +89,9 @@ bool DialUpWidget::validate()
     return true;
 }
 
+QString DialUpWidget::name() const
+{
+    return "General";
+}
+
 }

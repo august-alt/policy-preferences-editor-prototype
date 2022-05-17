@@ -104,4 +104,9 @@ void PowerSchemeWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->defaultCheckBox->setDisabled(disable);
 }
 
+QString PowerSchemeWidget::name() const
+{
+    return "General";
+}
+
 }

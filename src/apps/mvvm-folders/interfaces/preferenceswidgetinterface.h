@@ -46,6 +46,8 @@ namespace mvvm_folders
 
         virtual bool validate() = 0;
 
+        virtual QString name() const = 0;
+
     signals:
         void dataChanged();
 

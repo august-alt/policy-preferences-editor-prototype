@@ -91,4 +91,9 @@ void PowerPlanWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
+QString PowerPlanWidget::name() const
+{
+    return "General";
+}
+
 }

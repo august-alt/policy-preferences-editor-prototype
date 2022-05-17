@@ -94,4 +94,9 @@ void TcpPrinterGeneralWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
+QString TcpPrinterGeneralWidget::name() const
+{
+    return "General";
+}
+
 }

@@ -78,4 +78,9 @@ bool OpenWithWidget::validate()
     return true;
 }
 
+QString OpenWithWidget::name() const
+{
+    return "General";
+}
+
 }

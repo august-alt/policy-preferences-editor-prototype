@@ -99,4 +99,9 @@ bool RegistryWidget::validate()
     return true;
 }
 
+QString RegistryWidget::name() const
+{
+    return "General";
+}
+
 }

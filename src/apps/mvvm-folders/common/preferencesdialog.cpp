@@ -40,18 +40,17 @@ PreferencesDialog::PreferencesDialog(ModelView::SessionItem *item, QWidget *pare
     {
         ui->commonTab->setItem(item->children()[item->children().size() - 2]);
 
-        auto widget = factory->create(item->children().back()->modelType());
-        if (widget)
+        auto widgets = factory->create(item->children().back()->modelType());
+        for (auto& widget : widgets)
         {
             widget->setItem(item->children().back());
             connect(ui->buttonBox, &QDialogButtonBox::accepted, widget.get(), &PreferenceWidgetInterface::submit);
 
-            QGridLayout* generalTablayout = new QGridLayout();
-            generalTablayout->addWidget(widget.release());
+            auto widgetName = widget->name();
 
-            ui->getneralTab->setLayout(generalTablayout);
-
+            ui->tabWidget->insertTab(0, widget.release(), widgetName);
         }
+        ui->tabWidget->setCurrentIndex(0);
     }
 
     connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->commonTab, &CommonView::submit);

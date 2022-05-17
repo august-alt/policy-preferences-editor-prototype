@@ -97,4 +97,9 @@ void VpnSecurityWidget::submit()
     }
 }
 
+QString VpnSecurityWidget::name() const
+{
+    return "Security";
+}
+
 }

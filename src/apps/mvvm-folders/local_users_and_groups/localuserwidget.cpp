@@ -87,4 +87,9 @@ bool LocalUserWidget::validate()
     return true;
 }
 
+QString LocalUserWidget::name() const
+{
+    return "General";
+}
+
 }

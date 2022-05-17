@@ -97,5 +97,10 @@ void SharedPrinterWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
+QString SharedPrinterWidget::name() const
+{
+    return "General";
+}
+
 }
 

@@ -22,11 +22,6 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="getneralTab">
-      <attribute name="title">
-       <string>General</string>
-      </attribute>
-     </widget>
      <widget class="mvvm_folders::CommonView" name="commonTab">
       <attribute name="title">
        <string>Common</string>
