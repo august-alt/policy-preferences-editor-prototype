@@ -24,6 +24,14 @@
 
 #include <mvvm/model/groupitem.h>
 
+#include "local_users_and_groups/localgroupcontaineritem.h"
+#include "local_users_and_groups/localgroupitem.h"
+#include "local_users_and_groups/localuseritem.h"
+
+#include "network_options/networkcontaineritem.h"
+#include "network_options/dialupitem.h"
+#include "network_options/vpnitem.h"
+
 #include "power_options/powercontaineritem.h"
 #include "power_options/poweroptionsitem.h"
 #include "power_options/powerschemeitem.h"
@@ -61,77 +69,79 @@ PreferencesTreeModel::PreferencesTreeModel()
 
 void PreferencesTreeModel::populateModel()
 {
-    std::vector<std::string> drivesTypeIds
+    std::map<std::string, QString> drivesTypeIds
     {
-        "DrivesContainerItem"
+        { "DrivesContainerItem", QObject::tr("Mapped Drive") }
     };
 
-    std::vector<std::string> variablesTypeIds
+    std::map<std::string, QString> variablesTypeIds
     {
-        "VariablesContainerItem"
+        { "VariablesContainerItem", QObject::tr("Environment Variable") }
     };
 
-    std::vector<std::string> filesTypeIds
+    std::map<std::string, QString> filesTypeIds
     {
-        "FilesContainerItem"
+        { "FilesContainerItem", QObject::tr("File") }
     };
 
-    std::vector<std::string> foldersTypeIds
+    std::map<std::string, QString> foldersTypeIds
     {
-        "FolderContainerItem"
+        { "FolderContainerItem", QObject::tr("Folder") }
     };
 
-    std::vector<std::string> iniTypeIds
+    std::map<std::string, QString> iniTypeIds
     {
-        "IniContainerItem"
+        { "IniContainerItem", QObject::tr("Ini File") }
     };
 
-    std::vector<std::string> registryTypeIds
+    std::map<std::string, QString> registryTypeIds
     {
-        "RegistryContainerItem"
+        { "RegistryContainerItem", QObject::tr("Registry Value") }
     };
 
-    std::vector<std::string> sharesTypeIds
+    std::map<std::string, QString> sharesTypeIds
     {
-        "SharesContainerItem"
+        { "SharesContainerItem", QObject::tr("Network Share") }
     };
 
-    std::vector<std::string> shortcutsTypeIds
+    std::map<std::string, QString> shortcutsTypeIds
     {
-        "ShortcutsContainerItem"
+        { "ShortcutsContainerItem", QObject::tr("Shortcut") }
     };
 
-    std::vector<std::string> dataSourceTypeIds
+    std::map<std::string, QString> dataSourceTypeIds
     {
-        "DataSourceContainerItem"
+        { "DataSourceContainerItem", QObject::tr("Data Source") }
     };
 
-    std::vector<std::string> deviceTypeIds
+    std::map<std::string, QString> deviceTypeIds
     {
-        "DeviceContainerItem"
+        { "DeviceContainerItem", QObject::tr("Device") }
     };
 
-    std::vector<std::string> localGroupTypeIds
+    std::map<std::string, QString> localGroupTypeIds
     {
-        "LocalGroupContainerItem"
+        { typeid(LocalGroupContainerItem<LocalGroupItem>).name(), QObject::tr("Local Group") },
+        { typeid(LocalGroupContainerItem<LocalUserItem>).name(), QObject::tr("Local User") }
     };
 
-    std::vector<std::string> networkTypeIds
+    std::map<std::string, QString> networkTypeIds
     {
-        "NetworkContainerItem"
+        { typeid(NetworkContainerItem<VpnItem>).name(), QObject::tr("VPN Connection") },
+        { typeid(NetworkContainerItem<DialUpItem>).name(), QObject::tr("Dial-Up Connection") }
     };
 
-    std::vector<std::string> powerTypeIds
+    std::map<std::string, QString> powerTypeIds
     {
-        typeid(PowerContainerItem<PowerOptionsItem>).name(),
-        typeid(PowerContainerItem<PowerSchemeItem>).name()
+        { typeid(PowerContainerItem<PowerOptionsItem>).name(), QObject::tr("Power Options Settings") },
+        { typeid(PowerContainerItem<PowerSchemeItem>).name(), QObject::tr("Power Scheme Settings") }
     };
 
-    std::vector<std::string> printerTypeIds
+    std::map<std::string, QString> printerTypeIds
     {
-        typeid(PrinterContainerItem<SharedPrinterItem>).name(),
-        typeid(PrinterContainerItem<TcpPrinterItem>).name(),
-        typeid(PrinterContainerItem<LocalPrinterItem>).name(),
+        { typeid(PrinterContainerItem<SharedPrinterItem>).name(), QObject::tr("Shared Printer") },
+        { typeid(PrinterContainerItem<TcpPrinterItem>).name(), QObject::tr("TCP/IP Printer") },
+        { typeid(PrinterContainerItem<LocalPrinterItem>).name(), QObject::tr("Local Printer") }
     };
 
     auto machineNamespace = insertItem<FolderItem>(this->rootItem());
@@ -145,58 +155,58 @@ void PreferencesTreeModel::populateModel()
 
     auto machineVariablesItems = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineVariablesItems->setDisplayName("Environment");
-    machineVariablesItems->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, variablesTypeIds);
+    machineVariablesItems->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, variablesTypeIds);
 
     auto machineFilesItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineFilesItem->setDisplayName("Files");
-    machineFilesItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, filesTypeIds);
+    machineFilesItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, filesTypeIds);
 
     auto machineFoldersItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineFoldersItem->setDisplayName("Folders");
-    machineFoldersItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, foldersTypeIds);
+    machineFoldersItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, foldersTypeIds);
 
     auto machineIniItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineIniItem->setDisplayName("Ini Files");
-    machineIniItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, iniTypeIds);
+    machineIniItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, iniTypeIds);
 
     auto machineRegistryItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineRegistryItem->setDisplayName("Registry");
-    machineRegistryItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, registryTypeIds);
+    machineRegistryItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, registryTypeIds);
 
     auto sharesItem = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     sharesItem->setDisplayName("Network Shares");
-    sharesItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, sharesTypeIds);
+    sharesItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, sharesTypeIds);
 
     auto machineShortcutsItems = insertItem<PreferenceCategoryItem>(machineSystemSettingsItem);
     machineShortcutsItems->setDisplayName("Shortcuts");
-    machineShortcutsItems->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, shortcutsTypeIds);
+    machineShortcutsItems->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, shortcutsTypeIds);
 
     auto machineControlPanelSettingsItem = insertItem<FolderItem>(machinePreferencesItem);
     machineControlPanelSettingsItem->setDisplayName("Control Panel Settings");
 
     auto machineDataSourceItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineDataSourceItem->setDisplayName("Data Sources");
-    machineDataSourceItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, dataSourceTypeIds);
+    machineDataSourceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, dataSourceTypeIds);
 
     auto machineDeviceItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineDeviceItem->setDisplayName("Devices");
-    machineDeviceItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
+    machineDeviceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
 
     auto machineLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
-    machineLocalUsersAndGroupsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, localGroupTypeIds);
+    machineLocalUsersAndGroupsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, localGroupTypeIds);
 
     auto machineNetworkOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineNetworkOptionsItem->setDisplayName("Network Options");
-    machineNetworkOptionsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, networkTypeIds);
+    machineNetworkOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, networkTypeIds);
 
     auto machinePowerOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machinePowerOptionsItem->setDisplayName("Power Options");
-    machinePowerOptionsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, powerTypeIds);
+    machinePowerOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, powerTypeIds);
 
     auto machinePrintersItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machinePrintersItem->setDisplayName("Printers");
-    machinePrintersItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, printerTypeIds);
+    machinePrintersItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, printerTypeIds);
 
 //======================================================================================================================
 
@@ -211,58 +221,58 @@ void PreferencesTreeModel::populateModel()
 
     auto userDrivesItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userDrivesItem->setDisplayName("Drive Maps");
-    userDrivesItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, drivesTypeIds);
+    userDrivesItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, drivesTypeIds);
 
     auto userVariablesItems = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userVariablesItems->setDisplayName("Environment");
-    userVariablesItems->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, variablesTypeIds);
+    userVariablesItems->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, variablesTypeIds);
 
     auto userFilesItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userFilesItem->setDisplayName("Files");
-    userFilesItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, filesTypeIds);
+    userFilesItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, filesTypeIds);
 
     auto userFoldersItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userFoldersItem->setDisplayName("Folders");
-    userFoldersItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, foldersTypeIds);
+    userFoldersItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, foldersTypeIds);
 
     auto userIniItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userIniItem->setDisplayName("Ini Files");
-    userIniItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, iniTypeIds);
+    userIniItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, iniTypeIds);
 
     auto userRegistryItem = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userRegistryItem->setDisplayName("Registry");
-    userRegistryItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, registryTypeIds);
+    userRegistryItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, registryTypeIds);
 
     auto userShortcutsItems = insertItem<PreferenceCategoryItem>(userSystemSettingsItem);
     userShortcutsItems->setDisplayName("Shortcuts");
-    userShortcutsItems->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, shortcutsTypeIds);
+    userShortcutsItems->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, shortcutsTypeIds);
 
     auto userControlPanelSettingsItem = insertItem<FolderItem>(userPreferencesItem);
     userControlPanelSettingsItem->setDisplayName("Control Panel Settings");
 
     auto userDataSourceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userDataSourceItem->setDisplayName("Data Sources");
-    userDataSourceItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, dataSourceTypeIds);
+    userDataSourceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, dataSourceTypeIds);
 
     auto userDeviceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userDeviceItem->setDisplayName("Devices");
-    userDeviceItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
+    userDeviceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
 
     auto userLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
-    userLocalUsersAndGroupsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, localGroupTypeIds);
+    userLocalUsersAndGroupsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, localGroupTypeIds);
 
     auto userNetworkOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userNetworkOptionsItem->setDisplayName("Network Options");
-    userNetworkOptionsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, networkTypeIds);
+    userNetworkOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, networkTypeIds);
 
     auto userPowerOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userPowerOptionsItem->setDisplayName("Power Options");
-    userPowerOptionsItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, powerTypeIds);
+    userPowerOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, powerTypeIds);
 
     auto userPrintersItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userPrintersItem->setDisplayName("Printers");
-    userPrintersItem->setProperty<std::vector<std::string>>(PreferenceCategoryItem::TYPE, printerTypeIds);
+    userPrintersItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, printerTypeIds);
 }
 
 }

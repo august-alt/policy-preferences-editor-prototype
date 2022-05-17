@@ -27,9 +27,13 @@
 #include "folders/foldercontaineritem.h"
 #include "ini/inicontaineritem.h"
 #include "local_users_and_groups/localgroupcontaineritem.h"
+#include "local_users_and_groups/localgroupitem.h"
+#include "local_users_and_groups/localuseritem.h"
 #include "local_users_and_groups/groupmemberitem.h"
 #include "local_users_and_groups/groupmemberscontaineritem.h"
 #include "network_options/networkcontaineritem.h"
+#include "network_options/dialupitem.h"
+#include "network_options/vpnitem.h"
 #include "power_options/powercontaineritem.h"
 #include "power_options/poweroptionsitem.h"
 #include "power_options/powerplanitem.h"
@@ -59,10 +63,12 @@ PreferencesModel::PreferencesModel()
     registerItem<SharesContainerItem>();
     registerItem<ShortcutsContainerItem>();
     registerItem<VariablesContainerItem>();
-    registerItem<LocalGroupContainerItem>();
+    registerItem<LocalGroupContainerItem<LocalGroupItem>>();
+    registerItem<LocalGroupContainerItem<LocalUserItem>>();
     registerItem<GroupMemberItem>();
     registerItem<GroupMembersContainerItem>();
-    registerItem<NetworkContainerItem>();
+    registerItem<NetworkContainerItem<DialUpItem>>();
+    registerItem<NetworkContainerItem<VpnItem>>();
     registerItem<PowerContainerItem<PowerOptionsItem>>();
     registerItem<PowerContainerItem<PowerPlanItem>>();
     registerItem<PowerContainerItem<PowerSchemeItem>>();
