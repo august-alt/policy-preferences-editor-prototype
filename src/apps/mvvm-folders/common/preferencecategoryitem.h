@@ -34,10 +34,7 @@ public:
     static inline const std::string TYPE       = "type";
 
     explicit PreferenceCategoryItem();
-    explicit PreferenceCategoryItem(const std::string& name, const std::string &type);
     PreferenceCategoryItem(const PreferenceCategoryItem &other);
-
-
 };
 
 }

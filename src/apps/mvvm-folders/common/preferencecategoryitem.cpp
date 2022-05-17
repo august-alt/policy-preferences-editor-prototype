@@ -28,15 +28,7 @@ PreferenceCategoryItem::PreferenceCategoryItem()
 {
     setDisplayName("");
 
-    addProperty(TYPE, std::vector<std::string>());
-}
-
-PreferenceCategoryItem::PreferenceCategoryItem(const std::string &name, const std::string& type)
-    : ModelView::CompoundItem("PreferenceCategoryItem")
-{
-    setDisplayName(name);
-
-    addProperty(TYPE, type);
+    addProperty(TYPE, std::map<std::string, QString>());
 }
 
 PreferenceCategoryItem::PreferenceCategoryItem(const PreferenceCategoryItem &other)
@@ -44,7 +36,7 @@ PreferenceCategoryItem::PreferenceCategoryItem(const PreferenceCategoryItem &oth
 {
     setDisplayName(other.displayName());
 
-    setProperty(TYPE, other.property<std::vector<std::string>>(TYPE));
+    setProperty(TYPE, other.property<std::map<std::string, QString>>(TYPE));
 }
 
 }
