@@ -24,6 +24,10 @@
 
 #include <mvvm/model/groupitem.h>
 
+#include "folder_options/folderoptionscontaineritem.h"
+#include "folder_options/folderoptionsitem.h"
+#include "folder_options/openwithitem.h"
+
 #include "local_users_and_groups/localgroupcontaineritem.h"
 #include "local_users_and_groups/localgroupitem.h"
 #include "local_users_and_groups/localuseritem.h"
@@ -144,6 +148,12 @@ void PreferencesTreeModel::populateModel()
         { typeid(PrinterContainerItem<LocalPrinterItem>).name(), QObject::tr("Local Printer") }
     };
 
+    std::map<std::string, QString> userFolderOptionsTypeIds
+    {
+        { typeid(FolderOptionsContainerItem<FolderOptionsItem>).name(), QObject::tr("Folder Options") },
+        { typeid(FolderOptionsContainerItem<OpenWithItem>).name(), QObject::tr("Open With") }
+    };
+
     auto machineNamespace = insertItem<FolderItem>(this->rootItem());
     machineNamespace->setDisplayName("Machine");
 
@@ -191,6 +201,10 @@ void PreferencesTreeModel::populateModel()
     auto machineDeviceItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineDeviceItem->setDisplayName("Devices");
     machineDeviceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
+
+    auto machineFolderOptionsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
+    machineFolderOptionsItem->setDisplayName("Folder Options");
+    machineFolderOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, {});
 
     auto machineLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(machineControlPanelSettingsItem);
     machineLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");
@@ -257,6 +271,10 @@ void PreferencesTreeModel::populateModel()
     auto userDeviceItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userDeviceItem->setDisplayName("Devices");
     userDeviceItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, deviceTypeIds);
+
+    auto userFolderOptionsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
+    userFolderOptionsItem->setDisplayName("Folder Options");
+    userFolderOptionsItem->setProperty<std::map<std::string, QString>>(PreferenceCategoryItem::TYPE, userFolderOptionsTypeIds);
 
     auto userLocalUsersAndGroupsItem = insertItem<PreferenceCategoryItem>(userControlPanelSettingsItem);
     userLocalUsersAndGroupsItem->setDisplayName("Local Users And Groups");

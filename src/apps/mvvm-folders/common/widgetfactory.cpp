@@ -28,6 +28,8 @@
 #include "drives/driveswidget.h"
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
+#include "folder_options/folderoptionswidget.h"
+#include "folder_options/openwithwidget.h"
 #include "ini/iniwidget.h"
 #include "local_users_and_groups/localgroupwidget.h"
 #include "local_users_and_groups/localuserwidget.h"
@@ -60,6 +62,8 @@ WidgetFactory::WidgetFactory()
     registerItem("DeviceItem", [](){ return std::make_unique<DeviceWidget>(); });
     registerItem("FilesItem", [](){ return std::make_unique<FilesWidget>(); });
     registerItem("FolderItem", [](){ return std::make_unique<FolderWidget>(); });
+    registerItem("FolderOptionsItem", [](){ return std::make_unique<FolderOptionsWidget>(); });
+    registerItem("OpenWithItem", [](){ return std::make_unique<OpenWithWidget>(); });
     registerItem("IniItem", [](){ return std::make_unique<IniWidget>(); });
     registerItem("RegistryItem", [](){ return std::make_unique<RegistryWidget>(); });
     registerItem("SharesItem", [](){ return std::make_unique<SharesWidget>(); });

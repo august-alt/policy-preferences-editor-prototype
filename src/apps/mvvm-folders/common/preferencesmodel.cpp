@@ -25,6 +25,9 @@
 #include "drives/drivescontaineritem.h"
 #include "files/filescontaineritem.h"
 #include "folders/foldercontaineritem.h"
+#include "folder_options/folderoptionscontaineritem.h"
+#include "folder_options/folderoptionsitem.h"
+#include "folder_options/openwithitem.h"
 #include "ini/inicontaineritem.h"
 #include "local_users_and_groups/localgroupcontaineritem.h"
 #include "local_users_and_groups/localgroupitem.h"
@@ -58,6 +61,8 @@ PreferencesModel::PreferencesModel()
     registerItem<DeviceContainerItem>();
     registerItem<FilesContainerItem>();
     registerItem<FolderContainerItem>();
+    registerItem<FolderOptionsContainerItem<FolderOptionsItem>>();
+    registerItem<FolderOptionsContainerItem<OpenWithItem>>();
     registerItem<IniContainerItem>();
     registerItem<RegistryContainerItem>();
     registerItem<SharesContainerItem>();
