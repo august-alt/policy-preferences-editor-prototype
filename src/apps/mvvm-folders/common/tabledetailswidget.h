@@ -49,7 +49,7 @@ public:
     void setModel(ModelView::SessionModel *model);
 
 public slots:
-    void onItemTypeChange(const std::vector<std::string> &newItemTypes);
+    void onItemTypeChange(const std::map<std::string, QString> &newItemTypes);
 
 private slots:
     void on_treeView_customContextMenuRequested(const QPoint &pos);
@@ -72,7 +72,7 @@ private:
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
-    std::vector<std::string> itemTypes;
+    std::map<std::string, QString> itemTypes;
 };
 
 }

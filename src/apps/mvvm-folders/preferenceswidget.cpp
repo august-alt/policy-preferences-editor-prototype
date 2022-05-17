@@ -101,19 +101,23 @@ void PreferencesWidget::setupConnections()
                 return;
             }
 
-            std::vector<std::string> types = item->property<std::vector<std::string>>(TYPE);
-
-            ui->detailsWidget->onItemTypeChange(types);
-
-            auto model = m_modelsMap->find(types.front());
-
-            if (model == m_modelsMap->end())
+            std::map<std::string, QString> types = item->property<std::map<std::string, QString>>(TYPE);
+            if (types.size() > 0)
             {
-                m_modelsMap->insert(std::pair(types.front(), new PreferencesModel()));
-                model = m_modelsMap->find(types.front());
-            }
+                auto modelType = types.begin()->first;
 
-            ui->detailsWidget->setModel(model->second);
+                ui->detailsWidget->onItemTypeChange(types);
+
+                auto model = m_modelsMap->find(modelType);
+
+                if (model == m_modelsMap->end())
+                {
+                    m_modelsMap->insert(std::pair(modelType, new PreferencesModel()));
+                    model = m_modelsMap->find(modelType);
+                }
+
+                ui->detailsWidget->setModel(model->second);
+            }
         }
     });
 }

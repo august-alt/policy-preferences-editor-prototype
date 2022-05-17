@@ -67,7 +67,7 @@ void TableDetailsWidget::setModel(ModelView::SessionModel *model)
     ui->treeView->setCurrentIndex(view_model->index(0, 0));
 }
 
-void TableDetailsWidget::onItemTypeChange(const std::vector<std::string> &newItemTypes)
+void TableDetailsWidget::onItemTypeChange(const std::map<std::string, QString> &newItemTypes)
 {
     itemTypes = newItemTypes;
 }
@@ -100,38 +100,29 @@ void TableDetailsWidget::on_treeView_customContextMenuRequested(const QPoint &po
     menu.addSeparator();
     menu.addAction("Help");
 
-    if (!view_item)
+    for (const auto& itemType : itemTypes)
     {
-        for (const auto& itemType : itemTypes)
-        {
-            auto addItemAction = newMenuItem->addAction(QString("Add item %1").arg(itemType.c_str()));
-            auto add_item = [&]() {
-                auto newItem = view_model->sessionModel()->insertNewItem(itemType,
-                                                                         view_model->sessionModel()->rootItem());
-                if (auto containerItemInterface = dynamic_cast<ContainerItemInterface*>(newItem))
-                {
-                    containerItemInterface->setupListeners();
-                }
-
-            };
-            connect(addItemAction, &QAction::triggered, add_item);
-        }
+        auto addItemAction = newMenuItem->addAction(itemType.second);
+        auto add_item = [&]() {
+            auto newItem = view_model->sessionModel()->insertNewItem(itemType.first,
+                                                                     view_model->sessionModel()->rootItem());
+            if (auto containerItemInterface = dynamic_cast<ContainerItemInterface*>(newItem))
+            {
+                containerItemInterface->setupListeners();
+            }
+            PreferencesDialog(newItem, nullptr).exec();
+        };
+        connect(addItemAction, &QAction::triggered, add_item);
     }
-    else
+
+    if (view_item)
     {
         auto item = view_item->item()->parent();
         auto tagrow = item->tagRow();
 
-        // inserting item of same type after given item
-        auto addItemAction = newMenuItem->addAction("Add item");
-        auto add_item = [&]() {
-            view_model->sessionModel()->insertNewItem(item->modelType(), item->parent(), tagrow.next());
-        };
-        connect(addItemAction, &QAction::triggered, add_item);
-
         // removing item under the mouse
-        auto removeItemAction = newMenuItem->addAction("Remove item");
-        auto remove_item = [&]() { view_model->sessionModel()->removeItem(item->parent(), tagrow); };
+        auto removeItemAction = menu.addAction("Remove item");
+        auto remove_item = [=]() { view_model->sessionModel()->removeItem(item->parent(), tagrow); };
         connect(removeItemAction, &QAction::triggered, remove_item);
     }
 
