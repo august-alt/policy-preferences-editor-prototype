@@ -18,10 +18,7 @@
 **
 ***********************************************************************************************************************/
 
-#include "printercontaineritem.h"
-
 #include "common/commonitem.h"
-#include "localprinteritem.h"
 
 #include <mvvm/signals/itemmapper.h>
 
