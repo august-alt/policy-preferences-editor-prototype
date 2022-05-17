@@ -56,6 +56,7 @@ set(HEADERS
     local_users_and_groups/groupmemberswidget.h
     local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
+    local_users_and_groups/localgroupcontaineritem.inl
     local_users_and_groups/localgroupitem.h
     local_users_and_groups/localgroupwidget.h
     local_users_and_groups/localuseritem.h
@@ -65,6 +66,7 @@ set(HEADERS
     network_options/dialupitem.h
     network_options/dialupwidget.h
     network_options/networkcontaineritem.h
+    network_options/networkcontaineritem.inl
     network_options/vpnitem.h
     network_options/vpnnetworkingwidget.h
     network_options/vpnoptionswidget.h
@@ -170,7 +172,6 @@ set(SOURCES
     local_users_and_groups/groupmemberitem.cpp
     local_users_and_groups/groupmemberswidget.cpp
     local_users_and_groups/groupmemberswidgetslots.cpp
-    local_users_and_groups/localgroupcontaineritem.cpp
     local_users_and_groups/localgroupitem.cpp
     local_users_and_groups/localgroupwidget.cpp
     local_users_and_groups/localgroupwidgetslots.cpp
@@ -182,7 +183,6 @@ set(SOURCES
     network_options/dialupitem.cpp
     network_options/dialupwidget.cpp
     network_options/dialupwidgetslots.cpp
-    network_options/networkcontaineritem.cpp
     network_options/vpnitem.cpp
     network_options/vpnnetworkingwidget.cpp
     network_options/vpnoptionswidget.cpp

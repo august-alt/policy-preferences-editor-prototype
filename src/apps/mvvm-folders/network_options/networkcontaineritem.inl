@@ -18,20 +18,17 @@
 **
 ***********************************************************************************************************************/
 
-#include "networkcontaineritem.h"
-
 #include "common/commonitem.h"
 #include "basenetworkitem.h"
-
-#include "dialupitem.h"
 
 #include <mvvm/signals/itemmapper.h>
 
 namespace mvvm_folders
 {
 
-NetworkContainerItem::NetworkContainerItem()
-    : ModelView::CompoundItem("NetworkContainerItem")
+template <typename NetworkItem>
+NetworkContainerItem<NetworkItem>::NetworkContainerItem()
+    : ModelView::CompoundItem(typeid(NetworkContainerItem<NetworkItem>).name())
 {
     addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
@@ -39,53 +36,58 @@ NetworkContainerItem::NetworkContainerItem()
     addProperty(ADDRESS, "")->setDisplayName(QObject::tr("Address").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
-    addProperty<DialUpItem>(NETWORK)->setVisible(false);
+    addProperty<NetworkItem>(NETWORK)->setVisible(false);
 }
 
-CommonItem NetworkContainerItem::getCommon() const
+template <typename NetworkItem>
+CommonItem NetworkContainerItem<NetworkItem>::getCommon() const
 {
     return property<CommonItem>(COMMON);
 }
 
-void NetworkContainerItem::setCommon(const CommonItem &item)
+template <typename NetworkItem>
+void NetworkContainerItem<NetworkItem>::setCommon(const CommonItem &item)
 {
     setProperty(COMMON, item);
 }
 
-DialUpItem NetworkContainerItem::getNetwork() const
+template <typename NetworkItem>
+NetworkItem NetworkContainerItem<NetworkItem>::getNetwork() const
 {
-    return property<DialUpItem>(NETWORK);
+    return property<NetworkItem>(NETWORK);
 }
 
-void NetworkContainerItem::setNetwork(const DialUpItem &item)
+template <typename NetworkItem>
+void NetworkContainerItem<NetworkItem>::setNetwork(const NetworkItem &item)
 {
     setProperty(NETWORK, item);
 }
 
-void NetworkContainerItem::setupListeners()
+template <typename NetworkItem>
+void NetworkContainerItem<NetworkItem>::setupListeners()
 {
     auto onChildPropertyChange = [&](SessionItem* item, std::string property)
     {
-        if (auto networkItem = dynamic_cast<BaseNetworkItem*>(item))
+        if (auto networkItem = dynamic_cast<NetworkItem*>(item))
         {
             if (property == ACTION)
             {
-                setProperty(ACTION, networkItem->property<std::string>(ACTION));
+                setProperty(ACTION, networkItem->template property<std::string>(ACTION));
             }
 
             if (property == NAME)
             {
-                setProperty(NAME, networkItem->property<std::string>(NAME));
+                setProperty(NAME, networkItem->template property<std::string>(NAME));
             }
 
             if (property == IP_ADDRESS)
             {
-                setProperty(ADDRESS, networkItem->property<std::string>(IP_ADDRESS));
+                setProperty(ADDRESS, networkItem->template property<std::string>(IP_ADDRESS));
             }
 
             if (property == PHONE_NUMBER)
             {
-                setProperty(ADDRESS, networkItem->property<std::string>(PHONE_NUMBER));
+                setProperty(ADDRESS, networkItem->template property<std::string>(PHONE_NUMBER));
             }
         }
     };
