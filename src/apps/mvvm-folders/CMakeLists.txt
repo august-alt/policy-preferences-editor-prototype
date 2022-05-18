@@ -42,6 +42,8 @@ set(HEADERS
     folder_options/folderoptionsitem.h
     folder_options/openwithitem.h
     folder_options/openwithwidget.h
+    folder_options/fileextensionactionitem.h
+    folder_options/fileextensioncontaineritem.h
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
 
@@ -158,6 +160,8 @@ set(SOURCES
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp
     folder_options/openwithwidgetslots.cpp
+    folder_options/fileextensionactionitem.cpp
+    folder_options/fileextensioncontaineritem.cpp
     folder_options/fileextensionitem.cpp
     folder_options/fileextensionwidget.cpp
 
