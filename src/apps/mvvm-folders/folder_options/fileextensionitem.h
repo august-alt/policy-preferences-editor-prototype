@@ -33,13 +33,24 @@ class FileExtensionItem : public BasePreferenceItem<FileExtensionItem>
 public:
     enum PropertyType
     {
+        ACTION              = 0,
+        FILE_EXT            = 1,
+        APPLICATION         = 2,
+        APP_PROG_ID         = 3,
+        CONFIG_ACTIONS      = 4,
+        ICON_PATH           = 5,
+        ICON_INDEX          = 6,
+        CONFIRM_OPEN        = 7,
+        ALWAYS_SHOW         = 8,
+        SAME_WINDOW         = 9,
+        ACTIONS             = 10,
     };
 
 public:
     FileExtensionItem();
     FileExtensionItem(const FileExtensionItem &other);
 
-	constexpr static const char* propertyToString(const PropertyType& type);
+    constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }

@@ -14,63 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0" colspan="2">
-    <widget class="QSplitter" name="splitter">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <widget class="QLabel" name="actionLabel">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>1</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>9</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Action:</string>
-      </property>
-      <property name="buddy">
-       <cstring>actionComboBox</cstring>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="actionComboBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>3</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="currentText">
-       <string>Create</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Create</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Replace</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Update</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Delete</string>
-       </property>
-      </item>
-     </widget>
-    </widget>
-   </item>
    <item row="3" column="0">
     <widget class="QLabel" name="classLabel">
      <property name="text">
@@ -82,7 +25,7 @@
     </widget>
    </item>
    <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="fileextentionLineEdit"/>
+    <widget class="QLineEdit" name="fileExtentionLineEdit"/>
    </item>
    <item row="3" column="1" colspan="2">
     <widget class="QComboBox" name="classComboBox"/>
@@ -100,7 +43,7 @@
       <string>File extension:</string>
      </property>
      <property name="buddy">
-      <cstring>fileextentionLineEdit</cstring>
+      <cstring>fileExtentionLineEdit</cstring>
      </property>
     </widget>
    </item>
@@ -273,11 +216,68 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QLabel" name="actionLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Action:</string>
+      </property>
+      <property name="buddy">
+       <cstring>actionComboBox</cstring>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="actionComboBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>3</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="currentText">
+       <string>Create</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Create</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Replace</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Update</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>fileextentionLineEdit</tabstop>
+  <tabstop>fileExtentionLineEdit</tabstop>
   <tabstop>classComboBox</tabstop>
   <tabstop>settingsCheckBox</tabstop>
   <tabstop>iconPathLineEdit</tabstop>
