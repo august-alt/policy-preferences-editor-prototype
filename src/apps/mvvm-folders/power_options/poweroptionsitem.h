@@ -38,7 +38,8 @@ public:
         PRESS_SLEEP_BUTTON = 2,
         SHOW_ICON          = 3,
         PROMPT_PASSWORD    = 4,
-        ENABLE_HIBERNATION = 5
+        ENABLE_HIBERNATION = 5,
+        NAME               = 6
     };
 
     PowerOptionsItem();

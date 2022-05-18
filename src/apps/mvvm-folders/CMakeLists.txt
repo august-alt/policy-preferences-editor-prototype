@@ -37,10 +37,13 @@ set(HEADERS
     folders/folderwidget.h
 
     folder_options/folderoptionscontaineritem.h
+    folder_options/folderoptionscontaineritem.inl
     folder_options/folderoptionswidget.h
     folder_options/folderoptionsitem.h
     folder_options/openwithitem.h
     folder_options/openwithwidget.h
+    folder_options/fileextensionitem.h
+    folder_options/fileextensionwidget.h
 
     files/filesitem.h
     files/filescontaineritem.h
@@ -56,6 +59,7 @@ set(HEADERS
     local_users_and_groups/groupmemberswidget.h
     local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
+    local_users_and_groups/localgroupcontaineritem.inl
     local_users_and_groups/localgroupitem.h
     local_users_and_groups/localgroupwidget.h
     local_users_and_groups/localuseritem.h
@@ -65,6 +69,7 @@ set(HEADERS
     network_options/dialupitem.h
     network_options/dialupwidget.h
     network_options/networkcontaineritem.h
+    network_options/networkcontaineritem.inl
     network_options/vpnitem.h
     network_options/vpnnetworkingwidget.h
     network_options/vpnoptionswidget.h
@@ -82,6 +87,16 @@ set(HEADERS
     power_options/powerplanwidget.h
     power_options/powerschemeitem.h
     power_options/powerschemewidget.h
+
+    printers/localprinteritem.h
+    printers/localprinterwidget.h
+    printers/printercontaineritem.h
+    printers/printercontaineritem.inl
+    printers/sharedprinteritem.h
+    printers/sharedprinterwidget.h
+    printers/tcpprintergeneralwidget.h
+    printers/tcpprinteritem.h
+    printers/tcpprinterportwidget.h
 
     registry/registrycontaineritem.h
     registry/registryitem.h
@@ -138,12 +153,13 @@ set(SOURCES
     folders/folderwidget.cpp
     folders/folderviewslots.cpp
 
-    folder_options/folderoptionscontaineritem.cpp
     folder_options/folderoptionswidget.cpp
     folder_options/folderoptionsitem.cpp
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp
     folder_options/openwithwidgetslots.cpp
+    folder_options/fileextensionitem.cpp
+    folder_options/fileextensionwidget.cpp
 
     files/filesitem.cpp
     files/filescontaineritem.cpp
@@ -160,7 +176,6 @@ set(SOURCES
     local_users_and_groups/groupmemberitem.cpp
     local_users_and_groups/groupmemberswidget.cpp
     local_users_and_groups/groupmemberswidgetslots.cpp
-    local_users_and_groups/localgroupcontaineritem.cpp
     local_users_and_groups/localgroupitem.cpp
     local_users_and_groups/localgroupwidget.cpp
     local_users_and_groups/localgroupwidgetslots.cpp
@@ -172,7 +187,6 @@ set(SOURCES
     network_options/dialupitem.cpp
     network_options/dialupwidget.cpp
     network_options/dialupwidgetslots.cpp
-    network_options/networkcontaineritem.cpp
     network_options/vpnitem.cpp
     network_options/vpnnetworkingwidget.cpp
     network_options/vpnoptionswidget.cpp
@@ -187,6 +201,14 @@ set(SOURCES
     power_options/powerplanwidget.cpp
     power_options/powerschemeitem.cpp
     power_options/powerschemewidget.cpp
+
+    printers/localprinteritem.cpp
+    printers/localprinterwidget.cpp
+    printers/sharedprinteritem.cpp
+    printers/sharedprinterwidget.cpp
+    printers/tcpprintergeneralwidget.cpp
+    printers/tcpprinteritem.cpp
+    printers/tcpprinterportwidget.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
@@ -231,6 +253,7 @@ set(UI_FORMS
 
     folder_options/folderoptionswidget.ui
     folder_options/openwithwidget.ui
+    folder_options/fileextensionwidget.ui
 
     files/fileswidget.ui
 
@@ -250,6 +273,11 @@ set(UI_FORMS
     power_options/poweroptionswidget.ui
     power_options/powerplanwidget.ui
     power_options/powerschemewidget.ui
+
+    printers/localprinterwidget.ui
+    printers/sharedprinterwidget.ui
+    printers/tcpprintergeneralwidget.ui
+    printers/tcpprinterportwidget.ui
 
     registry/registrywidget.ui
 

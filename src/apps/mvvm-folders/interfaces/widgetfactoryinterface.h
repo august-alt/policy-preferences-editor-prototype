@@ -34,7 +34,7 @@ public:
     virtual void registerItem(const std::string &type,
                               std::function<std::unique_ptr<PreferenceWidgetInterface>()> func) = 0;
 
-    virtual std::unique_ptr<PreferenceWidgetInterface> create(const std::string& type) const = 0;
+    virtual std::vector<std::unique_ptr<PreferenceWidgetInterface> > create(const std::string& type) const = 0;
 };
 
 }

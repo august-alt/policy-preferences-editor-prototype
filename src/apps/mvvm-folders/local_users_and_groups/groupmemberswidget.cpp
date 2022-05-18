@@ -79,8 +79,13 @@ void GroupMembersWidget::setItem(ModelView::SessionItem* item)
 }
 
 bool GroupMembersWidget::validate()
-{    
+{
     return true;
+}
+
+QString GroupMembersWidget::name() const
+{
+    return "Group Members";
 }
 
 void GroupMembersWidget::submit()

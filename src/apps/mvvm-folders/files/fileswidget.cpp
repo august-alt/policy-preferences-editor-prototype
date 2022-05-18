@@ -90,4 +90,9 @@ bool FilesWidget::validate()
     return true;
 }
 
+QString FilesWidget::name() const
+{
+    return "General";
+}
+
 }

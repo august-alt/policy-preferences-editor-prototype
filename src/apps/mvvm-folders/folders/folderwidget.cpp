@@ -155,7 +155,7 @@ void FolderWidget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, 0);
     mapper->addMapping(ui->pathLineEdit, 1);
@@ -183,6 +183,11 @@ void FolderWidget::submit()
 
         emit dataChanged();
     }
+}
+
+QString FolderWidget::name() const
+{
+    return "General";
 }
 
 }

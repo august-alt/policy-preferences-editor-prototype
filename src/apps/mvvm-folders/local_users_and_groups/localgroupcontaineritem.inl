@@ -18,18 +18,16 @@
 **
 ***********************************************************************************************************************/
 
-#include "localgroupcontaineritem.h"
-
 #include "common/commonitem.h"
-#include "localgroupitem.h"
 
 #include <mvvm/signals/itemmapper.h>
 
 namespace mvvm_folders
 {
 
-LocalGroupContainerItem::LocalGroupContainerItem()
-    : ModelView::CompoundItem("LocalGroupContainerItem")
+template <typename LocalItem>
+LocalGroupContainerItem<LocalItem>::LocalGroupContainerItem()
+    : ModelView::CompoundItem(typeid(LocalGroupContainerItem<LocalItem>).name())
 {
     addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
     addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
@@ -38,58 +36,63 @@ LocalGroupContainerItem::LocalGroupContainerItem()
     addProperty(DESCRIPTION, "")->setDisplayName(QObject::tr("Description").toStdString())->setEditable(false);
 
     addProperty<CommonItem>(COMMON)->setVisible(false);
-    addProperty<LocalGroupItem>(LOCAL_USER_OR_GROUP)->setVisible(false);
+    addProperty<LocalItem>(LOCAL_USER_OR_GROUP)->setVisible(false);
 }
 
-CommonItem LocalGroupContainerItem::getCommon() const
+template <typename LocalItem>
+CommonItem LocalGroupContainerItem<LocalItem>::getCommon() const
 {
     return property<CommonItem>(COMMON);
 }
 
-void LocalGroupContainerItem::setCommon(const CommonItem &item)
+template <typename LocalItem>
+void LocalGroupContainerItem<LocalItem>::setCommon(const CommonItem &item)
 {
     setProperty(COMMON, item);
 }
 
-LocalGroupItem LocalGroupContainerItem::getLocalGroup() const
+template <typename LocalItem>
+LocalItem LocalGroupContainerItem<LocalItem>::getLocalGroup() const
 {
-    return property<LocalGroupItem>(LOCAL_USER_OR_GROUP);
+    return property<LocalItem>(LOCAL_USER_OR_GROUP);
 }
 
-void LocalGroupContainerItem::setLocalGroup(const LocalGroupItem &item)
+template <typename LocalItem>
+void LocalGroupContainerItem<LocalItem>::setLocalGroup(const LocalItem &item)
 {
     setProperty(LOCAL_USER_OR_GROUP, item);
 }
 
-void LocalGroupContainerItem::setupListeners()
+template <typename LocalItem>
+void LocalGroupContainerItem<LocalItem>::setupListeners()
 {
     auto onChildPropertyChange = [&](SessionItem* item, std::string property)
     {
-        if (auto baseItem = dynamic_cast<LocalGroupItem*>(item))
+        if (auto baseItem = dynamic_cast<LocalItem*>(item))
         {
             if (property == ACTION)
             {
-                setProperty(ACTION, baseItem->property<std::string>(ACTION));
+                setProperty(ACTION, baseItem->template property<std::string>(ACTION));
             }
 
             if (property == GROUP_NAME)
             {
-                setProperty(NAME, baseItem->property<std::string>(GROUP_NAME));
+                setProperty(NAME, baseItem->template property<std::string>(GROUP_NAME));
             }
 
             if (property == USER_NAME)
             {
-                setProperty(NAME, baseItem->property<std::string>(USER_NAME));
+                setProperty(NAME, baseItem->template property<std::string>(USER_NAME));
             }
 
             if (property == DESCRIPTION)
             {
-                setProperty(DESCRIPTION, baseItem->property<std::string>(DESCRIPTION));
+                setProperty(DESCRIPTION, baseItem->template property<std::string>(DESCRIPTION));
             }
 
             if (property == FULL_NAME)
             {
-                setProperty(FULL_NAME, baseItem->property<std::string>(FULL_NAME));
+                setProperty(FULL_NAME, baseItem->template property<std::string>(FULL_NAME));
             }
         }
     };

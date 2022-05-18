@@ -18,74 +18,65 @@
 **
 ***********************************************************************************************************************/
 
-#include "networkcontaineritem.h"
-
 #include "common/commonitem.h"
-#include "basenetworkitem.h"
-
-#include "dialupitem.h"
 
 #include <mvvm/signals/itemmapper.h>
 
 namespace mvvm_folders
 {
 
-NetworkContainerItem::NetworkContainerItem()
-    : ModelView::CompoundItem("NetworkContainerItem")
+template <typename FolderOptionItem>
+FolderOptionsContainerItem<FolderOptionItem>::FolderOptionsContainerItem()
+    : ModelView::CompoundItem(typeid(FolderOptionsContainerItem<FolderOptionItem>).name())
 {
-    addProperty(NAME, "")->setDisplayName(QObject::tr("Name").toStdString())->setEditable(false);
-    addProperty(ORDER, 0)->setDisplayName(QObject::tr("Order").toStdString())->setEditable(false);
-    addProperty(ACTION, "")->setDisplayName(QObject::tr("Action").toStdString())->setEditable(false);
-    addProperty(ADDRESS, "")->setDisplayName(QObject::tr("Address").toStdString())->setEditable(false);
-
     addProperty<CommonItem>(COMMON)->setVisible(false);
-    addProperty<DialUpItem>(NETWORK)->setVisible(false);
+    addProperty<FolderOptionItem>(FOLDER_OPTION)->setVisible(false);
 }
 
-CommonItem NetworkContainerItem::getCommon() const
+template <typename FolderOptionItem>
+CommonItem FolderOptionsContainerItem<FolderOptionItem>::getCommon() const
 {
     return property<CommonItem>(COMMON);
 }
 
-void NetworkContainerItem::setCommon(const CommonItem &item)
+template <typename FolderOptionItem>
+void FolderOptionsContainerItem<FolderOptionItem>::setCommon(const CommonItem &item)
 {
     setProperty(COMMON, item);
 }
 
-DialUpItem NetworkContainerItem::getNetwork() const
+template <typename FolderOptionItem>
+FolderOptionItem FolderOptionsContainerItem<FolderOptionItem>::getFolderOption() const
 {
-    return property<DialUpItem>(NETWORK);
+    return property<FolderOptionItem>(FOLDER_OPTION);
 }
 
-void NetworkContainerItem::setNetwork(const DialUpItem &item)
+template <typename FolderOptionItem>
+void FolderOptionsContainerItem<FolderOptionItem>::setFolderOption(const FolderOptionItem &item)
 {
-    setProperty(NETWORK, item);
+    setProperty(FOLDER_OPTION, item);
 }
 
-void NetworkContainerItem::setupListeners()
+template <typename FolderOptionItem>
+void FolderOptionsContainerItem<FolderOptionItem>::setupListeners()
 {
     auto onChildPropertyChange = [&](SessionItem* item, std::string property)
     {
-        if (auto networkItem = dynamic_cast<BaseNetworkItem*>(item))
+        if (auto folderOptionItem = dynamic_cast<FolderOptionItem*>(item))
         {
             if (property == ACTION)
             {
-                setProperty(ACTION, networkItem->property<std::string>(ACTION));
+                setProperty(ACTION, folderOptionItem->template property<std::string>(ACTION));
             }
 
             if (property == NAME)
             {
-                setProperty(NAME, networkItem->property<std::string>(NAME));
+                setProperty(NAME, folderOptionItem->template property<std::string>(NAME));
             }
 
-            if (property == IP_ADDRESS)
+            if (property == ASSOCIATION)
             {
-                setProperty(ADDRESS, networkItem->property<std::string>(IP_ADDRESS));
-            }
-
-            if (property == PHONE_NUMBER)
-            {
-                setProperty(ADDRESS, networkItem->property<std::string>(PHONE_NUMBER));
+                setProperty(ASSOCIATION, folderOptionItem->template property<std::string>(ASSOCIATION));
             }
         }
     };

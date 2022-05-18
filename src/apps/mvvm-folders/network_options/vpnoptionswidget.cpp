@@ -87,4 +87,9 @@ void VpnOptionsWidget::submit()
     }
 }
 
+QString VpnOptionsWidget::name() const
+{
+    return "Options";
+}
+
 }

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Device clsid="{2E1C95D0-85FB-403a-A57C-A508854FB7C8}" name="ACPI x64-based PC" image="0" changed="2022-05-12 10:50:54" uid="{53551800-9075-48AD-9D13-1048C452F5DB}"><Properties deviceAction="ENABLE" deviceClass="Computer" deviceType="ACPI x64-based PC" deviceClassGUID="{4D36E966-E325-11CE-BFC1-08002BE10318}" deviceTypeID="ROOT\ACPI_HAL\0000"/></Device>

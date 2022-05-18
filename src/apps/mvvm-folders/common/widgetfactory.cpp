@@ -28,14 +28,23 @@
 #include "drives/driveswidget.h"
 #include "files/fileswidget.h"
 #include "folders/folderwidget.h"
+#include "folder_options/folderoptionswidget.h"
+#include "folder_options/openwithwidget.h"
 #include "ini/iniwidget.h"
 #include "local_users_and_groups/localgroupwidget.h"
 #include "local_users_and_groups/localuserwidget.h"
 #include "network_options/dialupwidget.h"
 #include "network_options/vpnwidget.h"
+#include "network_options/vpnsecuritywidget.h"
+#include "network_options/vpnoptionswidget.h"
+#include "network_options/vpnnetworkingwidget.h"
 #include "power_options/poweroptionswidget.h"
 #include "power_options/powerplanwidget.h"
 #include "power_options/powerschemewidget.h"
+#include "printers/localprinterwidget.h"
+#include "printers/sharedprinterwidget.h"
+#include "printers/tcpprinterportwidget.h"
+#include "printers/tcpprintergeneralwidget.h"
 #include "registry/registrywidget.h"
 #include "shares/shareswidget.h"
 #include "shortcuts/shortcutswidget.h"
@@ -47,7 +56,7 @@ namespace mvvm_folders
 class WidgetFactoryPrivate
 {
 public:
-    std::map<std::string, std::function<std::unique_ptr<PreferenceWidgetInterface>() > > constructors{};
+    std::unordered_multimap<std::string, std::function<std::unique_ptr<PreferenceWidgetInterface>() > > constructors{};
 };
 
 WidgetFactory::WidgetFactory()
@@ -57,6 +66,8 @@ WidgetFactory::WidgetFactory()
     registerItem("DeviceItem", [](){ return std::make_unique<DeviceWidget>(); });
     registerItem("FilesItem", [](){ return std::make_unique<FilesWidget>(); });
     registerItem("FolderItem", [](){ return std::make_unique<FolderWidget>(); });
+    registerItem("FolderOptionsItem", [](){ return std::make_unique<FolderOptionsWidget>(); });
+    registerItem("OpenWithItem", [](){ return std::make_unique<OpenWithWidget>(); });
     registerItem("IniItem", [](){ return std::make_unique<IniWidget>(); });
     registerItem("RegistryItem", [](){ return std::make_unique<RegistryWidget>(); });
     registerItem("SharesItem", [](){ return std::make_unique<SharesWidget>(); });
@@ -66,10 +77,17 @@ WidgetFactory::WidgetFactory()
     registerItem("LocalGroupItem", [](){ return std::make_unique<LocalGroupWidget>(); });
     registerItem("LocalUserItem", [](){ return std::make_unique<LocalUserWidget>(); });
     registerItem("VpnItem", [](){ return std::make_unique<VpnWidget>(); });
+    registerItem("VpnItem", [](){ return std::make_unique<VpnSecurityWidget>(); });
+    registerItem("VpnItem", [](){ return std::make_unique<VpnOptionsWidget>(); });
+    registerItem("VpnItem", [](){ return std::make_unique<VpnNetworkingWidget>(); });
     registerItem("DialUpItem", [](){ return std::make_unique<DialUpWidget>(); });
     registerItem("PowerOptionsItem", [](){ return std::make_unique<PowerOptionsWidget>(); });
     registerItem("PowerPlanItem", [](){ return std::make_unique<PowerPlanWidget>(); });
     registerItem("PowerSchemeItem", [](){ return std::make_unique<PowerSchemeWidget>(); });
+    registerItem("LocalPrinterItem", [](){ return std::make_unique<LocalPrinterWidget>(); });
+    registerItem("TcpPrinterItem", [](){ return std::make_unique<TcpPrinterGeneralWidget>(); });
+    registerItem("TcpPrinterItem", [](){ return std::make_unique<TcpPrinterPortWidget>(); });
+    registerItem("SharedPrinterItem", [](){ return std::make_unique<SharedPrinterWidget>(); });
 }
 
 WidgetFactory::~WidgetFactory() = default;
@@ -77,19 +95,22 @@ WidgetFactory::~WidgetFactory() = default;
 void WidgetFactory::registerItem(const std::string &type,
                                  std::function<std::unique_ptr<PreferenceWidgetInterface>() > func)
 {
-    d->constructors[type] = func;
+    d->constructors.insert(std::pair(type, func));
 }
 
-std::unique_ptr<PreferenceWidgetInterface> WidgetFactory::create(const std::string &type) const
+std::vector<std::unique_ptr<PreferenceWidgetInterface>> WidgetFactory::create(const std::string &type) const
 {
-    auto func = d->constructors.find(type);
+    auto func = d->constructors.equal_range(type);
 
-    if (func != d->constructors.end())
-    {
-        return func->second();
-    }
+    std::vector<std::unique_ptr<PreferenceWidgetInterface>> widgets;
 
-    return nullptr;
+    std::transform(func.first, func.second, std::back_inserter(widgets),
+                   [](const auto& element)
+                   {
+                        return element.second();
+                   });
+
+    return widgets;
 }
 
 }

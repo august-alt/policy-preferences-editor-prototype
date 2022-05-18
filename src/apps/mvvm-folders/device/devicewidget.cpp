@@ -85,4 +85,9 @@ void DeviceWidget::submit()
     }
 }
 
+QString DeviceWidget::name() const
+{
+    return "General";
+}
+
 }

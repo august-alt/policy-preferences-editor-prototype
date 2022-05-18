@@ -93,4 +93,9 @@ bool VariablesWidget::validate()
     return true;
 }
 
+QString VariablesWidget::name() const
+{
+    return "General";
+}
+
 }

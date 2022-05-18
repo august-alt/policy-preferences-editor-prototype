@@ -32,6 +32,7 @@ PowerOptionsItem::PowerOptionsItem()
     addProperty(propertyToString(SHOW_ICON), false);
     addProperty(propertyToString(PROMPT_PASSWORD), false);
     addProperty(propertyToString(ENABLE_HIBERNATION), false);
+    addProperty(propertyToString(NAME), QObject::tr("Power Options (Windows XP)").toStdString());
 }
 
 PowerOptionsItem::PowerOptionsItem(const PowerOptionsItem &other)
@@ -43,6 +44,7 @@ PowerOptionsItem::PowerOptionsItem(const PowerOptionsItem &other)
     copyProperty<bool>(SHOW_ICON, other);
     copyProperty<bool>(PROMPT_PASSWORD, other);
     copyProperty<bool>(ENABLE_HIBERNATION, other);
+    copyProperty<std::string>(NAME, other);
 }
 
 constexpr const char *PowerOptionsItem::propertyToString(const PowerOptionsItem::PropertyType &type)
@@ -61,6 +63,8 @@ constexpr const char *PowerOptionsItem::propertyToString(const PowerOptionsItem:
         return "promptPassword";
     case ENABLE_HIBERNATION:
         return "enableHibernation";
+    case NAME:
+        return "name";
     }
 
     return "";

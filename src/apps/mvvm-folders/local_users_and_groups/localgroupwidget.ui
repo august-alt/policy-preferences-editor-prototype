@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
-    <height>504</height>
+    <width>380</width>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -138,45 +138,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="2" column="0" colspan="3">
-       <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
-         <widget class="QRadioButton" name="addUserRadioButton">
-          <property name="text">
-           <string>Add the current user</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QCheckBox" name="deleteUsersCheckBox">
-          <property name="text">
-           <string>Delete all member users</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QRadioButton" name="removeUserRadioButton">
-          <property name="text">
-           <string>Remove the current user</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QCheckBox" name="deleteGroupCheckBox">
-          <property name="text">
-           <string>Delete all member groups</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <widget class="QRadioButton" name="doNotUserradioButton">
-          <property name="text">
-           <string>Do not configure for the current user</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="renameLabel">
         <property name="sizePolicy">
@@ -204,7 +165,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="2">
+      <item row="0" column="1">
        <widget class="QLineEdit" name="renameLineEdit">
         <property name="text">
          <string/>
@@ -233,18 +194,57 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="descriptionLineEdit"/>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="addUserRadioButton">
+          <property name="text">
+           <string>Add the current user</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="removeUserRadioButton">
+          <property name="text">
+           <string>Remove the current user</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QRadioButton" name="doNotUserradioButton">
+          <property name="text">
+           <string>Do not configure for the current user</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="deleteGroupCheckBox">
+          <property name="text">
+           <string>Delete all member groups</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="deleteUsersCheckBox">
+          <property name="text">
+           <string>Delete all member users</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
       <item row="3" column="0" colspan="2">
        <widget class="mvvm_folders::GroupMembersWidget" name="membersWidget" native="true">
         <property name="minimumSize">
          <size>
-          <width>387</width>
+          <width>364</width>
           <height>152</height>
          </size>
         </property>
        </widget>
-      </item>
-      <item row="1" column="1" colspan="2">
-       <widget class="QLineEdit" name="descriptionLineEdit"/>
       </item>
      </layout>
      <zorder>membersWidget</zorder>
@@ -259,13 +259,10 @@
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::MinimumExpanding</enum>
-     </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
-       <height>104</height>
+       <width>0</width>
+       <height>0</height>
       </size>
      </property>
     </spacer>
@@ -294,8 +291,6 @@
   <tabstop>addUserRadioButton</tabstop>
   <tabstop>removeUserRadioButton</tabstop>
   <tabstop>doNotUserradioButton</tabstop>
-  <tabstop>deleteUsersCheckBox</tabstop>
-  <tabstop>deleteGroupCheckBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

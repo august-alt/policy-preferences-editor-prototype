@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocalPrinter clsid="{F08996D5-568B-45f5-BB7A-D3FB1E370B0A}" name="name" status="localization" image="2" changed="2022-05-12 13:46:26" uid="{0ECDD3A8-D7AA-4A3F-8B4A-E0D5E2806D93}"><Properties action="U" name="name" port="123" path="path" default="0" deleteAll="0" location="localization" comment="comment"/></LocalPrinter>

@@ -88,4 +88,9 @@ void PowerOptionsWidget::submit()
     }
 }
 
+QString PowerOptionsWidget::name() const
+{
+    return "Power Options";
+}
+
 }

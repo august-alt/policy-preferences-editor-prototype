@@ -81,4 +81,9 @@ bool DataSourceWidget::validate()
     return true;
 }
 
+QString DataSourceWidget::name() const
+{
+    return "General";
+}
+
 }

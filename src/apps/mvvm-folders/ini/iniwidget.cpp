@@ -93,4 +93,9 @@ bool IniWidget::validate()
     return true;
 }
 
+QString IniWidget::name() const
+{
+    return "General";
+}
+
 }

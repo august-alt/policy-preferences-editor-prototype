@@ -34,6 +34,7 @@ class CommonItem;
 class BaseNetworkItem;
 class DialUpItem;
 
+template <typename NetworkItem>
 class NetworkContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
@@ -52,12 +53,14 @@ public:
     CommonItem getCommon() const;
     void setCommon(const CommonItem& item);
 
-    DialUpItem getNetwork() const;
-    void setNetwork(const DialUpItem &item);
+    NetworkItem getNetwork() const;
+    void setNetwork(const NetworkItem &item);
 
     void setupListeners() override;
 };
 
 }
+
+#include "networkcontaineritem.inl"
 
 #endif//MVVM_FOLDERS_NETWORK_CONTAINER_ITEM_H

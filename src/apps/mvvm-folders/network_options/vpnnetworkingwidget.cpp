@@ -81,4 +81,9 @@ void VpnNetworkingWidget::submit()
     }
 }
 
+QString VpnNetworkingWidget::name() const
+{
+    return "Network";
+}
+
 }

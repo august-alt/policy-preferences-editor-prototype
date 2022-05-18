@@ -92,4 +92,9 @@ bool DrivesWidget::validate()
     return true;
 }
 
+QString DrivesWidget::name() const
+{
+    return "General";
+}
+
 }

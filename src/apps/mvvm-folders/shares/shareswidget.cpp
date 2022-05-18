@@ -101,4 +101,9 @@ bool SharesWidget::validate()
     return true;
 }
 
+QString SharesWidget::name() const
+{
+    return "General";
+}
+
 }

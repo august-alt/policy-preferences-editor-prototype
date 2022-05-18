@@ -81,4 +81,9 @@ bool VpnWidget::validate()
     return true;
 }
 
+QString VpnWidget::name() const
+{
+    return "General";
+}
+
 }

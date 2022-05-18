@@ -27,12 +27,15 @@ PowerPlanItem::PowerPlanItem()
     : ModelView::CompoundItem("PowerPlanItem")
 {
     addProperty(ACTION, "");
+    addProperty(NAME, "");
 }
 
 PowerPlanItem::PowerPlanItem(const PowerPlanItem &other)
     : ModelView::CompoundItem("PowerPlanItem")
 {
     Q_UNUSED(other);
+    addProperty(ACTION, "");
+    addProperty(NAME, "");
 }
 
 }

@@ -94,4 +94,9 @@ bool ShortcutsWidget::validate()
     return true;
 }
 
+QString ShortcutsWidget::name() const
+{
+    return "General";
+}
+
 }
