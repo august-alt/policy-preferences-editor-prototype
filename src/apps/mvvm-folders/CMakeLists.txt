@@ -5,6 +5,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
+add_subdirectory(schemas)
+
 set(HEADERS
     attributes/attributesitem.h
 
