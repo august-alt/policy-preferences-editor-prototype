@@ -3,6 +3,7 @@ set(XSD_FILES
     drivesschema.xsd
 )
 
+# Unable to generate files in current directory
 generate_code_from_xsd(SOURCES ${XSD_FILES})
 
 message("List of generated files: " ${SOURCES})
