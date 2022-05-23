@@ -1,0 +1,5 @@
+add_subdirectory(dialuptest)
+add_subdirectory(vpnetworkingtest)
+add_subdirectory(vpnoptionstest)
+add_subdirectory(vpnsecuritytest)
+add_subdirectory(vpntest)

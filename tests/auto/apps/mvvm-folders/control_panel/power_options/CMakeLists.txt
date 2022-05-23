@@ -1,0 +1,3 @@
+add_subdirectory(poweroptionstest)
+add_subdirectory(powerplantest)
+add_subdirectory(powerschemetest)

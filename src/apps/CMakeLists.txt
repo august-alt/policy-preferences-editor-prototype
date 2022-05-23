@@ -20,6 +20,7 @@ find_package(PREFERENCES_EDITOR COMPONENTS gui core REQUIRED)
 include_directories(${PREFERENCES_EDITOR_INCLUDE_DIRS})
 
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+find_package(Xsd REQUIRED)
 
 add_subdirectory(main)
 add_subdirectory(mvvm-folders)

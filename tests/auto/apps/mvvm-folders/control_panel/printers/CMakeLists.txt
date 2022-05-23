@@ -1,0 +1,4 @@
+add_subdirectory(localprintertest)
+add_subdirectory(sharedprintertest)
+add_subdirectory(tcpprintergeneraltest)
+add_subdirectory(tcpprinterporttest)
