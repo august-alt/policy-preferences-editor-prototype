@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
  <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
- <xs:include schemaLocation="../common/commonschema.xsd"/>
+ <xs:include schemaLocation="commonschema.xsd"/>
  <xs:complexType name="Drive_t">
    <xs:sequence>
       <xs:element name="Properties" type="Properties_t" maxOccurs="unbounded"/>

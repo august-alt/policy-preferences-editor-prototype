@@ -1,12 +1,43 @@
 set(XSD_FILES
-    commonschema.xsd
-    drivesschema.xsd
+    "${CMAKE_CURRENT_SOURCE_DIR}/commonschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/drivesschema.xsd"
 )
 
-# Unable to generate files in current directory
-generate_code_from_xsd(SOURCES ${XSD_FILES})
+foreach(FILE ${XSD_FILES})
+    string(REGEX REPLACE "[.]xsd" ".h" HEADER ${FILE})
+    set(HEADERS ${HEADERS} ${HEADER})
+endforeach()
 
-message("List of generated files: " ${SOURCES})
+foreach(FILE ${XSD_FILES})
+    string(REGEX REPLACE "[.]xsd" ".cpp" SOURCE ${FILE})
+    set(SOURCES ${SOURCES} ${SOURCE})
+endforeach()
 
-add_library(static_xsd_library STATIC ${SOURCES})
-target_link_libraries(static_xsd_library xerces-c)
+set(OUT_FILES
+    ${HEADERS}
+    ${SOURCES}
+)
+
+set(XSD_FLAGS cxx-tree
+    --generate-doxygen
+    --generate-ostream
+    --generate-polymorphic
+    --polymorphic-type-all
+    --generate-wildcard
+    --cxx-suffix .cpp
+    --hxx-suffix .h
+    --std c++11
+    --type-naming ucc
+    --root-element-all
+)
+
+add_custom_command(
+    OUTPUT ${OUT_FILES}
+    COMMAND ${XSDCXX_EXECUTABLE} ${XSD_FLAGS} ${XSD_FILES}
+    DEPENDS ${XSD_FILES}
+    COMMENT "Running ${XSDCXX_EXECUTABLE} ${XSD_FLAGS} ${XSD_FILES}"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMAND_EXPAND_LISTS
+)
+
+add_library(static_xsd_library STATIC ${OUT_FILES})
