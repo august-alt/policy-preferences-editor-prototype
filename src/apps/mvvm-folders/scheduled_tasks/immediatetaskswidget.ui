@@ -222,7 +222,7 @@ p, li { white-space: pre-wrap; }
    <item row="9" column="0">
     <widget class="QLabel" name="passwordLabel">
      <property name="text">
-      <string>Password</string>
+      <string>Password:</string>
      </property>
      <property name="buddy">
       <cstring>passwordLineEdit</cstring>

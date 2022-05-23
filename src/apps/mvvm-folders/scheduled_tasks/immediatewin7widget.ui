@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>506</width>
+    <width>515</width>
     <height>487</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>515</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>515</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -48,50 +66,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QLineEdit" name="nameLineEdit">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QToolButton" name="nameToolButton">
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="authorLabel">
-     <property name="text">
-      <string>Author:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="authorNameLabel">
-     <property name="text">
-      <string>DomainAdmin</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="descriptionLabel">
-     <property name="text">
-      <string>Description:</string>
-     </property>
-     <property name="buddy">
-      <cstring>descriptionTextEdit</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="5" column="1" colspan="3">
     <widget class="QTextEdit" name="descriptionTextEdit">
      <property name="sizePolicy">
@@ -120,165 +94,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-   </item>
-   <item row="6" column="0" colspan="4">
-    <widget class="QGroupBox" name="securityGroupBox">
-     <property name="title">
-      <string>Security options</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="runAccountLabel">
-        <property name="text">
-         <string>When running the task, use the following user account:</string>
-        </property>
-        <property name="buddy">
-         <cstring>accountLineEdit</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QLineEdit" name="accountLineEdit">
-        <property name="text">
-         <string>%LogonDomain%\%LogonUser%</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QToolButton" name="accountToolButton">
-        <property name="text">
-         <string>Change User or Group</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QRadioButton" name="loggedRadioButton">
-        <property name="text">
-         <string>Run only when user is logged on</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QRadioButton" name="notloggedRadioButton">
-        <property name="text">
-         <string>Run whether user is logged on or not</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="QCheckBox" name="notstoredCheckBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Do not store password. The task will only have access to local resources.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0" colspan="2">
-       <widget class="QCheckBox" name="hightprivCheckBox">
-        <property name="text">
-         <string>Run with highest privileges</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="4">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QCheckBox" name="hiddenCheckBox">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>77</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>77</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Hidden</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="configureLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>80</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>82</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Configure for:</string>
-       </property>
-       <property name="buddy">
-        <cstring>configureComboBox</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="configureComboBox">
-       <property name="currentText">
-        <string>Windows Vista or Windows Server 2008</string>
-       </property>
-       <property name="currentIndex">
-        <number>1</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>Windows 7</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Windows Vista or Windows Server 2008</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Windows Server 2003, Windows XP, Windows 2000</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
    </item>
    <item row="0" column="0" colspan="4">
     <widget class="QSplitter" name="splitter">
@@ -352,6 +167,106 @@ p, li { white-space: pre-wrap; }
      </widget>
     </widget>
    </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="nameLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="4">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="hiddenCheckBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>77</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>77</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Hidden</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="configureLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>80</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>82</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Configure for:</string>
+       </property>
+       <property name="buddy">
+        <cstring>configureComboBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="configureComboBox">
+       <property name="currentText">
+        <string>Windows Vista or Windows Server 2008</string>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Windows 7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Windows Vista or Windows Server 2008</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Windows Server 2003, Windows XP, Windows 2000</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLabel" name="authorNameLabel">
+     <property name="text">
+      <string>DomainAdmin</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="descriptionLabel">
+     <property name="text">
+      <string>Description:</string>
+     </property>
+     <property name="buddy">
+      <cstring>descriptionTextEdit</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="8" column="0" colspan="4">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -368,6 +283,125 @@ p, li { white-space: pre-wrap; }
      </property>
     </spacer>
    </item>
+   <item row="3" column="3">
+    <widget class="QToolButton" name="nameToolButton">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="authorLabel">
+     <property name="text">
+      <string>Author:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="4">
+    <widget class="QGroupBox" name="securityGroupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Security options</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="accountLineEdit">
+        <property name="text">
+         <string>%LogonDomain%\%LogonUser%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="accountToolButton">
+        <property name="text">
+         <string>Change User or Group</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QWidget" name="widget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="notstoredCheckBox">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>465</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>465</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Do not store password. The task will only have access to local resources.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="runAccountLabel">
+        <property name="text">
+         <string>When running the task, use the following user account:</string>
+        </property>
+        <property name="buddy">
+         <cstring>accountLineEdit</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QRadioButton" name="loggedRadioButton">
+        <property name="text">
+         <string>Run only when user is logged on</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QRadioButton" name="notloggedRadioButton">
+        <property name="text">
+         <string>Run whether user is logged on or not</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QCheckBox" name="hightprivCheckBox">
+        <property name="text">
+         <string>Run with highest privileges</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -379,7 +413,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>accountToolButton</tabstop>
   <tabstop>loggedRadioButton</tabstop>
   <tabstop>notloggedRadioButton</tabstop>
-  <tabstop>notstoredCheckBox</tabstop>
   <tabstop>hightprivCheckBox</tabstop>
   <tabstop>hiddenCheckBox</tabstop>
   <tabstop>configureComboBox</tabstop>

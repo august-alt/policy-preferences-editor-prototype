@@ -97,6 +97,12 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>350</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Stop if the computer switches to battery power</string>
      </property>
@@ -165,6 +171,12 @@
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="QCheckBox" name="powerstartCheckBox">
+     <property name="minimumSize">
+      <size>
+       <width>350</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Start the task only if the computer is on AC power:</string>
      </property>
@@ -264,6 +276,12 @@
    </item>
    <item row="11" column="0" colspan="2">
     <widget class="QCheckBox" name="networkstartCheckBox">
+     <property name="minimumSize">
+      <size>
+       <width>380</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Start only if the following network connection is available:</string>
      </property>
@@ -343,7 +361,7 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>197</width>
+       <width>280</width>
        <height>0</height>
       </size>
      </property>

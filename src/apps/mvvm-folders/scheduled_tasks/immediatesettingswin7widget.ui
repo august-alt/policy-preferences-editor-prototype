@@ -106,7 +106,7 @@
    <item row="6" column="0" colspan="4">
     <widget class="QCheckBox" name="forceStopCheckBox">
      <property name="text">
-      <string>If the running task does not end when requesred, forse it to stop</string>
+      <string>If the running task does not end when requesred, force it to stop</string>
      </property>
     </widget>
    </item>
@@ -240,7 +240,7 @@
      </property>
      <item>
       <property name="text">
-       <string>Do not srart a new instanse</string>
+       <string>Do not start a new instanse</string>
       </property>
      </item>
      <item>
