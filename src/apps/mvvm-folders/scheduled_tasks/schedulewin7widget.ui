@@ -127,16 +127,6 @@ p, li { white-space: pre-wrap; }
       <string>Security options</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="runAccountLabel">
-        <property name="text">
-         <string>When running the task, use the following user account:</string>
-        </property>
-        <property name="buddy">
-         <cstring>accountLineEdit</cstring>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0" colspan="2">
        <widget class="QLineEdit" name="accountLineEdit">
         <property name="text">
@@ -146,25 +136,14 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="1" column="2">
        <widget class="QToolButton" name="accountToolButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Change User or Group</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QRadioButton" name="loggedRadioButton">
-        <property name="text">
-         <string>Run only when user is logged on</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QRadioButton" name="notloggedRadioButton">
-        <property name="text">
-         <string>Run whether user is logged on or not</string>
         </property>
        </widget>
       </item>
@@ -204,6 +183,33 @@ p, li { white-space: pre-wrap; }
        <widget class="QCheckBox" name="hightprivCheckBox">
         <property name="text">
          <string>Run with highest privileges</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QRadioButton" name="loggedRadioButton">
+        <property name="text">
+         <string>Run only when user is logged on</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="QRadioButton" name="notloggedRadioButton">
+        <property name="text">
+         <string>Run whether user is logged on or not</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="3">
+       <widget class="QLabel" name="runAccountLabel">
+        <property name="text">
+         <string>When running the task, use the following user account:</string>
+        </property>
+        <property name="buddy">
+         <cstring>accountLineEdit</cstring>
         </property>
        </widget>
       </item>
@@ -256,7 +262,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QComboBox" name="configureComboBox">
        <property name="currentText">
-        <string>Windows Vista or Windows Server 2008</string>
+        <string>Windows 7</string>
        </property>
        <item>
         <property name="text">
