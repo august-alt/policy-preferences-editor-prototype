@@ -1,6 +1,12 @@
 set(XSD_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/commonschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/drivesschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/filesschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/foldersschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/inischema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/sharesschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/shortcutsschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/variablesschema.xsd"
 )
 
 foreach(FILE ${XSD_FILES})
