@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
  <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
- <xs:include schemaLocation="commonschema.xsd"/>
+    <xs:complexType name="Properties_t">
+            <xs:attribute name="action" type="xs:string" use="optional" />
+            <xs:attribute name="fromPath"
+              type="xs:string" use="required" />
+            <xs:attribute name="targetPath"
+              type="xs:string" use="required" />
+            <xs:attribute name="readOnly"
+              type="xs:boolean" use="optional" />
+            <xs:attribute name="archive"
+              type="xs:boolean" use="optional" />
+            <xs:attribute name="hidden"
+              type="xs:boolean" use="optional" />
+            <xs:attribute name="suppress"
+              type="xs:boolean" use="optional" />
+            <xs:attribute name="disabled"
+              type="xs:boolean" use="optional" />
+    </xs:complexType>
     <xs:complexType name="File_t">
        <xs:sequence>
           <xs:element name="Properties" type="Properties_t" maxOccurs="unbounded"/>

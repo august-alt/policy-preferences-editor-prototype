@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
  <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
- <xs:include schemaLocation="commonschema.xsd"/>
+   <xs:complexType name="Properties_t">
+     <xs:attribute name="path" type="xs:string" use="required"/>
+     <xs:attribute name="section" type="xs:string" use="optional"/>
+     <xs:attribute name="value" type="xs:string" use="optional"/>
+     <xs:attribute name="property" type="xs:string" use="optional"/>
+     <xs:attribute name="action" type="xs:string" use="optional"/>
+     <xs:attribute name="disabled" type="xs:unsignedByte" use="optional"/>
+   </xs:complexType>
    <xs:complexType name="Ini_t">
      <xs:sequence>
        <xs:element name="Properties" type="Properties_t" maxOccurs="unbounded"/>
