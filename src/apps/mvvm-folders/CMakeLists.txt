@@ -21,8 +21,9 @@ set(HEADERS
     common/tabledetailswidget.h
     common/widgetfactory.h
 
-    datasource/datasourceitem.h
     datasource/datasourcecontaineritem.h
+    datasource/datasourceitem.h
+    datasource/datasourcemodelbuilder.h
     datasource/datasourcewidget.h
 
     device/deviceitem.h
@@ -139,6 +140,7 @@ set(SOURCES
 
     datasource/datasourceitem.cpp
     datasource/datasourcecontaineritem.cpp
+    datasource/datasourcemodelbuilder.cpp
     datasource/datasourcewidget.cpp
     datasource/datasourcewidgetslots.cpp
 
@@ -303,3 +305,6 @@ add_preferences_editor_executable(mvvm-folders ${SOURCES})
 target_link_libraries(mvvm-folders Qt5::Core Qt5::Widgets)
 target_link_libraries(mvvm-folders ${PREFERENCES_EDITOR_LIBRARIES})
 target_link_libraries(mvvm-folders ${MVVM_LIBRARIES})
+
+target_link_libraries(mvvm-folders static_xsd_library)
+target_link_libraries(mvvm-folders xerces-c)
