@@ -40,10 +40,12 @@ std::unique_ptr<PreferencesModel> DrivesModelBuilder::schemaToModel(std::unique_
             int thisDriveIndex = getDrivesCheckboxIndex(currentProperties.thisDrive().present() ? currentProperties.thisDrive()->c_str() : "");
             int allDrivesIndex = getDrivesCheckboxIndex(currentProperties.allDrives().present() ? currentProperties.allDrives()->c_str() : "");
 
+            std::string actionState = getActionCheckboxState(currentProperties.action() ? currentProperties.action()->c_str() : "");
+
             auto sessionItem = model->insertItem<DrivesContainerItem>(model->rootItem());
 
             auto drives = sessionItem->children().back();
-            drives->setProperty(DrivesItem::ACTION, currentProperties.action() ? currentProperties.action()->c_str() : "");
+            drives->setProperty(DrivesItem::ACTION, actionState);
             drives->setProperty(DrivesItem::PATH, currentProperties.path().c_str());
             drives->setProperty(DrivesItem::PERSISTENT, static_cast<bool>(currentProperties.persistent()));
             drives->setProperty(DrivesItem::LABEL, currentProperties.label().present() ? currentProperties.label()->c_str() : "");
@@ -135,6 +137,26 @@ int DrivesModelBuilder::getDrivesCheckboxIndex(const std::string &data)
     }
 
     return 0;
+}
+
+std::string DrivesModelBuilder::getActionCheckboxState(const std::string &data)
+{
+    if (data.compare("U") == 0)
+    {
+        return "Update";
+    }
+
+    if (data.compare("R") == 0)
+    {
+        return "Replace";
+    }
+
+    if (data.compare("D") == 0)
+    {
+        return "Delete";
+    }
+
+    return "Create";
 }
 
 }

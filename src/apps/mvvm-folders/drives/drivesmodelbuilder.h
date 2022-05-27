@@ -37,6 +37,7 @@ public:
 
 private:
     int getDrivesCheckboxIndex(const std::string& data);
+    std::string getActionCheckboxState(const std::string& data);
 };
 }
 
