@@ -32,6 +32,7 @@ set(HEADERS
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
+    drives/drivesmodelbuilder.h
     drives/driveswidget.h
 
     folders/foldercontaineritem.h
@@ -52,6 +53,7 @@ set(HEADERS
 
     files/filesitem.h
     files/filescontaineritem.h
+    files/filesmodelbuilder.h
     files/fileswidget.h
 
     ini/iniitem.h
@@ -119,7 +121,6 @@ set(HEADERS
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
-    mainwindow.h
     preferencestreemodel.h
 
     preferenceswidget.h
@@ -146,6 +147,7 @@ set(SOURCES
 
     device/deviceitem.cpp
     device/devicecontaineritem.cpp
+    drives/drivesmodelbuilder.cpp
     device/devicewidget.cpp
 
     drives/drivesitem.cpp
@@ -171,6 +173,7 @@ set(SOURCES
 
     files/filesitem.cpp
     files/filescontaineritem.cpp
+    files/filesmodelbuilder.cpp
     files/fileswidget.cpp
     files/fileswidgetslots.cpp
 
@@ -238,8 +241,6 @@ set(SOURCES
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
-    main.cpp
-    mainwindow.cpp
     preferencestreemodel.cpp
 
     preferenceswidget.cpp
@@ -298,13 +299,21 @@ set(UI_FORMS
     preferenceswidget.ui
 )
 
+set(APP_SOURCES
+    main.cpp
+    mainwindow.h
+    mainwindow.cpp
+)
+
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
 
-add_preferences_editor_executable(mvvm-folders ${SOURCES})
+add_library(mvvm-folders_static STATIC ${SOURCES})
+target_link_libraries(mvvm-folders_static Qt5::Core Qt5::Widgets)
+target_link_libraries(mvvm-folders_static ${PREFERENCES_EDITOR_LIBRARIES})
+target_link_libraries(mvvm-folders_static ${MVVM_LIBRARIES})
 
-target_link_libraries(mvvm-folders Qt5::Core Qt5::Widgets)
-target_link_libraries(mvvm-folders ${PREFERENCES_EDITOR_LIBRARIES})
-target_link_libraries(mvvm-folders ${MVVM_LIBRARIES})
+target_link_libraries(mvvm-folders_static static_xsd_library)
+target_link_libraries(mvvm-folders_static xerces-c)
 
-target_link_libraries(mvvm-folders static_xsd_library)
-target_link_libraries(mvvm-folders xerces-c)
+add_preferences_editor_executable(mvvm-folders ${APP_SOURCES})
+target_link_libraries(mvvm-folders mvvm-folders_static)
