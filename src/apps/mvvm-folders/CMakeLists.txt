@@ -44,6 +44,7 @@ set(HEADERS
     folder_options/folderoptionscontaineritem.inl
     folder_options/folderoptionswidget.h
     folder_options/folderoptionsitem.h
+    folder_options/folderoptionsmodelbuilder.h
     folder_options/openwithitem.h
     folder_options/openwithwidget.h
     folder_options/fileextensionactionitem.h
@@ -163,6 +164,7 @@ set(SOURCES
 
     folder_options/folderoptionswidget.cpp
     folder_options/folderoptionsitem.cpp
+    folder_options/folderoptionsmodelbuilder.cpp
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp
     folder_options/openwithwidgetslots.cpp
