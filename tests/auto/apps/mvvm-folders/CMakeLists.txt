@@ -1,0 +1,2 @@
+add_subdirectory(control_panel)
+add_subdirectory(settings)

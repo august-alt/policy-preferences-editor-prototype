@@ -1,0 +1,3 @@
+add_subdirectory(fileextensiontest)
+add_subdirectory(folderoptionstest)
+add_subdirectory(openwithtest)

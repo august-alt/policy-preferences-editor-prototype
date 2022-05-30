@@ -1,0 +1,3 @@
+add_subdirectory(groupmemberstest)
+add_subdirectory(localgrouptest)
+add_subdirectory(localusertest)

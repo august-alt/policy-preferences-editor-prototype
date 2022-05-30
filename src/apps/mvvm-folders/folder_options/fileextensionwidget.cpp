@@ -61,10 +61,18 @@ void FileExtensionWidget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
-    mapper->addMapping(ui->actionComboBox, 0);
-    // TODO: Implement.
+    mapper->addMapping(ui->actionComboBox, FileExtensionItem::propertyToInt(FileExtensionItem::ACTION));
+    mapper->addMapping(ui->fileExtentionLineEdit, FileExtensionItem::propertyToInt(FileExtensionItem::FILE_EXT));
+    mapper->addMapping(ui->classComboBox, FileExtensionItem::propertyToInt(FileExtensionItem::APPLICATION));
+    mapper->addMapping(ui->classComboBox, FileExtensionItem::propertyToInt(FileExtensionItem::APP_PROG_ID));
+    mapper->addMapping(ui->settingsCheckBox, FileExtensionItem::propertyToInt(FileExtensionItem::CONFIG_ACTIONS));
+    mapper->addMapping(ui->iconPathLineEdit, FileExtensionItem::propertyToInt(FileExtensionItem::ICON_PATH));
+    mapper->addMapping(ui->iconIndexLineEdit, FileExtensionItem::propertyToInt(FileExtensionItem::ICON_INDEX));
+    mapper->addMapping(ui->openAftercheckBox, FileExtensionItem::propertyToInt(FileExtensionItem::CONFIRM_OPEN));
+    mapper->addMapping(ui->alwaysCheckBox, FileExtensionItem::propertyToInt(FileExtensionItem::ALWAYS_SHOW));
+    mapper->addMapping(ui->browseCheckBox, FileExtensionItem::propertyToInt(FileExtensionItem::SAME_WINDOW));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
@@ -72,7 +80,7 @@ void FileExtensionWidget::setItem(ModelView::SessionItem* item)
 bool FileExtensionWidget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 

@@ -1,0 +1,7 @@
+add_subdirectory(datasource)
+add_subdirectory(devices)
+add_subdirectory(folder_options)
+add_subdirectory(local_users_and_groups)
+add_subdirectory(network_options)
+add_subdirectory(power_options)
+add_subdirectory(printers)

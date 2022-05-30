@@ -203,7 +203,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Delete all files in the filder(s)</string>
+           <string>Delete all files in the folder(s)</string>
           </property>
          </widget>
         </item>

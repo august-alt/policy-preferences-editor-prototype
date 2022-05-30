@@ -5,6 +5,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
+add_subdirectory(schemas)
+
 set(HEADERS
     attributes/attributesitem.h
 
@@ -19,8 +21,9 @@ set(HEADERS
     common/tabledetailswidget.h
     common/widgetfactory.h
 
-    datasource/datasourceitem.h
     datasource/datasourcecontaineritem.h
+    datasource/datasourceitem.h
+    datasource/datasourcemodelbuilder.h
     datasource/datasourcewidget.h
 
     device/deviceitem.h
@@ -29,24 +32,30 @@ set(HEADERS
 
     drives/drivesitem.h
     drives/drivescontaineritem.h
+    drives/drivesmodelbuilder.h
     drives/driveswidget.h
 
     folders/foldercontaineritem.h
     folders/folderitem.h
     folders/folderitemcontroller.h
+    folders/foldermodelbuilder.h
     folders/folderwidget.h
 
     folder_options/folderoptionscontaineritem.h
     folder_options/folderoptionscontaineritem.inl
     folder_options/folderoptionswidget.h
     folder_options/folderoptionsitem.h
+    folder_options/folderoptionsmodelbuilder.h
     folder_options/openwithitem.h
     folder_options/openwithwidget.h
+    folder_options/fileextensionactionitem.h
+    folder_options/fileextensioncontaineritem.h
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
 
     files/filesitem.h
     files/filescontaineritem.h
+    files/filesmodelbuilder.h
     files/fileswidget.h
 
     ini/iniitem.h
@@ -114,7 +123,6 @@ set(HEADERS
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
-    mainwindow.h
     preferencestreemodel.h
 
     preferenceswidget.h
@@ -135,11 +143,13 @@ set(SOURCES
 
     datasource/datasourceitem.cpp
     datasource/datasourcecontaineritem.cpp
+    datasource/datasourcemodelbuilder.cpp
     datasource/datasourcewidget.cpp
     datasource/datasourcewidgetslots.cpp
 
     device/deviceitem.cpp
     device/devicecontaineritem.cpp
+    drives/drivesmodelbuilder.cpp
     device/devicewidget.cpp
 
     drives/drivesitem.cpp
@@ -150,19 +160,24 @@ set(SOURCES
     folders/foldercontaineritem.cpp
     folders/folderitem.cpp
     folders/folderitemcontroller.cpp
+    folders/foldermodelbuilder.cpp
     folders/folderwidget.cpp
     folders/folderviewslots.cpp
 
     folder_options/folderoptionswidget.cpp
     folder_options/folderoptionsitem.cpp
+    folder_options/folderoptionsmodelbuilder.cpp
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp
     folder_options/openwithwidgetslots.cpp
+    folder_options/fileextensionactionitem.cpp
+    folder_options/fileextensioncontaineritem.cpp
     folder_options/fileextensionitem.cpp
     folder_options/fileextensionwidget.cpp
 
     files/filesitem.cpp
     files/filescontaineritem.cpp
+    files/filesmodelbuilder.cpp
     files/fileswidget.cpp
     files/fileswidgetslots.cpp
 
@@ -230,8 +245,6 @@ set(SOURCES
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
-    main.cpp
-    mainwindow.cpp
     preferencestreemodel.cpp
 
     preferenceswidget.cpp
@@ -290,10 +303,21 @@ set(UI_FORMS
     preferenceswidget.ui
 )
 
+set(APP_SOURCES
+    main.cpp
+    mainwindow.h
+    mainwindow.cpp
+)
+
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
 
-add_preferences_editor_executable(mvvm-folders ${SOURCES})
+add_library(mvvm-folders_static STATIC ${SOURCES})
+target_link_libraries(mvvm-folders_static Qt5::Core Qt5::Widgets)
+target_link_libraries(mvvm-folders_static ${PREFERENCES_EDITOR_LIBRARIES})
+target_link_libraries(mvvm-folders_static ${MVVM_LIBRARIES})
 
-target_link_libraries(mvvm-folders Qt5::Core Qt5::Widgets)
-target_link_libraries(mvvm-folders ${PREFERENCES_EDITOR_LIBRARIES})
-target_link_libraries(mvvm-folders ${MVVM_LIBRARIES})
+target_link_libraries(mvvm-folders_static static_xsd_library)
+target_link_libraries(mvvm-folders_static xerces-c)
+
+add_preferences_editor_executable(mvvm-folders ${APP_SOURCES})
+target_link_libraries(mvvm-folders mvvm-folders_static)

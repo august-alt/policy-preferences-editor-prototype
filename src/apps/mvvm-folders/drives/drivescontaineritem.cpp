@@ -48,7 +48,7 @@ CommonItem DrivesContainerItem::getCommon() const
 
 void DrivesContainerItem::setCommon(const CommonItem &item)
 {
-    setProperty(COMMON, item);
+    setProperty<CommonItem>(COMMON, item);
 }
 
 DrivesItem DrivesContainerItem::getDrives() const
@@ -58,7 +58,7 @@ DrivesItem DrivesContainerItem::getDrives() const
 
 void DrivesContainerItem::setDrives(const DrivesItem &item)
 {
-    setProperty(DRIVES, item);
+    setProperty<DrivesItem>(DRIVES, item);
 }
 
 void DrivesContainerItem::setupListeners()
