@@ -23,18 +23,27 @@
 
 #include <memory>
 
+#include "common/basemodelbuilder.h"
 #include "common/preferencesmodel.h"
 #include "schemas/foldersschema.h"
 
 namespace mvvm_folders
 {
 
-class FolderModelBuilder
+class CommonItem;
+
+class FolderModelBuilder : public BaseModelBuilder
 {
 public:
+    FolderModelBuilder();
+
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Folders>& foldersSource);
 
     std::unique_ptr<Folders> modelToSchema(std::unique_ptr<PreferencesModel>& model);
+
+protected:
+    template <typename SchemaType>
+    void setCommonItemData(CommonItem* common, const SchemaType &schema);
 };
 
 }
