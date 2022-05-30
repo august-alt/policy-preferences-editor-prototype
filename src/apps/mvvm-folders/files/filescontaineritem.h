@@ -47,10 +47,10 @@ public:
 
     explicit FilesContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    FilesItem getFiles() const;
+    FilesItem* getFiles() const;
     void setFiles(const FilesItem& item);
 
     void setupListeners() override;

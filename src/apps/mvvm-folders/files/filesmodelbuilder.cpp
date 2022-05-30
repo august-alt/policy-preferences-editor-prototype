@@ -28,27 +28,38 @@
 namespace mvvm_folders
 {
 
+FilesModelBuilder::FilesModelBuilder()
+    : BaseModelBuilder()
+{
+}
+
 std::unique_ptr<PreferencesModel> FilesModelBuilder::schemaToModel(std::unique_ptr<Files> &filesSource)
 {
     auto model = std::make_unique<PreferencesModel>();
 
     for (const auto& filesSchema : filesSource->File())
     {
-        auto properties = filesSchema.Properties();
-        auto files = FilesItem();
-
-        // TODO: Implement attributes and correct schema.
-
-        auto common = CommonItem();
-        common.setProperty(CommonItem::NAME, filesSchema.name().c_str());
-        common.setProperty(CommonItem::CHANGED, filesSchema.changed()->c_str());
-        common.setProperty(CommonItem::DESC, filesSchema.desc()->c_str());
-        common.setProperty(CommonItem::BYPASS_ERRORS, filesSchema.bypassErrors().get());
-        common.setProperty(CommonItem::USER_CONTEXT, filesSchema.userContext().get());
-        common.setProperty(CommonItem::REMOVE_POLICY, filesSchema.removePolicy().get());
-
         auto sessionItem = model->insertItem<FilesContainerItem>(model->rootItem());
-        sessionItem->setCommon(common);
+
+        for (const auto& properties: filesSchema.Properties())
+        {
+            auto files = sessionItem->getFiles();
+            files->setProperty(FilesItem::ACTION, getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str()));
+            files->setProperty(FilesItem::FROM_PATH, properties.fromPath().c_str());
+            files->setProperty(FilesItem::TARGET_PATH, properties.targetPath().c_str());
+            files->setProperty(FilesItem::SUPPRESS, getOptionalPropertyData(properties.suppress()));
+            files->setProperty(FilesItem::READONLY, getOptionalPropertyData(properties.readOnly()));
+            files->setProperty(FilesItem::ARCHIVE, getOptionalPropertyData(properties.archive()));
+            files->setProperty(FilesItem::HIDDEN, getOptionalPropertyData(properties.hidden()));
+
+            auto common = sessionItem->getCommon();
+            common->setProperty(CommonItem::NAME, filesSchema.name().c_str());
+            common->setProperty(CommonItem::CHANGED, getOptionalPropertyData(filesSchema.changed()).c_str());
+            common->setProperty(CommonItem::DESC, getOptionalPropertyData(filesSchema.desc()).c_str());
+            common->setProperty(CommonItem::BYPASS_ERRORS, getOptionalPropertyData(filesSchema.bypassErrors()));
+            common->setProperty(CommonItem::USER_CONTEXT, getOptionalPropertyData(filesSchema.userContext()));
+            common->setProperty(CommonItem::REMOVE_POLICY, getOptionalPropertyData(filesSchema.removePolicy()));
+        }
     }
 
     return model;
