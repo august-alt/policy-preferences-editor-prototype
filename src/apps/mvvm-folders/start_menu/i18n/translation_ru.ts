@@ -17,7 +17,7 @@
     <message>
         <location filename="../startadvancedwinxpwidget.ui" line="44"/>
         <source>Open submenus when I pause on them with my mouse</source>
-        <translation>Открывать подменю при задержке курсора на пунктом меню</translation>
+        <translation>Открывать подменю при задержке курсора над пунктом меню</translation>
     </message>
     <message>
         <location filename="../startadvancedwinxpwidget.ui" line="54"/>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../startclassicwinxpwidget.ui" line="89"/>
         <source>To customize the classic Start menu, use Shortcut preference items.</source>
-        <translation>Чтобы настроить классическое меню &quot;Пуск&quot;, используйте предпочтения Ярлык.</translation>
+        <translation>Чтобы настроить классическое меню Пуск, используйте настройку предпочтений &quot;Ярлыки&quot;.</translation>
     </message>
     <message>
         <location filename="../startclassicwinxpwidget.ui" line="102"/>
@@ -110,7 +110,7 @@
     <message>
         <location filename="../startclassicvistawidget.ui" line="59"/>
         <source>You can customize your Start menu by adding or removing items.</source>
-        <translation>Вы можете настроить меню &quot;Пуск&quot;, добавляя или удаляя элементы.</translation>
+        <translation>Вы можете настроить меню Пуск, добавляя или удаляя элементы.</translation>
     </message>
     <message>
         <location filename="../startclassicvistawidget.ui" line="72"/>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../startclassicvistawidget.ui" line="89"/>
         <source>To customize the classic Start menu, use Shortcut preference items.</source>
-        <translation>Чтобы настроить классическое меню &quot;Пуск&quot;, используйте предпочтения Ярлык.</translation>
+        <translation>Чтобы настроить классическое меню Пуск, используйте настройку предпочтений &quot;Ярлыки&quot;.</translation>
     </message>
     <message>
         <location filename="../startclassicvistawidget.ui" line="102"/>
@@ -168,7 +168,7 @@
     <message>
         <location filename="../startvistawidget.ui" line="57"/>
         <source>The Start menu contains shortcuts to the programs you use most often. Clearing the list of shortcuts does not delete the programs.</source>
-        <translation>Меню &quot;Пуск&quot; содержит ярлыки программ, которые используются чаще всего. Очистка списка ярлыков не приводит к удалению программ.</translation>
+        <translation>Меню Пуск содержит ярлыки программ, которые используются чаще всего. Очистка списка ярлыков не приводит к удалению программ.</translation>
     </message>
     <message>
         <location filename="../startvistawidget.ui" line="67"/>
@@ -246,7 +246,7 @@
     <message>
         <location filename="../startwinxpwidget.ui" line="128"/>
         <source>The Start menu conrains shortcuts to the programs you use most often. Clearing the list of shortcuts does not delete the programs.</source>
-        <translation>Меню &quot;Пуск&quot; содержит ярлыки программ, которые используются чаще всего. Очистка списка ярлыков не приводит к удалению программ.</translation>
+        <translation>Меню Пуск содержит ярлыки программ, которые используются чаще всего. Очистка списка ярлыков не приводит к удалению программ.</translation>
     </message>
     <message>
         <location filename="../startwinxpwidget.ui" line="141"/>
