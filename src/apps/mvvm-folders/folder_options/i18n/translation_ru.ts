@@ -76,7 +76,7 @@
     <message>
         <location filename="../fileextensionwidget.ui" line="196"/>
         <source>Browse in some window</source>
-        <translation>Обозревать в окне</translation>
+        <translation>Просмотр в окне</translation>
     </message>
     <message>
         <location filename="../fileextensionwidget.ui" line="237"/>
