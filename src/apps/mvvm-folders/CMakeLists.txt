@@ -10,6 +10,7 @@ add_subdirectory(schemas)
 set(HEADERS
     attributes/attributesitem.h
 
+    common/basemodelbuilder.h
     common/basepreferenceitem.h
     common/commonitem.h
     common/commonutils.h
@@ -131,6 +132,7 @@ set(HEADERS
 set(SOURCES
     attributes/attributesitem.cpp
 
+    common/basemodelbuilder.cpp
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
