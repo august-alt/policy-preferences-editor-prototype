@@ -301,7 +301,7 @@
     <message>
         <location filename="../vpnsecuritywidget.ui" line="147"/>
         <source>Maximum strangth</source>
-        <translation>Maximum strangth</translation>
+        <translation>Maximum strength</translation>
     </message>
     <message>
         <location filename="../vpnsecuritywidget.ui" line="157"/>
