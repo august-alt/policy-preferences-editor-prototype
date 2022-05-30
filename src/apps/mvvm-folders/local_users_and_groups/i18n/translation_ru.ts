@@ -101,59 +101,55 @@
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="140"/>
+        <location filename="../localgroupwidget.ui" line="161"/>
         <source>Rename to:</source>
         <translation>Переименовать:</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="169"/>
+        <location filename="../localgroupwidget.ui" line="190"/>
         <source>Description:</source>
         <translation>Описание:</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="184"/>
+        <location filename="../localgroupwidget.ui" line="205"/>
         <source>Add the current user</source>
         <translation>Добавить текущего пользователя</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="191"/>
+        <location filename="../localgroupwidget.ui" line="212"/>
         <source>Remove the current user</source>
         <translation>Удалить текущего пользователя</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="198"/>
+        <location filename="../localgroupwidget.ui" line="219"/>
         <source>Do not configure for the current user</source>
         <translation>Не настраивать для текущего пользователя</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="208"/>
+        <location filename="../localgroupwidget.ui" line="226"/>
         <source>Delete all member groups</source>
         <translation>Удалить все группы пользователя</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="215"/>
+        <location filename="../localgroupwidget.ui" line="233"/>
         <source>Delete all member users</source>
         <translation>Удалить всех членов пользователя</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="224"/>
         <source>Members:</source>
-        <translation>Участники:</translation>
+        <translation type="vanished">Участники:</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="240"/>
         <source>Add...</source>
-        <translation>Добавить...</translation>
+        <translation type="vanished">Добавить...</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="253"/>
         <source>Remove...</source>
-        <translation>Удалить...</translation>
+        <translation type="vanished">Удалить...</translation>
     </message>
     <message>
-        <location filename="../localgroupwidget.ui" line="266"/>
         <source>Change...</source>
-        <translation>Изменить...</translation>
+        <translation type="vanished">Изменить...</translation>
     </message>
 </context>
 <context>
