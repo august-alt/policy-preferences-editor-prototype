@@ -125,7 +125,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="idleTimeLabel">
         <property name="text">
-         <string>Idle time3 before handing up:</string>
+         <string>Idle time before handing up:</string>
         </property>
         <property name="buddy">
          <cstring>idleTimeComboBox</cstring>
