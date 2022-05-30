@@ -70,7 +70,7 @@
     <message>
         <location filename="../networkcontaineritem.inl" line="34"/>
         <source>Order</source>
-        <translation>Порядок</translation>
+        <translation>Очерёдность</translation>
     </message>
     <message>
         <location filename="../networkcontaineritem.inl" line="35"/>
@@ -301,7 +301,7 @@
     <message>
         <location filename="../vpnsecuritywidget.ui" line="147"/>
         <source>Maximum strangth</source>
-        <translation>Максимальное</translation>
+        <translation>Максимальная стойкость</translation>
     </message>
     <message>
         <location filename="../vpnsecuritywidget.ui" line="157"/>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../vpnwidget.ui" line="153"/>
         <source>Dial another connection first:</source>
-        <translation>Сначала наберать другое соединение:</translation>
+        <translation>Сначала набирать другое соединение:</translation>
     </message>
     <message>
         <location filename="../vpnwidget.ui" line="169"/>
