@@ -160,7 +160,7 @@
     <message>
         <location filename="../powerschemewidget.ui" line="20"/>
         <source>Settings for power scheme</source>
-        <translation>Настрийки схемы питания</translation>
+        <translation>Настройки схемы питания</translation>
     </message>
     <message>
         <location filename="../powerschemewidget.ui" line="26"/>
