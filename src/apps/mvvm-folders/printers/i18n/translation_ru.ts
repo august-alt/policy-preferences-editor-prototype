@@ -260,7 +260,7 @@
     <message>
         <location filename="../sharedprinterwidget.ui" line="265"/>
         <source>Unmap all local ports</source>
-        <translation>Не перенаправлять на локальный порт</translation>
+        <translation>Отключить все локальные порты</translation>
     </message>
     <message>
         <location filename="../sharedprinterwidget.ui" line="272"/>
@@ -367,12 +367,12 @@
     <message>
         <location filename="../tcpprinterportwidget.ui" line="32"/>
         <source>Select Browse to import the settings for a given port</source>
-        <translation>Выберите Искать для импорта настроек для указанного порта</translation>
+        <translation>Выберите Просмотр для импорта настроек для указанного порта</translation>
     </message>
     <message>
         <location filename="../tcpprinterportwidget.ui" line="39"/>
         <source>Browse...</source>
-        <translation>Искать...</translation>
+        <translation>Просмотр...</translation>
     </message>
     <message>
         <location filename="../tcpprinterportwidget.ui" line="49"/>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../tcpprinterportwidget.ui" line="91"/>
         <source>Raw Settings</source>
-        <translation>Raw Настройки</translation>
+        <translation>Настройки TCP/IP</translation>
     </message>
     <message>
         <location filename="../tcpprinterportwidget.ui" line="109"/>
