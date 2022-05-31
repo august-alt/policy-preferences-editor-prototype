@@ -42,13 +42,13 @@ DrivesItem::DrivesItem()
 DrivesItem::DrivesItem(const DrivesItem &other)
     : ModelView::CompoundItem("DrivesItem")
 {
-    addProperty(ACTION, other.property<QString>(ACTION));
-    addProperty(PATH, other.property<QString>(PATH));
+    addProperty(ACTION, other.property<std::string>(ACTION));
+    addProperty(PATH, other.property<std::string>(PATH));
     addProperty(PERSISTENT, other.property<bool>(PERSISTENT));
-    addProperty(LABEL, other.property<QString>(LABEL));
-    addProperty(LETTER, other.property<QString>(LETTER));
-    addProperty(USER_NAME, other.property<QString>(USER_NAME));
-    addProperty(CPASSWORD, other.property<QString>(CPASSWORD));
+    addProperty(LABEL, other.property<std::string>(LABEL));
+    addProperty(LETTER, other.property<std::string>(LETTER));
+    addProperty(USER_NAME, other.property<std::string>(USER_NAME));
+    addProperty(CPASSWORD, other.property<std::string>(CPASSWORD));
     addProperty(USE_LETTER, other.property<bool>(USE_LETTER));
     addProperty(THIS_DRIVE, other.property<int>(THIS_DRIVE));
     addProperty(ALL_DRIVES, other.property<int>(ALL_DRIVES));

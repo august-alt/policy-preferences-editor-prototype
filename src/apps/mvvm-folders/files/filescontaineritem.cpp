@@ -41,9 +41,9 @@ FilesContainerItem::FilesContainerItem()
     addProperty<FilesItem>(FILES)->setVisible(false);
 }
 
-CommonItem FilesContainerItem::getCommon() const
+CommonItem* FilesContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void FilesContainerItem::setCommon(const CommonItem &item)
@@ -51,9 +51,9 @@ void FilesContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-FilesItem FilesContainerItem::getFiles() const
+FilesItem *FilesContainerItem::getFiles() const
 {
-    return property<FilesItem>(FILES);
+    return static_cast<FilesItem*>(children().back());
 }
 
 void FilesContainerItem::setFiles(const FilesItem &item)

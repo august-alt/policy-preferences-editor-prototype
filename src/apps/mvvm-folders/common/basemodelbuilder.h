@@ -18,44 +18,44 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
+#ifndef MVVM_FOLDERS_BASE_MODEL_BUILDER_H
+#define MVVM_FOLDERS_BASE_MODEL_BUILDER_H
 
-#include <mvvm/model/compounditem.h>
-
-#include "interfaces/containeriteminterface.h"
+#include <string>
 
 namespace mvvm_folders
 {
 
-//! Folder item representation for editor.
-
-class CommonItem;
-class FilesItem;
-
-class FilesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+class BaseModelBuilder
 {
 public:
-    static inline const std::string NAME   = "name";
-    static inline const std::string ORDER  = "order";
-    static inline const std::string ACTION = "action";
-    static inline const std::string FROM_PATH = "fromPath";
-    static inline const std::string TARGET_PATH = "targetPath";
+    virtual ~BaseModelBuilder() = default;
 
-    static inline const std::string COMMON = "common";
-    static inline const std::string FILES = "files";
+protected:
+    BaseModelBuilder() = default;
 
-    explicit FilesContainerItem();
+    BaseModelBuilder(const BaseModelBuilder&)            = delete;   // copy ctor
+    BaseModelBuilder(BaseModelBuilder&&)                 = delete;   // move ctor
+    BaseModelBuilder& operator=(const BaseModelBuilder&) = delete;   // copy assignment
+    BaseModelBuilder& operator=(BaseModelBuilder&&)      = delete;   // move assignment
 
-    CommonItem* getCommon() const;
-    void setCommon(const CommonItem& item);
+public:
+    template <template <typename> typename OptionalType, typename T>
+    T getOptionalPropertyData(const OptionalType<T>& data)
+    {
+        if (data.present())
+        {
+            return data.get();
+        }
+        else
+        {
+            return T();
+        }
+    }
 
-    FilesItem* getFiles() const;
-    void setFiles(const FilesItem& item);
-
-    void setupListeners() override;
+    std::string getActionCheckboxState(const std::string& data);
 };
 
 }
 
-#endif//MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
+#endif//MVVM_FOLDERS_BASE_MODEL_BUILDER_H

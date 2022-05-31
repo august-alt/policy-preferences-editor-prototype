@@ -18,44 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
+#include "folderoptionsmodelbuilder.h"
 
-#include <mvvm/model/compounditem.h>
+#include "folderoptionscontaineritem.h"
+#include "folderoptionsitem.h"
 
-#include "interfaces/containeriteminterface.h"
+#include "common/commonitem.h"
 
 namespace mvvm_folders
 {
 
-//! Folder item representation for editor.
-
-class CommonItem;
-class FilesItem;
-
-class FilesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::unique_ptr<FolderOptions> &folderOptionsSource)
 {
-public:
-    static inline const std::string NAME   = "name";
-    static inline const std::string ORDER  = "order";
-    static inline const std::string ACTION = "action";
-    static inline const std::string FROM_PATH = "fromPath";
-    static inline const std::string TARGET_PATH = "targetPath";
+    Q_UNUSED(folderOptionsSource);
 
-    static inline const std::string COMMON = "common";
-    static inline const std::string FILES = "files";
+    auto model = std::make_unique<PreferencesModel>();
 
-    explicit FilesContainerItem();
+    // TODO: Implement.
 
-    CommonItem* getCommon() const;
-    void setCommon(const CommonItem& item);
+    return model;
+}
 
-    FilesItem* getFiles() const;
-    void setFiles(const FilesItem& item);
+std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
+{
+    Q_UNUSED(model);
 
-    void setupListeners() override;
-};
+    return nullptr;
+}
 
 }
 
-#endif//MVVM_FOLDERS_FILES_CONTAINER_ITEM_H

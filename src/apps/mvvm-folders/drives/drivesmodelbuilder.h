@@ -18,44 +18,32 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
+#ifndef MVVM_FOLDERS_DRIVES_MODEL_BUILDER_H
+#define MVVM_FOLDERS_DRIVES_MODEL_BUILDER_H
 
-#include <mvvm/model/compounditem.h>
+#include <memory>
 
-#include "interfaces/containeriteminterface.h"
+#include "common/basemodelbuilder.h"
+#include "common/preferencesmodel.h"
+#include "schemas/drivesschema.h"
 
 namespace mvvm_folders
 {
 
-//! Folder item representation for editor.
-
-class CommonItem;
-class FilesItem;
-
-class FilesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+class DrivesModelBuilder : public BaseModelBuilder
 {
 public:
-    static inline const std::string NAME   = "name";
-    static inline const std::string ORDER  = "order";
-    static inline const std::string ACTION = "action";
-    static inline const std::string FROM_PATH = "fromPath";
-    static inline const std::string TARGET_PATH = "targetPath";
+    DrivesModelBuilder();
 
-    static inline const std::string COMMON = "common";
-    static inline const std::string FILES = "files";
+    std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Drives>& drives);
 
-    explicit FilesContainerItem();
+    std::unique_ptr<Drives> modelToSchema(std::unique_ptr<PreferencesModel>& model);
 
-    CommonItem* getCommon() const;
-    void setCommon(const CommonItem& item);
-
-    FilesItem* getFiles() const;
-    void setFiles(const FilesItem& item);
-
-    void setupListeners() override;
+private:
+    int getDrivesCheckboxIndex(const std::string& data);
 };
 
 }
 
-#endif//MVVM_FOLDERS_FILES_CONTAINER_ITEM_H
+#endif // MVVM_FOLDERS_DRIVES_MODEL_BUILDER_H
+

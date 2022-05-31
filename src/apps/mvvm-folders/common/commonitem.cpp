@@ -27,7 +27,7 @@ CommonItem::CommonItem()
     : ModelView::CompoundItem("CommonItem")
 {
     addProperty(NAME, "");
-    addProperty(CHANGED, false);
+    addProperty(CHANGED, "");
     addProperty(DESC, "");
     addProperty(BYPASS_ERRORS, false);
     addProperty(USER_CONTEXT, false);
@@ -55,9 +55,9 @@ void CommonItem::setName(const QString &newName)
     setProperty(NAME, newName);
 }
 
-bool CommonItem::changed() const
+std::string CommonItem::changed() const
 {
-    return property<bool>(CHANGED);
+    return property<std::string>(CHANGED);
 }
 
 void CommonItem::setChanged(bool state)

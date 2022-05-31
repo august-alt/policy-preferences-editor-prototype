@@ -11,6 +11,10 @@ if (CMAKE_COMPILER_IS_GNUCXX AND NOT WIN32)
   endif()
 endif()
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frelaxed-template-template-args")
+endif()
+
 macro(add_preferences_editor_library name)
   # add library
   add_library(${name} SHARED ${ARGN})

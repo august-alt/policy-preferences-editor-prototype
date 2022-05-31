@@ -44,7 +44,7 @@ public:
     QString name() const;
     void setName(const QString& path);
 
-    bool changed() const;
+    std::string changed() const;
     void setChanged(bool state);
 
     QString desc() const;

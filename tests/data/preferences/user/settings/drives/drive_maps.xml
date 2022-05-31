@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Drive clsid="{935D1B74-9CB8-4e3c-9914-7DD559B7A417}" name="A:" status="A:" image="2" changed="2022-05-12 12:47:29" uid="{C0538A32-5A45-416E-A830-A17647BF64BF}"><Properties action="U" thisDrive="NOCHANGE" allDrives="NOCHANGE" userName="" path="C:\path" label="sign" persistent="0" useLetter="1" letter="A"/></Drive>
+<Drives clsid="{8FDDCC1A-0C3C-43cd-A6B4-71A6DF20DA8C}" 
+        disabled="1">
+    <Drive clsid="{935D1B74-9CB8-4e3c-9914-7DD559B7A417}" 
+           name="A:"
+           status="A:"
+           image="2"
+           changed="2022-05-12 12:47:29"
+           uid="{C0538A32-5A45-416E-A830-A17647BF64BF}">
+           <Properties action="U" 
+                       thisDrive="NOCHANGE"
+                       allDrives="NOCHANGE" 
+                       userName=""
+                       path="C:/path"
+                       label="sign"
+                       persistent="0"
+                       useLetter="1"
+                       letter="A"/>
+    </Drive>
+</Drives>

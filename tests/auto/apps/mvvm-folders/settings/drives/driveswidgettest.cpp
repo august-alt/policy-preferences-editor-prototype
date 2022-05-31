@@ -20,21 +20,43 @@
 
 #include "driveswidgettest.h"
 
+#include "drives/drivescontaineritem.h"
+#include "drives/drivesitem.h"
+#include "drives/driveswidget.h"
+#include "drives/drivesmodelbuilder.h"
+
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+const std::string dataPath = "../../../../../data/preferences/user/settings/drives/";
 
-namespace tests 
+namespace tests
 {
+
+using namespace mvvm_folders;
 
 void DrivesWidgetTest::test()
 {
     std::ifstream file;
 
-    file.open(dataPath + "driveswidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath + "drive_maps.xml", std::ifstream::in);
+
+    QVERIFY(file.good());
+
+    if (file.good())
     {
-       
+            auto drives = Drives_(file, ::xsd::cxx::tree::flags::dont_validate);
+            auto modelBuilder = std::make_unique<DrivesModelBuilder>();
+            auto model = modelBuilder->schemaToModel(drives);
+
+            auto drivesWidget = DrivesWidget();
+            auto containerItem = model->topItem();
+            if (auto drivesContainer = dynamic_cast<DrivesContainerItem*>(containerItem); drivesContainer)
+            {
+                drivesWidget.setItem(drivesContainer->children().back());
+                drivesWidget.show();
+            }
+
+        QTest::qWait(10000);
     }
 
     file.close();
