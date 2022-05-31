@@ -40,7 +40,7 @@ protected:
     BaseModelBuilder& operator=(BaseModelBuilder&&)      = delete;   // move assignment
 
 public:
-    template <template<typename> typename OptionalType, typename T>
+    template <template <typename> typename OptionalType, typename T>
     T getOptionalPropertyData(const OptionalType<T>& data)
     {
         if (data.present())
