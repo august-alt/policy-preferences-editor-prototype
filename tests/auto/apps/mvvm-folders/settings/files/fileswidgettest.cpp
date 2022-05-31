@@ -22,19 +22,43 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include "files/filescontaineritem.h"
+#include "files/filesitem.h"
+#include "files/fileswidget.h"
+#include "files/filesmodelbuilder.h"
 
-namespace tests 
+const std::string dataPath = "../../../../../data/preferences/user/settings/files/";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
 
 void FilesWidgetTest::test()
 {
     std::ifstream file;
 
-    file.open(dataPath + "fileswidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath + "files.xml", std::ifstream::in);
+
+    QVERIFY(file.good());
+
+    if (file.good())
     {
-       
+        auto files = Files_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<FilesModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
+
+        auto filesWidget = std::make_unique<FilesWidget>();
+        auto containerItem = model->topItem();
+        auto filesContainer = dynamic_cast<FilesContainerItem*>(containerItem);
+
+        if (filesContainer)
+        {
+            filesWidget->setItem(filesContainer->children().back());
+            filesWidget->show();
+        }
+
+        QTest::qWait(10000);
     }
 
     file.close();
@@ -43,4 +67,3 @@ void FilesWidgetTest::test()
 }
 
 QTEST_MAIN(tests::FilesWidgetTest)
-

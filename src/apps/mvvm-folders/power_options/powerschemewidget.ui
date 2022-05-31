@@ -281,7 +281,7 @@
         </item>
         <item>
          <property name="text">
-          <string>Never.</string>
+          <string>Never</string>
          </property>
         </item>
        </widget>
@@ -780,12 +780,12 @@
         </item>
         <item>
          <property name="text">
-          <string>Always On</string>
+          <string>Always ON</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Minomal Power Management</string>
+          <string>Minimal Power Management</string>
          </property>
         </item>
         <item>

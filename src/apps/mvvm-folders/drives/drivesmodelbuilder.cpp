@@ -28,6 +28,11 @@
 namespace mvvm_folders
 {
 
+DrivesModelBuilder::DrivesModelBuilder()
+    : BaseModelBuilder()
+{
+}
+
 std::unique_ptr<PreferencesModel> DrivesModelBuilder::schemaToModel(std::unique_ptr<Drives> &drivesSource)
 {
     auto model = std::make_unique<PreferencesModel>();
@@ -137,26 +142,6 @@ int DrivesModelBuilder::getDrivesCheckboxIndex(const std::string &data)
     }
 
     return 0;
-}
-
-std::string DrivesModelBuilder::getActionCheckboxState(const std::string &data)
-{
-    if (data.compare("U") == 0)
-    {
-        return "Update";
-    }
-
-    if (data.compare("R") == 0)
-    {
-        return "Replace";
-    }
-
-    if (data.compare("D") == 0)
-    {
-        return "Delete";
-    }
-
-    return "Create";
 }
 
 }

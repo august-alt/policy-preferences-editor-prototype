@@ -23,14 +23,17 @@
 
 #include <memory>
 
+#include "common/basemodelbuilder.h"
 #include "common/preferencesmodel.h"
 #include "schemas/filesschema.h"
 
 namespace mvvm_folders
 {
-class FilesModelBuilder
+class FilesModelBuilder : public BaseModelBuilder
 {
 public:
+    FilesModelBuilder();
+
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Files>& files);
 
     std::unique_ptr<Files> modelToSchema(std::unique_ptr<PreferencesModel>& model);

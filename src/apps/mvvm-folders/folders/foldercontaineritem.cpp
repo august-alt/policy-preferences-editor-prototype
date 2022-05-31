@@ -40,9 +40,9 @@ FolderContainerItem::FolderContainerItem()
     addProperty<FolderItem>(FOLDER)->setVisible(false);
 }
 
-CommonItem FolderContainerItem::getCommon() const
+CommonItem *FolderContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void FolderContainerItem::setCommon(const CommonItem &item)
@@ -50,9 +50,9 @@ void FolderContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-FolderItem FolderContainerItem::getFolder() const
+FolderItem* FolderContainerItem::getFolder() const
 {
-    return property<FolderItem>(FOLDER);
+    return static_cast<FolderItem*>(children().back());
 }
 
 void FolderContainerItem::setFolder(const FolderItem &item)

@@ -23,22 +23,26 @@
 
 #include <memory>
 
+#include "common/basemodelbuilder.h"
 #include "common/preferencesmodel.h"
 #include "schemas/drivesschema.h"
 
 namespace mvvm_folders
 {
-class DrivesModelBuilder
+
+class DrivesModelBuilder : public BaseModelBuilder
 {
 public:
+    DrivesModelBuilder();
+
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Drives>& drives);
 
     std::unique_ptr<Drives> modelToSchema(std::unique_ptr<PreferencesModel>& model);
 
 private:
     int getDrivesCheckboxIndex(const std::string& data);
-    std::string getActionCheckboxState(const std::string& data);
 };
+
 }
 
 #endif // MVVM_FOLDERS_DRIVES_MODEL_BUILDER_H
