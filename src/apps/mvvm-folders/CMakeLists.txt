@@ -119,6 +119,7 @@ set(HEADERS
     registry/registrywidget.h
 
     shares/sharesitem.h
+    shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
 
@@ -246,6 +247,7 @@ set(SOURCES
 
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp
+    shares/sharesmodelbuilder.cpp
     shares/shareswidget.cpp
     shares/shareswidgetslots.cpp
 
