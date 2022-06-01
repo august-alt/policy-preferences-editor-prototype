@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BatteryPresent</class>
- <widget class="QWidget" name="BatteryPresent">
+ <class>BatteryPresentWidget</class>
+ <widget class="QWidget" name="BatteryPresentWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>587</width>
-    <height>228</height>
+    <width>250</width>
+    <height>150</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,12 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>250</width>
+    <height>150</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
