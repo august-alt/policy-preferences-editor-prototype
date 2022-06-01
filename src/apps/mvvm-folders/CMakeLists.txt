@@ -80,6 +80,7 @@ set(HEADERS
     network_options/basenetworkitem.h
     network_options/dialupitem.h
     network_options/dialupwidget.h
+    network_options/networkmodelbuilder.h
     network_options/networkcontaineritem.h
     network_options/networkcontaineritem.inl
     network_options/vpnitem.h
@@ -208,6 +209,7 @@ set(SOURCES
     network_options/dialupitem.cpp
     network_options/dialupwidget.cpp
     network_options/dialupwidgetslots.cpp
+    network_options/networkmodelbuilder.cpp
     network_options/vpnitem.cpp
     network_options/vpnnetworkingwidget.cpp
     network_options/vpnoptionswidget.cpp
