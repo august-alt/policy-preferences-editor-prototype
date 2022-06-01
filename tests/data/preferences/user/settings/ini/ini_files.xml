@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Ini clsid="{EEFACE84-D3D8-4680-8D4B-BF103E759448}" name="property" status="property" image="1" changed="2022-05-12 12:53:08" uid="{FE6682DC-3888-49DE-A6E9-A5ADC71ADFAB}"><Properties path="path" section="volume" value="value" property="property" action="R"/></Ini>
+<IniFiles 
+           clsid="{694C651A-08F2-47fa-A427-34C4F62BA207}" 
+           disabled="1">
+	<Ini clsid="{EEFACE84-D3D8-4680-8D4B-BF103E759448}"
+         name="property"
+         status="property" 
+         image="1" 
+         changed="2022-05-12 12:53:08"
+         uid="{FE6682DC-3888-49DE-A6E9-A5ADC71ADFAB}">
+         <Properties path="path"
+                     section="volume"
+                     value="value"
+                     property="property"
+                     action="R"/>
+    </Ini>
+</IniFiles>
