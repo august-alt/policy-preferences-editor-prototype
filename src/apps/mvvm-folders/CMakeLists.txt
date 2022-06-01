@@ -95,6 +95,7 @@ set(HEADERS
 
     power_options/powercontaineritem.h
     power_options/poweroptionsitem.h
+    power_options/powermodelbuilder.h
     power_options/poweroptionswidget.h
     power_options/powerplanitem.h
     power_options/powerplanwidget.h
@@ -219,6 +220,7 @@ set(SOURCES
 
     power_options/powercontaineritem.inl
     power_options/poweroptionsitem.cpp
+    power_options/powermodelbuilder.cpp
     power_options/poweroptionswidget.cpp
     power_options/powerplanitem.cpp
     power_options/powerplanwidget.cpp
