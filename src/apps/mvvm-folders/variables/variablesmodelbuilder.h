@@ -18,44 +18,27 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_VARIABLES_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_VARIABLES_CONTAINER_ITEM_H
+#ifndef MVVM_FOLDERS_VARIABLES_MODEL_BUILDER_H
+#define MVVM_FOLDERS_VARIABLES_MODEL_BUILDER_H
 
-#include <mvvm/model/compounditem.h>
+#include <memory>
 
-#include "interfaces/containeriteminterface.h"
+#include "common/basemodelbuilder.h"
+#include "common/preferencesmodel.h"
+#include "schemas/variablesschema.h"
 
 namespace mvvm_folders
 {
-
-//! Folder item representation for editor.
-
-class CommonItem;
-class VariablesItem;
-
-class VariablesContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+class VariablesModelBuilder : public BaseModelBuilder
 {
 public:
-    static inline const std::string NAME   = "name";
-    static inline const std::string ORDER  = "order";
-    static inline const std::string ACTION = "action";
-    static inline const std::string VALUE  = "value";
-    static inline const std::string USER   = "user";
+    VariablesModelBuilder();
 
-    static inline const std::string COMMON = "common";
-    static inline const std::string VARIABLES = "variables";
+    std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<EnvironmentVariables>& variables);
 
-    explicit VariablesContainerItem();
-
-    CommonItem* getCommon() const;
-    void setCommon(const CommonItem& item);
-
-    VariablesItem* getVariables() const;
-    void setVariables(const VariablesItem& item);
-
-    void setupListeners() override;
+    std::unique_ptr<EnvironmentVariables> modelToSchema(std::unique_ptr<PreferencesModel>& model);
 };
-
 }
 
-#endif//MVVM_FOLDERS_VARIABLES_CONTAINER_ITEM_H
+#endif // MVVM_FOLDERS_VARIABLES_MODEL_BUILDER_H
+

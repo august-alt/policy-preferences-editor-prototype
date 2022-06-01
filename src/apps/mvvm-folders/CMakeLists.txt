@@ -129,6 +129,7 @@ set(HEADERS
     shortcuts/shortcutswidget.h
 
     variables/variablesitem.h
+    variables/variablesmodelbuilder.h
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
@@ -260,6 +261,7 @@ set(SOURCES
 
     variables/variablesitem.cpp
     variables/variablescontaineritem.cpp
+    variables/variablesmodelbuilder.cpp
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
