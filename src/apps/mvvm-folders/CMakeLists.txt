@@ -61,6 +61,7 @@ set(HEADERS
 
     ini/iniitem.h
     ini/inicontaineritem.h
+    ini/inimodelbuilder.h
     ini/iniwidget.h
 
     local_users_and_groups/baselocalitem.h
@@ -185,6 +186,7 @@ set(SOURCES
 
     ini/iniitem.cpp
     ini/inicontaineritem.cpp
+    ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
 
