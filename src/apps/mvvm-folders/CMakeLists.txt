@@ -115,6 +115,7 @@ set(HEADERS
 
     registry/registrycontaineritem.h
     registry/registryitem.h
+    registry/registrymodelbuilder.h
     registry/registrywidget.h
 
     shares/sharesitem.h
@@ -239,6 +240,7 @@ set(SOURCES
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
+    registry/registrymodelbuilder.cpp
     registry/registrywidget.cpp
     registry/registrywidgetslots.cpp
 
