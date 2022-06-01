@@ -67,6 +67,7 @@ set(HEADERS
     local_users_and_groups/baselocalitem.h
     local_users_and_groups/groupmemberdialog.h
     local_users_and_groups/groupmemberitem.h
+    local_users_and_groups/groupmodelbuilder.h
     local_users_and_groups/groupmemberswidget.h
     local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
@@ -193,6 +194,7 @@ set(SOURCES
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
     local_users_and_groups/groupmemberitem.cpp
+    local_users_and_groups/groupmodelbuilder.cpp
     local_users_and_groups/groupmemberswidget.cpp
     local_users_and_groups/groupmemberswidgetslots.cpp
     local_users_and_groups/localgroupitem.cpp
