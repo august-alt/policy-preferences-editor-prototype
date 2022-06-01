@@ -18,43 +18,27 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_SHORTCUTS_CONTAINER_ITEM_H
-#define MVVM_FOLDERS_SHORTCUTS_CONTAINER_ITEM_H
+#ifndef MVVM_FOLDERS_SHORTCUTS_MODEL_BUILDER_H
+#define MVVM_FOLDERS_SHORTCUTS_MODEL_BUILDER_H
 
-#include <mvvm/model/compounditem.h>
+#include <memory>
 
-#include "interfaces/containeriteminterface.h"
+#include "common/basemodelbuilder.h"
+#include "common/preferencesmodel.h"
+#include "schemas/shortcutsschema.h"
 
 namespace mvvm_folders
 {
-
-//! Folder item representation for editor.
-
-class CommonItem;
-class ShortcutsItem;
-
-class ShortcutsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
+class ShortcutsModelBuilder : public BaseModelBuilder
 {
 public:
-    static inline const std::string SHORTCUT_PATH = "shortcutPath";
-    static inline const std::string ORDER         = "order";
-    static inline const std::string ACTION        = "action";
-    static inline const std::string TARGET_PATH   = "targetPath";
+    ShortcutsModelBuilder();
 
-    static inline const std::string COMMON        = "common";
-    static inline const std::string SHORTCUTS     = "shortcuts";
+    std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Shortcuts>& shortcuts);
 
-    explicit ShortcutsContainerItem();
-
-    CommonItem* getCommon() const;
-    void setCommon(const CommonItem& item);
-
-    ShortcutsItem* getShortcuts() const;
-    void setShortcuts(const ShortcutsItem& item);
-
-    void setupListeners() override;
+    std::unique_ptr<Shortcuts> modelToSchema(std::unique_ptr<PreferencesModel>& model);
 };
-
 }
 
-#endif//MVVM_FOLDERS_SHORTCUTS_CONTAINER_ITEM_H
+#endif // MVVM_FOLDERS_SHORTCUTS_MODEL_BUILDER_H
+

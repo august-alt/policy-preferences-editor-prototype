@@ -124,6 +124,7 @@ set(HEADERS
     shares/shareswidget.h
 
     shortcuts/shortcutsitem.h
+    shortcuts/shortcutsmodelbuilder.h
     shortcuts/shortcutscontaineritem.h
     shortcuts/shortcutswidget.h
 
@@ -253,6 +254,7 @@ set(SOURCES
 
     shortcuts/shortcutsitem.cpp
     shortcuts/shortcutscontaineritem.cpp
+    shortcuts/shortcutsmodelbuilder.cpp
     shortcuts/shortcutswidget.cpp
     shortcuts/shortcutswidgetslots.cpp
 
