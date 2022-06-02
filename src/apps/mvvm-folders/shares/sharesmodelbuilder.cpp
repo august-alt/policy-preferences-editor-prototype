@@ -64,9 +64,36 @@ std::unique_ptr<PreferencesModel> SharesModelBuilder::schemaToModel(std::unique_
 
 std::unique_ptr<NetworkShareSettings> SharesModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
+    auto shares = std::make_unique<NetworkShareSettings>("{520870D8-A6E7-47e8-A8D8-E6A4E76EAEC2}");
 
-    return nullptr;
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto variablesContainer = dynamic_cast<SharesContainerItem*>(containerItem); variablesContainer)
+        {
+            auto sharesModel = variablesContainer->getShares();
+            auto commonModel = variablesContainer->getCommon();
+
+            auto share = createRootElement<NetShare_t>("{2888C5E7-94FC-4739-90AA-2C1536D68BC0}");
+
+            auto properties = ShareProperties_t(sharesModel->property<std::string>(SharesItem::NAME),
+                                                sharesModel->property<std::string>(SharesItem::PATH),
+                                                sharesModel->property<std::string>(SharesItem::COMMENT));
+            properties.action(sharesModel->property<std::string>(SharesItem::ACTION));
+            properties.allRegular(sharesModel->property<bool>(SharesItem::ALL_REGULAR));
+            properties.allHidden(sharesModel->property<bool>(SharesItem::ALL_HIDDEN));
+            properties.allAdminDrive(sharesModel->property<bool>(SharesItem::ALL_ADMIN_DRIVE));
+            properties.limitUsers(sharesModel->property<std::string>(SharesItem::LIMIT_USERS));
+            properties.userLimit(sharesModel->property<int>(SharesItem::USER_LIMIT));
+            properties.abe(sharesModel->property<std::string>(SharesItem::ACCESS_BASED_ENUMERATION));
+
+            setCommonModelData(share, commonModel);
+            share.Properties().push_back(properties);
+
+            shares->NetShare().push_back(share);
+        }
+    }
+
+    return shares;
 }
 
 }
