@@ -57,37 +57,4 @@ SharedPrinterItem::SharedPrinterItem(const SharedPrinterItem &other)
     copyProperty<std::string>(PASSWORD, other);
 }
 
-constexpr const char *SharedPrinterItem::propertyToString(const SharedPrinterItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case ACTION:
-        return "action";
-    case LOCATION:
-        return "location";
-    case PATH:
-        return "path";
-    case COMMENT:
-        return "comment";
-    case DEFAULT:
-        return "default";
-    case SKIP_LOCAL:
-        return "skipLocal";
-    case DELETE_ALL:
-        return "deleteAll";
-    case PORT:
-        return "port";
-    case PERSISTENT:
-        return "persistent";
-    case DELETE_MAPS:
-        return "deleteMaps";
-    case USERNAME:
-        return "username";
-    case PASSWORD:
-        return "cpassword";
-    }
-
-    return "";
-}
-
 }
