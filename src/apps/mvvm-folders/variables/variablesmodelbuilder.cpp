@@ -64,9 +64,31 @@ std::unique_ptr<PreferencesModel> VariablesModelBuilder::schemaToModel(std::uniq
 
 std::unique_ptr<EnvironmentVariables> VariablesModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
+    auto variables = std::make_unique<EnvironmentVariables>("{BF141A63-327B-438a-B9BF-2C188F13B7AD}");
 
-    return nullptr;
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto variablesContainer = dynamic_cast<VariablesContainerItem*>(containerItem); variablesContainer)
+        {
+            auto varModel = variablesContainer->getVariables();
+            auto commonModel = variablesContainer->getCommon();
+
+            auto var = createRootElement<EnvironmentVariable_t>("{78570023-8373-4a19-BA80-2F150738EA19}");
+
+            auto properties = EnvironmentVariableProperties_t(varModel->property<std::string>(VariablesItem::NAME),
+                                                              varModel->property<std::string>(VariablesItem::VALUE));
+            properties.action(varModel->property<std::string>(VariablesItem::ACTION));
+            properties.user(varModel->property<bool>(VariablesItem::USER));
+            properties.partial(varModel->property<bool>(VariablesItem::PARTIAL));
+
+            setCommonModelData(var, commonModel);
+            var.Properties().push_back(properties);
+
+            variables->EnvironmentVariable().push_back(var);
+        }
+    }
+
+    return variables;
 }
 
 }
