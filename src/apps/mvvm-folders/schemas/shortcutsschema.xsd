@@ -39,8 +39,7 @@
          <xs:element name="Shortcut" type="Shortcut_t" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="clsid" type="xs:string" use="required" />
-      <xs:attribute name="disabled"
-        type="xs:boolean" use="optional" />
+      <xs:attribute name="disabled" type="xs:boolean" use="optional" />
    </xs:complexType>
 </xs:element>
 

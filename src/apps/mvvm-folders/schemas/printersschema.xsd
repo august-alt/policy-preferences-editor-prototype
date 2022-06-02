@@ -18,7 +18,7 @@
 
 <xs:complexType name="SharedPrinter_t">
    <xs:sequence>
-      <xs:element name="Properties" type="SharedPrinterProperties_t" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="SharedPrinterProperties_t" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -54,7 +54,7 @@
 
 <xs:complexType name="PortPrinter_t">
    <xs:sequence>
-      <xs:element name="Properties" type="PortPrinterProperties_t" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="PortPrinterProperties_t" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -81,7 +81,7 @@
 
 <xs:complexType name="LocalPrinter_t">
    <xs:sequence>
-      <xs:element name="Properties" type="LocalPrinterProperties_t" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="LocalPrinterProperties_t" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -97,9 +97,9 @@
 <xs:element name="Printers">
   <xs:complexType>
      <xs:sequence>
-        <xs:element name="SharedPrinter" type="SharedPrinter_t" />
-        <xs:element name="PortPrinter" type="PortPrinter_t" />
-        <xs:element name="LocalPrinter" type="LocalPrinter_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="SharedPrinter" type="SharedPrinter_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="PortPrinter" type="PortPrinter_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="LocalPrinter" type="LocalPrinter_t" />
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required" />
      <xs:attribute name="disabled" type="xs:boolean" use="optional" />
