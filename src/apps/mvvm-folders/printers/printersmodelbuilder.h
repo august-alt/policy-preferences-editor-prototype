@@ -29,6 +29,10 @@
 
 namespace mvvm_folders
 {
+class LocalPrinterItem;
+class SharedPrinterItem;
+class TcpPrinterItem;
+
 class PrintersModelBuilder : public BaseModelBuilder
 {
 public:
@@ -37,6 +41,15 @@ public:
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Printers>& printers);
 
     std::unique_ptr<Printers> modelToSchema(std::unique_ptr<PreferencesModel>& model);
+
+private:
+    template <typename PrinterSourceType, typename ItemType, typename PropertiesType>
+    void processLocalPrinters(PrinterSourceType &printersSource, std::unique_ptr<PreferencesModel>& model,
+                              std::function<void (ItemType*, PropertiesType)>& callback);
+
+    void processLocalPrinter(LocalPrinterItem* localPrinter, LocalPrinterProperties_t properties);
+    void processSharedPrinter(SharedPrinterItem* sharedPrinter, SharedPrinterProperties_t properties);
+    void processTcpPrinter(TcpPrinterItem* tcpPrinter, PortPrinterProperties_t properties);
 };
 }
 
