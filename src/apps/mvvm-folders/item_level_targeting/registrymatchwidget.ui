@@ -47,12 +47,12 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
-     <widget class="QWidget" name="page_2">
+     <widget class="QWidget" name="page_1">
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
-        <widget class="QLabel" name="greaterLabel_2">
+        <widget class="QLabel" name="matchLabel_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -63,12 +63,12 @@
           <string>Match type:</string>
          </property>
          <property name="buddy">
-          <cstring>mbComboBox</cstring>
+          <cstring>matchComboBox_2</cstring>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QComboBox" name="mbComboBox_2">
+        <widget class="QComboBox" name="matchComboBox_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -82,7 +82,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <item>
           <property name="text">
@@ -107,21 +107,27 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="hiveLabel_1">
          <property name="text">
           <string>Hive:</string>
+         </property>
+         <property name="buddy">
+          <cstring>hiveComboBox_1</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLabel" name="label_8">
+        <widget class="QLabel" name="pathLabel_1">
          <property name="text">
           <string>Key path:</string>
+         </property>
+         <property name="buddy">
+          <cstring>pathToolButton_1</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QComboBox" name="comboBox_3">
+        <widget class="QComboBox" name="hiveComboBox_1">
          <property name="minimumSize">
           <size>
            <width>200</width>
@@ -156,7 +162,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="pathLineEdit_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -181,7 +187,7 @@
         </widget>
        </item>
        <item row="3" column="2">
-        <widget class="QToolButton" name="toolButton_2">
+        <widget class="QToolButton" name="pathToolButton_1">
          <property name="minimumSize">
           <size>
            <width>75</width>
@@ -194,7 +200,7 @@
         </widget>
        </item>
        <item row="4" column="0" colspan="3">
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="label_1">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -204,7 +210,7 @@
         </widget>
        </item>
        <item row="5" column="0" colspan="3">
-        <spacer name="verticalSpacer_2">
+        <spacer name="verticalSpacer_1">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -218,10 +224,10 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page">
+     <widget class="QWidget" name="page_2">
       <layout class="QGridLayout" name="gridLayout">
        <item row="8" column="0" colspan="3">
-        <spacer name="verticalSpacer">
+        <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -234,14 +240,17 @@
         </spacer>
        </item>
        <item row="4" column="1">
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="valTypeLabel_2">
          <property name="text">
           <string>Value type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valTypeComboBox_2</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="1" colspan="2">
-        <widget class="QComboBox" name="comboBox_2">
+        <widget class="QComboBox" name="valTypeComboBox_2">
          <item>
           <property name="text">
            <string>Any</string>
@@ -275,7 +284,7 @@
         </widget>
        </item>
        <item row="3" column="2">
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QToolButton" name="pathToolButton_2">
          <property name="minimumSize">
           <size>
            <width>75</width>
@@ -288,7 +297,7 @@
         </widget>
        </item>
        <item row="7" column="0" colspan="3">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="label_2">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -298,14 +307,17 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="hiveLabel_2">
          <property name="text">
           <string>Hive:</string>
+         </property>
+         <property name="buddy">
+          <cstring>hiveComboBox_2</cstring>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QLabel" name="greaterLabel">
+        <widget class="QLabel" name="matchLabel_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -316,12 +328,12 @@
           <string>Match type:</string>
          </property>
          <property name="buddy">
-          <cstring>mbComboBox</cstring>
+          <cstring>matchComboBox_2</cstring>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QComboBox" name="mbComboBox">
+        <widget class="QComboBox" name="matchComboBox_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -360,14 +372,17 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="pathLabel_2">
          <property name="text">
           <string>Key path:</string>
+         </property>
+         <property name="buddy">
+          <cstring>pathToolButton_2</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="pathLineEdit_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -392,14 +407,17 @@
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="valNameLabel_2">
          <property name="text">
           <string>Value name:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valNameLineEdit_2</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="valNameLineEdit_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -415,7 +433,7 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="hiveComboBox_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -456,7 +474,7 @@
         </widget>
        </item>
        <item row="6" column="0">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="defaultCheckBox_2">
          <property name="text">
           <string>Default name</string>
          </property>
@@ -466,31 +484,148 @@
      </widget>
      <widget class="QWidget" name="page_3">
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QLabel" name="greaterLabel_3">
+       <item row="4" column="0">
+        <widget class="QLabel" name="valNameLabel_3">
+         <property name="text">
+          <string>Value name:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valNameLineEdit_3</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QLineEdit" name="valNameLineEdit_3">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="text">
-          <string>Match type:</string>
-         </property>
-         <property name="buddy">
-          <cstring>mbComboBox</cstring>
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
          </property>
         </widget>
        </item>
-       <item row="0" column="2" colspan="3">
-        <widget class="QLabel" name="label_15">
+       <item row="2" column="2">
+        <widget class="QLabel" name="pathLabel_3">
          <property name="text">
-          <string>Value data match type:</string>
+          <string>Key path:</string>
+         </property>
+         <property name="buddy">
+          <cstring>pathLineEdit_3</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="hiveLabel_3">
+         <property name="text">
+          <string>Hive:</string>
+         </property>
+         <property name="buddy">
+          <cstring>hiveComboBox_3</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="2">
+        <widget class="QLineEdit" name="pathLineEdit_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="3">
+        <widget class="QComboBox" name="valTypeComboBox_3">
+         <item>
+          <property name="text">
+           <string>Any</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>REG_SZ</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>REG_EXPAND_SZ</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>REG_MULTI_SZ</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>REG_DWORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>REG_BINARY</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QToolButton" name="pathToolButton_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>25</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>75</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="valTypeLabel_3">
+         <property name="text">
+          <string>Value type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valTypeComboBox_3</cstring>
          </property>
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
-        <widget class="QComboBox" name="mbComboBox_3">
+        <widget class="QComboBox" name="matchComboBox_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -504,7 +639,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <item>
           <property name="text">
@@ -528,22 +663,8 @@
          </item>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Hive:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_13">
-         <property name="text">
-          <string>Key path:</string>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="0" colspan="2">
-        <widget class="QComboBox" name="comboBox_5">
+        <widget class="QComboBox" name="hiveComboBox_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -583,8 +704,223 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_4">
+       <item row="7" column="0">
+        <widget class="QLabel" name="valDataLabel_3">
+         <property name="text">
+          <string>Value data:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valDataLineEdit_3</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="5">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="5">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>487</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="matchLabel_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Match type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>matchComboBox_2</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="3">
+        <widget class="QLabel" name="dataMatchLabel_3">
+         <property name="text">
+          <string>Value data match type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>dataMatchComboBox_3</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QCheckBox" name="defaultCheckBox_3">
+         <property name="text">
+          <string>Default name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="3">
+        <widget class="QComboBox" name="dataMatchComboBox_3">
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Any</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Substring match</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Version match</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="5">
+        <widget class="QLineEdit" name="valDataLineEdit_3"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_4">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="4" column="0">
+        <widget class="QLabel" name="valNameLabel_4">
+         <property name="text">
+          <string>Value name:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valNameLineEdit_4</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="varNameLabel_4">
+         <property name="text">
+          <string>Variable name:</string>
+         </property>
+         <property name="buddy">
+          <cstring>varNameLineEdit_4</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="3">
+        <widget class="QLineEdit" name="varNameLineEdit_4">
+         <property name="text">
+          <string>MyVariable</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QComboBox" name="hiveComboBox_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>HKEY_CLASSES_ROOT</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HKEY_CURRENT_USER</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HKEY_LOCAL_MACHINE</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HKEY_USERS</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HKEY_CURRENT_CONFIG</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QComboBox" name="matchComboBox_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="currentIndex">
+          <number>3</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Key exists</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Value exists</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Match value data</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Get value data</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="pathLabel_4">
+         <property name="text">
+          <string>Key path:</string>
+         </property>
+         <property name="buddy">
+          <cstring>pathLineEdit_4</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="pathLineEdit_4">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -608,8 +944,70 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="4">
-        <widget class="QToolButton" name="toolButton_3">
+       <item row="4" column="1">
+        <widget class="QLabel" name="valTypeLabel_4">
+         <property name="text">
+          <string>Value type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>valTypeComboBox_4</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0" colspan="3">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>487</width>
+           <height>3</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLineEdit" name="valNameLineEdit_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="matchLabel_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Match type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>matchComboBox_2</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="defaultCheckBox_4">
+         <property name="text">
+          <string>Default name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QToolButton" name="pathToolButton_4">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -633,38 +1031,18 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_10">
+       <item row="10" column="0" colspan="3">
+        <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Value name:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="4" column="2">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Value type:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>75</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" colspan="3">
-        <widget class="QComboBox" name="comboBox_4">
+       <item row="5" column="1" colspan="2">
+        <widget class="QComboBox" name="valTypeComboBox_4">
          <item>
           <property name="text">
            <string>Any</string>
@@ -697,102 +1075,20 @@
          </item>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBox_2">
+       <item row="2" column="0">
+        <widget class="QLabel" name="hiveLabel_4">
          <property name="text">
-          <string>Default name</string>
+          <string>Hive:</string>
+         </property>
+         <property name="buddy">
+          <cstring>hiveComboBox_4</cstring>
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_14">
+       <item row="9" column="0">
+        <widget class="QLabel" name="returnLabel_4">
          <property name="text">
-          <string>Version range:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QComboBox" name="comboBox_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QLineEdit" name="lineEdit_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QComboBox" name="comboBox_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="3" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="5">
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="5">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>487</width>
-           <height>26</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="2" colspan="3">
-        <widget class="QComboBox" name="comboBox_8">
-         <property name="minimumSize">
-          <size>
-           <width>75</width>
-           <height>0</height>
-          </size>
+          <string>Return value in %MyVariable%</string>
          </property>
         </widget>
        </item>
@@ -802,6 +1098,34 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>matchComboBox_2</tabstop>
+  <tabstop>hiveComboBox_2</tabstop>
+  <tabstop>pathToolButton_2</tabstop>
+  <tabstop>valNameLineEdit_2</tabstop>
+  <tabstop>valTypeComboBox_2</tabstop>
+  <tabstop>defaultCheckBox_2</tabstop>
+  <tabstop>matchComboBox_3</tabstop>
+  <tabstop>dataMatchComboBox_3</tabstop>
+  <tabstop>hiveComboBox_3</tabstop>
+  <tabstop>pathLineEdit_3</tabstop>
+  <tabstop>pathToolButton_3</tabstop>
+  <tabstop>valNameLineEdit_3</tabstop>
+  <tabstop>valTypeComboBox_3</tabstop>
+  <tabstop>defaultCheckBox_3</tabstop>
+  <tabstop>valDataLineEdit_3</tabstop>
+  <tabstop>matchComboBox_4</tabstop>
+  <tabstop>hiveComboBox_4</tabstop>
+  <tabstop>pathLineEdit_4</tabstop>
+  <tabstop>pathToolButton_4</tabstop>
+  <tabstop>valNameLineEdit_4</tabstop>
+  <tabstop>valTypeComboBox_4</tabstop>
+  <tabstop>defaultCheckBox_4</tabstop>
+  <tabstop>varNameLineEdit_4</tabstop>
+  <tabstop>matchComboBox_1</tabstop>
+  <tabstop>hiveComboBox_1</tabstop>
+  <tabstop>pathToolButton_1</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
