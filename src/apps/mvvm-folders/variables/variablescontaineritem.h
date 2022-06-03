@@ -47,10 +47,10 @@ public:
 
     explicit VariablesContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    VariablesItem getVariables() const;
+    VariablesItem* getVariables() const;
     void setVariables(const VariablesItem& item);
 
     void setupListeners() override;

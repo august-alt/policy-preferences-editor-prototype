@@ -47,7 +47,29 @@ public:
     LocalPrinterItem();
     LocalPrinterItem(const LocalPrinterItem &other);
 
-    constexpr static const char* propertyToString(const PropertyType& type);
+    constexpr static inline const char* propertyToString(const PropertyType& type)
+    {
+        switch (type)
+        {
+        case ACTION:
+            return "action";
+        case NAME:
+            return "name";
+        case PORT:
+            return "port";
+        case PATH:
+            return "path";
+        case DEFAULT:
+            return "default";
+        case LOCATION:
+            return "location";
+        case COMMENT:
+            return "comment";
+        case DELETE_ALL:
+            return "deleteAll";
+        }
+        return "";
+    }
 };
 
 }

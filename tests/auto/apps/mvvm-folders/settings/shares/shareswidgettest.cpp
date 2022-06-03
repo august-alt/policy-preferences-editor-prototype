@@ -22,19 +22,43 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include "shares/sharescontaineritem.h"
+#include "shares/sharesitem.h"
+#include "shares/shareswidget.h"
+#include "shares/sharesmodelbuilder.h"
 
-namespace tests 
+const std::string dataPath = "../../../../../data/preferences/machine/settings/shares/";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
 
 void SharesWidgetTest::test()
 {
     std::ifstream file;
 
-    file.open(dataPath + "shareswidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath + "network_shares.xml", std::ifstream::in);
+
+    QVERIFY(file.good());
+
+    if (file.good())
     {
-       
+        auto shares = NetworkShareSettings_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<SharesModelBuilder>();
+        auto model = modelBuilder->schemaToModel(shares);
+
+        auto sharesWidget = std::make_unique<SharesWidget>();
+        auto containerItem = model->topItem();
+        auto sharesContainer = dynamic_cast<SharesContainerItem*>(containerItem);
+
+        if (sharesContainer)
+        {
+            sharesWidget->setItem(sharesContainer->children().back());
+            sharesWidget->show();
+        }
+
+        QTest::qWait(10000);
     }
 
     file.close();

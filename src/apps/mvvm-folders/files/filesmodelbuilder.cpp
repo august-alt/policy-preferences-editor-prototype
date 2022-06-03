@@ -53,12 +53,7 @@ std::unique_ptr<PreferencesModel> FilesModelBuilder::schemaToModel(std::unique_p
             files->setProperty(FilesItem::HIDDEN, getOptionalPropertyData(properties.hidden()));
 
             auto common = sessionItem->getCommon();
-            common->setProperty(CommonItem::NAME, filesSchema.name().c_str());
-            common->setProperty(CommonItem::CHANGED, getOptionalPropertyData(filesSchema.changed()).c_str());
-            common->setProperty(CommonItem::DESC, getOptionalPropertyData(filesSchema.desc()).c_str());
-            common->setProperty(CommonItem::BYPASS_ERRORS, getOptionalPropertyData(filesSchema.bypassErrors()));
-            common->setProperty(CommonItem::USER_CONTEXT, getOptionalPropertyData(filesSchema.userContext()));
-            common->setProperty(CommonItem::REMOVE_POLICY, getOptionalPropertyData(filesSchema.removePolicy()));
+            setCommonItemData(common, filesSchema);
         }
     }
 
@@ -67,9 +62,33 @@ std::unique_ptr<PreferencesModel> FilesModelBuilder::schemaToModel(std::unique_p
 
 std::unique_ptr<Files> FilesModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
+    auto files = std::make_unique<Files>("{215B2E53-57CE-475c-80FE-9EEC14635851}");
 
-    return nullptr;
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto filesContainer = dynamic_cast<FilesContainerItem*>(containerItem); filesContainer)
+        {
+            auto driveModel = filesContainer->getFiles();
+            auto commonModel = filesContainer->getCommon();
+
+            auto file = createRootElement<File_t>("{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}");
+
+            auto properties = FileProperties_t(driveModel->property<std::string>(FilesItem::FROM_PATH),
+                                               driveModel->property<std::string>(FilesItem::TARGET_PATH));
+            properties.action(driveModel->property<std::string>(FilesItem::ACTION));
+            properties.action(driveModel->property<std::string>(FilesItem::SUPPRESS));
+            properties.action(driveModel->property<std::string>(FilesItem::READONLY));
+            properties.action(driveModel->property<std::string>(FilesItem::ARCHIVE));
+            properties.action(driveModel->property<std::string>(FilesItem::HIDDEN));
+
+            setCommonModelData(file, commonModel);
+            file.Properties().push_back(properties);
+
+            files->File().push_back(file);
+        }
+    }
+
+    return files;
 }
 
 }

@@ -17,7 +17,7 @@
 
 <xs:complexType name="PowerScheme_t">
    <xs:sequence>
-      <xs:element name="Properties" type="PowerSchemeProperties_t" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="PowerSchemeProperties_t" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -42,7 +42,7 @@
 
 <xs:complexType name="GlobalPowerOptions_t">
    <xs:sequence>
-      <xs:element name="Properties" type="GlobalPowerOptionsProperties_t" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="GlobalPowerOptionsProperties_t" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -99,7 +99,7 @@
 
 <xs:complexType name="GlobalPowerOptionsV2_t">
   <xs:sequence>
-    <xs:element name="Properties" type="GlobalPowerOptionsV2Properties_t" />
+    <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="GlobalPowerOptionsV2Properties_t" />
   </xs:sequence>
   <xs:attribute name="clsid" type="xs:string" use="required" />
   <xs:attribute name="name" type="xs:string" use="required" />
@@ -115,9 +115,9 @@
 <xs:element name="PowerOptions">
   <xs:complexType>
      <xs:sequence>
-        <xs:element name="GlobalPowerOptions" type="GlobalPowerOptions_t" />
-        <xs:element name="PowerScheme" type="PowerScheme_t" />
-        <xs:element name="GlobalPowerOptionsV2" type="GlobalPowerOptionsV2_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="GlobalPowerOptions" type="GlobalPowerOptions_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="PowerScheme" type="PowerScheme_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="GlobalPowerOptionsV2" type="GlobalPowerOptionsV2_t" />
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required" />
      <xs:attribute name="disabled" type="xs:boolean" use="optional" />

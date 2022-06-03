@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
  <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-   <xs:complexType name="Properties_t">
+   <xs:complexType name="IniProperties_t">
      <xs:attribute name="path" type="xs:string" use="required"/>
      <xs:attribute name="section" type="xs:string" use="optional"/>
      <xs:attribute name="value" type="xs:string" use="optional"/>
@@ -10,7 +10,7 @@
    </xs:complexType>
    <xs:complexType name="Ini_t">
      <xs:sequence>
-       <xs:element name="Properties" type="Properties_t" maxOccurs="unbounded"/>
+       <xs:element name="Properties" type="IniProperties_t" maxOccurs="unbounded"/>
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required"/>
      <xs:attribute name="name" type="xs:string" use="required"/>

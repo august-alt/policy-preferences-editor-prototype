@@ -51,7 +51,38 @@ public:
     SharedPrinterItem();
     SharedPrinterItem(const SharedPrinterItem &other);
 
-    constexpr static const char *propertyToString(const PropertyType& type);
+    constexpr static inline const char *propertyToString(const PropertyType& type)
+    {
+        switch (type)
+        {
+        case ACTION:
+            return "action";
+        case LOCATION:
+            return "location";
+        case PATH:
+            return "path";
+        case COMMENT:
+            return "comment";
+        case DEFAULT:
+            return "default";
+        case SKIP_LOCAL:
+            return "skipLocal";
+        case DELETE_ALL:
+            return "deleteAll";
+        case PORT:
+            return "port";
+        case PERSISTENT:
+            return "persistent";
+        case DELETE_MAPS:
+            return "deleteMaps";
+        case USERNAME:
+            return "username";
+        case PASSWORD:
+            return "cpassword";
+        }
+
+        return "";
+    }
 };
 
 }

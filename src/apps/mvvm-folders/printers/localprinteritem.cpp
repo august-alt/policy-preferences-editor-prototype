@@ -49,29 +49,5 @@ LocalPrinterItem::LocalPrinterItem(const LocalPrinterItem &other)
     copyProperty<bool>(DELETE_ALL, other);
 }
 
-constexpr const char *LocalPrinterItem::propertyToString(const LocalPrinterItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case ACTION:
-        return "action";
-    case NAME:
-        return "name";
-    case PORT:
-        return "port";
-    case PATH:
-        return "path";
-    case DEFAULT:
-        return "default";
-    case LOCATION:
-        return "location";
-    case COMMENT:
-        return "comment";
-    case DELETE_ALL:
-        return "deleteAll";
-    }
-    return "";
-}
-
 }
 
