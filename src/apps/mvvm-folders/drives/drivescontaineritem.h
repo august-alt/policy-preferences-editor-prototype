@@ -47,10 +47,10 @@ public:
 
     explicit DrivesContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    DrivesItem getDrives() const;
+    DrivesItem *getDrives() const;
     void setDrives(const DrivesItem& item);
 
     void setupListeners() override;

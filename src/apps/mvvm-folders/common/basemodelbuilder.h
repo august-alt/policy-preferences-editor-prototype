@@ -23,6 +23,11 @@
 
 #include <string>
 
+#include "commonitem.h"
+
+#include <QDate>
+#include <QString>
+
 namespace mvvm_folders
 {
 
@@ -39,7 +44,6 @@ protected:
     BaseModelBuilder& operator=(const BaseModelBuilder&) = delete;   // copy assignment
     BaseModelBuilder& operator=(BaseModelBuilder&&)      = delete;   // move assignment
 
-public:
     template <template <typename> typename OptionalType, typename T>
     T getOptionalPropertyData(const OptionalType<T>& data)
     {
@@ -54,6 +58,42 @@ public:
     }
 
     std::string getActionCheckboxState(const std::string& data);
+
+    template <typename SchemaType>
+    void setCommonItemData(CommonItem* common, const SchemaType& schema)
+    {
+        common->setProperty(CommonItem::NAME, schema.name().c_str());
+        common->setProperty(CommonItem::CHANGED, getOptionalPropertyData(schema.changed()).c_str());
+        common->setProperty(CommonItem::DESC, getOptionalPropertyData(schema.desc()).c_str());
+        common->setProperty(CommonItem::BYPASS_ERRORS, getOptionalPropertyData(schema.bypassErrors()));
+        common->setProperty(CommonItem::USER_CONTEXT, getOptionalPropertyData(schema.userContext()));
+        common->setProperty(CommonItem::REMOVE_POLICY, getOptionalPropertyData(schema.removePolicy()));
+    }
+
+    template <typename CommonData>
+    void setCommonModelData(CommonData& data, const mvvm_folders::CommonItem* commonModel)
+    {
+        data.name(commonModel->property<std::string>(CommonItem::NAME));
+        data.changed(commonModel->property<std::string>(CommonItem::CHANGED));
+        data.desc(commonModel->property<std::string>(CommonItem::DESC));
+        data.bypassErrors(commonModel->property<bool>(CommonItem::BYPASS_ERRORS));
+        data.userContext(commonModel->property<bool>(CommonItem::USER_CONTEXT));
+        data.removePolicy(commonModel->property<bool>(CommonItem::REMOVE_POLICY));
+    }
+
+    template <typename T>
+    T createRootElement(const std::string& guid)
+    {
+        QString dateOfChange(QDate::currentDate().toString(Qt::ISODate)
+                           + " "
+                           + QTime::currentTime().toString("hh:mm:ss"));
+
+        return T(
+                 guid,
+                 dateOfChange.toStdString(),
+                 ""
+                 );
+    }
 };
 
 }

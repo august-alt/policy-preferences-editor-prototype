@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Shortcut clsid="{4F2F7C55-2790-433e-8127-0739D1CFA327}" userContext="1" name="name" status="name" image="0" changed="2022-05-12 12:57:17" uid="{B1C481DB-2193-47FD-8155-BBDA408F23DD}"><Properties pidl="" targetType="FILESYSTEM" action="C" comment="comment" shortcutKey="0" startIn="begin" arguments="args" iconIndex="0" targetPath="path" iconPath="iconpath" window="" shortcutPath="name"/></Shortcut>
+<Shortcuts 
+          clsid="{872ECB34-B2EC-401b-A585-D32574AA90EE}"
+          disabled="1">
+   <Shortcut 
+           clsid="{4F2F7C55-2790-433e-8127-0739D1CFA327}"
+           userContext="1" 
+           name="Temp Files" 
+           status="Temp Files"
+           image="2" 
+           changed="2007-07-06 21:06:14"
+           uid="{4A944BDF-91E1-41B8-AC2D-CFC8F4C75DE3}">
+     <Properties 
+           pidl="" 
+           targetType="FILESYSTEM" 
+           action="U"
+           comment="" 
+           shortcutKey="0" 
+           startIn="" 
+           arguments=""
+           iconIndex="0" 
+           targetPath="c:\temp" 
+           iconPath="" 
+           window=""
+           shortcutPath="%DesktopDir%\Temp Files"/>
+   </Shortcut>
+</Shortcuts>
