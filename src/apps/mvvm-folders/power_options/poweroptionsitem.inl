@@ -18,30 +18,31 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_POWER_PLAN_ITEM_H
-#define MVVM_FOLDERS_POWER_PLAN_ITEM_H
-
-#include <mvvm/model/compounditem.h>
-
 namespace mvvm_folders
 {
 
-//! Drives item representation for editor.
-
-class PowerPlanItem : public ModelView::CompoundItem
+constexpr const char *PowerOptionsItem::propertyToString(const PowerOptionsItem::PropertyType &type)
 {
-public:
-    static inline const std::string ACTION = "action";
-    static inline const std::string NAME = "name";
+    switch (type)
+    {
+    case CLOSE_LID:
+        return "closeLid";
+    case PRESS_POWER_BUTTON:
+        return "pressPowerBtn";
+    case PRESS_SLEEP_BUTTON:
+        return "pressSleepBtn";
+    case SHOW_ICON:
+        return "showIcon";
+    case PROMPT_PASSWORD:
+        return "promptPassword";
+    case ENABLE_HIBERNATION:
+        return "enableHibernation";
+    case NAME:
+        return "name";
+    }
 
-    PowerPlanItem();
-    PowerPlanItem(const PowerPlanItem &other);
-};
+    return "";
+}
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::PowerPlanItem)
-
-#include "powerplanitem.inl"
-
-#endif//MVVM_FOLDERS_POWER_PLAN_ITEM_H

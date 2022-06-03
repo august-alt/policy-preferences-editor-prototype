@@ -29,6 +29,11 @@
 
 namespace mvvm_folders
 {
+
+class PowerOptionsItem;
+class PowerPlanItem;
+class PowerSchemeItem;
+
 class PowerModelBuilder : public BaseModelBuilder
 {
 public:
@@ -37,7 +42,20 @@ public:
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<PowerOptions>& power);
 
     std::unique_ptr<PowerOptions> modelToSchema(std::unique_ptr<PreferencesModel>& model);
+
+private:
+    template <typename SourceType, typename ItemType, typename PropertiesType>
+    void processItems(SourceType &printersSource,
+                      std::unique_ptr<PreferencesModel>& model,
+                      std::function<void(ItemType*, PropertiesType)>& callback);
+
+    void processPowerOptions(PowerOptionsItem *powerOptions, GlobalPowerOptionsProperties_t properties);
+
+    void processPowerPlan(PowerPlanItem *powerPlan, GlobalPowerOptionsV2Properties_t properties);
+
+    void processPowerScheme(PowerSchemeItem *powerScheme, PowerSchemeProperties_t properties);
 };
+
 }
 
 #endif // MVVM_FOLDERS_POWER_MODEL_BUILDER_H

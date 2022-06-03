@@ -18,30 +18,38 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_POWER_PLAN_ITEM_H
-#define MVVM_FOLDERS_POWER_PLAN_ITEM_H
-
-#include <mvvm/model/compounditem.h>
-
 namespace mvvm_folders
 {
 
-//! Drives item representation for editor.
-
-class PowerPlanItem : public ModelView::CompoundItem
+constexpr const char *PowerSchemeItem::propertyToString(const PowerSchemeItem::PropertyType &type)
 {
-public:
-    static inline const std::string ACTION = "action";
-    static inline const std::string NAME = "name";
+    switch (type)
+    {
+    case ACTION:
+        return "action";
+    case NAME:
+        return "name";
+    case DEFAULT:
+        return "default";
+    case MONITOR_AC:
+        return "monitorAc";
+    case HARD_DISK_AC:
+        return "hardDiskAc";
+    case STANDBY_AC:
+        return "standbyAc";
+    case HIBERNATE_AC:
+        return "hibernateAc";
+    case MONITOR_DC:
+        return "monitorDc";
+    case HARD_DISK_DC:
+        return "hardDiskDc";
+    case STANDBY_DC:
+        return "standbyDc";
+    case HIBERNATE_DC:
+        return "hibernateDc";
+    }
 
-    PowerPlanItem();
-    PowerPlanItem(const PowerPlanItem &other);
-};
-
+    return "";
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::PowerPlanItem)
-
-#include "powerplanitem.inl"
-
-#endif//MVVM_FOLDERS_POWER_PLAN_ITEM_H
+}

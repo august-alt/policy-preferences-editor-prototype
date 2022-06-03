@@ -46,10 +46,10 @@ public:
 
     explicit PowerContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    PowerItemType getPower() const;
+    PowerItemType* getPower() const;
     void setPower(const PowerItemType& item);
 
     void setupListeners() override;

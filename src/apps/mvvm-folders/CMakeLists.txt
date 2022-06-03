@@ -95,11 +95,14 @@ set(HEADERS
 
     power_options/powercontaineritem.h
     power_options/poweroptionsitem.h
+    power_options/poweroptionsitem.inl
     power_options/powermodelbuilder.h
     power_options/poweroptionswidget.h
     power_options/powerplanitem.h
+    power_options/powerplanitem.inl
     power_options/powerplanwidget.h
     power_options/powerschemeitem.h
+    power_options/powerschemeitem.inl
     power_options/powerschemewidget.h
 
     printers/localprinteritem.h
