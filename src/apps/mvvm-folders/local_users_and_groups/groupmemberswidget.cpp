@@ -32,6 +32,9 @@
 
 #include <QDataWidgetMapper>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-overflow"
+
 namespace  mvvm_folders
 {
 
@@ -94,3 +97,5 @@ void GroupMembersWidget::submit()
 }
 
 }
+
+#pragma GCC diagnostic pop
