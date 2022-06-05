@@ -126,7 +126,7 @@
    <item row="1" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A RAM Total targeting item allows a preference item to be applied to computers or users only if total amount of physical memory in the processing computer is greater than or equal to the amount specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>A RAM Total targeting item allows a preference item to be applied to computers or users only if total amount of physical memory in the processing computer is greater than or equal to the amount specified in the targeting item.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

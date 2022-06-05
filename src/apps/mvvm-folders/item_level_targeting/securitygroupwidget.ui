@@ -97,7 +97,7 @@
    <item row="4" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A RAM Total targeting item allows a preference item to be applied to computers or users only if the processing computer or user is member of the group specified in the targeting item and optionaly only if the specified group is the primary group for the processing computer or user.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>A Security Group targeting item allows a preference item to be applied to computers or users only if the processing computer or user is member of the group specified in the targeting item and optionaly only if the specified group is the primary group for the processing computer or user.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
