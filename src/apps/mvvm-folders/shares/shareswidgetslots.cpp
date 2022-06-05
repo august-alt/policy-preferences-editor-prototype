@@ -178,7 +178,7 @@ void SharesWidget::on_folderToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        ui->folderPathLineEdit->setText(fileDialog->selectedUrls().value(0).toLocalFile());
+        ui->folderPathLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 

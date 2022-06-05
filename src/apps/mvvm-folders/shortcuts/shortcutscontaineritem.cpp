@@ -43,9 +43,9 @@ ShortcutsContainerItem::ShortcutsContainerItem()
     addProperty<ShortcutsItem>(SHORTCUTS)->setVisible(false);
 }
 
-CommonItem ShortcutsContainerItem::getCommon() const
+CommonItem* ShortcutsContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void ShortcutsContainerItem::setCommon(const CommonItem &item)
@@ -53,9 +53,9 @@ void ShortcutsContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-ShortcutsItem ShortcutsContainerItem::getShortcuts() const
+ShortcutsItem* ShortcutsContainerItem::getShortcuts() const
 {
-    return property<ShortcutsItem>(SHORTCUTS);
+    return static_cast<ShortcutsItem*>(children().back());
 }
 
 void ShortcutsContainerItem::setShortcuts(const ShortcutsItem &item)

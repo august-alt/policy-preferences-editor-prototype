@@ -33,21 +33,8 @@ FolderModelBuilder::FolderModelBuilder()
 {
 }
 
-template <typename SchemaType>
-void mvvm_folders::FolderModelBuilder::setCommonItemData(CommonItem* common, const SchemaType& schema)
-{
-    common->setProperty(CommonItem::NAME, schema.name().c_str());
-    common->setProperty(CommonItem::CHANGED, getOptionalPropertyData(schema.changed()).c_str());
-    common->setProperty(CommonItem::DESC, getOptionalPropertyData(schema.desc()).c_str());
-    common->setProperty(CommonItem::BYPASS_ERRORS, getOptionalPropertyData(schema.bypassErrors()));
-    common->setProperty(CommonItem::USER_CONTEXT, getOptionalPropertyData(schema.userContext()));
-    common->setProperty(CommonItem::REMOVE_POLICY, getOptionalPropertyData(schema.removePolicy()));
-}
-
 std::unique_ptr<PreferencesModel> FolderModelBuilder::schemaToModel(std::unique_ptr<Folders> &folderSource)
 {
-    Q_UNUSED(folderSource);
-
     auto model = std::make_unique<PreferencesModel>();
 
     for (const auto& foldersSchema : folderSource->Folder())
@@ -66,9 +53,6 @@ std::unique_ptr<PreferencesModel> FolderModelBuilder::schemaToModel(std::unique_
             folders->setProperty(FolderItem::DELETE_FILES, getOptionalPropertyData(properties.deleteFiles()));
             folders->setProperty(FolderItem::DELETE_SUB_FOLDERS, getOptionalPropertyData(properties.deleteSubFolders()));
             folders->setProperty(FolderItem::DELETE_FOLDER, getOptionalPropertyData(properties.deleteFolder()));
-            folders->setProperty(FolderItem::READONLY, properties.readOnly());
-            folders->setProperty(FolderItem::ARCHIVE, properties.archive());
-            folders->setProperty(FolderItem::HIDDEN, properties.hidden());
 
             auto common = sessionItem->getCommon();
             setCommonItemData(common, foldersSchema);
@@ -80,9 +64,35 @@ std::unique_ptr<PreferencesModel> FolderModelBuilder::schemaToModel(std::unique_
 
 std::unique_ptr<Folders> FolderModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
+    auto folders = std::make_unique<Folders>("{77CC39E7-3D16-4f8f-AF86-EC0BBEE2C861}");
 
-    return nullptr;
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto foldersContainer = dynamic_cast<FolderContainerItem*>(containerItem); foldersContainer)
+        {
+            auto folderModel = foldersContainer->getFolder();
+            auto commonModel = foldersContainer->getCommon();
+
+            auto folder = createRootElement<Folder_t>("{07DA02F5-F9CD-4397-A550-4AE21B6B4BD3}");
+
+            auto properties = FolderProperties_t(folderModel->property<std::string>(FolderItem::PATH),
+                                                 folderModel->property<bool>(FolderItem::READONLY),
+                                                 folderModel->property<bool>(FolderItem::ARCHIVE),
+                                                 folderModel->property<bool>(FolderItem::HIDDEN));
+            properties.action(folderModel->property<std::string>(FolderItem::ACTION));
+            properties.deleteIgnoreErrors(folderModel->property<bool>(FolderItem::DELETE_IGNORE_ERRORS));
+            properties.deleteFiles(folderModel->property<bool>(FolderItem::DELETE_FILES));
+            properties.deleteSubFolders(folderModel->property<bool>(FolderItem::DELETE_SUB_FOLDERS));
+            properties.deleteFolder(folderModel->property<bool>(FolderItem::DELETE_FOLDER));
+
+            setCommonModelData(folder, commonModel);
+            folder.Properties().push_back(properties);
+
+            folders->Folder().push_back(folder);
+        }
+    }
+
+    return folders;
 }
 
 }

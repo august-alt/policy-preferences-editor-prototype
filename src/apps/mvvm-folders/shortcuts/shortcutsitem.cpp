@@ -40,7 +40,7 @@ ShortcutsItem::ShortcutsItem()
     addProperty(WINDOW, "");
     addProperty(COMMENT, "");
     addProperty(ICON_PATH, "");
-    addProperty(ICON_INDEX, "");
+    addProperty(ICON_INDEX, 0);
 }
 
 ShortcutsItem::ShortcutsItem(const ShortcutsItem &other)
@@ -58,7 +58,7 @@ ShortcutsItem::ShortcutsItem(const ShortcutsItem &other)
     addProperty(WINDOW, other.property<QString>(WINDOW));
     addProperty(COMMENT, other.property<QString>(COMMENT));
     addProperty(ICON_PATH, other.property<QString>(ICON_PATH));
-    addProperty(ICON_INDEX, other.property<QString>(ICON_INDEX));
+    addProperty(ICON_INDEX, other.property<int>(ICON_INDEX));
 }
 
 }

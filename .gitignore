@@ -78,3 +78,7 @@ compile_commands.json
 # Build directory
 build/
 docs/
+
+# Generated files
+src/apps/mvvm-folders/schemas/*.cpp
+src/apps/mvvm-folders/schemas/*.h

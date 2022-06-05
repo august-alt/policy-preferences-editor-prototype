@@ -49,10 +49,10 @@ public:
 
     explicit IniContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    IniItem getIni() const;
+    IniItem* getIni() const;
     void setIni(const IniItem& item);
 
     void setupListeners() override;

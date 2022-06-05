@@ -56,4 +56,6 @@ public:
 
 Q_DECLARE_METATYPE(::mvvm_folders::PowerSchemeItem)
 
+#include "powerschemeitem.inl"
+
 #endif//MVVM_FOLDERS_POWER_SCHEME_ITEM_H

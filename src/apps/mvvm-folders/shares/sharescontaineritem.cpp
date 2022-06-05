@@ -46,9 +46,9 @@ SharesContainerItem::SharesContainerItem()
     addProperty<SharesItem>(SHARES)->setVisible(false);
 }
 
-CommonItem SharesContainerItem::getCommon() const
+CommonItem* SharesContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void SharesContainerItem::setCommon(const CommonItem &item)
@@ -56,9 +56,9 @@ void SharesContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-SharesItem SharesContainerItem::getShares() const
+SharesItem* SharesContainerItem::getShares() const
 {
-    return property<SharesItem>(SHARES);
+    return static_cast<SharesItem*>(children().back());
 }
 
 void SharesContainerItem::setShares(const SharesItem &item)

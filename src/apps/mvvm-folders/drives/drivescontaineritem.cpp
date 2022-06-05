@@ -41,9 +41,9 @@ DrivesContainerItem::DrivesContainerItem()
     addProperty<DrivesItem>(DRIVES)->setVisible(false);
 }
 
-CommonItem DrivesContainerItem::getCommon() const
+CommonItem *DrivesContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void DrivesContainerItem::setCommon(const CommonItem &item)
@@ -51,9 +51,9 @@ void DrivesContainerItem::setCommon(const CommonItem &item)
     setProperty<CommonItem>(COMMON, item);
 }
 
-DrivesItem DrivesContainerItem::getDrives() const
+DrivesItem* DrivesContainerItem::getDrives() const
 {
-    return property<DrivesItem>(DRIVES);
+    return static_cast<DrivesItem*>(children().back());
 }
 
 void DrivesContainerItem::setDrives(const DrivesItem &item)

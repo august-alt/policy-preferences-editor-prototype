@@ -47,28 +47,5 @@ PowerOptionsItem::PowerOptionsItem(const PowerOptionsItem &other)
     copyProperty<std::string>(NAME, other);
 }
 
-constexpr const char *PowerOptionsItem::propertyToString(const PowerOptionsItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case CLOSE_LID:
-        return "closeLid";
-    case PRESS_POWER_BUTTON:
-        return "pressPowerBtn";
-    case PRESS_SLEEP_BUTTON:
-        return "pressSleepBtn";
-    case SHOW_ICON:
-        return "showIcon";
-    case PROMPT_PASSWORD:
-        return "promptPassword";
-    case ENABLE_HIBERNATION:
-        return "enableHibernation";
-    case NAME:
-        return "name";
-    }
-
-    return "";
-}
-
 }
 
