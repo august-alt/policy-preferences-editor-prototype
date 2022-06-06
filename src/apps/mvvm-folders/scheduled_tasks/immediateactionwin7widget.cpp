@@ -21,7 +21,7 @@
 #include "immediateactionwin7widget.h"
 #include "ui_immediateactionwin7widget.h"
 
-#include "immediateactionwin7item.h"
+#include <mvvm/model/sessionitem.h>
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -59,7 +59,7 @@ void ImmediateActionWin7Widget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     // TODO: Implement.
 
@@ -69,7 +69,7 @@ void ImmediateActionWin7Widget::setItem(ModelView::SessionItem* item)
 bool ImmediateActionWin7Widget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 

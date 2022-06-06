@@ -21,7 +21,7 @@
 #include "schedulesettingswidget.h"
 #include "ui_schedulesettingswidget.h"
 
-#include "schedulesettingsitem.h"
+#include <mvvm/model/sessionitem.h>
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -59,7 +59,7 @@ void ScheduleSettingsWidget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     // TODO: Implement.
 
@@ -69,7 +69,7 @@ void ScheduleSettingsWidget::setItem(ModelView::SessionItem* item)
 bool ScheduleSettingsWidget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 

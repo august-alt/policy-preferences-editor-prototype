@@ -21,7 +21,7 @@
 #include "immediateconditionswin7widget.h"
 #include "ui_immediateconditionswin7widget.h"
 
-#include "immediateconditionswin7item.h"
+#include <mvvm/model/sessionitem.h>
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -59,7 +59,7 @@ void ImmediateConditionsWin7Widget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     // TODO: Implement.
 
@@ -69,7 +69,7 @@ void ImmediateConditionsWin7Widget::setItem(ModelView::SessionItem* item)
 bool ImmediateConditionsWin7Widget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 

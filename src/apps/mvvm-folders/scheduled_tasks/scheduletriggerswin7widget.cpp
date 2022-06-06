@@ -21,7 +21,7 @@
 #include "scheduletriggerswin7widget.h"
 #include "ui_scheduletriggerswin7widget.h"
 
-#include "scheduletriggerswin7item.h"
+#include <mvvm/model/sessionitem.h>
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -59,7 +59,7 @@ void ScheduleTriggersWin7Widget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     // TODO: Implement.
 
@@ -69,7 +69,7 @@ void ScheduleTriggersWin7Widget::setItem(ModelView::SessionItem* item)
 bool ScheduleTriggersWin7Widget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 
