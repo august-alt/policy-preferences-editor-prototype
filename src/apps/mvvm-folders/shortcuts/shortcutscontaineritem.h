@@ -35,7 +35,7 @@ class ShortcutsItem;
 
 class ShortcutsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
-public:    
+public:
     static inline const std::string SHORTCUT_PATH = "shortcutPath";
     static inline const std::string ORDER         = "order";
     static inline const std::string ACTION        = "action";
@@ -46,10 +46,10 @@ public:
 
     explicit ShortcutsContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    ShortcutsItem getShortcuts() const;
+    ShortcutsItem* getShortcuts() const;
     void setShortcuts(const ShortcutsItem& item);
 
     void setupListeners() override;

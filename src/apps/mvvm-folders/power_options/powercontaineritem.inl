@@ -39,9 +39,9 @@ PowerContainerItem<PowerItemType>::PowerContainerItem()
 }
 
 template <typename PowerItemType>
-CommonItem PowerContainerItem<PowerItemType>::getCommon() const
+CommonItem* PowerContainerItem<PowerItemType>::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 template <typename PowerItemType>
@@ -51,9 +51,9 @@ void PowerContainerItem<PowerItemType>::setCommon(const CommonItem &item)
 }
 
 template <typename PowerItemType>
-PowerItemType PowerContainerItem<PowerItemType>::getPower() const
+PowerItemType* PowerContainerItem<PowerItemType>::getPower() const
 {
-    return property<PowerItemType>(POWER);
+    return static_cast<PowerItemType*>(children().back());
 }
 
 template <typename PowerItemType>

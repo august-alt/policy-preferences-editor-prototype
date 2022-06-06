@@ -184,7 +184,7 @@ void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString& path,
 }
 
 void MainWindow::onDirectoryOpen()
-{    
+{
 
     std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
 
@@ -208,7 +208,7 @@ void MainWindow::onDirectoryOpen()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        d->options.policyBundle = fileDialog->selectedUrls().value(0).toLocalFile();
+        d->options.policyBundle = fileDialog->selectedUrls()[0].toLocalFile();
         loadPolicyBundleFolder(d->options.policyBundle, d->localeName);
     }
 }

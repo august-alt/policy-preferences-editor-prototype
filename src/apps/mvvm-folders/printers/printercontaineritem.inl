@@ -40,9 +40,9 @@ PrinterContainerItem<PrinterItemType>::PrinterContainerItem()
 }
 
 template <typename PrinterItemType>
-CommonItem PrinterContainerItem<PrinterItemType>::getCommon() const
+CommonItem* PrinterContainerItem<PrinterItemType>::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 template <typename PrinterItemType>
@@ -52,9 +52,9 @@ void PrinterContainerItem<PrinterItemType>::setCommon(const CommonItem &item)
 }
 
 template <typename PrinterItemType>
-PrinterItemType PrinterContainerItem<PrinterItemType>::getPrinter() const
+PrinterItemType* PrinterContainerItem<PrinterItemType>::getPrinter() const
 {
-    return property<PrinterItemType>(PRINTER);
+    return static_cast<PrinterItemType*>(children().back());
 }
 
 template <typename PrinterItemType>

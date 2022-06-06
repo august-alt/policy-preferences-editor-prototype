@@ -80,8 +80,8 @@
 <xs:element name="RegistrySettings">
   <xs:complexType>
      <xs:sequence>
-        <xs:element name="Registry" type="Registry_t" />
-        <xs:element maxOccurs="unbounded" name="Collection" type="Collection_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Registry" type="Registry_t" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Collection" type="Collection_t" />
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required" />
      <xs:attribute name="disabled" type="xs:boolean" use="optional" />
