@@ -40,8 +40,6 @@ ImmediateSettingsWidget::ImmediateSettingsWidget(QWidget *parent, ImmediateSetti
     , ui(new Ui::ImmediateSettingsWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ImmediateSettingsWidget::~ImmediateSettingsWidget()
@@ -62,6 +60,7 @@ void ImmediateSettingsWidget::setItem(ModelView::SessionItem* item)
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());    
+
 
     // TODO: Implement.
 

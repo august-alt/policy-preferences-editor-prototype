@@ -40,8 +40,6 @@ ImmediateTasksWidget::ImmediateTasksWidget(QWidget *parent, ImmediateTasksItem *
     , ui(new Ui::ImmediateTasksWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ImmediateTasksWidget::~ImmediateTasksWidget()
