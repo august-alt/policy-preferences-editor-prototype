@@ -121,6 +121,35 @@ set(HEADERS
     registry/registrymodelbuilder.h
     registry/registrywidget.h
 
+    scheduled_task/immediateactionwin7item.h
+    scheduled_task/immediateactionwin7widget.h
+    scheduled_task/immediateconditionswin7item.h
+    scheduled_task/immediateconditionswin7widget.h
+    scheduled_task/immediatesettingsitem.h
+    scheduled_task/immediatesettingswidget.h
+    scheduled_task/immediatesettingswin7item.h
+    scheduled_task/immediatesettingswin7widget.h
+    scheduled_task/immediatetasksitem.h
+    scheduled_task/immediatetaskswidget.h
+    scheduled_task/immediatewin7item.h
+    scheduled_task/immediatewin7widget.h
+    scheduled_task/scheduleactionwin7item.h
+    scheduled_task/scheduleactionwin7widget.h
+    scheduled_task/scheduleconditionswin7item.h
+    scheduled_task/scheduleconditionswin7widget.h
+    scheduled_task/scheduledtasksitem.h
+    scheduled_task/scheduledtaskswidget.h
+    scheduled_task/schedulescheduleitem.h
+    scheduled_task/scheduleschedulewidget.h
+    scheduled_task/schedulesettingsitem.h
+    scheduled_task/schedulesettingswidget.h
+    scheduled_task/schedulesettingswin7item.h
+    scheduled_task/schedulesettingswin7widget.h
+    scheduled_task/scheduletriggerswin7item.h
+    scheduled_task/scheduletriggerswin7widget.h
+    scheduled_task/schedulewin7item.h
+    scheduled_task/schedulewin7widget.h
+
     shares/sharesitem.h
     shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
@@ -244,6 +273,35 @@ set(SOURCES
     printers/tcpprinteritem.cpp
     printers/tcpprinterportwidget.cpp
 
+    scheduled_tasks/immediateactionwin7item.cpp
+    scheduled_tasks/immediateactionwin7widget.cpp
+    scheduled_tasks/immediateconditionswin7item.cpp
+    scheduled_tasks/immediateconditionswin7widget.cpp
+    scheduled_tasks/immediatesettingsitem.cpp
+    scheduled_tasks/immediatesettingswidget.cpp
+    scheduled_tasks/immediatesettingswin7item.cpp
+    scheduled_tasks/immediatesettingswin7widget.cpp
+    scheduled_tasks/immediatetasksitem.cpp
+    scheduled_tasks/immediatetaskswidget.cpp
+    scheduled_tasks/immediatewin7item.cpp
+    scheduled_tasks/immediatewin7widget.cpp
+    scheduled_tasks/scheduleactionwin7item.cpp
+    scheduled_tasks/scheduleactionwin7widget.cpp
+    scheduled_tasks/scheduleconditionswin7item.cpp
+    scheduled_tasks/scheduleconditionswin7widget.cpp
+    scheduled_tasks/scheduledtasksitem.cpp
+    scheduled_tasks/scheduledtaskswidget.cpp
+    scheduled_tasks/schedulescheduleitem.cpp
+    scheduled_tasks/scheduleschedulewidget.cpp
+    scheduled_tasks/schedulesettingsitem.cpp
+    scheduled_tasks/schedulesettingswidget.cpp
+    scheduled_tasks/schedulesettingswin7item.cpp
+    scheduled_tasks/schedulesettingswin7widget.cpp
+    scheduled_tasks/scheduletriggerswin7item.cpp
+    scheduled_tasks/scheduletriggerswin7widget.cpp
+    scheduled_tasks/schedulewin7item.cpp
+    scheduled_tasks/schedulewin7widget.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrymodelbuilder.cpp
@@ -316,6 +374,21 @@ set(UI_FORMS
     printers/tcpprinterportwidget.ui
 
     registry/registrywidget.ui
+
+    scheduled_task/immediateactionwin7widget.ui
+    scheduled_task/immediateconditionswin7widget.ui
+    scheduled_task/immediatesettingswidget.ui
+    scheduled_task/immediatesettingswin7widget.ui
+    scheduled_task/immediatetaskswidget.ui
+    scheduled_task/immediatewin7widget.ui
+    scheduled_task/scheduleactionwin7widget.ui
+    scheduled_task/scheduleconditionswin7widget.ui
+    scheduled_task/scheduledtaskswidget.ui
+    scheduled_task/scheduleschedulewidget.ui
+    scheduled_task/schedulesettingswidget.ui
+    scheduled_task/schedulesettingswin7widget.ui
+    scheduled_task/scheduletriggerswin7widget.ui
+    scheduled_task/schedulewin7widget.ui
 
     shares/shareswidget.ui
 
