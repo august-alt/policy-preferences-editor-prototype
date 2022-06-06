@@ -121,34 +121,34 @@ set(HEADERS
     registry/registrymodelbuilder.h
     registry/registrywidget.h
 
-    scheduled_task/immediateactionwin7item.h
-    scheduled_task/immediateactionwin7widget.h
-    scheduled_task/immediateconditionswin7item.h
-    scheduled_task/immediateconditionswin7widget.h
-    scheduled_task/immediatesettingsitem.h
-    scheduled_task/immediatesettingswidget.h
-    scheduled_task/immediatesettingswin7item.h
-    scheduled_task/immediatesettingswin7widget.h
-    scheduled_task/immediatetasksitem.h
-    scheduled_task/immediatetaskswidget.h
-    scheduled_task/immediatewin7item.h
-    scheduled_task/immediatewin7widget.h
-    scheduled_task/scheduleactionwin7item.h
-    scheduled_task/scheduleactionwin7widget.h
-    scheduled_task/scheduleconditionswin7item.h
-    scheduled_task/scheduleconditionswin7widget.h
-    scheduled_task/scheduledtasksitem.h
-    scheduled_task/scheduledtaskswidget.h
-    scheduled_task/schedulescheduleitem.h
-    scheduled_task/scheduleschedulewidget.h
-    scheduled_task/schedulesettingsitem.h
-    scheduled_task/schedulesettingswidget.h
-    scheduled_task/schedulesettingswin7item.h
-    scheduled_task/schedulesettingswin7widget.h
-    scheduled_task/scheduletriggerswin7item.h
-    scheduled_task/scheduletriggerswin7widget.h
-    scheduled_task/schedulewin7item.h
-    scheduled_task/schedulewin7widget.h
+    scheduled_tasks/immediateactionwin7item.h
+    scheduled_tasks/immediateactionwin7widget.h
+    scheduled_tasks/immediateconditionswin7item.h
+    scheduled_tasks/immediateconditionswin7widget.h
+    scheduled_tasks/immediatesettingsitem.h
+    scheduled_tasks/immediatesettingswidget.h
+    scheduled_tasks/immediatesettingswin7item.h
+    scheduled_tasks/immediatesettingswin7widget.h
+    scheduled_tasks/immediatetasksitem.h
+    scheduled_tasks/immediatetaskswidget.h
+    scheduled_tasks/immediatewin7item.h
+    scheduled_tasks/immediatewin7widget.h
+    scheduled_tasks/scheduleactionwin7item.h
+    scheduled_tasks/scheduleactionwin7widget.h
+    scheduled_tasks/scheduleconditionswin7item.h
+    scheduled_tasks/scheduleconditionswin7widget.h
+    scheduled_tasks/scheduledtasksitem.h
+    scheduled_tasks/scheduledtaskswidget.h
+    scheduled_tasks/schedulescheduleitem.h
+    scheduled_tasks/scheduleschedulewidget.h
+    scheduled_tasks/schedulesettingsitem.h
+    scheduled_tasks/schedulesettingswidget.h
+    scheduled_tasks/schedulesettingswin7item.h
+    scheduled_tasks/schedulesettingswin7widget.h
+    scheduled_tasks/scheduletriggerswin7item.h
+    scheduled_tasks/scheduletriggerswin7widget.h
+    scheduled_tasks/schedulewin7item.h
+    scheduled_tasks/schedulewin7widget.h
 
     shares/sharesitem.h
     shares/sharesmodelbuilder.h
@@ -375,20 +375,20 @@ set(UI_FORMS
 
     registry/registrywidget.ui
 
-    scheduled_task/immediateactionwin7widget.ui
-    scheduled_task/immediateconditionswin7widget.ui
-    scheduled_task/immediatesettingswidget.ui
-    scheduled_task/immediatesettingswin7widget.ui
-    scheduled_task/immediatetaskswidget.ui
-    scheduled_task/immediatewin7widget.ui
-    scheduled_task/scheduleactionwin7widget.ui
-    scheduled_task/scheduleconditionswin7widget.ui
-    scheduled_task/scheduledtaskswidget.ui
-    scheduled_task/scheduleschedulewidget.ui
-    scheduled_task/schedulesettingswidget.ui
-    scheduled_task/schedulesettingswin7widget.ui
-    scheduled_task/scheduletriggerswin7widget.ui
-    scheduled_task/schedulewin7widget.ui
+    scheduled_tasks/immediateactionwin7widget.ui
+    scheduled_tasks/immediateconditionswin7widget.ui
+    scheduled_tasks/immediatesettingswidget.ui
+    scheduled_tasks/immediatesettingswin7widget.ui
+    scheduled_tasks/immediatetaskswidget.ui
+    scheduled_tasks/immediatewin7widget.ui
+    scheduled_tasks/scheduleactionwin7widget.ui
+    scheduled_tasks/scheduleconditionswin7widget.ui
+    scheduled_tasks/scheduledtaskswidget.ui
+    scheduled_tasks/scheduleschedulewidget.ui
+    scheduled_tasks/schedulesettingswidget.ui
+    scheduled_tasks/schedulesettingswin7widget.ui
+    scheduled_tasks/scheduletriggerswin7widget.ui
+    scheduled_tasks/schedulewin7widget.ui
 
     shares/shareswidget.ui
 
