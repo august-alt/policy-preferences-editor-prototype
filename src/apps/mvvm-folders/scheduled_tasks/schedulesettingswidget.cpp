@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-schedulesettingsWidget::schedulesettingsWidget(QWidget *parent, schedulesettingsItem *item)
+ScheduleSettingsWidget::ScheduleSettingsWidget(QWidget *parent, ScheduleSettingsItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::schedulesettingsWidget())
+    , ui(new Ui::ScheduleSettingsWidget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-schedulesettingsWidget::~schedulesettingsWidget()
+ScheduleSettingsWidget::~ScheduleSettingsWidget()
 {
     delete ui;
 }
 
-void schedulesettingsWidget::setItem(ModelView::SessionItem* item)
+void ScheduleSettingsWidget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -69,14 +69,14 @@ void schedulesettingsWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool schedulesettingsWidget::validate()
+bool ScheduleSettingsWidget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void schedulesettingsWidget::submit()
+void ScheduleSettingsWidget::submit()
 {
     if (mapper && validate())
     {
@@ -86,7 +86,7 @@ void schedulesettingsWidget::submit()
     }
 }
 
-void schedulesettingsWidget::on_actionComboBox_currentIndexChanged(int index)
+void ScheduleSettingsWidget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! immediatetasks item representation for editor.
+//! ImmediateTasks item representation for editor.
 
-class immediatetasksItem : public BasePreferenceItem<immediatetasksItem>
+class ImmediateTasksItem : public BasePreferenceItem<ImmediateTasksItem>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    immediatetasksItem();
-    immediatetasksItem(const immediatetasksItem &other);
+    ImmediateTasksItem();
+    ImmediateTasksItem(const ImmediateTasksItem &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::immediatetasksItem)
+Q_DECLARE_METATYPE(::mvvm_folders::ImmediateTasksItem)
 
 #endif//MVVM_FOLDERS_IMMEDIATETASKS_ITEM_H
 

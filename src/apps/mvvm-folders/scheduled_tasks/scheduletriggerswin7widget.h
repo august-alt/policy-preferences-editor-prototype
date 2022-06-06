@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class scheduletriggerswin7Widget; }
+namespace Ui { class ScheduleTriggersWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class scheduletriggerswin7Item;
+class ScheduleTriggersWin7Item;
 
-//! scheduletriggerswin7 representation for editor.
+//! ScheduleTriggersWin7 representation for editor.
 
-class scheduletriggerswin7Widget : public PreferenceWidgetInterface
+class ScheduleTriggersWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit scheduletriggerswin7Widget(QWidget* parent = nullptr, scheduletriggerswin7Item* item = nullptr);
-    ~scheduletriggerswin7Widget() override;
+    explicit ScheduleTriggersWin7Widget(QWidget* parent = nullptr, ScheduleTriggersWin7Item* item = nullptr);
+    ~ScheduleTriggersWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    scheduletriggerswin7Widget(const scheduletriggerswin7Widget&)            = delete;   // copy ctor
-    scheduletriggerswin7Widget(scheduletriggerswin7Widget&&)                 = delete;   // move ctor
-    scheduletriggerswin7Widget& operator=(const scheduletriggerswin7Widget&) = delete;   // copy assignment
-    scheduletriggerswin7Widget& operator=(scheduletriggerswin7Widget&&)      = delete;   // move assignment
+    ScheduleTriggersWin7Widget(const ScheduleTriggersWin7Widget&)            = delete;   // copy ctor
+    ScheduleTriggersWin7Widget(ScheduleTriggersWin7Widget&&)                 = delete;   // move ctor
+    ScheduleTriggersWin7Widget& operator=(const ScheduleTriggersWin7Widget&) = delete;   // copy assignment
+    ScheduleTriggersWin7Widget& operator=(ScheduleTriggersWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    scheduletriggerswin7Item* m_item {nullptr};
+    ScheduleTriggersWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::scheduletriggerswin7Widget *ui {nullptr};
+    Ui::ScheduleTriggersWin7Widget *ui {nullptr};
 };
 
 }

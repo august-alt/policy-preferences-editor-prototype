@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! immediatesettings item representation for editor.
+//! ImmediateSettings item representation for editor.
 
-class immediatesettingsItem : public BasePreferenceItem<immediatesettingsItem>
+class ImmediateSettingsItem : public BasePreferenceItem<ImmediateSettingsItem>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    immediatesettingsItem();
-    immediatesettingsItem(const immediatesettingsItem &other);
+    ImmediateSettingsItem();
+    ImmediateSettingsItem(const ImmediateSettingsItem &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::immediatesettingsItem)
+Q_DECLARE_METATYPE(::mvvm_folders::ImmediateSettingsItem)
 
 #endif//MVVM_FOLDERS_IMMEDIATESETTINGS_ITEM_H
 

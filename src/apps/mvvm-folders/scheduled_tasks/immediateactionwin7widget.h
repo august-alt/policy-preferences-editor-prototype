@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediateactionwin7Widget; }
+namespace Ui { class ImmediateActionWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediateactionwin7Item;
+class ImmediateActionWin7Item;
 
-//! immediateactionwin7 representation for editor.
+//! ImmediateActionWin7 representation for editor.
 
-class immediateactionwin7Widget : public PreferenceWidgetInterface
+class ImmediateActionWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediateactionwin7Widget(QWidget* parent = nullptr, immediateactionwin7Item* item = nullptr);
-    ~immediateactionwin7Widget() override;
+    explicit ImmediateActionWin7Widget(QWidget* parent = nullptr, ImmediateActionWin7Item* item = nullptr);
+    ~ImmediateActionWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediateactionwin7Widget(const immediateactionwin7Widget&)            = delete;   // copy ctor
-    immediateactionwin7Widget(immediateactionwin7Widget&&)                 = delete;   // move ctor
-    immediateactionwin7Widget& operator=(const immediateactionwin7Widget&) = delete;   // copy assignment
-    immediateactionwin7Widget& operator=(immediateactionwin7Widget&&)      = delete;   // move assignment
+    ImmediateActionWin7Widget(const ImmediateActionWin7Widget&)            = delete;   // copy ctor
+    ImmediateActionWin7Widget(ImmediateActionWin7Widget&&)                 = delete;   // move ctor
+    ImmediateActionWin7Widget& operator=(const ImmediateActionWin7Widget&) = delete;   // copy assignment
+    ImmediateActionWin7Widget& operator=(ImmediateActionWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediateactionwin7Item* m_item {nullptr};
+    ImmediateActionWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediateactionwin7Widget *ui {nullptr};
+    Ui::ImmediateActionWin7Widget *ui {nullptr};
 };
 
 }

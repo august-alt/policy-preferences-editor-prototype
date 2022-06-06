@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! immediateconditionswin7 item representation for editor.
+//! ImmediateConditionsWin7 item representation for editor.
 
-class immediateconditionswin7Item : public BasePreferenceItem<immediateconditionswin7Item>
+class ImmediateConditionsWin7Item : public BasePreferenceItem<ImmediateConditionsWin7Item>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    immediateconditionswin7Item();
-    immediateconditionswin7Item(const immediateconditionswin7Item &other);
+    ImmediateConditionsWin7Item();
+    ImmediateConditionsWin7Item(const ImmediateConditionsWin7Item &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::immediateconditionswin7Item)
+Q_DECLARE_METATYPE(::mvvm_folders::ImmediateConditionsWin7Item)
 
 #endif//MVVM_FOLDERS_IMMEDIATECONDITIONSWIN7_ITEM_H
 

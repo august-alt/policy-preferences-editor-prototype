@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class scheduleactionwin7Widget; }
+namespace Ui { class ScheduleActionWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class scheduleactionwin7Item;
+class ScheduleActionWin7Item;
 
-//! scheduleactionwin7 representation for editor.
+//! ScheduleActionWin7 representation for editor.
 
-class scheduleactionwin7Widget : public PreferenceWidgetInterface
+class ScheduleActionWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit scheduleactionwin7Widget(QWidget* parent = nullptr, scheduleactionwin7Item* item = nullptr);
-    ~scheduleactionwin7Widget() override;
+    explicit ScheduleActionWin7Widget(QWidget* parent = nullptr, ScheduleActionWin7Item* item = nullptr);
+    ~ScheduleActionWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    scheduleactionwin7Widget(const scheduleactionwin7Widget&)            = delete;   // copy ctor
-    scheduleactionwin7Widget(scheduleactionwin7Widget&&)                 = delete;   // move ctor
-    scheduleactionwin7Widget& operator=(const scheduleactionwin7Widget&) = delete;   // copy assignment
-    scheduleactionwin7Widget& operator=(scheduleactionwin7Widget&&)      = delete;   // move assignment
+    ScheduleActionWin7Widget(const ScheduleActionWin7Widget&)            = delete;   // copy ctor
+    ScheduleActionWin7Widget(ScheduleActionWin7Widget&&)                 = delete;   // move ctor
+    ScheduleActionWin7Widget& operator=(const ScheduleActionWin7Widget&) = delete;   // copy assignment
+    ScheduleActionWin7Widget& operator=(ScheduleActionWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    scheduleactionwin7Item* m_item {nullptr};
+    ScheduleActionWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::scheduleactionwin7Widget *ui {nullptr};
+    Ui::ScheduleActionWin7Widget *ui {nullptr};
 };
 
 }

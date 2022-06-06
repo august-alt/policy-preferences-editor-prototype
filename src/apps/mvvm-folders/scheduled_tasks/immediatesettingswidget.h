@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediatesettingsWidget; }
+namespace Ui { class ImmediateSettingsWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediatesettingsItem;
+class ImmediateSettingsItem;
 
-//! immediatesettings representation for editor.
+//! ImmediateSettings representation for editor.
 
-class immediatesettingsWidget : public PreferenceWidgetInterface
+class ImmediateSettingsWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediatesettingsWidget(QWidget* parent = nullptr, immediatesettingsItem* item = nullptr);
-    ~immediatesettingsWidget() override;
+    explicit ImmediateSettingsWidget(QWidget* parent = nullptr, ImmediateSettingsItem* item = nullptr);
+    ~ImmediateSettingsWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediatesettingsWidget(const immediatesettingsWidget&)            = delete;   // copy ctor
-    immediatesettingsWidget(immediatesettingsWidget&&)                 = delete;   // move ctor
-    immediatesettingsWidget& operator=(const immediatesettingsWidget&) = delete;   // copy assignment
-    immediatesettingsWidget& operator=(immediatesettingsWidget&&)      = delete;   // move assignment
+    ImmediateSettingsWidget(const ImmediateSettingsWidget&)            = delete;   // copy ctor
+    ImmediateSettingsWidget(ImmediateSettingsWidget&&)                 = delete;   // move ctor
+    ImmediateSettingsWidget& operator=(const ImmediateSettingsWidget&) = delete;   // copy assignment
+    ImmediateSettingsWidget& operator=(ImmediateSettingsWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediatesettingsItem* m_item {nullptr};
+    ImmediateSettingsItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediatesettingsWidget *ui {nullptr};
+    Ui::ImmediateSettingsWidget *ui {nullptr};
 };
 
 }

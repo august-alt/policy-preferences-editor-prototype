@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! immediatewin7 item representation for editor.
+//! ImmediateWin7 item representation for editor.
 
-class immediatewin7Item : public BasePreferenceItem<immediatewin7Item>
+class ImmediateWin7Item : public BasePreferenceItem<ImmediateWin7Item>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    immediatewin7Item();
-    immediatewin7Item(const immediatewin7Item &other);
+    ImmediateWin7Item();
+    ImmediateWin7Item(const ImmediateWin7Item &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::immediatewin7Item)
+Q_DECLARE_METATYPE(::mvvm_folders::ImmediateWin7Item)
 
 #endif//MVVM_FOLDERS_IMMEDIATEWIN7_ITEM_H
 

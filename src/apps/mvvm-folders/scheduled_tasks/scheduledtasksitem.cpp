@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-scheduledtasksItem::scheduledtasksItem()
-    : BasePreferenceItem<::mvvm_folders::scheduledtasksItem>("scheduledtasksItem")
+ScheduledTasksItem::ScheduledTasksItem()
+    : BasePreferenceItem<::mvvm_folders::ScheduledTasksItem>("ScheduledTasksItem")
 {
 }
 
-scheduledtasksItem::scheduledtasksItem(const scheduledtasksItem &other)
-    : BasePreferenceItem<::mvvm_folders::scheduledtasksItem>("scheduledtasksItem")
+ScheduledTasksItem::ScheduledTasksItem(const ScheduledTasksItem &other)
+    : BasePreferenceItem<::mvvm_folders::ScheduledTasksItem>("ScheduledTasksItem")
 {    
 }
 
-constexpr const char *scheduledtasksItem::propertyToString(const scheduledtasksItem::PropertyType &type)
+constexpr const char *ScheduledTasksItem::propertyToString(const ScheduledTasksItem::PropertyType &type)
 {
     return "";
 }

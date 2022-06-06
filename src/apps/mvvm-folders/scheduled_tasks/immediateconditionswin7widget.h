@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediateconditionswin7Widget; }
+namespace Ui { class ImmediateConditionsWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediateconditionswin7Item;
+class ImmediateConditionsWin7Item;
 
-//! immediateconditionswin7 representation for editor.
+//! ImmediateConditionsWin7 representation for editor.
 
-class immediateconditionswin7Widget : public PreferenceWidgetInterface
+class ImmediateConditionsWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediateconditionswin7Widget(QWidget* parent = nullptr, immediateconditionswin7Item* item = nullptr);
-    ~immediateconditionswin7Widget() override;
+    explicit ImmediateConditionsWin7Widget(QWidget* parent = nullptr, ImmediateConditionsWin7Item* item = nullptr);
+    ~ImmediateConditionsWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediateconditionswin7Widget(const immediateconditionswin7Widget&)            = delete;   // copy ctor
-    immediateconditionswin7Widget(immediateconditionswin7Widget&&)                 = delete;   // move ctor
-    immediateconditionswin7Widget& operator=(const immediateconditionswin7Widget&) = delete;   // copy assignment
-    immediateconditionswin7Widget& operator=(immediateconditionswin7Widget&&)      = delete;   // move assignment
+    ImmediateConditionsWin7Widget(const ImmediateConditionsWin7Widget&)            = delete;   // copy ctor
+    ImmediateConditionsWin7Widget(ImmediateConditionsWin7Widget&&)                 = delete;   // move ctor
+    ImmediateConditionsWin7Widget& operator=(const ImmediateConditionsWin7Widget&) = delete;   // copy assignment
+    ImmediateConditionsWin7Widget& operator=(ImmediateConditionsWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediateconditionswin7Item* m_item {nullptr};
+    ImmediateConditionsWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediateconditionswin7Widget *ui {nullptr};
+    Ui::ImmediateConditionsWin7Widget *ui {nullptr};
 };
 
 }

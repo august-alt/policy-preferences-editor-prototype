@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-immediateconditionswin7Widget::immediateconditionswin7Widget(QWidget *parent, immediateconditionswin7Item *item)
+ImmediateConditionsWin7Widget::ImmediateConditionsWin7Widget(QWidget *parent, ImmediateConditionsWin7Item *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::immediateconditionswin7Widget())
+    , ui(new Ui::ImmediateConditionsWin7Widget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-immediateconditionswin7Widget::~immediateconditionswin7Widget()
+ImmediateConditionsWin7Widget::~ImmediateConditionsWin7Widget()
 {
     delete ui;
 }
 
-void immediateconditionswin7Widget::setItem(ModelView::SessionItem* item)
+void ImmediateConditionsWin7Widget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -69,14 +69,14 @@ void immediateconditionswin7Widget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool immediateconditionswin7Widget::validate()
+bool ImmediateConditionsWin7Widget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void immediateconditionswin7Widget::submit()
+void ImmediateConditionsWin7Widget::submit()
 {
     if (mapper && validate())
     {
@@ -86,7 +86,7 @@ void immediateconditionswin7Widget::submit()
     }
 }
 
-void immediateconditionswin7Widget::on_actionComboBox_currentIndexChanged(int index)
+void ImmediateConditionsWin7Widget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

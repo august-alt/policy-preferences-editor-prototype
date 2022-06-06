@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! schedulewin7 item representation for editor.
+//! ScheduleWin7 item representation for editor.
 
-class schedulewin7Item : public BasePreferenceItem<schedulewin7Item>
+class ScheduleWin7Item : public BasePreferenceItem<ScheduleWin7Item>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    schedulewin7Item();
-    schedulewin7Item(const schedulewin7Item &other);
+    ScheduleWin7Item();
+    ScheduleWin7Item(const ScheduleWin7Item &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::schedulewin7Item)
+Q_DECLARE_METATYPE(::mvvm_folders::ScheduleWin7Item)
 
 #endif//MVVM_FOLDERS_SCHEDULEWIN7_ITEM_H
 

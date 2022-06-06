@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-schedulescheduleItem::schedulescheduleItem()
-    : BasePreferenceItem<::mvvm_folders::schedulescheduleItem>("schedulescheduleItem")
+ScheduleScheduleItem::ScheduleScheduleItem()
+    : BasePreferenceItem<::mvvm_folders::ScheduleScheduleItem>("ScheduleScheduleItem")
 {
 }
 
-schedulescheduleItem::schedulescheduleItem(const schedulescheduleItem &other)
-    : BasePreferenceItem<::mvvm_folders::schedulescheduleItem>("schedulescheduleItem")
+ScheduleScheduleItem::ScheduleScheduleItem(const ScheduleScheduleItem &other)
+    : BasePreferenceItem<::mvvm_folders::ScheduleScheduleItem>("ScheduleScheduleItem")
 {    
 }
 
-constexpr const char *schedulescheduleItem::propertyToString(const schedulescheduleItem::PropertyType &type)
+constexpr const char *ScheduleScheduleItem::propertyToString(const ScheduleScheduleItem::PropertyType &type)
 {
     return "";
 }

@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class schedulewin7Widget; }
+namespace Ui { class ScheduleWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class schedulewin7Item;
+class ScheduleWin7Item;
 
-//! schedulewin7 representation for editor.
+//! ScheduleWin7 representation for editor.
 
-class schedulewin7Widget : public PreferenceWidgetInterface
+class ScheduleWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit schedulewin7Widget(QWidget* parent = nullptr, schedulewin7Item* item = nullptr);
-    ~schedulewin7Widget() override;
+    explicit ScheduleWin7Widget(QWidget* parent = nullptr, ScheduleWin7Item* item = nullptr);
+    ~ScheduleWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    schedulewin7Widget(const schedulewin7Widget&)            = delete;   // copy ctor
-    schedulewin7Widget(schedulewin7Widget&&)                 = delete;   // move ctor
-    schedulewin7Widget& operator=(const schedulewin7Widget&) = delete;   // copy assignment
-    schedulewin7Widget& operator=(schedulewin7Widget&&)      = delete;   // move assignment
+    ScheduleWin7Widget(const ScheduleWin7Widget&)            = delete;   // copy ctor
+    ScheduleWin7Widget(ScheduleWin7Widget&&)                 = delete;   // move ctor
+    ScheduleWin7Widget& operator=(const ScheduleWin7Widget&) = delete;   // copy assignment
+    ScheduleWin7Widget& operator=(ScheduleWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    schedulewin7Item* m_item {nullptr};
+    ScheduleWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::schedulewin7Widget *ui {nullptr};
+    Ui::ScheduleWin7Widget *ui {nullptr};
 };
 
 }
