@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! scheduletriggerswin7 item representation for editor.
+//! ScheduleTriggersWin7 item representation for editor.
 
-class scheduletriggerswin7Item : public BasePreferenceItem<scheduletriggerswin7Item>
+class ScheduleTriggersWin7Item : public BasePreferenceItem<ScheduleTriggersWin7Item>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    scheduletriggerswin7Item();
-    scheduletriggerswin7Item(const scheduletriggerswin7Item &other);
+    ScheduleTriggersWin7Item();
+    ScheduleTriggersWin7Item(const ScheduleTriggersWin7Item &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::scheduletriggerswin7Item)
+Q_DECLARE_METATYPE(::mvvm_folders::ScheduleTriggersWin7Item)
 
 #endif//MVVM_FOLDERS_SCHEDULETRIGGERSWIN7_ITEM_H
 

@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-immediatetasksWidget::immediatetasksWidget(QWidget *parent, immediatetasksItem *item)
+ImmediateTasksWidget::ImmediateTasksWidget(QWidget *parent, ImmediateTasksItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::immediatetasksWidget())
+    , ui(new Ui::ImmediateTasksWidget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-immediatetasksWidget::~immediatetasksWidget()
+ImmediateTasksWidget::~ImmediateTasksWidget()
 {
     delete ui;
 }
 
-void immediatetasksWidget::setItem(ModelView::SessionItem* item)
+void ImmediateTasksWidget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -69,14 +69,14 @@ void immediatetasksWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool immediatetasksWidget::validate()
+bool ImmediateTasksWidget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void immediatetasksWidget::submit()
+void ImmediateTasksWidget::submit()
 {
     if (mapper && validate())
     {
@@ -86,7 +86,7 @@ void immediatetasksWidget::submit()
     }
 }
 
-void immediatetasksWidget::on_actionComboBox_currentIndexChanged(int index)
+void ImmediateTasksWidget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class schedulescheduleWidget; }
+namespace Ui { class ScheduleScheduleWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class schedulescheduleItem;
+class ScheduleScheduleItem;
 
-//! scheduleschedule representation for editor.
+//! ScheduleSchedule representation for editor.
 
-class schedulescheduleWidget : public PreferenceWidgetInterface
+class ScheduleScheduleWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit schedulescheduleWidget(QWidget* parent = nullptr, schedulescheduleItem* item = nullptr);
-    ~schedulescheduleWidget() override;
+    explicit ScheduleScheduleWidget(QWidget* parent = nullptr, ScheduleScheduleItem* item = nullptr);
+    ~ScheduleScheduleWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    schedulescheduleWidget(const schedulescheduleWidget&)            = delete;   // copy ctor
-    schedulescheduleWidget(schedulescheduleWidget&&)                 = delete;   // move ctor
-    schedulescheduleWidget& operator=(const schedulescheduleWidget&) = delete;   // copy assignment
-    schedulescheduleWidget& operator=(schedulescheduleWidget&&)      = delete;   // move assignment
+    ScheduleScheduleWidget(const ScheduleScheduleWidget&)            = delete;   // copy ctor
+    ScheduleScheduleWidget(ScheduleScheduleWidget&&)                 = delete;   // move ctor
+    ScheduleScheduleWidget& operator=(const ScheduleScheduleWidget&) = delete;   // copy assignment
+    ScheduleScheduleWidget& operator=(ScheduleScheduleWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    schedulescheduleItem* m_item {nullptr};
+    ScheduleScheduleItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::schedulescheduleWidget *ui {nullptr};
+    Ui::ScheduleScheduleWidget *ui {nullptr};
 };
 
 }

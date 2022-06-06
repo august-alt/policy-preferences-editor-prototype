@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediatetasksWidget; }
+namespace Ui { class ImmediateTasksWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediatetasksItem;
+class ImmediateTasksItem;
 
-//! immediatetasks representation for editor.
+//! ImmediateTasks representation for editor.
 
-class immediatetasksWidget : public PreferenceWidgetInterface
+class ImmediateTasksWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediatetasksWidget(QWidget* parent = nullptr, immediatetasksItem* item = nullptr);
-    ~immediatetasksWidget() override;
+    explicit ImmediateTasksWidget(QWidget* parent = nullptr, ImmediateTasksItem* item = nullptr);
+    ~ImmediateTasksWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediatetasksWidget(const immediatetasksWidget&)            = delete;   // copy ctor
-    immediatetasksWidget(immediatetasksWidget&&)                 = delete;   // move ctor
-    immediatetasksWidget& operator=(const immediatetasksWidget&) = delete;   // copy assignment
-    immediatetasksWidget& operator=(immediatetasksWidget&&)      = delete;   // move assignment
+    ImmediateTasksWidget(const ImmediateTasksWidget&)            = delete;   // copy ctor
+    ImmediateTasksWidget(ImmediateTasksWidget&&)                 = delete;   // move ctor
+    ImmediateTasksWidget& operator=(const ImmediateTasksWidget&) = delete;   // copy assignment
+    ImmediateTasksWidget& operator=(ImmediateTasksWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediatetasksItem* m_item {nullptr};
+    ImmediateTasksItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediatetasksWidget *ui {nullptr};
+    Ui::ImmediateTasksWidget *ui {nullptr};
 };
 
 }

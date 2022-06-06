@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-scheduledtasksWidget::scheduledtasksWidget(QWidget *parent, scheduledtasksItem *item)
+ScheduledTasksWidget::ScheduledTasksWidget(QWidget *parent, ScheduledTasksItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::scheduledtasksWidget())
+    , ui(new Ui::ScheduledTasksWidget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-scheduledtasksWidget::~scheduledtasksWidget()
+ScheduledTasksWidget::~ScheduledTasksWidget()
 {
     delete ui;
 }
 
-void scheduledtasksWidget::setItem(ModelView::SessionItem* item)
+void ScheduledTasksWidget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -69,14 +69,14 @@ void scheduledtasksWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool scheduledtasksWidget::validate()
+bool ScheduledTasksWidget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void scheduledtasksWidget::submit()
+void ScheduledTasksWidget::submit()
 {
     if (mapper && validate())
     {
@@ -86,7 +86,7 @@ void scheduledtasksWidget::submit()
     }
 }
 
-void scheduledtasksWidget::on_actionComboBox_currentIndexChanged(int index)
+void ScheduledTasksWidget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

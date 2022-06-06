@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediatewin7Widget; }
+namespace Ui { class ImmediateWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediatewin7Item;
+class ImmediateWin7Item;
 
-//! immediatewin7 representation for editor.
+//! ImmediateWin7 representation for editor.
 
-class immediatewin7Widget : public PreferenceWidgetInterface
+class ImmediateWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediatewin7Widget(QWidget* parent = nullptr, immediatewin7Item* item = nullptr);
-    ~immediatewin7Widget() override;
+    explicit ImmediateWin7Widget(QWidget* parent = nullptr, ImmediateWin7Item* item = nullptr);
+    ~ImmediateWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediatewin7Widget(const immediatewin7Widget&)            = delete;   // copy ctor
-    immediatewin7Widget(immediatewin7Widget&&)                 = delete;   // move ctor
-    immediatewin7Widget& operator=(const immediatewin7Widget&) = delete;   // copy assignment
-    immediatewin7Widget& operator=(immediatewin7Widget&&)      = delete;   // move assignment
+    ImmediateWin7Widget(const ImmediateWin7Widget&)            = delete;   // copy ctor
+    ImmediateWin7Widget(ImmediateWin7Widget&&)                 = delete;   // move ctor
+    ImmediateWin7Widget& operator=(const ImmediateWin7Widget&) = delete;   // copy assignment
+    ImmediateWin7Widget& operator=(ImmediateWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediatewin7Item* m_item {nullptr};
+    ImmediateWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediatewin7Widget *ui {nullptr};
+    Ui::ImmediateWin7Widget *ui {nullptr};
 };
 
 }

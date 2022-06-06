@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-immediateconditionswin7Item::immediateconditionswin7Item()
-    : BasePreferenceItem<::mvvm_folders::immediateconditionswin7Item>("immediateconditionswin7Item")
+ImmediateConditionsWin7Item::ImmediateConditionsWin7Item()
+    : BasePreferenceItem<::mvvm_folders::ImmediateConditionsWin7Item>("ImmediateConditionsWin7Item")
 {
 }
 
-immediateconditionswin7Item::immediateconditionswin7Item(const immediateconditionswin7Item &other)
-    : BasePreferenceItem<::mvvm_folders::immediateconditionswin7Item>("immediateconditionswin7Item")
+ImmediateConditionsWin7Item::ImmediateConditionsWin7Item(const ImmediateConditionsWin7Item &other)
+    : BasePreferenceItem<::mvvm_folders::ImmediateConditionsWin7Item>("ImmediateConditionsWin7Item")
 {    
 }
 
-constexpr const char *immediateconditionswin7Item::propertyToString(const immediateconditionswin7Item::PropertyType &type)
+constexpr const char *ImmediateConditionsWin7Item::propertyToString(const ImmediateConditionsWin7Item::PropertyType &type)
 {
     return "";
 }

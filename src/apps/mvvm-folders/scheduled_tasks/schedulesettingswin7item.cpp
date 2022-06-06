@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-schedulesettingswin7Item::schedulesettingswin7Item()
-    : BasePreferenceItem<::mvvm_folders::schedulesettingswin7Item>("schedulesettingswin7Item")
+ScheduleSettingsWin7Item::ScheduleSettingsWin7Item()
+    : BasePreferenceItem<::mvvm_folders::ScheduleSettingsWin7Item>("ScheduleSettingsWin7Item")
 {
 }
 
-schedulesettingswin7Item::schedulesettingswin7Item(const schedulesettingswin7Item &other)
-    : BasePreferenceItem<::mvvm_folders::schedulesettingswin7Item>("schedulesettingswin7Item")
+ScheduleSettingsWin7Item::ScheduleSettingsWin7Item(const ScheduleSettingsWin7Item &other)
+    : BasePreferenceItem<::mvvm_folders::ScheduleSettingsWin7Item>("ScheduleSettingsWin7Item")
 {    
 }
 
-constexpr const char *schedulesettingswin7Item::propertyToString(const schedulesettingswin7Item::PropertyType &type)
+constexpr const char *ScheduleSettingsWin7Item::propertyToString(const ScheduleSettingsWin7Item::PropertyType &type)
 {
     return "";
 }

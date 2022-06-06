@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class scheduledtasksWidget; }
+namespace Ui { class ScheduledTasksWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class scheduledtasksItem;
+class ScheduledTasksItem;
 
-//! scheduledtasks representation for editor.
+//! ScheduledTasks representation for editor.
 
-class scheduledtasksWidget : public PreferenceWidgetInterface
+class ScheduledTasksWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit scheduledtasksWidget(QWidget* parent = nullptr, scheduledtasksItem* item = nullptr);
-    ~scheduledtasksWidget() override;
+    explicit ScheduledTasksWidget(QWidget* parent = nullptr, ScheduledTasksItem* item = nullptr);
+    ~ScheduledTasksWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    scheduledtasksWidget(const scheduledtasksWidget&)            = delete;   // copy ctor
-    scheduledtasksWidget(scheduledtasksWidget&&)                 = delete;   // move ctor
-    scheduledtasksWidget& operator=(const scheduledtasksWidget&) = delete;   // copy assignment
-    scheduledtasksWidget& operator=(scheduledtasksWidget&&)      = delete;   // move assignment
+    ScheduledTasksWidget(const ScheduledTasksWidget&)            = delete;   // copy ctor
+    ScheduledTasksWidget(ScheduledTasksWidget&&)                 = delete;   // move ctor
+    ScheduledTasksWidget& operator=(const ScheduledTasksWidget&) = delete;   // copy assignment
+    ScheduledTasksWidget& operator=(ScheduledTasksWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    scheduledtasksItem* m_item {nullptr};
+    ScheduledTasksItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::scheduledtasksWidget *ui {nullptr};
+    Ui::ScheduledTasksWidget *ui {nullptr};
 };
 
 }

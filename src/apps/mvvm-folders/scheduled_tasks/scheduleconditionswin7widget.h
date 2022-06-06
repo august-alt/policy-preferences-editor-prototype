@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class scheduleconditionswin7Widget; }
+namespace Ui { class ScheduleConditionsWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class scheduleconditionswin7Item;
+class ScheduleConditionsWin7Item;
 
-//! scheduleconditionswin7 representation for editor.
+//! ScheduleConditionsWin7 representation for editor.
 
-class scheduleconditionswin7Widget : public PreferenceWidgetInterface
+class ScheduleConditionsWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit scheduleconditionswin7Widget(QWidget* parent = nullptr, scheduleconditionswin7Item* item = nullptr);
-    ~scheduleconditionswin7Widget() override;
+    explicit ScheduleConditionsWin7Widget(QWidget* parent = nullptr, ScheduleConditionsWin7Item* item = nullptr);
+    ~ScheduleConditionsWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    scheduleconditionswin7Widget(const scheduleconditionswin7Widget&)            = delete;   // copy ctor
-    scheduleconditionswin7Widget(scheduleconditionswin7Widget&&)                 = delete;   // move ctor
-    scheduleconditionswin7Widget& operator=(const scheduleconditionswin7Widget&) = delete;   // copy assignment
-    scheduleconditionswin7Widget& operator=(scheduleconditionswin7Widget&&)      = delete;   // move assignment
+    ScheduleConditionsWin7Widget(const ScheduleConditionsWin7Widget&)            = delete;   // copy ctor
+    ScheduleConditionsWin7Widget(ScheduleConditionsWin7Widget&&)                 = delete;   // move ctor
+    ScheduleConditionsWin7Widget& operator=(const ScheduleConditionsWin7Widget&) = delete;   // copy assignment
+    ScheduleConditionsWin7Widget& operator=(ScheduleConditionsWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    scheduleconditionswin7Item* m_item {nullptr};
+    ScheduleConditionsWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::scheduleconditionswin7Widget *ui {nullptr};
+    Ui::ScheduleConditionsWin7Widget *ui {nullptr};
 };
 
 }

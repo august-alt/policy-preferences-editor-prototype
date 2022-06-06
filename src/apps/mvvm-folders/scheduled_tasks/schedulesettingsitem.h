@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! schedulesettings item representation for editor.
+//! ScheduleSettings item representation for editor.
 
-class schedulesettingsItem : public BasePreferenceItem<schedulesettingsItem>
+class ScheduleSettingsItem : public BasePreferenceItem<ScheduleSettingsItem>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    schedulesettingsItem();
-    schedulesettingsItem(const schedulesettingsItem &other);
+    ScheduleSettingsItem();
+    ScheduleSettingsItem(const ScheduleSettingsItem &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::schedulesettingsItem)
+Q_DECLARE_METATYPE(::mvvm_folders::ScheduleSettingsItem)
 
 #endif//MVVM_FOLDERS_SCHEDULESETTINGS_ITEM_H
 

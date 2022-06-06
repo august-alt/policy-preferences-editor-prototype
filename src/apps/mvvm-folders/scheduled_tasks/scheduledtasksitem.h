@@ -26,9 +26,9 @@
 namespace mvvm_folders
 {
 
-//! scheduledtasks item representation for editor.
+//! ScheduledTasks item representation for editor.
 
-class scheduledtasksItem : public BasePreferenceItem<scheduledtasksItem>
+class ScheduledTasksItem : public BasePreferenceItem<ScheduledTasksItem>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    scheduledtasksItem();
-    scheduledtasksItem(const scheduledtasksItem &other);
+    ScheduledTasksItem();
+    ScheduledTasksItem(const ScheduledTasksItem &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::scheduledtasksItem)
+Q_DECLARE_METATYPE(::mvvm_folders::ScheduledTasksItem)
 
 #endif//MVVM_FOLDERS_SCHEDULEDTASKS_ITEM_H
 

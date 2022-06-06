@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-scheduletriggerswin7Widget::scheduletriggerswin7Widget(QWidget *parent, scheduletriggerswin7Item *item)
+ScheduleTriggersWin7Widget::ScheduleTriggersWin7Widget(QWidget *parent, ScheduleTriggersWin7Item *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::scheduletriggerswin7Widget())
+    , ui(new Ui::ScheduleTriggersWin7Widget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-scheduletriggerswin7Widget::~scheduletriggerswin7Widget()
+ScheduleTriggersWin7Widget::~ScheduleTriggersWin7Widget()
 {
     delete ui;
 }
 
-void scheduletriggerswin7Widget::setItem(ModelView::SessionItem* item)
+void ScheduleTriggersWin7Widget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -69,14 +69,14 @@ void scheduletriggerswin7Widget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool scheduletriggerswin7Widget::validate()
+bool ScheduleTriggersWin7Widget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void scheduletriggerswin7Widget::submit()
+void ScheduleTriggersWin7Widget::submit()
 {
     if (mapper && validate())
     {
@@ -86,7 +86,7 @@ void scheduletriggerswin7Widget::submit()
     }
 }
 
-void scheduletriggerswin7Widget::on_actionComboBox_currentIndexChanged(int index)
+void ScheduleTriggersWin7Widget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

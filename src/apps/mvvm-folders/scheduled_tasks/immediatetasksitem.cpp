@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-immediatetasksItem::immediatetasksItem()
-    : BasePreferenceItem<::mvvm_folders::immediatetasksItem>("immediatetasksItem")
+ImmediateTasksItem::ImmediateTasksItem()
+    : BasePreferenceItem<::mvvm_folders::ImmediateTasksItem>("ImmediateTasksItem")
 {
 }
 
-immediatetasksItem::immediatetasksItem(const immediatetasksItem &other)
-    : BasePreferenceItem<::mvvm_folders::immediatetasksItem>("immediatetasksItem")
+ImmediateTasksItem::ImmediateTasksItem(const ImmediateTasksItem &other)
+    : BasePreferenceItem<::mvvm_folders::ImmediateTasksItem>("ImmediateTasksItem")
 {    
 }
 
-constexpr const char *immediatetasksItem::propertyToString(const immediatetasksItem::PropertyType &type)
+constexpr const char *ImmediateTasksItem::propertyToString(const ImmediateTasksItem::PropertyType &type)
 {
     return "";
 }

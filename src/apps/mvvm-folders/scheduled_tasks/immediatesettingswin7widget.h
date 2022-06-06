@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class immediatesettingswin7Widget; }
+namespace Ui { class ImmediateSettingsWin7Widget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -41,18 +41,18 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class immediatesettingswin7Item;
+class ImmediateSettingsWin7Item;
 
-//! immediatesettingswin7 representation for editor.
+//! ImmediateSettingsWin7 representation for editor.
 
-class immediatesettingswin7Widget : public PreferenceWidgetInterface
+class ImmediateSettingsWin7Widget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit immediatesettingswin7Widget(QWidget* parent = nullptr, immediatesettingswin7Item* item = nullptr);
-    ~immediatesettingswin7Widget() override;
+    explicit ImmediateSettingsWin7Widget(QWidget* parent = nullptr, ImmediateSettingsWin7Item* item = nullptr);
+    ~ImmediateSettingsWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,21 +65,21 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    immediatesettingswin7Widget(const immediatesettingswin7Widget&)            = delete;   // copy ctor
-    immediatesettingswin7Widget(immediatesettingswin7Widget&&)                 = delete;   // move ctor
-    immediatesettingswin7Widget& operator=(const immediatesettingswin7Widget&) = delete;   // copy assignment
-    immediatesettingswin7Widget& operator=(immediatesettingswin7Widget&&)      = delete;   // move assignment
+    ImmediateSettingsWin7Widget(const ImmediateSettingsWin7Widget&)            = delete;   // copy ctor
+    ImmediateSettingsWin7Widget(ImmediateSettingsWin7Widget&&)                 = delete;   // move ctor
+    ImmediateSettingsWin7Widget& operator=(const ImmediateSettingsWin7Widget&) = delete;   // copy assignment
+    ImmediateSettingsWin7Widget& operator=(ImmediateSettingsWin7Widget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
-    immediatesettingswin7Item* m_item {nullptr};
+    ImmediateSettingsWin7Item* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::immediatesettingswin7Widget *ui {nullptr};
+    Ui::ImmediateSettingsWin7Widget *ui {nullptr};
 };
 
 }
