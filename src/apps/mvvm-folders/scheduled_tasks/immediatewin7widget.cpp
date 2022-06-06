@@ -63,7 +63,6 @@ void ImmediateWin7Widget::setItem(ModelView::SessionItem* item)
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());    
 
-    mapper->addMapping(ui->actionComboBox, 0);
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
