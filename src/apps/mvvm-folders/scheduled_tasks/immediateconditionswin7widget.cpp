@@ -40,8 +40,6 @@ ImmediateConditionsWin7Widget::ImmediateConditionsWin7Widget(QWidget *parent, Im
     , ui(new Ui::ImmediateConditionsWin7Widget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ImmediateConditionsWin7Widget::~ImmediateConditionsWin7Widget()

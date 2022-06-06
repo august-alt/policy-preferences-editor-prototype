@@ -40,8 +40,6 @@ ScheduledTasksWidget::ScheduledTasksWidget(QWidget *parent, ScheduledTasksItem *
     , ui(new Ui::ScheduledTasksWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ScheduledTasksWidget::~ScheduledTasksWidget()

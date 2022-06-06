@@ -40,8 +40,6 @@ ScheduleWin7Widget::ScheduleWin7Widget(QWidget *parent, ScheduleWin7Item *item)
     , ui(new Ui::ScheduleWin7Widget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ScheduleWin7Widget::~ScheduleWin7Widget()

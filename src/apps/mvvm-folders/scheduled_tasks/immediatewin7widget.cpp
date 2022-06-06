@@ -40,8 +40,6 @@ ImmediateWin7Widget::ImmediateWin7Widget(QWidget *parent, ImmediateWin7Item *ite
     , ui(new Ui::ImmediateWin7Widget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ImmediateWin7Widget::~ImmediateWin7Widget()

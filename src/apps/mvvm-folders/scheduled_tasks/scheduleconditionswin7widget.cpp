@@ -40,8 +40,6 @@ ScheduleConditionsWin7Widget::ScheduleConditionsWin7Widget(QWidget *parent, Sche
     , ui(new Ui::ScheduleConditionsWin7Widget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ScheduleConditionsWin7Widget::~ScheduleConditionsWin7Widget()

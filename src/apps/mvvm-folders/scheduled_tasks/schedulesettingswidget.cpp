@@ -40,8 +40,6 @@ ScheduleSettingsWidget::ScheduleSettingsWidget(QWidget *parent, ScheduleSettings
     , ui(new Ui::ScheduleSettingsWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 ScheduleSettingsWidget::~ScheduleSettingsWidget()
