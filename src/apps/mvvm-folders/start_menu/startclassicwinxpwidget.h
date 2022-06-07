@@ -41,7 +41,7 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class StartClassicWinXpItem;
+class StartClassicWinXPItem;
 
 //! StartClassicWinXp representation for editor.
 
@@ -51,7 +51,7 @@ public:
     Q_OBJECT
 
 public:
-    explicit StartClassicWinXpWidget(QWidget* parent = nullptr, StartClassicWinXpItem* item = nullptr);
+    explicit StartClassicWinXpWidget(QWidget* parent = nullptr, StartClassicWinXPItem* item = nullptr);
     ~StartClassicWinXpWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
@@ -72,7 +72,7 @@ private:
 
 private:
     //!< Underlying item of this view.
-    StartClassicWinXpItem* m_item {nullptr};
+    StartClassicWinXPItem* m_item {nullptr};
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;

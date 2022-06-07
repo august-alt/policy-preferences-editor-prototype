@@ -31,7 +31,7 @@
 namespace  mvvm_folders
 {
 
-StartClassicWinXpWidget::StartClassicWinXpWidget(QWidget *parent, StartClassicWinXpItem *item)
+StartClassicWinXpWidget::StartClassicWinXpWidget(QWidget *parent, StartClassicWinXPItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)

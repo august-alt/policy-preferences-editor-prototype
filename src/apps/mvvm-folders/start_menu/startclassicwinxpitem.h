@@ -28,7 +28,7 @@ namespace mvvm_folders
 
 //! StartClassicWinXp item representation for editor.
 
-class StartClassicWinXpItem : public BasePreferenceItem<StartClassicWinXpItem>
+class StartClassicWinXPItem : public BasePreferenceItem<StartClassicWinXPItem>
 {
 public:
     enum PropertyType
@@ -36,15 +36,15 @@ public:
     };
 
 public:
-    StartClassicWinXpItem();
-    StartClassicWinXpItem(const StartClassicWinXpItem &other);
+    StartClassicWinXPItem();
+    StartClassicWinXPItem(const StartClassicWinXPItem &other);
 
 	constexpr static const char* propertyToString(const PropertyType& type);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::StartClassicWinXpItem)
+Q_DECLARE_METATYPE(::mvvm_folders::StartClassicWinXPItem)
 
 #endif//MVVM_FOLDERS_STARTCLASSICWINXP_ITEM_H
 

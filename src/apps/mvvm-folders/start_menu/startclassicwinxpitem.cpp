@@ -23,17 +23,17 @@
 namespace mvvm_folders
 {
 
-StartClassicWinXpItem::StartClassicWinXpItem()
-    : BasePreferenceItem<::mvvm_folders::StartClassicWinXpItem>("StartClassicWinXpItem")
+StartClassicWinXPItem::StartClassicWinXPItem()
+    : BasePreferenceItem<::mvvm_folders::StartClassicWinXPItem>("StartClassicWinXPItem")
 {
 }
 
-StartClassicWinXpItem::StartClassicWinXpItem(const StartClassicWinXpItem &other)
-    : BasePreferenceItem<::mvvm_folders::StartClassicWinXpItem>("StartClassicWinXpItem")
+StartClassicWinXPItem::StartClassicWinXPItem(const StartClassicWinXPItem &other)
+    : BasePreferenceItem<::mvvm_folders::StartClassicWinXPItem>("StartClassicWinXPItem")
 {    
 }
 
-constexpr const char *StartClassicWinXpItem::propertyToString(const StartClassicWinXpItem::PropertyType &type)
+constexpr const char *StartClassicWinXPItem::propertyToString(const StartClassicWinXPItem::PropertyType &type)
 {
     return "";
 }
