@@ -40,8 +40,6 @@ StartAdvancedWinXPWidget::StartAdvancedWinXPWidget(QWidget *parent, StartAdvance
     , ui(new Ui::StartAdvancedWinXPWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 StartAdvancedWinXPWidget::~StartAdvancedWinXPWidget()

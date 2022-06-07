@@ -40,8 +40,6 @@ StartVistaWidget::StartVistaWidget(QWidget *parent, StartVistaItem *item)
     , ui(new Ui::StartVistaWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 StartVistaWidget::~StartVistaWidget()

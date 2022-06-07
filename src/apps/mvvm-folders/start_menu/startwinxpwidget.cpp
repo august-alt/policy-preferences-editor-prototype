@@ -40,8 +40,6 @@ StartWinXpWidget::StartWinXpWidget(QWidget *parent, StartWinXpItem *item)
     , ui(new Ui::StartWinXpWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 StartWinXpWidget::~StartWinXpWidget()

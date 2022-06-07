@@ -40,8 +40,6 @@ StartClassicVistaWidget::StartClassicVistaWidget(QWidget *parent, StartClassicVi
     , ui(new Ui::StartClassicVistaWidget())
 {
     ui->setupUi(this);
-
-    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 StartClassicVistaWidget::~StartClassicVistaWidget()
