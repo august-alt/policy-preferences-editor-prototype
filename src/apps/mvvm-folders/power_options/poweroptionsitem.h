@@ -52,4 +52,6 @@ public:
 
 Q_DECLARE_METATYPE(::mvvm_folders::PowerOptionsItem)
 
+#include "poweroptionsitem.inl"
+
 #endif//MVVM_FOLDERS_POWER_OPTIONS_ITEM_H

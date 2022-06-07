@@ -35,12 +35,11 @@ ShortcutsItem::ShortcutsItem()
     addProperty(TARGET_PATH, "");
     addProperty(ARGUMENTS, "");
     addProperty(START_IN, "");
-//    addProperty(SHORTCUT_KEY, QKeySequence());
     addProperty(SHORTCUT_KEY, "");
     addProperty(WINDOW, "");
     addProperty(COMMENT, "");
     addProperty(ICON_PATH, "");
-    addProperty(ICON_INDEX, "");
+    addProperty(ICON_INDEX, 0);
 }
 
 ShortcutsItem::ShortcutsItem(const ShortcutsItem &other)
@@ -53,12 +52,11 @@ ShortcutsItem::ShortcutsItem(const ShortcutsItem &other)
     addProperty(TARGET_PATH, other.property<QString>(TARGET_PATH));
     addProperty(ARGUMENTS, other.property<QString>(ARGUMENTS));
     addProperty(START_IN, other.property<QString>(START_IN));
-//    addProperty(SHORTCUT_KEY, other.property<QKeySequence>(SHORTCUT_KEY));
     addProperty(SHORTCUT_KEY, other.property<QString>(SHORTCUT_KEY));
     addProperty(WINDOW, other.property<QString>(WINDOW));
     addProperty(COMMENT, other.property<QString>(COMMENT));
     addProperty(ICON_PATH, other.property<QString>(ICON_PATH));
-    addProperty(ICON_INDEX, other.property<QString>(ICON_INDEX));
+    addProperty(ICON_INDEX, other.property<int>(ICON_INDEX));
 }
 
 }

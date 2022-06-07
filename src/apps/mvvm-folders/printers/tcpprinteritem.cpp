@@ -69,49 +69,4 @@ TcpPrinterItem::TcpPrinterItem(const TcpPrinterItem &other)
     copyProperty<bool>(LPR_PROTOCOL, other);
 }
 
-constexpr const char *TcpPrinterItem::propertyToString(const TcpPrinterItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case ACTION:
-        return("action");
-    case IP_ADDRESS:
-        return("ipAddress");
-    case USE_DNS:
-        return("useDNS");
-    case LOCAL_NAME:
-        return("localName");
-    case PATH:
-        return("path");
-    case DEFAULT:
-        return("default");
-    case SKIP_LOCAL:
-        return("skipLocal");
-    case DELETE_ALL:
-        return("deleteAll");
-    case LOCATION:
-        return("location");
-    case COMMENT:
-        return("comment");
-    case LPR_QUEUE:
-        return("lprQueue");
-    case SNMP_COMMUNITY:
-        return("snmpCommunity");
-    case TCP_PROTOCOL:
-        return("tcpProtocol");
-    case PORT_NUMBER:
-        return("portNumber");
-    case DOUBLE_SPOOL:
-        return("doubleSpool");
-    case SNMP_ENABLED:
-        return("snmpEnabled");
-    case SNMP_DEVINDEX:
-        return("snmpDevIndex");
-    case LPR_PROTOCOL:
-        return("lprProtocol");
-    }
-
-    return "";
-}
-
 }

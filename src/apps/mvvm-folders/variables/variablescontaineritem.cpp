@@ -41,9 +41,9 @@ VariablesContainerItem::VariablesContainerItem()
     addProperty<VariablesItem>(VARIABLES)->setVisible(false);
 }
 
-CommonItem VariablesContainerItem::getCommon() const
+CommonItem* VariablesContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void VariablesContainerItem::setCommon(const CommonItem &item)
@@ -51,9 +51,9 @@ void VariablesContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-VariablesItem VariablesContainerItem::getVariables() const
+VariablesItem *VariablesContainerItem::getVariables() const
 {
-    return property<VariablesItem>(VARIABLES);
+    return static_cast<VariablesItem*>(children().back());
 }
 
 void VariablesContainerItem::setVariables(const VariablesItem &item)

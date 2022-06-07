@@ -91,7 +91,7 @@ void FilesWidget::on_sourceToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        ui->sourceLineEdit->setText(fileDialog->selectedUrls().value(0).toLocalFile());
+        ui->sourceLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 
@@ -127,7 +127,7 @@ void FilesWidget::on_destinationToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        ui->destinationLineEdit->setText(fileDialog->selectedUrls().value(0).toLocalFile());
+        ui->destinationLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 

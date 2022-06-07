@@ -75,7 +75,7 @@ void IniWidget::on_pathToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        ui->pathLineEdit->setText(fileDialog->selectedUrls().value(0).toLocalFile());
+        ui->pathLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 

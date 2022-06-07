@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}" name="name" status="name = value" image="0" changed="2022-05-12 12:48:55" uid="{8E18F22E-69AF-4644-A61E-2E535215BA35}"><Properties action="C" name="name" value="value" user="1" partial="0"/></EnvironmentVariable>
+<EnvironmentVariables 
+           clsid="{BF141A63-327B-438a-B9BF-2C188F13B7AD}" 
+           disabled="1">
+	<EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}"
+		                 name="name"
+		                 status="name = value"
+		                 image="0"
+		                 changed="2022-05-12 12:48:55"
+		                 uid="{8E18F22E-69AF-4644-A61E-2E535215BA35}">
+		                 <Properties action="C" 
+		                             name="name"
+		                             value="value" 
+		                             user="1" 
+		                             partial="0"/>
+	</EnvironmentVariable>
+</EnvironmentVariables>
