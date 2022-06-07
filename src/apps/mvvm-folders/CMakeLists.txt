@@ -61,13 +61,11 @@ set(HEADERS
 
     ini/iniitem.h
     ini/inicontaineritem.h
-    ini/inimodelbuilder.h
     ini/iniwidget.h
 
     local_users_and_groups/baselocalitem.h
     local_users_and_groups/groupmemberdialog.h
     local_users_and_groups/groupmemberitem.h
-    local_users_and_groups/groupmodelbuilder.h
     local_users_and_groups/groupmemberswidget.h
     local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
@@ -80,7 +78,6 @@ set(HEADERS
     network_options/basenetworkitem.h
     network_options/dialupitem.h
     network_options/dialupwidget.h
-    network_options/networkmodelbuilder.h
     network_options/networkcontaineritem.h
     network_options/networkcontaineritem.inl
     network_options/vpnitem.h
@@ -95,19 +92,14 @@ set(HEADERS
 
     power_options/powercontaineritem.h
     power_options/poweroptionsitem.h
-    power_options/poweroptionsitem.inl
-    power_options/powermodelbuilder.h
     power_options/poweroptionswidget.h
     power_options/powerplanitem.h
-    power_options/powerplanitem.inl
     power_options/powerplanwidget.h
     power_options/powerschemeitem.h
-    power_options/powerschemeitem.inl
     power_options/powerschemewidget.h
 
     printers/localprinteritem.h
     printers/localprinterwidget.h
-    printers/printersmodelbuilder.h
     printers/printercontaineritem.h
     printers/printercontaineritem.inl
     printers/sharedprinteritem.h
@@ -118,36 +110,21 @@ set(HEADERS
 
     registry/registrycontaineritem.h
     registry/registryitem.h
-    registry/registrymodelbuilder.h
     registry/registrywidget.h
 
-    scheduled_tasks/immediateactionwin7item.h
     scheduled_tasks/immediateactionwin7widget.h
-    scheduled_tasks/immediateconditionswin7item.h
     scheduled_tasks/immediateconditionswin7widget.h
-    scheduled_tasks/immediatesettingsitem.h
     scheduled_tasks/immediatesettingswidget.h
-    scheduled_tasks/immediatesettingswin7item.h
     scheduled_tasks/immediatesettingswin7widget.h
-    scheduled_tasks/immediatetasksitem.h
     scheduled_tasks/immediatetaskswidget.h
-    scheduled_tasks/immediatewin7item.h
     scheduled_tasks/immediatewin7widget.h
-    scheduled_tasks/scheduleactionwin7item.h
     scheduled_tasks/scheduleactionwin7widget.h
-    scheduled_tasks/scheduleconditionswin7item.h
     scheduled_tasks/scheduleconditionswin7widget.h
-    scheduled_tasks/scheduledtasksitem.h
     scheduled_tasks/scheduledtaskswidget.h
-    scheduled_tasks/schedulescheduleitem.h
     scheduled_tasks/scheduleschedulewidget.h
-    scheduled_tasks/schedulesettingsitem.h
     scheduled_tasks/schedulesettingswidget.h
-    scheduled_tasks/schedulesettingswin7item.h
     scheduled_tasks/schedulesettingswin7widget.h
-    scheduled_tasks/scheduletriggerswin7item.h
     scheduled_tasks/scheduletriggerswin7widget.h
-    scheduled_tasks/schedulewin7item.h
     scheduled_tasks/schedulewin7widget.h
 
     start_menu/startadvancedwinxpitem.h
@@ -162,17 +139,14 @@ set(HEADERS
     start_menu/startwinxpwidget.h
 
     shares/sharesitem.h
-    shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
 
     shortcuts/shortcutsitem.h
-    shortcuts/shortcutsmodelbuilder.h
     shortcuts/shortcutscontaineritem.h
     shortcuts/shortcutswidget.h
 
     variables/variablesitem.h
-    variables/variablesmodelbuilder.h
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
@@ -237,14 +211,12 @@ set(SOURCES
 
     ini/iniitem.cpp
     ini/inicontaineritem.cpp
-    ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
 
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
     local_users_and_groups/groupmemberitem.cpp
-    local_users_and_groups/groupmodelbuilder.cpp
     local_users_and_groups/groupmemberswidget.cpp
     local_users_and_groups/groupmemberswidgetslots.cpp
     local_users_and_groups/localgroupitem.cpp
@@ -258,7 +230,6 @@ set(SOURCES
     network_options/dialupitem.cpp
     network_options/dialupwidget.cpp
     network_options/dialupwidgetslots.cpp
-    network_options/networkmodelbuilder.cpp
     network_options/vpnitem.cpp
     network_options/vpnnetworkingwidget.cpp
     network_options/vpnoptionswidget.cpp
@@ -268,7 +239,6 @@ set(SOURCES
 
     power_options/powercontaineritem.inl
     power_options/poweroptionsitem.cpp
-    power_options/powermodelbuilder.cpp
     power_options/poweroptionswidget.cpp
     power_options/powerplanitem.cpp
     power_options/powerplanwidget.cpp
@@ -277,40 +247,26 @@ set(SOURCES
 
     printers/localprinteritem.cpp
     printers/localprinterwidget.cpp
-    printers/printersmodelbuilder.cpp
     printers/sharedprinteritem.cpp
     printers/sharedprinterwidget.cpp
     printers/tcpprintergeneralwidget.cpp
     printers/tcpprinteritem.cpp
     printers/tcpprinterportwidget.cpp
 
-    scheduled_tasks/immediateactionwin7item.cpp
     scheduled_tasks/immediateactionwin7widget.cpp
-    scheduled_tasks/immediateconditionswin7item.cpp
     scheduled_tasks/immediateconditionswin7widget.cpp
-    scheduled_tasks/immediatesettingsitem.cpp
     scheduled_tasks/immediatesettingswidget.cpp
-    scheduled_tasks/immediatesettingswin7item.cpp
     scheduled_tasks/immediatesettingswin7widget.cpp
-    scheduled_tasks/immediatetasksitem.cpp
     scheduled_tasks/immediatetaskswidget.cpp
-    scheduled_tasks/immediatewin7item.cpp
     scheduled_tasks/immediatewin7widget.cpp
-    scheduled_tasks/scheduleactionwin7item.cpp
     scheduled_tasks/scheduleactionwin7widget.cpp
-    scheduled_tasks/scheduleconditionswin7item.cpp
     scheduled_tasks/scheduleconditionswin7widget.cpp
-    scheduled_tasks/scheduledtasksitem.cpp
+    scheduled_tasks/scheduledtasksmodelbuilder.cpp
     scheduled_tasks/scheduledtaskswidget.cpp
-    scheduled_tasks/schedulescheduleitem.cpp
     scheduled_tasks/scheduleschedulewidget.cpp
-    scheduled_tasks/schedulesettingsitem.cpp
     scheduled_tasks/schedulesettingswidget.cpp
-    scheduled_tasks/schedulesettingswin7item.cpp
     scheduled_tasks/schedulesettingswin7widget.cpp
-    scheduled_tasks/scheduletriggerswin7item.cpp
     scheduled_tasks/scheduletriggerswin7widget.cpp
-    scheduled_tasks/schedulewin7item.cpp
     scheduled_tasks/schedulewin7widget.cpp
 
     start_menu/startadvancedwinxpitem.cpp
@@ -326,25 +282,21 @@ set(SOURCES
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
-    registry/registrymodelbuilder.cpp
     registry/registrywidget.cpp
     registry/registrywidgetslots.cpp
 
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp
-    shares/sharesmodelbuilder.cpp
     shares/shareswidget.cpp
     shares/shareswidgetslots.cpp
 
     shortcuts/shortcutsitem.cpp
     shortcuts/shortcutscontaineritem.cpp
-    shortcuts/shortcutsmodelbuilder.cpp
     shortcuts/shortcutswidget.cpp
     shortcuts/shortcutswidgetslots.cpp
 
     variables/variablesitem.cpp
     variables/variablescontaineritem.cpp
-    variables/variablesmodelbuilder.cpp
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
