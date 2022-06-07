@@ -61,13 +61,11 @@ set(HEADERS
 
     ini/iniitem.h
     ini/inicontaineritem.h
-    ini/inimodelbuilder.h
     ini/iniwidget.h
 
     local_users_and_groups/baselocalitem.h
     local_users_and_groups/groupmemberdialog.h
     local_users_and_groups/groupmemberitem.h
-    local_users_and_groups/groupmodelbuilder.h
     local_users_and_groups/groupmemberswidget.h
     local_users_and_groups/groupmemberscontaineritem.h
     local_users_and_groups/localgroupcontaineritem.h
@@ -80,7 +78,6 @@ set(HEADERS
     network_options/basenetworkitem.h
     network_options/dialupitem.h
     network_options/dialupwidget.h
-    network_options/networkmodelbuilder.h
     network_options/networkcontaineritem.h
     network_options/networkcontaineritem.inl
     network_options/vpnitem.h
@@ -95,19 +92,14 @@ set(HEADERS
 
     power_options/powercontaineritem.h
     power_options/poweroptionsitem.h
-    power_options/poweroptionsitem.inl
-    power_options/powermodelbuilder.h
     power_options/poweroptionswidget.h
     power_options/powerplanitem.h
-    power_options/powerplanitem.inl
     power_options/powerplanwidget.h
     power_options/powerschemeitem.h
-    power_options/powerschemeitem.inl
     power_options/powerschemewidget.h
 
     printers/localprinteritem.h
     printers/localprinterwidget.h
-    printers/printersmodelbuilder.h
     printers/printercontaineritem.h
     printers/printercontaineritem.inl
     printers/sharedprinteritem.h
@@ -118,7 +110,6 @@ set(HEADERS
 
     registry/registrycontaineritem.h
     registry/registryitem.h
-    registry/registrymodelbuilder.h
     registry/registrywidget.h
 
     scheduled_tasks/immediateactionwin7widget.h
@@ -136,18 +127,26 @@ set(HEADERS
     scheduled_tasks/scheduletriggerswin7widget.h
     scheduled_tasks/schedulewin7widget.h
 
+    start_menu/startadvancedwinxpitem.h
+    start_menu/startadvancedwinxpwidget.h
+    start_menu/startclassicvistaitem.h
+    start_menu/startclassicvistawidget.h
+    start_menu/startclassicwinxpitem.h
+    start_menu/startclassicwinxpwidget.h
+    start_menu/startvistaitem.h
+    start_menu/startvistawidget.h
+    start_menu/startwinxpitem.h
+    start_menu/startwinxpwidget.h
+
     shares/sharesitem.h
-    shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
 
     shortcuts/shortcutsitem.h
-    shortcuts/shortcutsmodelbuilder.h
     shortcuts/shortcutscontaineritem.h
     shortcuts/shortcutswidget.h
 
     variables/variablesitem.h
-    variables/variablesmodelbuilder.h
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
@@ -212,14 +211,12 @@ set(SOURCES
 
     ini/iniitem.cpp
     ini/inicontaineritem.cpp
-    ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
 
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
     local_users_and_groups/groupmemberitem.cpp
-    local_users_and_groups/groupmodelbuilder.cpp
     local_users_and_groups/groupmemberswidget.cpp
     local_users_and_groups/groupmemberswidgetslots.cpp
     local_users_and_groups/localgroupitem.cpp
@@ -233,7 +230,6 @@ set(SOURCES
     network_options/dialupitem.cpp
     network_options/dialupwidget.cpp
     network_options/dialupwidgetslots.cpp
-    network_options/networkmodelbuilder.cpp
     network_options/vpnitem.cpp
     network_options/vpnnetworkingwidget.cpp
     network_options/vpnoptionswidget.cpp
@@ -243,7 +239,6 @@ set(SOURCES
 
     power_options/powercontaineritem.inl
     power_options/poweroptionsitem.cpp
-    power_options/powermodelbuilder.cpp
     power_options/poweroptionswidget.cpp
     power_options/powerplanitem.cpp
     power_options/powerplanwidget.cpp
@@ -252,7 +247,6 @@ set(SOURCES
 
     printers/localprinteritem.cpp
     printers/localprinterwidget.cpp
-    printers/printersmodelbuilder.cpp
     printers/sharedprinteritem.cpp
     printers/sharedprinterwidget.cpp
     printers/tcpprintergeneralwidget.cpp
@@ -275,27 +269,34 @@ set(SOURCES
     scheduled_tasks/scheduletriggerswin7widget.cpp
     scheduled_tasks/schedulewin7widget.cpp
 
+    start_menu/startadvancedwinxpitem.cpp
+    start_menu/startadvancedwinxpwidget.cpp
+    start_menu/startclassicvistaitem.cpp
+    start_menu/startclassicvistawidget.cpp
+    start_menu/startclassicwinxpitem.cpp
+    start_menu/startclassicwinxpwidget.cpp
+    start_menu/startvistaitem.cpp
+    start_menu/startvistawidget.cpp
+    start_menu/startwinxpitem.cpp
+    start_menu/startwinxpwidget.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
-    registry/registrymodelbuilder.cpp
     registry/registrywidget.cpp
     registry/registrywidgetslots.cpp
 
     shares/sharesitem.cpp
     shares/sharescontaineritem.cpp
-    shares/sharesmodelbuilder.cpp
     shares/shareswidget.cpp
     shares/shareswidgetslots.cpp
 
     shortcuts/shortcutsitem.cpp
     shortcuts/shortcutscontaineritem.cpp
-    shortcuts/shortcutsmodelbuilder.cpp
     shortcuts/shortcutswidget.cpp
     shortcuts/shortcutswidgetslots.cpp
 
     variables/variablesitem.cpp
     variables/variablescontaineritem.cpp
-    variables/variablesmodelbuilder.cpp
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
@@ -362,6 +363,12 @@ set(UI_FORMS
     scheduled_tasks/schedulesettingswin7widget.ui
     scheduled_tasks/scheduletriggerswin7widget.ui
     scheduled_tasks/schedulewin7widget.ui
+
+    start_menu/startadvancedwinxpwidget.ui
+    start_menu/startclassicvistawidget.ui
+    start_menu/startclassicwinxpwidget.ui
+    start_menu/startvistawidget.ui
+    start_menu/startwinxpwidget.ui
 
     shares/shareswidget.ui
 
