@@ -112,6 +112,46 @@ set(HEADERS
     registry/registryitem.h
     registry/registrywidget.h
 
+    scheduled_tasks/immediateactionwin7item.h
+    scheduled_tasks/immediateactionwin7widget.h
+    scheduled_tasks/immediateconditionswin7item.h
+    scheduled_tasks/immediateconditionswin7widget.h
+    scheduled_tasks/immediatesettingsitem.h
+    scheduled_tasks/immediatesettingswidget.h
+    scheduled_tasks/immediatesettingswin7item.h
+    scheduled_tasks/immediatesettingswin7widget.h
+    scheduled_tasks/immediatetasksitem.h
+    scheduled_tasks/immediatetaskswidget.h
+    scheduled_tasks/immediatewin7item.h
+    scheduled_tasks/immediatewin7widget.h
+    scheduled_tasks/scheduleactionwin7item.h
+    scheduled_tasks/scheduleactionwin7widget.h
+    scheduled_tasks/scheduleconditionswin7item.h
+    scheduled_tasks/scheduleconditionswin7widget.h
+    scheduled_tasks/scheduledtasksitem.h
+    scheduled_tasks/scheduledtaskswidget.h
+    scheduled_tasks/schedulescheduleitem.h
+    scheduled_tasks/scheduleschedulewidget.h
+    scheduled_tasks/schedulesettingsitem.h
+    scheduled_tasks/schedulesettingswidget.h
+    scheduled_tasks/schedulesettingswin7item.h
+    scheduled_tasks/schedulesettingswin7widget.h
+    scheduled_tasks/scheduletriggerswin7item.h
+    scheduled_tasks/scheduletriggerswin7widget.h
+    scheduled_tasks/schedulewin7item.h
+    scheduled_tasks/schedulewin7widget.h
+
+    start_menu/startadvancedwinxpitem.h
+    start_menu/startadvancedwinxpwidget.h
+    start_menu/startclassicvistaitem.h
+    start_menu/startclassicvistawidget.h
+    start_menu/startclassicwinxpitem.h
+    start_menu/startclassicwinxpwidget.h
+    start_menu/startvistaitem.h
+    start_menu/startvistawidget.h
+    start_menu/startwinxpitem.h
+    start_menu/startwinxpwidget.h
+
     shares/sharesitem.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
@@ -227,6 +267,46 @@ set(SOURCES
     printers/tcpprinteritem.cpp
     printers/tcpprinterportwidget.cpp
 
+    scheduled_tasks/immediateactionwin7item.cpp
+    scheduled_tasks/immediateactionwin7widget.cpp
+    scheduled_tasks/immediateconditionswin7item.cpp
+    scheduled_tasks/immediateconditionswin7widget.cpp
+    scheduled_tasks/immediatesettingsitem.cpp
+    scheduled_tasks/immediatesettingswidget.cpp
+    scheduled_tasks/immediatesettingswin7item.cpp
+    scheduled_tasks/immediatesettingswin7widget.cpp
+    scheduled_tasks/immediatetasksitem.cpp
+    scheduled_tasks/immediatetaskswidget.cpp
+    scheduled_tasks/immediatewin7item.cpp
+    scheduled_tasks/immediatewin7widget.cpp
+    scheduled_tasks/scheduleactionwin7item.cpp
+    scheduled_tasks/scheduleactionwin7widget.cpp
+    scheduled_tasks/scheduleconditionswin7item.cpp
+    scheduled_tasks/scheduleconditionswin7widget.cpp
+    scheduled_tasks/scheduledtasksitem.cpp
+    scheduled_tasks/scheduledtaskswidget.cpp
+    scheduled_tasks/schedulescheduleitem.cpp
+    scheduled_tasks/scheduleschedulewidget.cpp
+    scheduled_tasks/schedulesettingsitem.cpp
+    scheduled_tasks/schedulesettingswidget.cpp
+    scheduled_tasks/schedulesettingswin7item.cpp
+    scheduled_tasks/schedulesettingswin7widget.cpp
+    scheduled_tasks/scheduletriggerswin7item.cpp
+    scheduled_tasks/scheduletriggerswin7widget.cpp
+    scheduled_tasks/schedulewin7item.cpp
+    scheduled_tasks/schedulewin7widget.cpp
+
+    start_menu/startadvancedwinxpitem.cpp
+    start_menu/startadvancedwinxpwidget.cpp
+    start_menu/startclassicvistaitem.cpp
+    start_menu/startclassicvistawidget.cpp
+    start_menu/startclassicwinxpitem.cpp
+    start_menu/startclassicwinxpwidget.cpp
+    start_menu/startvistaitem.cpp
+    start_menu/startvistawidget.cpp
+    start_menu/startwinxpitem.cpp
+    start_menu/startwinxpwidget.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrywidget.cpp
@@ -295,6 +375,27 @@ set(UI_FORMS
     printers/tcpprinterportwidget.ui
 
     registry/registrywidget.ui
+
+    scheduled_tasks/immediateactionwin7widget.ui
+    scheduled_tasks/immediateconditionswin7widget.ui
+    scheduled_tasks/immediatesettingswidget.ui
+    scheduled_tasks/immediatesettingswin7widget.ui
+    scheduled_tasks/immediatetaskswidget.ui
+    scheduled_tasks/immediatewin7widget.ui
+    scheduled_tasks/scheduleactionwin7widget.ui
+    scheduled_tasks/scheduleconditionswin7widget.ui
+    scheduled_tasks/scheduledtaskswidget.ui
+    scheduled_tasks/scheduleschedulewidget.ui
+    scheduled_tasks/schedulesettingswidget.ui
+    scheduled_tasks/schedulesettingswin7widget.ui
+    scheduled_tasks/scheduletriggerswin7widget.ui
+    scheduled_tasks/schedulewin7widget.ui
+
+    start_menu/startadvancedwinxpwidget.ui
+    start_menu/startclassicvistawidget.ui
+    start_menu/startclassicwinxpwidget.ui
+    start_menu/startvistawidget.ui
+    start_menu/startwinxpwidget.ui
 
     shares/shareswidget.ui
 
