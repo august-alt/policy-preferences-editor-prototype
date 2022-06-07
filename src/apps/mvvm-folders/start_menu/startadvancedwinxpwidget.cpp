@@ -31,25 +31,25 @@
 namespace  mvvm_folders
 {
 
-StartAdvancedWinXpWidget::StartAdvancedWinXpWidget(QWidget *parent, StartAdvancedWinXpItem *item)
+StartAdvancedWinXPWidget::StartAdvancedWinXPWidget(QWidget *parent, StartAdvancedWinXpItem *item)
     : PreferenceWidgetInterface(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
     , mapper(nullptr)
-    , ui(new Ui::StartAdvancedWinXpWidget())
+    , ui(new Ui::StartAdvancedWinXPWidget())
 {
     ui->setupUi(this);
 
     on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
-StartAdvancedWinXpWidget::~StartAdvancedWinXpWidget()
+StartAdvancedWinXPWidget::~StartAdvancedWinXPWidget()
 {
     delete ui;
 }
 
-void StartAdvancedWinXpWidget::setItem(ModelView::SessionItem* item)
+void StartAdvancedWinXPWidget::setItem(ModelView::SessionItem* item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -68,14 +68,14 @@ void StartAdvancedWinXpWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool StartAdvancedWinXpWidget::validate()
+bool StartAdvancedWinXPWidget::validate()
 {
     // TODO: Implement.
     
     return true;
 }
 
-void StartAdvancedWinXpWidget::submit()
+void StartAdvancedWinXPWidget::submit()
 {
     if (mapper && validate())
     {
@@ -85,7 +85,7 @@ void StartAdvancedWinXpWidget::submit()
     }
 }
 
-void StartAdvancedWinXpWidget::on_actionComboBox_currentIndexChanged(int index)
+void StartAdvancedWinXPWidget::on_actionComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
 }

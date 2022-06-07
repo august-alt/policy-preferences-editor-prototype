@@ -26,7 +26,7 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class StartAdvancedWinXpWidget; }
+namespace Ui { class StartAdvancedWinXPWidget; }
 QT_END_NAMESPACE
 
 class QDataWidgetMapper;
@@ -45,14 +45,14 @@ class StartAdvancedWinXpItem;
 
 //! StartAdvancedWinXp representation for editor.
 
-class StartAdvancedWinXpWidget : public PreferenceWidgetInterface
+class StartAdvancedWinXPWidget : public PreferenceWidgetInterface
 {
 public:
     Q_OBJECT
 
 public:
-    explicit StartAdvancedWinXpWidget(QWidget* parent = nullptr, StartAdvancedWinXpItem* item = nullptr);
-    ~StartAdvancedWinXpWidget() override;
+    explicit StartAdvancedWinXPWidget(QWidget* parent = nullptr, StartAdvancedWinXpItem* item = nullptr);
+    ~StartAdvancedWinXPWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
 
@@ -65,10 +65,10 @@ private slots:
     void on_actionComboBox_currentIndexChanged(int index);
 
 private:
-    StartAdvancedWinXpWidget(const StartAdvancedWinXpWidget&)            = delete;   // copy ctor
-    StartAdvancedWinXpWidget(StartAdvancedWinXpWidget&&)                 = delete;   // move ctor
-    StartAdvancedWinXpWidget& operator=(const StartAdvancedWinXpWidget&) = delete;   // copy assignment
-    StartAdvancedWinXpWidget& operator=(StartAdvancedWinXpWidget&&)      = delete;   // move assignment
+    StartAdvancedWinXPWidget(const StartAdvancedWinXPWidget&)            = delete;   // copy ctor
+    StartAdvancedWinXPWidget(StartAdvancedWinXPWidget&&)                 = delete;   // move ctor
+    StartAdvancedWinXPWidget& operator=(const StartAdvancedWinXPWidget&) = delete;   // copy assignment
+    StartAdvancedWinXPWidget& operator=(StartAdvancedWinXPWidget&&)      = delete;   // move assignment
 
 private:
     //!< Underlying item of this view.
@@ -79,7 +79,7 @@ private:
     std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
-    Ui::StartAdvancedWinXpWidget *ui {nullptr};
+    Ui::StartAdvancedWinXPWidget *ui {nullptr};
 };
 
 }
