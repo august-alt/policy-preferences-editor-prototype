@@ -116,7 +116,7 @@ QString ShortcutsWidget::openFileOrFolder(bool folderMode)
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        return fileDialog->selectedUrls().value(0).toLocalFile();
+        return fileDialog->selectedUrls()[0].toLocalFile();
     }
 
     return "";

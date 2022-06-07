@@ -48,10 +48,10 @@ public:
 
     explicit SharesContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    SharesItem getShares() const;
+    SharesItem* getShares() const;
     void setShares(const SharesItem& item);
 
     void setupListeners() override;

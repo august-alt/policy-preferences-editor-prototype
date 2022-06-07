@@ -75,7 +75,7 @@ void FolderWidget::on_pathToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        setPath(fileDialog->selectedUrls().value(0).toLocalFile());
+        setPath(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 

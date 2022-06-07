@@ -22,19 +22,43 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include "ini/inicontaineritem.h"
+#include "ini/iniitem.h"
+#include "ini/iniwidget.h"
+#include "ini/inimodelbuilder.h"
 
-namespace tests 
+const std::string dataPath = "../../../../../data/preferences/user/settings/ini/";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
 
 void IniWidgetTest::test()
 {
     std::ifstream file;
 
-    file.open(dataPath + "iniwidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath + "ini_files.xml", std::ifstream::in);
+
+    QVERIFY(file.good());
+
+    if (file.good())
     {
-       
+        auto ini = IniFiles_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<IniModelBuilder>();
+        auto model = modelBuilder->schemaToModel(ini);
+
+        auto iniWidget = std::make_unique<IniWidget>();
+        auto containerItem = model->topItem();
+        auto iniContainer = dynamic_cast<IniContainerItem*>(containerItem);
+
+        if (iniContainer)
+        {
+            iniWidget->setItem(iniContainer->children().back());
+            iniWidget->show();
+        }
+
+        QTest::qWait(10000);
     }
 
     file.close();

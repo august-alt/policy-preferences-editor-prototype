@@ -43,9 +43,9 @@ IniContainerItem::IniContainerItem()
     addProperty<IniItem>(INI)->setVisible(false);
 }
 
-CommonItem IniContainerItem::getCommon() const
+CommonItem* IniContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void IniContainerItem::setCommon(const CommonItem &item)
@@ -53,9 +53,9 @@ void IniContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-IniItem IniContainerItem::getIni() const
+IniItem *IniContainerItem::getIni() const
 {
-    return property<IniItem>(INI);
+    return static_cast<IniItem*>(children().back());
 }
 
 void IniContainerItem::setIni(const IniItem &item)

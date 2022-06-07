@@ -48,10 +48,10 @@ public:
 
     explicit PrinterContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    PrinterItemType getPrinter() const;
+    PrinterItemType* getPrinter() const;
     void setPrinter(const PrinterItemType& item);
 
     void setupListeners() override;

@@ -55,35 +55,4 @@ PowerSchemeItem::PowerSchemeItem(const PowerSchemeItem &other)
     copyProperty<std::string>(HIBERNATE_DC, other);
 }
 
-constexpr const char *PowerSchemeItem::propertyToString(const PowerSchemeItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case ACTION:
-        return "action";
-    case NAME:
-        return "name";
-    case DEFAULT:
-        return "default";
-    case MONITOR_AC:
-        return "monitorAc";
-    case HARD_DISK_AC:
-        return "hardDiskAc";
-    case STANDBY_AC:
-        return "standbyAc";
-    case HIBERNATE_AC:
-        return "hibernateAc";
-    case MONITOR_DC:
-        return "monitorDc";
-    case HARD_DISK_DC:
-        return "hardDiskDc";
-    case STANDBY_DC:
-        return "standbyDc";
-    case HIBERNATE_DC:
-        return "hibernateDc";
-    }
-
-    return "";
-}
-
 }

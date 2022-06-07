@@ -42,4 +42,6 @@ public:
 
 Q_DECLARE_METATYPE(::mvvm_folders::PowerPlanItem)
 
+#include "powerplanitem.inl"
+
 #endif//MVVM_FOLDERS_POWER_PLAN_ITEM_H

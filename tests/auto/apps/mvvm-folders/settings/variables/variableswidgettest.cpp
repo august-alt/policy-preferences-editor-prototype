@@ -22,19 +22,43 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include "variables/variablescontaineritem.h"
+#include "variables/variablesitem.h"
+#include "variables/variableswidget.h"
+#include "variables/variablesmodelbuilder.h"
 
-namespace tests 
+const std::string dataPath = "../../../../../data/preferences/user/settings/variables/";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
 
 void VariablesWidgetTest::test()
 {
     std::ifstream file;
 
-    file.open(dataPath + "variableswidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath + "environment.xml", std::ifstream::in);
+
+    QVERIFY(file.good());
+
+    if (file.good())
     {
-       
+        auto variables = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<VariablesModelBuilder>();
+        auto model = modelBuilder->schemaToModel(variables);
+
+        auto variablesWidget = std::make_unique<VariablesWidget>();
+        auto containerItem = model->topItem();
+        auto variablesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
+
+        if (variablesContainer)
+        {
+            variablesWidget->setItem(variablesContainer->children().back());
+            variablesWidget->show();
+        }
+
+        QTest::qWait(10000);
     }
 
     file.close();
