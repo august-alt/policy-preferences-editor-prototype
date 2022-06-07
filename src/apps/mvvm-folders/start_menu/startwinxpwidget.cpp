@@ -21,7 +21,7 @@
 #include "startwinxpwidget.h"
 #include "ui_startwinxpwidget.h"
 
-#include "startwinxpitem.h"
+#include <mvvm/model/sessionitem.h>
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
@@ -59,7 +59,7 @@ void StartWinXPWidget::setItem(ModelView::SessionItem* item)
 
     mapper->setModel(view_model.get());
     mapper->setItemDelegate(delegate.get());
-    mapper->setRootIndex(QModelIndex());    
+    mapper->setRootIndex(QModelIndex());
 
     // TODO: Implement.
 
@@ -69,7 +69,7 @@ void StartWinXPWidget::setItem(ModelView::SessionItem* item)
 bool StartWinXPWidget::validate()
 {
     // TODO: Implement.
-    
+
     return true;
 }
 
