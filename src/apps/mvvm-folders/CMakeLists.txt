@@ -141,6 +141,8 @@ set(HEADERS
     start_menu/startclassicwinxpwidget.h
     start_menu/startvistawidget.h
     start_menu/startwinxpwidget.h
+    start_menu/startmenuwinvistaitem.h
+    start_menu/startmenuwinxpitem.h
 
     shares/sharesitem.h
     shares/sharesmodelbuilder.h
@@ -286,6 +288,8 @@ set(SOURCES
     start_menu/startclassicwinxpwidget.cpp
     start_menu/startvistawidget.cpp
     start_menu/startwinxpwidget.cpp
+    start_menu/startmenuwinvistaitem.cpp
+    start_menu/startmenuwinxpitem.cpp
 
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
