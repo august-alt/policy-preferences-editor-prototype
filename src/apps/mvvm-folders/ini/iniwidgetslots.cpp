@@ -39,7 +39,7 @@ void IniWidget::on_actionComboBox_currentIndexChanged(int index)
     case ViewMode::CREATE__MODE:
     case ViewMode::UPDATE__MODE:
     case ViewMode::REPLACE_MODE:
-        if (ui->propertyLineEdit->isEnabled())
+        if (!ui->propertyLineEdit->text().isEmpty())
         {
             ui->valueLineEdit->setEnabled(true);
         }
