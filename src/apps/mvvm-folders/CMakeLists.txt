@@ -136,6 +136,14 @@ set(HEADERS
     scheduled_tasks/scheduletriggerswin7widget.h
     scheduled_tasks/schedulewin7widget.h
 
+    start_menu/startadvancedwinxpwidget.h
+    start_menu/startclassicvistawidget.h
+    start_menu/startclassicwinxpwidget.h
+    start_menu/startvistawidget.h
+    start_menu/startwinxpwidget.h
+    start_menu/startmenuwinvistaitem.h
+    start_menu/startmenuwinxpitem.h
+
     shares/sharesitem.h
     shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
@@ -275,6 +283,14 @@ set(SOURCES
     scheduled_tasks/scheduletriggerswin7widget.cpp
     scheduled_tasks/schedulewin7widget.cpp
 
+    start_menu/startadvancedwinxpwidget.cpp
+    start_menu/startclassicvistawidget.cpp
+    start_menu/startclassicwinxpwidget.cpp
+    start_menu/startvistawidget.cpp
+    start_menu/startwinxpwidget.cpp
+    start_menu/startmenuwinvistaitem.cpp
+    start_menu/startmenuwinxpitem.cpp
+
     registry/registrycontaineritem.cpp
     registry/registryitem.cpp
     registry/registrymodelbuilder.cpp
@@ -362,6 +378,12 @@ set(UI_FORMS
     scheduled_tasks/schedulesettingswin7widget.ui
     scheduled_tasks/scheduletriggerswin7widget.ui
     scheduled_tasks/schedulewin7widget.ui
+
+    start_menu/startadvancedwinxpwidget.ui
+    start_menu/startclassicvistawidget.ui
+    start_menu/startclassicwinxpwidget.ui
+    start_menu/startvistawidget.ui
+    start_menu/startwinxpwidget.ui
 
     shares/shareswidget.ui
 
