@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Files clsid="{215B2E53-57CE-475c-80FE-9EEC14635851}">
+    <File clsid="{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}" 
+          uid="{3B44160B-E617-481E-8A68-D586984CD45A}" 
+          changed="2022-06-15 12:45:02" 
+          image="0" 
+          status="user.txt" 
+          name="user.txt">
+          <Properties hidden="0" 
+                      archive="0" 
+                      readOnly="0" 
+                      targetPath="c:\Windows\user.txt" 
+                      fromPath="c:\Windows\user.txt" 
+                      action="C"/>
+     </File>
+</Files>
