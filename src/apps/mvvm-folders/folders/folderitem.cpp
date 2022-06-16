@@ -35,6 +35,7 @@ FolderItem::FolderItem()
     addProperty(DELETE_FILES, false);
     addProperty(DELETE_SUB_FOLDERS, false);
     addProperty(DELETE_FOLDER, false);
+    addProperty(DELETE_READ_ONLY, false);
 }
 
 FolderItem::FolderItem(const FolderItem &other)
@@ -49,6 +50,7 @@ FolderItem::FolderItem(const FolderItem &other)
     addProperty(DELETE_FILES, other.deleteFiles());
     addProperty(DELETE_SUB_FOLDERS, other.deleteSubFolders());
     addProperty(DELETE_FOLDER, other.deleteFolder());
+    addProperty(DELETE_READ_ONLY, other.property<bool>(DELETE_READ_ONLY));
 }
 
 QString FolderItem::action() const

@@ -71,6 +71,8 @@ void IniWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->propertyLineEdit, 4);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 bool IniWidget::validate()

@@ -18,35 +18,23 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_FOLDERWIDGET_WIDGET_TEST_H
-#define MVVM_FOLDERS_FOLDERWIDGET_WIDGET_TEST_H
+#ifndef GPUI_EXCEPTION_HANDLER_FORMAT_H
+#define GPUI_EXCEPTION_HANDLER_FORMAT_H
 
-#include <QtTest>
+#include <functional>
+#include <string>
 
-namespace mvvm_folders
-{
-    class FolderWidget;
-}
-
-namespace tests
-{
-    class FolderWidgetTest : public QObject
+namespace gpui {
+    class ExceptionHandler
     {
-        Q_OBJECT
+    public:
+        static bool handleOperation(std::function<void ()> operation, std::function<void(const std::string&)> errorHandler);
 
     private:
-        std::unique_ptr<mvvm_folders::FolderWidget> readXmlFile(const QString &dataPath);
-
-    private slots:
-        void displayWidgetTest();
-
-        void actionStateTest();
-        void actionStateTest_data();
-
-        void booleanValuesTest();
-        void booleanValuesTest_data();
+        ExceptionHandler() = delete;
+        ExceptionHandler(const ExceptionHandler&) = delete;
+        ExceptionHandler& operator = (const ExceptionHandler&) = delete;
     };
 }
 
-#endif//MVVM_FOLDERS_FOLDERWIDGET_WIDGET_TEST_H
-
+#endif // GPUI_EXCEPTION_HANDLER_FORMAT_H

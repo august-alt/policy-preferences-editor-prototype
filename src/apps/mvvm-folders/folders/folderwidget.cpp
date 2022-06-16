@@ -166,6 +166,7 @@ void FolderWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->deleteAllFiles, 6);
     mapper->addMapping(ui->recursiveDelete, 7);
     mapper->addMapping(ui->deleteThisFolder, 8);
+    mapper->addMapping(ui->allowDeletionOfReadOnly, 9);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }

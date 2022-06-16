@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IniFiles 
+           clsid="{694C651A-08F2-47fa-A427-34C4F62BA207}" 
+           disabled="1">
+		   <Ini uid="{4ADBE279-5DEF-4A8A-82DE-560FC211F17D}"
+                changed="2022-06-14 12:30:11" 
+                image="0" 
+                status="Property" 
+                name="Property" 
+                clsid="{EEFACE84-D3D8-4680-8D4B-BF103E759448}">
+                <Properties action="R"
+                            property="Property" 
+                            value="Value" 
+                            section="Section" 
+                            path="C:\Users\Administrator\Documents\test.ini"/>
+           </Ini>
+</IniFiles>
+

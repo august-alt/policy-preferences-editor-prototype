@@ -40,6 +40,7 @@ public:
     static inline const std::string DELETE_FILES = "deleteFiles";
     static inline const std::string DELETE_SUB_FOLDERS = "deleteSubFolders";
     static inline const std::string DELETE_FOLDER = "deleteFolder";
+    static inline const std::string DELETE_READ_ONLY = "deleteReadOnly";
 
     FolderItem();
     FolderItem(const FolderItem &other);
