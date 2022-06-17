@@ -44,7 +44,7 @@ void DrivesWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->thisGroupBox->setDisabled(deleteMode);
 
     ui->firstAvailableRadioButton->setText(deleteMode
-                                           ? "Delete all available, starting at:"
+                                           ? "Delete all, starting at:"
                                            : "Use first available, starting at:");
 
     setDriveRadioButtonText(deleteMode
