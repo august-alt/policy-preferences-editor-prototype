@@ -84,6 +84,8 @@ void SharesWidget::setItem(ModelView::SessionItem* item)
 
     setInitialUserFrameRadioButton(view_model->index(7, 1).data().toString());
     setInitialAccessFrameRadioButton(view_model->index(9, 1).data().toString());
+
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 bool SharesWidget::validate()

@@ -3,8 +3,8 @@
     <xs:complexType name="ShareProperties_t">
        <xs:attribute name="action" type="xs:string" use="optional"/>
        <xs:attribute name="name" type="xs:string" use="required"/>
-       <xs:attribute name="path" type="xs:string" use="required"/>
-       <xs:attribute name="comment" type="xs:string" use="required"/>
+       <xs:attribute name="path" type="xs:string" use="optional"/>
+       <xs:attribute name="comment" type="xs:string" use="optional"/>
        <xs:attribute name="allRegular" type="xs:boolean" use="optional"/>
        <xs:attribute name="allHidden" type="xs:boolean" use="optional"/>
        <xs:attribute name="allAdminDrive" type="xs:boolean" use="optional"/>
