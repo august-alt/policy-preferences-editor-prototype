@@ -85,6 +85,8 @@ void DrivesWidget::setItem(ModelView::SessionItem* item)
     setAllDrivesCheckBox(view_model->index(9, 1).data().toInt());
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 bool DrivesWidget::validate()
