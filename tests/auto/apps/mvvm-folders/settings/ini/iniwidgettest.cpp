@@ -21,6 +21,7 @@
 #include "iniwidgettest.h"
 
 #include <fstream>
+#include <iostream>
 
 #include "ini/inicontaineritem.h"
 #include "ini/iniitem.h"

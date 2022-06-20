@@ -36,6 +36,7 @@ set(OUT_FILES
 set(XSD_FLAGS cxx-tree
     --generate-doxygen
     --generate-ostream
+    --generate-serialization
     --generate-polymorphic
     --polymorphic-type-all
     --generate-wildcard
