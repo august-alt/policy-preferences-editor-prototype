@@ -62,23 +62,31 @@ protected:
     template <typename SchemaType>
     void setCommonItemData(CommonItem* common, const SchemaType& schema)
     {
-        common->setProperty(CommonItem::NAME, schema.name().c_str());
-        common->setProperty(CommonItem::CHANGED, getOptionalPropertyData(schema.changed()).c_str());
-        common->setProperty(CommonItem::DESC, getOptionalPropertyData(schema.desc()).c_str());
-        common->setProperty(CommonItem::BYPASS_ERRORS, getOptionalPropertyData(schema.bypassErrors()));
-        common->setProperty(CommonItem::USER_CONTEXT, getOptionalPropertyData(schema.userContext()));
-        common->setProperty(CommonItem::REMOVE_POLICY, getOptionalPropertyData(schema.removePolicy()));
+        common->setProperty(CommonItem::propertyToString(CommonItem::CLSID), schema.clsid().c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::NAME), schema.name().c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::STATUS), getOptionalPropertyData(schema.status()).c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::IMAGE), getOptionalPropertyData(schema.image()));
+        common->setProperty(CommonItem::propertyToString(CommonItem::CHANGED), getOptionalPropertyData(schema.changed()).c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::UID), schema.uid().c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::DESC), getOptionalPropertyData(schema.desc()).c_str());
+        common->setProperty(CommonItem::propertyToString(CommonItem::BYPASS_ERRORS), getOptionalPropertyData(schema.bypassErrors()));
+        common->setProperty(CommonItem::propertyToString(CommonItem::USER_CONTEXT), getOptionalPropertyData(schema.userContext()));
+        common->setProperty(CommonItem::propertyToString(CommonItem::REMOVE_POLICY), getOptionalPropertyData(schema.removePolicy()));
     }
 
     template <typename CommonData>
     void setCommonModelData(CommonData& data, const mvvm_folders::CommonItem* commonModel)
     {
-        data.name(commonModel->property<std::string>(CommonItem::NAME));
-        data.changed(commonModel->property<std::string>(CommonItem::CHANGED));
-        data.desc(commonModel->property<std::string>(CommonItem::DESC));
-        data.bypassErrors(commonModel->property<bool>(CommonItem::BYPASS_ERRORS));
-        data.userContext(commonModel->property<bool>(CommonItem::USER_CONTEXT));
-        data.removePolicy(commonModel->property<bool>(CommonItem::REMOVE_POLICY));
+        data.clsid(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::CLSID)));
+        data.name(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::NAME)));
+        data.status(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::STATUS)));
+        data.image(commonModel->property<uchar>(CommonItem::propertyToString(CommonItem::IMAGE)));
+        data.changed(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::CHANGED)));
+        data.uid(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::UID)));
+        data.desc(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::DESC)));
+        data.bypassErrors(commonModel->property<bool>(CommonItem::propertyToString(CommonItem::BYPASS_ERRORS)));
+        data.userContext(commonModel->property<bool>(CommonItem::propertyToString(CommonItem::USER_CONTEXT)));
+        data.removePolicy(commonModel->property<bool>(CommonItem::propertyToString(CommonItem::REMOVE_POLICY)));
     }
 
     template <typename T>
