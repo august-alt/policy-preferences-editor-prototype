@@ -12,6 +12,7 @@ set(HEADERS
 
     common/basemodelbuilder.h
     common/basepreferenceitem.h
+    common/basepreferencewidget.h
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
@@ -168,6 +169,7 @@ set(SOURCES
     attributes/attributesitem.cpp
 
     common/basemodelbuilder.cpp
+    common/basepreferencewidget.cpp
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
