@@ -37,14 +37,4 @@ void VpnWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
-void VpnWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

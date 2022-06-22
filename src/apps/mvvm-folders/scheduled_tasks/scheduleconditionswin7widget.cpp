@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ScheduleConditionsWin7Widget::ScheduleConditionsWin7Widget(QWidget *parent, ScheduleConditionsWin7Item *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ScheduleConditionsWin7Widget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ScheduleConditionsWin7Widget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ScheduleConditionsWin7Widget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ScheduleConditionsWin7Widget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ScheduleConditionsWin7Widget::on_actionComboBox_currentIndexChanged(int index)

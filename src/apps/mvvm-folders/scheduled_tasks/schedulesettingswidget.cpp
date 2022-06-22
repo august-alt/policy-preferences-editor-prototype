@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ScheduleSettingsWidget::ScheduleSettingsWidget(QWidget *parent, ScheduleSettingsItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ScheduleSettingsWidget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ScheduleSettingsWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ScheduleSettingsWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ScheduleSettingsWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ScheduleSettingsWidget::on_actionComboBox_currentIndexChanged(int index)

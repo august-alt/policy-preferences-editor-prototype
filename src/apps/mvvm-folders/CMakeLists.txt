@@ -39,7 +39,6 @@ set(HEADERS
 
     folders/foldercontaineritem.h
     folders/folderitem.h
-    folders/folderitemcontroller.h
     folders/foldermodelbuilder.h
     folders/folderwidget.h
 
@@ -198,7 +197,6 @@ set(SOURCES
 
     folders/foldercontaineritem.cpp
     folders/folderitem.cpp
-    folders/folderitemcontroller.cpp
     folders/foldermodelbuilder.cpp
     folders/folderwidget.cpp
     folders/folderviewslots.cpp

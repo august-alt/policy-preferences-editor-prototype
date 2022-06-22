@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 TcpPrinterPortWidget::TcpPrinterPortWidget(QWidget *parent, TcpPrinterItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::TcpPrinterPortWidget())
 {
     ui->setupUi(this);
@@ -71,18 +70,6 @@ void TcpPrinterPortWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->snmpSpinBox, TcpPrinterItem::propertyToInt(TcpPrinterItem::SNMP_DEVINDEX));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool TcpPrinterPortWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void TcpPrinterPortWidget::submit()
-{
-
 }
 
 QString TcpPrinterPortWidget::name() const

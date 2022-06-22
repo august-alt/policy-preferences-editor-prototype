@@ -33,11 +33,10 @@ namespace  mvvm_folders
 {
 
 IniWidget::IniWidget(QWidget *parent, IniItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::IniWidget())
 {
     ui->setupUi(this);

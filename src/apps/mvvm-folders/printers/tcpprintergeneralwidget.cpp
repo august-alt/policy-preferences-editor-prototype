@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 TcpPrinterGeneralWidget::TcpPrinterGeneralWidget(QWidget *parent, TcpPrinterItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::TcpPrinterGeneralWidget())
 {
     ui->setupUi(this);
@@ -75,18 +74,6 @@ void TcpPrinterGeneralWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->commentLineEdit, TcpPrinterItem::propertyToInt(TcpPrinterItem::COMMENT));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool TcpPrinterGeneralWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void TcpPrinterGeneralWidget::submit()
-{
-
 }
 
 void TcpPrinterGeneralWidget::on_actionComboBox_currentIndexChanged(int index)

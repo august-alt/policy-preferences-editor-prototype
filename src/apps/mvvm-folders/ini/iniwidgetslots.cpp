@@ -109,14 +109,4 @@ void IniWidget::on_propertyLineEdit_textChanged(const QString &text)
     ui->valueLineEdit->setDisabled(disabled);
 }
 
-void IniWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

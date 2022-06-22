@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_DIAL_UP_WIDGET_H
 #define MVVM_FOLDERS_DIAL_UP_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -45,7 +45,7 @@ class DialUpItem;
 
 //! Dial up widget.
 
-class DialUpWidget : public PreferenceWidgetInterface
+class DialUpWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -59,9 +59,6 @@ public:
     bool validate() override;
 
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
@@ -78,7 +75,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::DialUpWidget *ui {nullptr};

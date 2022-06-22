@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 VpnWidget::VpnWidget(QWidget *parent, VpnItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::VpnWidget())
 {
     ui->setupUi(this);
@@ -72,13 +71,6 @@ void VpnWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->showIconCheckBox, VpnItem::propertyToInt(VpnItem::TRAY_ICON));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool VpnWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
 }
 
 QString VpnWidget::name() const

@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 StartClassicVistaWidget::StartClassicVistaWidget(QWidget *parent, StartClassicVistaItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::StartClassicVistaWidget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void StartClassicVistaWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool StartClassicVistaWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void StartClassicVistaWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void StartClassicVistaWidget::on_actionComboBox_currentIndexChanged(int index)

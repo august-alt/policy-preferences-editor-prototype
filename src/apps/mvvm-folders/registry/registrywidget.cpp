@@ -33,11 +33,10 @@ namespace  mvvm_folders
 {
 
 RegistryWidget::RegistryWidget(QWidget *parent, RegistryItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::RegistryWidget())
 {
     ui->setupUi(this);

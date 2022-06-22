@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 LocalUserWidget::LocalUserWidget(QWidget *parent, LocalUserItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::LocalUserWidget())
 {
     ui->setupUi(this);
@@ -78,13 +77,6 @@ void LocalUserWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->accountNeverCheckBox, 11);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool LocalUserWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
 }
 
 QString LocalUserWidget::name() const

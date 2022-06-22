@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_SCHEDULEWIN7_WIDGET_H
 #define MVVM_FOLDERS_SCHEDULEWIN7_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -45,7 +45,7 @@ class ScheduleWin7Item;
 
 //! ScheduleWin7 representation for editor.
 
-class ScheduleWin7Widget : public PreferenceWidgetInterface
+class ScheduleWin7Widget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -55,11 +55,6 @@ public:
     ~ScheduleWin7Widget() override;
 
     void setItem(ModelView::SessionItem *item) override;
-
-    bool validate() override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
@@ -76,7 +71,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::ScheduleWin7Widget *ui {nullptr};

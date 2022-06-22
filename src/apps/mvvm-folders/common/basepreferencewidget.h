@@ -38,6 +38,8 @@ namespace mvvm_folders
     public:
         BasePreferenceWidget(QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
 
+        virtual bool validate() override;
+
     public slots:
         virtual void submit() override;
 

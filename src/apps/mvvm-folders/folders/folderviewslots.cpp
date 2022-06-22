@@ -21,8 +21,6 @@
 #include "folderwidget.h"
 #include "ui_folderswidget.h"
 
-#include "folderitemcontroller.h"
-
 namespace mvvm_folders
 {
 
@@ -75,7 +73,7 @@ void FolderWidget::on_pathToolButton_clicked()
 
     if (fileDialog->exec() == QDialog::Accepted)
     {
-        setPath(fileDialog->selectedUrls()[0].toLocalFile());
+        ui->pathLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
     }
 }
 

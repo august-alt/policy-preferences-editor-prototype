@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 StartWinXPWidget::StartWinXPWidget(QWidget *parent, StartWinXpItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::StartWinXPWidget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void StartWinXPWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool StartWinXPWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void StartWinXPWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void StartWinXPWidget::on_actionComboBox_currentIndexChanged(int index)

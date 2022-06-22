@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_STARTWINXP_WIDGET_H
 #define MVVM_FOLDERS_STARTWINXP_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -45,7 +45,7 @@ class StartWinXpItem;
 
 //! StartWinXp representation for editor.
 
-class StartWinXPWidget : public PreferenceWidgetInterface
+class StartWinXPWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -55,11 +55,6 @@ public:
     ~StartWinXPWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
-
-    bool validate() override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
@@ -76,7 +71,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::StartWinXPWidget *ui {nullptr};

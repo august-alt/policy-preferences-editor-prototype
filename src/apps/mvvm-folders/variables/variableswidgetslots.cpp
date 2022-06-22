@@ -53,16 +53,6 @@ void VariablesWidget::on_actionComboBox_currentIndexChanged(int index)
     setDetailsText(index);
 }
 
-void VariablesWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 void VariablesWidget::on_pathCheckBox_stateChanged(int state)
 {
     if (state == Qt::CheckState::Checked)

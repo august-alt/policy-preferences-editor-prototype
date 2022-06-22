@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ImmediateTasksWidget::ImmediateTasksWidget(QWidget *parent, ImmediateTasksItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ImmediateTasksWidget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ImmediateTasksWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ImmediateTasksWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ImmediateTasksWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ImmediateTasksWidget::on_actionComboBox_currentIndexChanged(int index)

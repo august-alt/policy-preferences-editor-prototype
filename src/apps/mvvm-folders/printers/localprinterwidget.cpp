@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 LocalPrinterWidget::LocalPrinterWidget(QWidget *parent, LocalPrinterItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::LocalPrinterWidget())
 {
     ui->setupUi(this);
@@ -72,23 +71,6 @@ void LocalPrinterWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->commentLineEdit, LocalPrinterItem::propertyToInt(LocalPrinterItem::COMMENT));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool LocalPrinterWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void LocalPrinterWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void LocalPrinterWidget::on_actionComboBox_currentIndexChanged(int index)

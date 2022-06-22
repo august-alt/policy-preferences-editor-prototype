@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ImmediateWin7Widget::ImmediateWin7Widget(QWidget *parent, ImmediateWin7Item *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ImmediateWin7Widget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ImmediateWin7Widget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ImmediateWin7Widget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ImmediateWin7Widget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ImmediateWin7Widget::on_actionComboBox_currentIndexChanged(int index)

@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_TCP_PRINTER_PORT_WIDGET_H
 #define MVVM_FOLDERS_TCP_PRINTER_PORT_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -45,7 +45,7 @@ class TcpPrinterItem;
 
 //! Tcp printer port widget for editor.
 
-class TcpPrinterPortWidget : public PreferenceWidgetInterface
+class TcpPrinterPortWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -56,12 +56,7 @@ public:
 
     void setItem(ModelView::SessionItem *item) override;
 
-    bool validate() override;
-
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private:
     TcpPrinterPortWidget(const TcpPrinterPortWidget&)            = delete;   // copy ctor
@@ -75,7 +70,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::TcpPrinterPortWidget *ui {nullptr};

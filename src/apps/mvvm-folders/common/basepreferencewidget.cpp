@@ -39,5 +39,10 @@ void BasePreferenceWidget::submit()
     }
 }
 
+bool BasePreferenceWidget::validate()
+{
+    return true;
+}
+
 }
 

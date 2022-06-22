@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ScheduleActionWin7Widget::ScheduleActionWin7Widget(QWidget *parent, ScheduleActionWin7Item *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ScheduleActionWin7Widget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ScheduleActionWin7Widget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ScheduleActionWin7Widget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ScheduleActionWin7Widget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ScheduleActionWin7Widget::on_actionComboBox_currentIndexChanged(int index)

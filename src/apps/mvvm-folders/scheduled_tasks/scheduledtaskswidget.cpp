@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 ScheduledTasksWidget::ScheduledTasksWidget(QWidget *parent, ScheduledTasksItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ScheduledTasksWidget())
 {
     ui->setupUi(this);
@@ -64,23 +63,6 @@ void ScheduledTasksWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool ScheduledTasksWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void ScheduledTasksWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void ScheduledTasksWidget::on_actionComboBox_currentIndexChanged(int index)

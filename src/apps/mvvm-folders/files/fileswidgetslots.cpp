@@ -147,14 +147,4 @@ void FilesWidget::on_sourceLineEdit_textChanged(const QString &text)
     }
 }
 
-void FilesWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 OpenWithWidget::OpenWithWidget(QWidget *parent, OpenWithItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::OpenWithWidget())
 {
     ui->setupUi(this);
@@ -69,13 +68,6 @@ void OpenWithWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->defaultCheckBox, 3);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool OpenWithWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
 }
 
 QString OpenWithWidget::name() const
