@@ -7,6 +7,7 @@ set(HEADERS
     commandlineoptions.h
     commandlineparser.h
     gui.h
+    filedialogutils.h
     listboxdialog.h
     mainwindow.h
     mainwindowsettings.h
@@ -17,6 +18,7 @@ set(SOURCES
     aboutdialog.cpp
     commandlineparser.cpp
     gui.cpp
+    filedialogutils.cpp
     listboxdialog.cpp
     mainwindow.cpp
     mainwindowsettings.cpp
