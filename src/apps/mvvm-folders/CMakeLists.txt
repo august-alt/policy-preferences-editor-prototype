@@ -402,6 +402,8 @@ set(APP_SOURCES
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 add_library(mvvm-folders_static STATIC ${SOURCES})
 target_link_libraries(mvvm-folders_static Qt5::Core Qt5::Widgets)
 target_link_libraries(mvvm-folders_static ${PREFERENCES_EDITOR_LIBRARIES})
