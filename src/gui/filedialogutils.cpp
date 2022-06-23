@@ -51,7 +51,36 @@ QString FileDialogUtils::getOpenFileName(QWidget *parent, const QString &filter)
         return fileDialog->selectedUrls()[0].toLocalFile();
     }
 
-    return "";
+    return QString();
+}
+
+QString FileDialogUtils::getOpenDirectoryName(QWidget *parent, const QString &filter)
+{
+    std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(parent);
+
+    fileDialog->setDirectory(QDir::homePath());
+    fileDialog->setFileMode(QFileDialog::Directory);
+    fileDialog->setSupportedSchemes(QStringList(QStringLiteral("file")));
+
+    fileDialog->setLabelText(QFileDialog::Accept, QObject::tr("Open"));
+    fileDialog->setLabelText(QFileDialog::FileName, QObject::tr("File name"));
+    fileDialog->setLabelText(QFileDialog::LookIn, QObject::tr("Look in"));
+    fileDialog->setLabelText(QFileDialog::Reject, QObject::tr("Cancel"));
+    fileDialog->setLabelText(QFileDialog::FileType, QObject::tr("File type"));
+
+    fileDialog->setNameFilter(filter);
+    fileDialog->setOptions(QFileDialog::ShowDirsOnly
+                           | QFileDialog::DontResolveSymlinks
+                           | QFileDialog::DontUseNativeDialog);
+
+    fileDialog->setWindowTitle(QObject::tr("Open Directory"));
+
+    if (fileDialog->exec() == QDialog::Accepted)
+    {
+        return fileDialog->selectedUrls()[0].toLocalFile();
+    }
+
+    return QString();
 }
 
 }

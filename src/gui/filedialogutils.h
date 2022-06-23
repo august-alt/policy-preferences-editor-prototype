@@ -32,6 +32,8 @@ class PREFERENCES_EDITOR_GUI_EXPORT FileDialogUtils
 {
 public:
     static QString getOpenFileName(QWidget *parent = nullptr, const QString &filter = QString());
+
+    static QString getOpenDirectoryName(QWidget *parent = nullptr, const QString &filter = QString());
 };
 
 }
