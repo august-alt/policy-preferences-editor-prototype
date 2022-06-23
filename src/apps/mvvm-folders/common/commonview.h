@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_COMMONVIEW_H
 #define MVVM_FOLDERS_COMMONVIEW_H
 
-#include <QtWidgets>
+#include "basepreferencewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CommonView; }
@@ -37,7 +37,7 @@ namespace ModelView
 namespace mvvm_folders
 {
 
-class CommonView : public QWidget
+class CommonView : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -46,10 +46,9 @@ public:
     explicit CommonView(QWidget* parent = nullptr);
     ~CommonView() override;
 
-    void setItem(ModelView::SessionItem *item);
+    void setItem(ModelView::SessionItem *item) override;
 
-public slots:
-    void submit();
+    QString name() const override;
 
 private:
     CommonView(const CommonView&)            = delete;   // copy ctor
@@ -63,7 +62,6 @@ private:
 private:
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 };
 
 }
