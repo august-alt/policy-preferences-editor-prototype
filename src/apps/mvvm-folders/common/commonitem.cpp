@@ -32,7 +32,7 @@ CommonItem::CommonItem()
     addProperty(propertyToString(DISABLED), false);
     addProperty(propertyToString(NAME), "");
     addProperty(propertyToString(STATUS), "");
-    addProperty(propertyToString(IMAGE), static_cast<uchar>(0));
+    addProperty(propertyToString(IMAGE), static_cast<int>(0));
     addProperty(propertyToString(CHANGED), "");
     addProperty(propertyToString(UID), QUuid::createUuid().toString().toStdString());
     addProperty(propertyToString(DESC), "");

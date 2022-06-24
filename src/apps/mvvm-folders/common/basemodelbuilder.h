@@ -65,7 +65,7 @@ protected:
         common->setProperty(CommonItem::propertyToString(CommonItem::CLSID), schema.clsid().c_str());
         common->setProperty(CommonItem::propertyToString(CommonItem::NAME), schema.name().c_str());
         common->setProperty(CommonItem::propertyToString(CommonItem::STATUS), getOptionalPropertyData(schema.status()).c_str());
-        common->setProperty(CommonItem::propertyToString(CommonItem::IMAGE), getOptionalPropertyData(schema.image()));
+        common->setProperty(CommonItem::propertyToString(CommonItem::IMAGE), static_cast<int>(getOptionalPropertyData(schema.image())));
         common->setProperty(CommonItem::propertyToString(CommonItem::CHANGED), getOptionalPropertyData(schema.changed()).c_str());
         common->setProperty(CommonItem::propertyToString(CommonItem::UID), schema.uid().c_str());
         common->setProperty(CommonItem::propertyToString(CommonItem::DESC), getOptionalPropertyData(schema.desc()).c_str());
@@ -80,7 +80,7 @@ protected:
         data.clsid(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::CLSID)));
         data.name(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::NAME)));
         data.status(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::STATUS)));
-        data.image(commonModel->property<uchar>(CommonItem::propertyToString(CommonItem::IMAGE)));
+        data.image(static_cast<uchar>(commonModel->property<int>(CommonItem::propertyToString(CommonItem::IMAGE))));
         data.changed(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::CHANGED)));
         data.uid(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::UID)));
         data.desc(commonModel->property<std::string>(CommonItem::propertyToString(CommonItem::DESC)));
