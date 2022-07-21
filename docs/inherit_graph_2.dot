@@ -1,0 +1,28 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node23 [label="String",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node23 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="GroupPolicy::PolicyDefinitions\l::FileName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_file_name.html",tooltip="Class corresponding to the fileName schema type."];
+  Node23 -> Node25 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="GroupPolicy::PolicyDefinitions\l::GUID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_g_u_i_d.html",tooltip="Class corresponding to the GUID schema type."];
+  Node23 -> Node26 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 [label="GroupPolicy::PolicyDefinitions\l::ItemName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_item_name.html",tooltip="Class corresponding to the itemName schema type."];
+  Node23 -> Node27 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 [label="GroupPolicy::PolicyDefinitions\l::ItemReference",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_item_reference.html",tooltip="Class corresponding to the itemReference schema type."];
+  Node23 -> Node28 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="GroupPolicy::PolicyDefinitions\l::LocalizedString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_localized_string.html",tooltip="Class corresponding to the LocalizedString schema type."];
+  Node23 -> Node29 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="GroupPolicy::PolicyDefinitions\l::PresentationReference",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_presentation_reference.html",tooltip="Class corresponding to the presentationReference schema type."];
+  Node23 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="GroupPolicy::PolicyDefinitions\l::RegistryKey",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_registry_key.html",tooltip="Class corresponding to the registryKey schema type."];
+  Node23 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="GroupPolicy::PolicyDefinitions\l::RegistryValueName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_registry_value_name.html",tooltip="Class corresponding to the registryValueName schema type."];
+  Node23 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="GroupPolicy::PolicyDefinitions\l::ResourceID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_resource_i_d.html",tooltip="Class corresponding to the resourceID schema type."];
+  Node23 -> Node33 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="GroupPolicy::PolicyDefinitions\l::StringReference",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_string_reference.html",tooltip="Class corresponding to the stringReference schema type."];
+}

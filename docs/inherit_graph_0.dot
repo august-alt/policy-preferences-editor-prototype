@@ -1,0 +1,40 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="Type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="Drive_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drive__t.html",tooltip="Class corresponding to the Drive_t schema type."];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Drives",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drives.html",tooltip="Class corresponding to the Drives schema type."];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="EnvironmentVariable_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_environment_variable__t.html",tooltip="Class corresponding to the EnvironmentVariable_t schema type."];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="EnvironmentVariables",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_environment_variables.html",tooltip="Class corresponding to the EnvironmentVariables schema type."];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="File_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file__t.html",tooltip="Class corresponding to the File_t schema type."];
+  Node4 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Files",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_files.html",tooltip="Class corresponding to the Files schema type."];
+  Node4 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Folder_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_folder__t.html",tooltip="Class corresponding to the Folder_t schema type."];
+  Node4 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Folders",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_folders.html",tooltip="Class corresponding to the Folders schema type."];
+  Node4 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="GroupPolicy::PolicyDefinitions\l::Annotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_group_policy_1_1_policy_definitions_1_1_annotation.html",tooltip="Class corresponding to the Annotation schema type."];
+  Node4 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Ini_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ini__t.html",tooltip="Class corresponding to the Ini_t schema type."];
+  Node4 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="IniFiles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ini_files.html",tooltip="Class corresponding to the IniFiles schema type."];
+  Node4 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="NetShare_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_net_share__t.html",tooltip="Class corresponding to the NetShare_t schema type."];
+  Node4 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="NetworkShares",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_network_shares.html",tooltip="Class corresponding to the NetworkShares schema type."];
+  Node4 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="Properties_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_properties__t.html",tooltip="Class corresponding to the Properties_t schema type."];
+  Node4 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="Shortcut_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shortcut__t.html",tooltip="Class corresponding to the Shortcut_t schema type."];
+  Node4 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="Shortcuts",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shortcuts.html",tooltip="Class corresponding to the Shortcuts schema type."];
+}

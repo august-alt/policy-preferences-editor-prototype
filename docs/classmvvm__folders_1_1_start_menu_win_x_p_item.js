@@ -1,0 +1,37 @@
+var classmvvm__folders_1_1_start_menu_win_x_p_item =
+[
+    [ "PropertyType", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166c", [
+      [ "LARGE_MFU_ICONS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca4223b8bc37490340cff93a3274b0116d", null ],
+      [ "MIN_MFU", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caf165cf2e45dcd53f90f45af93117912d", null ],
+      [ "AUTO_CASCADE", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caa9ae77a07f480c083b5fdd744532cf65", null ],
+      [ "NOTIFY_NEW_APPS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca56fd36e5310d400bb347e75fa13065c3", null ],
+      [ "SHOW_CONTROL_PANEL", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca31f85055084defc53d5576ad7846b214", null ],
+      [ "ENABLE_DRAG_DROP", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca096d410b53a748aef062048fcfad58f1", null ],
+      [ "START_MENU_FAVORITES", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca68e3fc63bb105eef3379bc2bb05fbb53", null ],
+      [ "SHOW_HELP", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cac3ec1c067805eafa04d718adbda25aba", null ],
+      [ "SHOW_MY_COMPUTER", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca4a45200457b9b6ff2e2f5d48b0a69c8a", null ],
+      [ "SHOW_MY_DOCS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cad06293c4c79e4172d6d26f2e6e2a2efb", null ],
+      [ "SHOW_MY_MUSIC", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cab456c8e568f1280bb5e1d7e0afbfb096", null ],
+      [ "SHOW_NET_PLACES", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cacbf0ab993158474646b3b86a21cb18de", null ],
+      [ "SHOW_MY_PICS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caf0476f29988de6884017f2807530a151", null ],
+      [ "SHOW_NET_CONN", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca1d4731f53a8638d616f0dc2d10c5cf8e", null ],
+      [ "SHOW_PRINTERS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca95683779a626a723ea5e05b40bbc7619", null ],
+      [ "SHOW_RUN", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caed2a4a829b273e3f36077d9e2d5da1d6", null ],
+      [ "SCROLL_PROGRAMS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca27bfe76e311c1e356bbb084a5d4a94c9", null ],
+      [ "SHOW_SEARCH", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca27adec3dc87cf21df46b8ee1ffecd33f", null ],
+      [ "SHOW_RECENT_DOCS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca980ef2f53a906577c4ca4634d8ac6551", null ],
+      [ "CLEAR_START_DOCS_LIST", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caed8f7e8c7f74d39816feb44ef7e3121c", null ],
+      [ "C_SHOW_LOGOFF", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca3dc25203a261aa3be5b914e61c77170e", null ],
+      [ "C_SHOW_RUN", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca3a1611c164a246ffc94a50545bd29407", null ],
+      [ "C_ENABLE_DRAG_DROP", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca6ce711669b5fde0fc72f3c8b0d328d1e", null ],
+      [ "C_CASCADE_CONTROL_PANEL", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca81492ad60d0a659f7ecd6ef5b3fdf188", null ],
+      [ "C_CASCADE_MY_DOCUMENTS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca0e3eed4b3c945c200687dad8dac01fce", null ],
+      [ "C_CASCADE_MY_PICTURES", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166ca3e19938f434fd7155662b41108e0d26c", null ],
+      [ "C_CASCADE_NETWORK_CONNECTIONS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cae1c1f15d3da658b6e6e54ce4cbf08777", null ],
+      [ "C_CASCADE_PRINTERS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cafef9ba1d526ab402147b980c65bcbfa0", null ],
+      [ "C_SCROLL_PROGRAMS", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166cabd7ad2aa8c51dc22abb426c61c4a164f", null ],
+      [ "C_PERSONALIZED", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aa0686aef38f5103de3a7b8a5c990166caac198155eff9e73ad70782ca4b24e697", null ]
+    ] ],
+    [ "StartMenuWinXPItem", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#add483da34b8ae3e1f4622b347cc541e3", null ],
+    [ "StartMenuWinXPItem", "classmvvm__folders_1_1_start_menu_win_x_p_item.html#aaad817110ca04ce3f956ef0f78ee2ed5", null ]
+];

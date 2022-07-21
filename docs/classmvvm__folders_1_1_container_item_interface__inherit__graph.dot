@@ -1,0 +1,38 @@
+digraph "mvvm_folders::ContainerItemInterface"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="mvvm_folders::ContainerItem\lInterface",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="mvvm_folders::DataSource\lContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_data_source_container_item.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="mvvm_folders::DeviceContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_device_container_item.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="mvvm_folders::DrivesContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_drives_container_item.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="mvvm_folders::FilesContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_files_container_item.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="mvvm_folders::FolderContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_folder_container_item.html",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="mvvm_folders::FolderOptions\lContainerItem\< FolderOptionItem \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_folder_options_container_item.html",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="mvvm_folders::IniContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_ini_container_item.html",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="mvvm_folders::LocalGroup\lContainerItem\< LocalItem \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_local_group_container_item.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="mvvm_folders::NetworkContainer\lItem\< NetworkItem \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_network_container_item.html",tooltip=" "];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="mvvm_folders::PowerContainer\lItem\< PowerItemType \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_power_container_item.html",tooltip=" "];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="mvvm_folders::PrinterContainer\lItem\< PrinterItemType \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_printer_container_item.html",tooltip=" "];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="mvvm_folders::RegistryContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_registry_container_item.html",tooltip=" "];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="mvvm_folders::SharesContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_shares_container_item.html",tooltip=" "];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="mvvm_folders::ShortcutsContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_shortcuts_container_item.html",tooltip=" "];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="mvvm_folders::VariablesContainerItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_variables_container_item.html",tooltip=" "];
+}
