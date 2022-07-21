@@ -27,38 +27,47 @@
 
 namespace mvvm_folders
 {
-
 ShortcutsModelBuilder::ShortcutsModelBuilder()
     : BaseModelBuilder()
-{
-}
+{}
 
-std::unique_ptr<PreferencesModel> ShortcutsModelBuilder::schemaToModel(std::unique_ptr<Shortcuts> &shortcutsSource)
+std::unique_ptr<PreferencesModel> ShortcutsModelBuilder::schemaToModel(
+    std::unique_ptr<Shortcuts> &shortcutsSource)
 {
     auto model = std::make_unique<PreferencesModel>();
 
-    for (const auto& shortcutsSchema : shortcutsSource->Shortcut())
+    for (const auto &shortcutsSchema : shortcutsSource->Shortcut())
     {
         auto properties = shortcutsSchema.Properties();
-        for (const auto& currentProperties : properties)
+        for (const auto &currentProperties : properties)
         {
-            std::string actionState = getActionCheckboxState(getOptionalPropertyData(currentProperties.action()).c_str());
+            std::string actionState = getActionCheckboxState(
+                getOptionalPropertyData(currentProperties.action()).c_str());
             int iconIndex = static_cast<int>(getOptionalPropertyData(currentProperties.iconIndex()));
 
             auto sessionItem = model->insertItem<ShortcutsContainerItem>(model->rootItem());
 
             auto shortcuts = sessionItem->getShortcuts();
             shortcuts->setProperty(ShortcutsItem::ACTION, actionState);
-            shortcuts->setProperty(ShortcutsItem::PIDL, getOptionalPropertyData(currentProperties.pidl()).c_str());
-            shortcuts->setProperty(ShortcutsItem::SHORTCUT_PATH, currentProperties.shortcutPath().c_str());
-            shortcuts->setProperty(ShortcutsItem::TARGET_TYPE, currentProperties.targetType().c_str());
-            shortcuts->setProperty(ShortcutsItem::TARGET_PATH, currentProperties.targetPath().c_str());
-            shortcuts->setProperty(ShortcutsItem::ARGUMENTS, getOptionalPropertyData(currentProperties.arguments()).c_str());
-            shortcuts->setProperty(ShortcutsItem::START_IN, getOptionalPropertyData(currentProperties.startIn()).c_str());
-            shortcuts->setProperty(ShortcutsItem::WINDOW, getOptionalPropertyData(currentProperties.window()).c_str());
-            shortcuts->setProperty(ShortcutsItem::COMMENT, getOptionalPropertyData(currentProperties.comment()).c_str());
-            shortcuts->setProperty(ShortcutsItem::ICON_PATH, getOptionalPropertyData(currentProperties.iconPath()).c_str());
-            shortcuts->setProperty(ShortcutsItem::ICON_INDEX, iconIndex);
+            shortcuts->setProperty(ShortcutsItem::PIDL,
+                                   getOptionalPropertyData(currentProperties.pidl()).c_str());
+            shortcuts->setProperty(ShortcutsItem::SHORTCUT_PATH,
+                                   currentProperties.shortcutPath().c_str());
+            shortcuts->setProperty(ShortcutsItem::TARGET_TYPE,
+                                   currentProperties.targetType().c_str());
+            shortcuts->setProperty(ShortcutsItem::TARGET_PATH,
+                                   currentProperties.targetPath().c_str());
+            shortcuts->setProperty(ShortcutsItem::ARGUMENTS,
+                                   getOptionalPropertyData(currentProperties.arguments()).c_str());
+            shortcuts->setProperty(ShortcutsItem::START_IN,
+                                   getOptionalPropertyData(currentProperties.startIn()).c_str());
+            shortcuts->setProperty(ShortcutsItem::WINDOW,
+                                   getOptionalPropertyData(currentProperties.window()).c_str());
+            shortcuts->setProperty(ShortcutsItem::COMMENT,
+                                   getOptionalPropertyData(currentProperties.comment()).c_str());
+            shortcuts->setProperty(ShortcutsItem::ICON_PATH,
+                                   getOptionalPropertyData(currentProperties.iconPath()).c_str());
+            shortcuts->setProperty(ShortcutsItem::ICON_INDEX, std::to_string(iconIndex));
 
             auto shortcutKey = getOptionalPropertyData(currentProperties.shortcutKey());
 
@@ -72,24 +81,29 @@ std::unique_ptr<PreferencesModel> ShortcutsModelBuilder::schemaToModel(std::uniq
     return model;
 }
 
-std::unique_ptr<Shortcuts> ShortcutsModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
+std::unique_ptr<Shortcuts> ShortcutsModelBuilder::modelToSchema(
+    std::unique_ptr<PreferencesModel> &model)
 {
     auto shortcuts = std::make_unique<Shortcuts>("{872ECB34-B2EC-401b-A585-D32574AA90EE}");
 
-    for (const auto& containerItem : model->topItems())
+    for (const auto &containerItem : model->topItems())
     {
-        if (auto shortcutsContainer = dynamic_cast<ShortcutsContainerItem*>(containerItem); shortcutsContainer)
+        if (auto shortcutsContainer = dynamic_cast<ShortcutsContainerItem *>(containerItem);
+            shortcutsContainer)
         {
             auto shortcutModel = shortcutsContainer->getShortcuts();
-            auto commonModel = shortcutsContainer->getCommon();
+            auto commonModel   = shortcutsContainer->getCommon();
 
             std::string key = shortcutModel->property<std::string>(ShortcutsItem::SHORTCUT_KEY);
 
             auto shortcut = createRootElement<Shortcut_t>("{4F2F7C55-2790-433e-8127-0739D1CFA327}");
 
-            auto properties = ShortcutsProperties_t(shortcutModel->property<std::string>(ShortcutsItem::TARGET_TYPE),
-                                                    shortcutModel->property<std::string>(ShortcutsItem::TARGET_PATH),
-                                                    shortcutModel->property<std::string>(ShortcutsItem::SHORTCUT_PATH));
+            auto properties = ShortcutsProperties_t(shortcutModel->property<std::string>(
+                                                        ShortcutsItem::TARGET_TYPE),
+                                                    shortcutModel->property<std::string>(
+                                                        ShortcutsItem::TARGET_PATH),
+                                                    shortcutModel->property<std::string>(
+                                                        ShortcutsItem::SHORTCUT_PATH));
             properties.action(shortcutModel->property<std::string>(ShortcutsItem::ACTION));
             properties.pidl(shortcutModel->property<std::string>(ShortcutsItem::PIDL));
             properties.arguments(shortcutModel->property<std::string>(ShortcutsItem::ARGUMENTS));
@@ -97,7 +111,8 @@ std::unique_ptr<Shortcuts> ShortcutsModelBuilder::modelToSchema(std::unique_ptr<
             properties.window(shortcutModel->property<std::string>(ShortcutsItem::WINDOW));
             properties.comment(shortcutModel->property<std::string>(ShortcutsItem::COMMENT));
             properties.iconPath(shortcutModel->property<std::string>(ShortcutsItem::ICON_PATH));
-            properties.iconIndex(shortcutModel->property<int>(ShortcutsItem::ICON_INDEX));
+            properties.iconIndex(
+                std::stoi(shortcutModel->property<std::string>(ShortcutsItem::ICON_INDEX)));
             properties.shortcutKey(encodeShortcutKey(key));
 
             setCommonModelData(shortcut, commonModel);
@@ -124,5 +139,4 @@ unsigned char ShortcutsModelBuilder::encodeShortcutKey(std::string shortcutKey)
     return 0;
 }
 
-}
-
+} // namespace mvvm_folders
