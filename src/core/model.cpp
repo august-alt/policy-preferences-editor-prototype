@@ -18,58 +18,7 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
-
-#include <QLibrary>
+#include "model.h"
 
 namespace preferences_editor
-{
-class PluginPrivate
-{
-public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
-};
-
-Plugin::~Plugin()
-{
-    delete d;
-}
-
-const QString &Plugin::getName() const
-{
-    return d->name;
-}
-
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-{
-    d->library = std::move(library);
-}
-
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
 {}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
-} // namespace preferences_editor

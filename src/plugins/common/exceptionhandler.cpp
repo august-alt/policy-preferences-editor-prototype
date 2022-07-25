@@ -22,7 +22,7 @@
 
 #include "basetypes.h"
 
-namespace gpui {
+namespace preferences_editor {
 
 bool ExceptionHandler::handleOperation(std::function<void ()> operation, std::function<void (const std::string&)> errorHandler)
 {

@@ -18,58 +18,22 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#ifndef _ICOMPOSITESNAPIN_H
+#define _ICOMPOSITESNAPIN_H
 
-#include <QLibrary>
+#include "isnapin.h"
 
 namespace preferences_editor
 {
-class PluginPrivate
+/**
+ * @brief Composite snap-in requires list of dependencies to operate.
+ */
+class ICompositeSnapIn : public virtual ISnapIn
 {
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    virtual QMap<QString, QVersionNumber> getDependencies() const = 0;
 };
 
-Plugin::~Plugin()
-{
-    delete d;
-}
-
-const QString &Plugin::getName() const
-{
-    return d->name;
-}
-
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-{
-    d->library = std::move(library);
-}
-
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor
+
+#endif //_ICOMPOSITESNAPIN_H

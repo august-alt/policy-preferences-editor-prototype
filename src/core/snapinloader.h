@@ -18,58 +18,35 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#ifndef SNAP_IN_LOADER_H
+#define SNAP_IN_LOADER_H
 
-#include <QLibrary>
+#include <QDir>
 
 namespace preferences_editor
 {
-class PluginPrivate
+class ISnapInManager;
+
+class SnapInLoaderPrivate;
+
+class SnapInLoader
 {
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    SnapInLoader(ISnapInManager *manager);
+    ~SnapInLoader();
+
+    void loadSnapIns(const QDir &snapInDirectory);
+
+private:
+    SnapInLoader(const SnapInLoader &) = delete;            // copy ctor
+    SnapInLoader(SnapInLoader &&)      = delete;            // move ctor
+    SnapInLoader &operator=(const SnapInLoader &) = delete; // copy assignment
+    SnapInLoader &operator=(SnapInLoader &&) = delete;      // move assignment
+
+private:
+    SnapInLoaderPrivate *d;
 };
 
-Plugin::~Plugin()
-{
-    delete d;
-}
-
-const QString &Plugin::getName() const
-{
-    return d->name;
-}
-
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-{
-    d->library = std::move(library);
-}
-
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor
+
+#endif //SNAP_IN_LOADER_H

@@ -18,58 +18,48 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#include "abstractcompositesnapin.h"
 
-#include <QLibrary>
+#include <QMap>
+#include <QString>
+#include <QVersionNumber>
 
 namespace preferences_editor
 {
-class PluginPrivate
+class AbstractCompositeSnapInPrivate
 {
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    QMap<QString, QVersionNumber> dependencies{};
 };
 
-Plugin::~Plugin()
+QMap<QString, QVersionNumber> AbstractCompositeSnapIn::getDependencies() const
+{
+    return d->dependencies;
+}
+
+AbstractCompositeSnapIn::AbstractCompositeSnapIn(QString type,
+                                                 QString name,
+                                                 QString helpText,
+                                                 QVersionNumber version,
+                                                 QString license,
+                                                 QString copyright)
+    : AbstractSnapIn(type, name, helpText, version, license, copyright)
+    , d(new AbstractCompositeSnapInPrivate())
+{}
+
+AbstractCompositeSnapIn::~AbstractCompositeSnapIn()
 {
     delete d;
 }
 
-const QString &Plugin::getName() const
+void AbstractCompositeSnapIn::addDependency(const QString &name, const QVersionNumber &version)
 {
-    return d->name;
+    d->dependencies.insert(name, version);
 }
 
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
+void AbstractCompositeSnapIn::removeDependency(const QString &name)
 {
-    d->library = std::move(library);
+    d->dependencies.remove(name);
 }
 
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor

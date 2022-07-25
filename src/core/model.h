@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 **
-** Copyright (C) 2021 BaseALT Ltd. <org@basealt.ru>
+** Copyright (C) 2022 BaseALT Ltd. <org@basealt.ru>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License
@@ -18,22 +18,18 @@
 **
 ***********************************************************************************************************************/
 
-#include "../../core/plugin.h"
+#ifndef GPUI_MODEL_H
+#define GPUI_MODEL_H
 
-#include "iniformat.h"
+#include "common.h"
+
+#ifdef GPUI_MODEL_LIBRARY
+#define GPUI_MODEL_EXPORT GPUI_SYMBOL_EXPORT
+#else
+#define GPUI_MODEL_EXPORT GPUI_SYMBOL_IMPORT
+#endif
 
 namespace preferences_editor
-{
-class IniPlugin : public Plugin
-{
-public:
-    IniPlugin()
-        : Plugin("ini")
-    {
-        PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(io::PolicyFileFormat<io::IniFile>).name(),
-                                                 IniFormat);
-    }
-};
-} // namespace preferences_editor
+{}
 
-PREFERENCES_EDITOR_EXPORT_PLUGIN(inifile, preferences_editor::IniPlugin)
+#endif // GPUI_MODEL_H

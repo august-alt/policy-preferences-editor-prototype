@@ -24,7 +24,7 @@
 #include <functional>
 #include <string>
 
-namespace gpui {
+namespace preferences_editor {
     class ExceptionHandler
     {
     public:

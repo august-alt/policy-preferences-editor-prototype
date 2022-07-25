@@ -18,58 +18,46 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#ifndef _SNAPINDETAILSWIDGET_H
+#define _SNAPINDETAILSWIDGET_H
 
-#include <QLibrary>
+#include <QWidget>
+
+#include "isnapin.h"
+
+namespace Ui
+{
+class SnapInDetailsWidget;
+}
 
 namespace preferences_editor
 {
-class PluginPrivate
+/**
+ * @brief class SnapInDetailsWidget Shows properties of a snap-in.
+ * Provides information on snap-in name, description, version, copyright, lisense.
+ */
+class SnapInDetailsWidget : public QWidget
 {
+private:
+    Q_OBJECT
+
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    SnapInDetailsWidget(QWidget *parent, ISnapIn *snapIn);
+    SnapInDetailsWidget(QWidget *parent);
+    ~SnapInDetailsWidget();
+
+    void setSnapIn(const ISnapIn *snapIn);
+
+private:
+    SnapInDetailsWidget(const SnapInDetailsWidget &) = delete;            // copy ctor
+    SnapInDetailsWidget(SnapInDetailsWidget &&)      = delete;            // move ctor
+    SnapInDetailsWidget &operator=(const SnapInDetailsWidget &) = delete; // copy assignment
+    SnapInDetailsWidget &operator=(SnapInDetailsWidget &&) = delete;      // move assignment
+
+private:
+    Ui::SnapInDetailsWidget *ui;
 };
 
-Plugin::~Plugin()
-{
-    delete d;
-}
-
-const QString &Plugin::getName() const
-{
-    return d->name;
-}
-
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-{
-    d->library = std::move(library);
-}
-
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor
+
+#endif //_SNAPINDETAILSWIDGET_H

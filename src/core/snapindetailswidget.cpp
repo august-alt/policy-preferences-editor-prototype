@@ -18,58 +18,39 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#include "snapindetailswidget.h"
+#include "ui_snapindetailswidget.h"
 
-#include <QLibrary>
+#include <QWidget>
 
 namespace preferences_editor
 {
-class PluginPrivate
+SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent, ::preferences_editor::ISnapIn *snapIn)
+    : SnapInDetailsWidget(parent)
 {
-public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
-};
-
-Plugin::~Plugin()
-{
-    delete d;
+    setSnapIn(snapIn);
 }
 
-const QString &Plugin::getName() const
+SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::SnapInDetailsWidget())
 {
-    return d->name;
+    ui->setupUi(this);
 }
 
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
+SnapInDetailsWidget::~SnapInDetailsWidget()
 {
-    d->library = std::move(library);
+    delete ui;
 }
 
-QLibrary *Plugin::getLibrary() const
+void SnapInDetailsWidget::setSnapIn(const ISnapIn *snapIn)
 {
-    return d->library.get();
+    ui->categoryLineEdit->setText(snapIn->getRootNode().toString());
+    ui->copyrightLineEdit->setText(snapIn->getCopyright());
+    ui->descriptionPlainTextEdit->setPlainText(snapIn->getHelpText());
+    ui->licensePlainTextEdit->setPlainText(snapIn->getLicense());
+    ui->nameLineEdit->setText(snapIn->getDisplayName());
+    ui->versionLineEdit->setText(snapIn->getVersion().toString());
 }
 
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor

@@ -18,58 +18,33 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#include "snapindetailsdialog.h"
+#include "ui_snapindetailsdialog.h"
 
-#include <QLibrary>
+#include <QDialog>
 
 namespace preferences_editor
 {
-class PluginPrivate
+SnapInDetailsDialog::SnapInDetailsDialog(QWidget *parent, ::preferences_editor::ISnapIn *snapIn)
+    : SnapInDetailsDialog(parent)
 {
-public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
-};
-
-Plugin::~Plugin()
-{
-    delete d;
+    setSnapIn(snapIn);
 }
 
-const QString &Plugin::getName() const
+SnapInDetailsDialog::SnapInDetailsDialog(QWidget *parent)
+    : ISnapInDetailsDialog(parent)
+    , ui(new Ui::SnapInDetailsDialog())
 {
-    return d->name;
+    ui->setupUi(this);
 }
 
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
+SnapInDetailsDialog::~SnapInDetailsDialog()
 {
-    d->library = std::move(library);
+    delete ui;
 }
 
-QLibrary *Plugin::getLibrary() const
+void SnapInDetailsDialog::setSnapIn(ISnapIn *snapIn)
 {
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
+    ui->snapInWidget->setSnapIn(snapIn);
 }
 } // namespace preferences_editor

@@ -18,58 +18,52 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
+#include "snapinmanager.h"
+#include "isnapin.h"
+
 #include "pluginstorage.h"
 
-#include <QLibrary>
+#include <algorithm>
 
 namespace preferences_editor
 {
-class PluginPrivate
+class SnapInManagerPrivate
 {
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    std::vector<ISnapIn *> snapIns{};
 };
 
-Plugin::~Plugin()
+SnapInManager::SnapInManager()
+    : d(new SnapInManagerPrivate())
+{}
+
+SnapInManager::~SnapInManager()
 {
     delete d;
 }
 
-const QString &Plugin::getName() const
+void SnapInManager::addSnapIn(ISnapIn *snapIn)
 {
-    return d->name;
+    d->snapIns.push_back(snapIn);
 }
 
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
+void SnapInManager::removeSnapIn(ISnapIn *snapIn)
 {
-    d->library = std::move(library);
+    auto element = std::find(d->snapIns.begin(), d->snapIns.end(), snapIn);
+    if (element != d->snapIns.end())
+    {
+        d->snapIns.erase(element);
+    }
 }
 
-QLibrary *Plugin::getLibrary() const
+std::vector<ISnapIn *> SnapInManager::getSnapIns() const
 {
-    return d->library.get();
+    return d->snapIns;
 }
 
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
+void SnapInManager::clear()
 {
-    return d->pluginClasses;
+    d->snapIns.clear();
 }
 
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor

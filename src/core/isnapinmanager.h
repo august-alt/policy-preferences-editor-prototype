@@ -18,58 +18,48 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
-#include "pluginstorage.h"
+#ifndef _ISNAPINMANAGER_H
+#define _ISNAPINMANAGER_H
 
-#include <QLibrary>
+#include <vector>
+
+#include "isnapin.h"
 
 namespace preferences_editor
 {
-class PluginPrivate
+/**
+ * @brief class ISnapInManager Manages all the snap-ins in an application.
+ */
+class ISnapInManager
 {
 public:
-    QString name                                             = {};
-    std::unique_ptr<QLibrary> library                        = nullptr;
-    std::map<QString, std::function<void *()>> pluginClasses = {};
+    virtual ~ISnapInManager() = default;
+
+    /**
+     * @brief addSnapIn Adds a snap-in to the manager.
+     * @param snapIn Snap-In to add.
+     */
+    virtual void addSnapIn(ISnapIn *snapIn) = 0;
+
+    //
+    /**
+     * @brief removeSnapIn Removes a snap-in from the manager.
+     * @param snapIn Snap-In to remove.
+     */
+    virtual void removeSnapIn(ISnapIn *snapIn) = 0;
+
+    /**
+     * @brief getSnapIns Get a list of all snap-ins associated with this manager.
+     * @return List of all snap-ins.
+     */
+    virtual std::vector<ISnapIn *> getSnapIns() const = 0;
+
+    /**
+     * @brief Unload all the snap-ins from the manager.
+     */
+    virtual void clear() = 0;
 };
 
-Plugin::~Plugin()
-{
-    delete d;
-}
-
-const QString &Plugin::getName() const
-{
-    return d->name;
-}
-
-void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-{
-    d->library = std::move(library);
-}
-
-QLibrary *Plugin::getLibrary() const
-{
-    return d->library.get();
-}
-
-const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
-{
-    return d->pluginClasses;
-}
-
-Plugin::Plugin(const QString &name)
-    : d(new PluginPrivate())
-{
-    d->name = name;
-}
-
-Plugin::Plugin(const char *name)
-    : Plugin(QString(name))
-{}
-
-void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
-{
-    d->pluginClasses[name] = constructor;
-}
 } // namespace preferences_editor
+
+#endif //_ISNAPINMANAGER_H
