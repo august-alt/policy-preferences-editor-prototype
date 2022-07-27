@@ -21,6 +21,8 @@
 #ifndef _ABSTRACTCOMPOSITESNAPIN_H
 #define _ABSTRACTCOMPOSITESNAPIN_H
 
+#include "core.h"
+
 #include "icompositesnapin.h"
 
 #include "abstractsnapin.h"
@@ -29,7 +31,8 @@ namespace preferences_editor
 {
 class AbstractCompositeSnapInPrivate;
 
-class AbstractCompositeSnapIn : public ICompositeSnapIn, public AbstractSnapIn
+class PREFERENCES_EDITOR_CORE_EXPORT AbstractCompositeSnapIn : public ICompositeSnapIn,
+                                                               public AbstractSnapIn
 {
 public:
     QMap<QString, QVersionNumber> getDependencies() const override final;

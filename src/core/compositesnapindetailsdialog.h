@@ -21,6 +21,8 @@
 #ifndef _COMPOSITESNAPINDETAILSDIALOG_H
 #define _COMPOSITESNAPINDETAILSDIALOG_H
 
+#include "core.h"
+
 #include "isnapin.h"
 #include "isnapindetailsdialog.h"
 
@@ -34,7 +36,7 @@ namespace preferences_editor
 /**
  * @brief Shows properties and dependencies of composite snap-in.
  */
-class CompositeSnapInDetailsDialog : public ISnapInDetailsDialog
+class PREFERENCES_EDITOR_CORE_EXPORT CompositeSnapInDetailsDialog : public ISnapInDetailsDialog
 {
     Q_OBJECT
 

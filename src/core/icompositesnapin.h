@@ -21,6 +21,8 @@
 #ifndef _ICOMPOSITESNAPIN_H
 #define _ICOMPOSITESNAPIN_H
 
+#include "core.h"
+
 #include "isnapin.h"
 
 namespace preferences_editor
@@ -28,7 +30,7 @@ namespace preferences_editor
 /**
  * @brief Composite snap-in requires list of dependencies to operate.
  */
-class ICompositeSnapIn : public virtual ISnapIn
+class PREFERENCES_EDITOR_CORE_EXPORT ICompositeSnapIn : public virtual ISnapIn
 {
 public:
     virtual QMap<QString, QVersionNumber> getDependencies() const = 0;

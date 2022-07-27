@@ -21,6 +21,8 @@
 #ifndef _SNAPINMANAGEMENTWIDGET_H
 #define _SNAPINMANAGEMENTWIDGET_H
 
+#include "core.h"
+
 #include <QWidget>
 
 #include "isnapinmanager.h"
@@ -39,7 +41,7 @@ class SnapInManagementWidgetPrivate;
 /**
  * @brief The SnapInManagementWidget class Shows tree of available snap-ins. Enables and disables snap-ins.
  */
-class SnapInManagementWidget : public QWidget
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInManagementWidget : public QWidget
 {
     Q_OBJECT
 

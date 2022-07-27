@@ -21,6 +21,8 @@
 #ifndef _SnapInManager_H
 #define _SnapInManager_H
 
+#include "core.h"
+
 #include "isnapin.h"
 #include "isnapinmanager.h"
 
@@ -31,7 +33,7 @@ class SnapInManagerPrivate;
 /**
  * @brief The SnapInManager class provides implementation of ISnapInManager interface.
  */
-class SnapInManager final : public ISnapInManager
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInManager final : public ISnapInManager
 {
 public:
     SnapInManager();

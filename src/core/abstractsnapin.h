@@ -21,6 +21,8 @@
 #ifndef _ABSTRACTSNAPIN_H
 #define _ABSTRACTSNAPIN_H
 
+#include "core.h"
+
 #include "isnapin.h"
 #include "plugin.h"
 
@@ -34,7 +36,7 @@ class AbstractSnapInPrivate;
 /**
  * @brief Adapts interface of a ISnapIn for a plugin.
  */
-class AbstractSnapIn : public virtual ISnapIn
+class PREFERENCES_EDITOR_CORE_EXPORT AbstractSnapIn : public virtual ISnapIn
 {
 public:
     QUuid getId() const override;

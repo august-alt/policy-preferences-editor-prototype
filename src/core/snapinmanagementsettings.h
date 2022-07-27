@@ -21,11 +21,13 @@
 #ifndef _SNAPINMANAGEMENTSETTINGS_H
 #define _SNAPINMANAGEMENTSETTINGS_H
 
+#include "core.h"
+
 #include <QSettings>
 
 namespace preferences_editor
 {
-class SnapInManagementSettings
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInManagementSettings
 {
 private:
     QSettings settings;

@@ -21,6 +21,8 @@
 #ifndef _ISNAPINMANAGER_H
 #define _ISNAPINMANAGER_H
 
+#include "core.h"
+
 #include <vector>
 
 #include "isnapin.h"
@@ -30,7 +32,7 @@ namespace preferences_editor
 /**
  * @brief class ISnapInManager Manages all the snap-ins in an application.
  */
-class ISnapInManager
+class PREFERENCES_EDITOR_CORE_EXPORT ISnapInManager
 {
 public:
     virtual ~ISnapInManager() = default;

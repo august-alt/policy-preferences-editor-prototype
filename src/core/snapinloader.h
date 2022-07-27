@@ -21,6 +21,8 @@
 #ifndef SNAP_IN_LOADER_H
 #define SNAP_IN_LOADER_H
 
+#include "core.h"
+
 #include <QDir>
 
 namespace preferences_editor
@@ -29,7 +31,7 @@ class ISnapInManager;
 
 class SnapInLoaderPrivate;
 
-class SnapInLoader
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInLoader
 {
 public:
     SnapInLoader(ISnapInManager *manager);

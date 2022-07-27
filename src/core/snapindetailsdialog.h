@@ -21,6 +21,8 @@
 #ifndef _SNAPINDETAILSDIALOG_H
 #define _SNAPINDETAILSDIALOG_H
 
+#include "core.h"
+
 #include "isnapin.h"
 #include "isnapindetailsdialog.h"
 
@@ -35,7 +37,7 @@ namespace preferences_editor
  * @brief class SnapInDetailsDialog Shows properties of a snap-in.
  * Provides information on snap-in name, description, version, copyright, lisense.
  */
-class SnapInDetailsDialog : public ISnapInDetailsDialog
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInDetailsDialog : public ISnapInDetailsDialog
 {
 private:
     Q_OBJECT

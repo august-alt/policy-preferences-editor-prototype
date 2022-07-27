@@ -21,6 +21,8 @@
 #ifndef _ISNAPINDETAILSDIALOG_H
 #define _ISNAPINDETAILSDIALOG_H
 
+#include "core.h"
+
 #include <QDialog>
 
 #include "isnapin.h"
@@ -30,7 +32,7 @@ namespace preferences_editor
 /**
  * @brief Common interface for a details dialog.
  */
-class ISnapInDetailsDialog : public QDialog
+class PREFERENCES_EDITOR_CORE_EXPORT ISnapInDetailsDialog : public QDialog
 {
     Q_OBJECT
 

@@ -21,6 +21,8 @@
 #ifndef _SNAPINDETAILSFACTORYBASE_H
 #define _SNAPINDETAILSFACTORYBASE_H
 
+#include "core.h"
+
 #include "factory.h"
 #include "isnapindetailsdialog.h"
 
@@ -29,7 +31,7 @@ namespace preferences_editor
 /**
  * @brief Base for all for snap-in dialog factories.
  */
-class SnapInDetailsFactory
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInDetailsFactory
 {
 public:
     typedef ::preferences_editor::Factory<ISnapInDetailsDialog, QString> Factory;

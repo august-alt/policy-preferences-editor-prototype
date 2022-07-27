@@ -21,6 +21,8 @@
 #ifndef _ISNAPIN_H
 #define _ISNAPIN_H
 
+#include "core.h"
+
 #include <QUuid>
 #include <QVersionNumber>
 
@@ -29,7 +31,7 @@ namespace preferences_editor
 /**
  * @brief The ISnapIn interface is a base for all snap-ins in a system.
  */
-class ISnapIn
+class PREFERENCES_EDITOR_CORE_EXPORT ISnapIn
 {
 public:
     virtual ~ISnapIn() = default;

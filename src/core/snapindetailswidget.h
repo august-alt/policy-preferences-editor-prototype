@@ -21,6 +21,8 @@
 #ifndef _SNAPINDETAILSWIDGET_H
 #define _SNAPINDETAILSWIDGET_H
 
+#include "core.h"
+
 #include <QWidget>
 
 #include "isnapin.h"
@@ -36,7 +38,7 @@ namespace preferences_editor
  * @brief class SnapInDetailsWidget Shows properties of a snap-in.
  * Provides information on snap-in name, description, version, copyright, lisense.
  */
-class SnapInDetailsWidget : public QWidget
+class PREFERENCES_EDITOR_CORE_EXPORT SnapInDetailsWidget : public QWidget
 {
 private:
     Q_OBJECT
