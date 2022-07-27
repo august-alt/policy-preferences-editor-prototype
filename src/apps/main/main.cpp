@@ -21,6 +21,11 @@
 #include "../../core/pluginstorage.h"
 #include "../../core/snapinloader.h"
 #include "../../core/snapinmanager.h"
+
+#include "../../core/compositesnapindetailsdialog.h"
+#include "../../core/snapindetailsdialog.h"
+#include "../../core/snapindetailsfactory.h"
+
 #include "../../gui/commandlineparser.h"
 #include "../../gui/mainwindow.h"
 
@@ -30,6 +35,11 @@
 
 int main(int argc, char **argv)
 {
+    preferences_editor::SnapInDetailsFactory::define<preferences_editor::SnapInDetailsDialog>(
+        "ISnapIn");
+    preferences_editor::SnapInDetailsFactory::define<preferences_editor::CompositeSnapInDetailsDialog>(
+        "ICompositeSnapIn");
+
     // Load plugins.
     auto snapInManager = std::make_unique<preferences_editor::SnapInManager>();
 
@@ -90,7 +100,7 @@ int main(int argc, char **argv)
         break;
     }
 
-    preferences_editor::MainWindow window(options);
+    preferences_editor::MainWindow window(options, nullptr, snapInManager.get());
     window.show();
 
     return app.exec();
