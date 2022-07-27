@@ -193,7 +193,11 @@ void *PluginStorage::createPluginClass(const QString &className, const QString &
     auto search = d->classMap.find(pluginName);
     if (search != d->classMap.end())
     {
-        return search->second[className]();
+        auto classType = search->second.find(className);
+        if (classType != search->second.end())
+        {
+            return search->second[className]();
+        }
     }
 
     return nullptr;
