@@ -19,14 +19,16 @@
 ***********************************************************************************************************************/
 
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include "mainwindowsettings.h"
+#include "ui_mainwindow.h"
 
 #include "aboutdialog.h"
 
 #include "commandlineoptions.h"
 
 #include "treevieweventfilter.h"
+
+#include "editorpreferencesdialog.h"
 
 #include "../io/registryfileformat.h"
 
@@ -44,25 +46,28 @@ void registerResources()
     Q_INIT_RESOURCE(translations);
 }
 
-namespace preferences_editor {
-
-class MainWindowPrivate {
+namespace preferences_editor
+{
+class MainWindowPrivate
+{
 public:
-    std::unique_ptr<QStandardItemModel> model = nullptr;
+    std::unique_ptr<QStandardItemModel> model    = nullptr;
     std::unique_ptr<MainWindowSettings> settings = nullptr;
 
     std::unique_ptr<QSortFilterProxyModel> itemNameSortModel = nullptr;
     std::unique_ptr<QSortFilterProxyModel> itemRoleSortModel = nullptr;
-    std::unique_ptr<QSortFilterProxyModel> searchModel = nullptr;
+    std::unique_ptr<QSortFilterProxyModel> searchModel       = nullptr;
 
-    std::vector<std::unique_ptr<QTranslator>> translators {};
-    QString localeName {};
+    ISnapInManager *manager = nullptr;
 
-    QString itemName {};
+    std::vector<std::unique_ptr<QTranslator>> translators{};
+    QString localeName{};
 
-    QIcon windowIcon {};
+    QString itemName{};
 
-    CommandLineOptions options {};
+    QIcon windowIcon{};
+
+    CommandLineOptions options{};
 
     std::unique_ptr<TreeViewEventFilter> eventFilter = nullptr;
 
@@ -71,18 +76,20 @@ public:
     {}
 
 private:
-    MainWindowPrivate(const MainWindowPrivate&)            = delete;   // copy ctor
-    MainWindowPrivate(MainWindowPrivate&&)                 = delete;   // move ctor
-    MainWindowPrivate& operator=(const MainWindowPrivate&) = delete;   // copy assignment
-    MainWindowPrivate& operator=(MainWindowPrivate&&)      = delete;   // move assignment
+    MainWindowPrivate(const MainWindowPrivate &) = delete;            // copy ctor
+    MainWindowPrivate(MainWindowPrivate &&)      = delete;            // move ctor
+    MainWindowPrivate &operator=(const MainWindowPrivate &) = delete; // copy assignment
+    MainWindowPrivate &operator=(MainWindowPrivate &&) = delete;      // move assignment
 };
 
-MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent)
+MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInManager *manager)
     : QMainWindow(parent)
     , d(new MainWindowPrivate())
     , ui(new Ui::MainWindow())
 {
     registerResources();
+
+    d->manager = manager;
 
     d->options = options;
 
@@ -95,23 +102,26 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent)
 
     createLanguageMenu();
 
-    connect(d->eventFilter.get(), &TreeViewEventFilter::onEnter, this, [&]()
-    {
+    connect(d->eventFilter.get(), &TreeViewEventFilter::onEnter, this, [&]() {
         ui->treeView->clicked(ui->treeView->currentIndex());
     });
 
     connect(ui->actionOpenPolicyDirectory, &QAction::triggered, this, &MainWindow::onDirectoryOpen);
-    connect(ui->actionSaveRegistrySource, &QAction::triggered, this, &MainWindow::onRegistrySourceSave);
-    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex& index) { d->itemName = index.data().toString(); });
+    connect(ui->actionSaveRegistrySource,
+            &QAction::triggered,
+            this,
+            &MainWindow::onRegistrySourceSave);
+    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) {
+        d->itemName = index.data().toString();
+    });
 
-    QLocale locale(!d->localeName.trimmed().isEmpty()
-                   ? d->localeName.replace("-","_")
-                   : QLocale::system().name().replace("-","_"));
+    QLocale locale(!d->localeName.trimmed().isEmpty() ? d->localeName.replace("-", "_")
+                                                      : QLocale::system().name().replace("-", "_"));
     std::unique_ptr<QTranslator> qtTranslator = std::make_unique<QTranslator>();
     qtTranslator->load(locale, "gui", "_", ":/");
     QCoreApplication::installTranslator(qtTranslator.get());
     d->translators.push_back(std::move(qtTranslator));
-    d->localeName = locale.name().replace("_","-");
+    d->localeName = locale.name().replace("_", "-");
     ui->retranslateUi(this);
 
     d->windowIcon = QIcon(":logo.png");
@@ -135,7 +145,7 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent)
         setWindowTitle("Preferences Editor - " + d->options.policyName);
     }
 
-    connect(ui->searchLineEdit, &QLineEdit::textChanged, [&](const QString& text) {
+    connect(ui->searchLineEdit, &QLineEdit::textChanged, [&](const QString &text) {
         d->searchModel->setFilterFixedString(text);
     });
 }
@@ -177,7 +187,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString& path, const QString &locale)
+void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString &path,
+                                                            const QString &locale)
 {
     Q_UNUSED(path);
     Q_UNUSED(locale);
@@ -185,7 +196,6 @@ void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString& path,
 
 void MainWindow::onDirectoryOpen()
 {
-
     std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
 
     fileDialog->setDirectory(QDir::homePath());
@@ -199,8 +209,7 @@ void MainWindow::onDirectoryOpen()
     fileDialog->setLabelText(QFileDialog::FileType, tr("File type"));
 
     fileDialog->setNameFilter(QObject::tr("All files (*.*)"));
-    fileDialog->setOptions(QFileDialog::ShowDirsOnly
-                           | QFileDialog::DontResolveSymlinks
+    fileDialog->setOptions(QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
                            | QFileDialog::DontUseNativeDialog);
 
     fileDialog->setWindowIcon(d->windowIcon);
@@ -223,9 +232,7 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
-void MainWindow::on_actionManual_triggered()
-{
-}
+void MainWindow::on_actionManual_triggered() {}
 
 void MainWindow::on_actionAbout_triggered()
 {
@@ -233,9 +240,16 @@ void MainWindow::on_actionAbout_triggered()
     about->show();
 }
 
+void MainWindow::on_actionPreferences_triggered()
+{
+    auto snapInManagementWidget = new EditorPreferencesDialog(this, d->manager);
+
+    snapInManagementWidget->show();
+}
+
 void MainWindow::onLanguageChanged(QAction *action)
 {
-    for (const auto& translator : d->translators)
+    for (const auto &translator : d->translators)
     {
         qApp->removeTranslator(translator.get());
     }
@@ -244,7 +258,7 @@ void MainWindow::onLanguageChanged(QAction *action)
     QString language = action->data().toString();
 
     std::unique_ptr<QTranslator> qtTranslator = std::make_unique<QTranslator>();
-    bool loadResult = qtTranslator->load("gui_" + language + ".qm", ":/");
+    bool loadResult                           = qtTranslator->load("gui_" + language + ".qm", ":/");
     QCoreApplication::installTranslator(qtTranslator.get());
     d->translators.push_back(std::move(qtTranslator));
     qWarning() << "Load language " << language << loadResult;
@@ -266,7 +280,8 @@ void MainWindow::onIniFileOpen(const QString &path)
 
     auto stringvalues = std::make_unique<std::string>();
 
-    try {
+    try
+    {
         if (path.startsWith("smb://"))
         {
             preferences_editor::smb::SmbFile smbLocationItemFile(path);
@@ -287,8 +302,9 @@ void MainWindow::onIniFileOpen(const QString &path)
         auto iss = std::make_unique<std::istringstream>(*stringvalues);
         std::string pluginName("ini");
 
-        auto reader = std::make_unique<io::GenericReader>();
-        auto iniFile = reader->load<io::IniFile, io::PolicyFileFormat<io::IniFile> >(*iss, pluginName);
+        auto reader  = std::make_unique<io::GenericReader>();
+        auto iniFile = reader->load<io::IniFile, io::PolicyFileFormat<io::IniFile>>(*iss,
+                                                                                    pluginName);
         if (!iniFile)
         {
             qWarning() << "Unable to load registry file contents.";
@@ -299,7 +315,7 @@ void MainWindow::onIniFileOpen(const QString &path)
 
         if (d->options.policyName.isEmpty() && sections->find("General") != sections->end())
         {
-            auto& generalValues = (*sections)["General"];
+            auto &generalValues = (*sections)["General"];
 
             auto displayName = generalValues.find("displayName");
 
@@ -307,19 +323,21 @@ void MainWindow::onIniFileOpen(const QString &path)
             {
                 qWarning() << "display name " << displayName.value().c_str();
 
-                setWindowTitle(QString::fromStdString("PREFERENCES_EDITOR - " + displayName.value()));
+                setWindowTitle(
+                    QString::fromStdString("PREFERENCES_EDITOR - " + displayName.value()));
             }
         }
     }
-    catch (std::exception& e)
+    catch (std::exception &e)
     {
-        qWarning() << "Warning: Unable to read file: " << qPrintable(path) << " description: " << e.what();
+        qWarning() << "Warning: Unable to read file: " << qPrintable(path)
+                   << " description: " << e.what();
     }
 }
 
 void MainWindow::createLanguageMenu()
 {
-    QActionGroup* langGroup = new QActionGroup(this);
+    QActionGroup *langGroup = new QActionGroup(this);
     langGroup->setExclusive(true);
 
     connect(langGroup, &QActionGroup::triggered, this, &MainWindow::onLanguageChanged);
@@ -328,7 +346,7 @@ void MainWindow::createLanguageMenu()
     QDir dir(":/");
     QStringList fileNames = dir.entryList(QStringList("gui_*.qm"));
 
-    QMenu* menu = new QMenu(this);
+    QMenu *menu = new QMenu(this);
     ui->actionLanguage->setMenu(menu);
 
     for (QString locale : fileNames)
@@ -352,4 +370,4 @@ void MainWindow::createLanguageMenu()
     }
 }
 
-}
+} // namespace preferences_editor

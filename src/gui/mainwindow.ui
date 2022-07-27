@@ -32,7 +32,7 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLineEdit" name="searchLineEdit">
@@ -118,7 +118,14 @@
     <addaction name="actionManual"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionPreferences"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menuEdit"/>
    <addaction name="menu_View"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -308,6 +315,11 @@
   <action name="actionManual">
    <property name="text">
     <string>&amp;Manual</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>&amp;Preferences</string>
    </property>
   </action>
  </widget>
