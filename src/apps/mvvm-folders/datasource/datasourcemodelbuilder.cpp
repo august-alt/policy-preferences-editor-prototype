@@ -46,19 +46,8 @@ std::unique_ptr<PreferencesModel> ModelBuilder::schemaToModel(std::unique_ptr<Da
         dataSource.setProperty(DataSourceItem::USERSOURCE, properties.userDSN() ? true : false);
         dataSource.setProperty(DataSourceItem::SYSTEMSOURCE, properties.userDSN() ? false : true);
 
-        // TODO: Implement attributes and correct schema.
-
-        auto common = CommonItem();
-        common.setProperty(CommonItem::NAME, dataSourceSchema.name().c_str());
-        common.setProperty(CommonItem::CHANGED, dataSourceSchema.changed()->c_str());
-        common.setProperty(CommonItem::DESC, dataSourceSchema.desc()->c_str());
-        common.setProperty(CommonItem::BYPASS_ERRORS, dataSourceSchema.bypassErrors().get());
-        common.setProperty(CommonItem::USER_CONTEXT, dataSourceSchema.userContext().get());
-        common.setProperty(CommonItem::REMOVE_POLICY, dataSourceSchema.removePolicy().get());
-
         auto sessionItem = model->insertItem<DataSourceContainerItem>(model->rootItem());
         sessionItem->setDataSource(dataSource);
-        sessionItem->setCommon(common);
     }
 
     return model;

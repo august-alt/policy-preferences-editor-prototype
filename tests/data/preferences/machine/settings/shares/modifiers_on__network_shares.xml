@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkShareSettings clsid="{520870D8-A6E7-47e8-A8D8-E6A4E76EAEC2}"><NetShare clsid="{2888C5E7-94FC-4739-90AA-2C1536D68BC0}" image="2" name="All regular and hidden and drive-letter shares" changed="2022-06-17 09:06:34" uid="{1E336416-58C7-48EC-BC6F-F3B40DAA4C05}"><Properties action="U" name="\\Share" comment="" allRegular="1" allHidden="1" allAdminDrive="1" limitUsers="NO_CHANGE" abe="NO_CHANGE"/></NetShare>
+</NetworkShareSettings>
+

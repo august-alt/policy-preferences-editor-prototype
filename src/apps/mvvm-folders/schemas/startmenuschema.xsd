@@ -77,6 +77,7 @@
    <xs:attribute name="image" type="xs:unsignedByte" use="optional" />
    <xs:attribute name="uid" type="xs:string" use="required" />
    <xs:attribute name="disabled" type="xs:boolean" use="optional" />
+   <xs:attribute name="status" type="xs:string" use="optional" />
 </xs:complexType>
 
 <xs:complexType name="FilterOs_t">
@@ -206,6 +207,7 @@
    <xs:attribute name="userContext" type="xs:boolean" use="optional" />
    <xs:attribute name="removePolicy" type="xs:boolean" use="optional" />
    <xs:attribute name="disabled" type="xs:boolean" use="optional" />
+   <xs:attribute name="status" type="xs:string" use="optional" />
 </xs:complexType>
 
 <xs:element name="StartMenuTaskbar">

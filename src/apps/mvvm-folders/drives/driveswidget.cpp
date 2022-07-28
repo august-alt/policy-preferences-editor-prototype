@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 DrivesWidget::DrivesWidget(QWidget *parent, DrivesItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::DrivesWidget())
 {
     ui->setupUi(this);
@@ -85,11 +84,8 @@ void DrivesWidget::setItem(ModelView::SessionItem* item)
     setAllDrivesCheckBox(view_model->index(9, 1).data().toInt());
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
 
-bool DrivesWidget::validate()
-{
-    return true;
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 QString DrivesWidget::name() const

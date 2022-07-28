@@ -46,13 +46,14 @@ std::unique_ptr<PreferencesModel> FolderModelBuilder::schemaToModel(std::unique_
             auto folders = sessionItem->getFolder();
             folders->setProperty(FolderItem::ACTION, getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str()));
             folders->setProperty(FolderItem::PATH, properties.path().c_str());
-            folders->setProperty(FolderItem::READONLY, properties.readOnly());
-            folders->setProperty(FolderItem::ARCHIVE, properties.archive());
-            folders->setProperty(FolderItem::HIDDEN, properties.hidden());
-            folders->setProperty(FolderItem::DELETE_IGNORE_ERRORS, getOptionalPropertyData(properties.deleteIgnoreErrors()));
-            folders->setProperty(FolderItem::DELETE_FILES, getOptionalPropertyData(properties.deleteFiles()));
-            folders->setProperty(FolderItem::DELETE_SUB_FOLDERS, getOptionalPropertyData(properties.deleteSubFolders()));
-            folders->setProperty(FolderItem::DELETE_FOLDER, getOptionalPropertyData(properties.deleteFolder()));
+            folders->setProperty(FolderItem::READONLY, static_cast<bool>(properties.readOnly()));
+            folders->setProperty(FolderItem::ARCHIVE, static_cast<bool>(properties.archive()));
+            folders->setProperty(FolderItem::HIDDEN,  static_cast<bool>(properties.hidden()));
+            folders->setProperty(FolderItem::DELETE_IGNORE_ERRORS, static_cast<bool>(getOptionalPropertyData(properties.deleteIgnoreErrors())));
+            folders->setProperty(FolderItem::DELETE_FILES, static_cast<bool>(getOptionalPropertyData(properties.deleteFiles())));
+            folders->setProperty(FolderItem::DELETE_SUB_FOLDERS, static_cast<bool>(getOptionalPropertyData(properties.deleteSubFolders())));
+            folders->setProperty(FolderItem::DELETE_FOLDER, static_cast<bool>(getOptionalPropertyData(properties.deleteFolder())));
+            folders->setProperty(FolderItem::DELETE_READ_ONLY, static_cast<bool>(getOptionalPropertyData(properties.deleteReadOnly())));
 
             auto common = sessionItem->getCommon();
             setCommonItemData(common, foldersSchema);
@@ -84,6 +85,7 @@ std::unique_ptr<Folders> FolderModelBuilder::modelToSchema(std::unique_ptr<Prefe
             properties.deleteFiles(folderModel->property<bool>(FolderItem::DELETE_FILES));
             properties.deleteSubFolders(folderModel->property<bool>(FolderItem::DELETE_SUB_FOLDERS));
             properties.deleteFolder(folderModel->property<bool>(FolderItem::DELETE_FOLDER));
+            properties.deleteReadOnly(folderModel->property<bool>(FolderItem::DELETE_READ_ONLY));
 
             setCommonModelData(folder, commonModel);
             folder.Properties().push_back(properties);

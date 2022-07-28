@@ -3,8 +3,8 @@
     <xs:complexType name="ShareProperties_t">
        <xs:attribute name="action" type="xs:string" use="optional"/>
        <xs:attribute name="name" type="xs:string" use="required"/>
-       <xs:attribute name="path" type="xs:string" use="required"/>
-       <xs:attribute name="comment" type="xs:string" use="required"/>
+       <xs:attribute name="path" type="xs:string" use="optional"/>
+       <xs:attribute name="comment" type="xs:string" use="optional"/>
        <xs:attribute name="allRegular" type="xs:boolean" use="optional"/>
        <xs:attribute name="allHidden" type="xs:boolean" use="optional"/>
        <xs:attribute name="allAdminDrive" type="xs:boolean" use="optional"/>
@@ -26,6 +26,7 @@
        <xs:attribute name="bypassErrors" type="xs:boolean" use="optional"/>
        <xs:attribute name="userContext" type="xs:boolean" use="optional"/>
        <xs:attribute name="removePolicy" type="xs:boolean" use="optional"/>
+       <xs:attribute name="status" type="xs:string" use="optional" />
     </xs:complexType>
     <xs:element name="NetworkShareSettings">
        <xs:complexType>

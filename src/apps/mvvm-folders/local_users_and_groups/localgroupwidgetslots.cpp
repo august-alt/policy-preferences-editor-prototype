@@ -37,14 +37,4 @@ void LocalGroupWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->parametersFrame->setDisabled(index == DELETE__MODE);
 }
 
-void LocalGroupWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

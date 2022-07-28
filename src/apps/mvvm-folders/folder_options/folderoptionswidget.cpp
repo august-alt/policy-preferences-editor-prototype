@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 FolderOptionsWidget::FolderOptionsWidget(QWidget *parent, FolderOptionsItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::FolderOptionsWidget())
 {
     ui->setupUi(this);
@@ -62,23 +61,6 @@ void FolderOptionsWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool FolderOptionsWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void FolderOptionsWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 QString FolderOptionsWidget::name() const

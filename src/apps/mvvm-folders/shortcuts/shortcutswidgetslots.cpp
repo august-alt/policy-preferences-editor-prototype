@@ -47,16 +47,6 @@ void ShortcutsWidget::on_locationComboBox_currentIndexChanged(int index)
     ui->nameToolButton->setDisabled(index != 0);
 }
 
-void ShortcutsWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 void ShortcutsWidget::on_nameToolButton_clicked()
 {
     ui->nameLineEdit->setText(openFileOrFolder(true));

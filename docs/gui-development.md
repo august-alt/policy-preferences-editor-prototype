@@ -5,3 +5,4 @@
 ## Структура и концепции
 
 TODO: write about gui structure.
+TODO: add uml diagrams.

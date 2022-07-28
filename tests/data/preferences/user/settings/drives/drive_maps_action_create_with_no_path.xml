@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Drives clsid="{8FDDCC1A-0C3C-43cd-A6B4-71A6DF20DA8C}">
+        <Drive uid="{651618BC-25C1-4E6B-B29C-55138A0940F8}" 
+               changed="2022-06-16 11:26:30" 
+               image="0" 
+               status="A:" 
+               name="A:" 
+               clsid="{935D1B74-9CB8-4e3c-9914-7DD559B7A417}">
+
+               <Properties letter="A" 
+                           useLetter="1" 
+                           persistent="0" 
+                           label="" 
+                           path="" 
+                           userName="" 
+                           allDrives="NOCHANGE" 
+                           thisDrive="NOCHANGE" 
+                           action="C"/>
+
+         </Drive>
+</Drives>

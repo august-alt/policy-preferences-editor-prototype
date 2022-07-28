@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 **
-** Copyright (C) 2021 BaseALT Ltd. <org@basealt.ru>
+** Copyright (C) 2022 BaseALT Ltd. <org@basealt.ru>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef PREFERENCES_EDITOR_PLUGIN_H
-#define PREFERENCES_EDITOR_PLUGIN_H
+#ifndef GPUI_PLUGIN_H
+#define GPUI_PLUGIN_H
 
 #include "core.h"
 
@@ -32,46 +32,47 @@
 class QLibrary;
 class QString;
 
-namespace preferences_editor {
-    class PluginPrivate;
-    class PluginStorage;
+namespace preferences_editor
+{
+class PluginPrivate;
+class PluginStorage;
 
-    class PREFERENCES_EDITOR_MODEL_EXPORT Plugin
-    {
-    public:
-        virtual ~Plugin();
+class PREFERENCES_EDITOR_CORE_EXPORT Plugin
+{
+public:
+    virtual ~Plugin();
 
-        const QString& getName() const;
+    const QString &getName() const;
 
-        void setLibrary(std::unique_ptr<QLibrary> library);
-        QLibrary* getLibrary() const;
+    void setLibrary(std::unique_ptr<QLibrary> library);
+    QLibrary *getLibrary() const;
 
-        const std::map<QString, std::function<void *()> > &getPluginClasses() const;
+    const std::map<QString, std::function<void *()>> &getPluginClasses() const;
 
-    protected:
-        explicit Plugin(const QString& name);
-        explicit Plugin(const char* name);
+protected:
+    explicit Plugin(const QString &name);
+    explicit Plugin(const char *name);
 
-        void registerPluginClass(const QString& name, std::function<void*()> constructor);
+    void registerPluginClass(const QString &name, std::function<void *()> constructor);
 
-    private:
-        Plugin(const Plugin&)            = delete;   // copy ctor
-        Plugin(Plugin&&)                 = delete;   // move ctor
-        Plugin& operator=(const Plugin&) = delete;   // copy assignment
-        Plugin& operator=(Plugin&&)      = delete;   // move assignment
+private:
+    Plugin(const Plugin &) = delete;            // copy ctor
+    Plugin(Plugin &&)      = delete;            // move ctor
+    Plugin &operator=(const Plugin &) = delete; // copy assignment
+    Plugin &operator=(Plugin &&) = delete;      // move assignment
 
-    private:
-        PluginPrivate* d;
-    };
-}
+private:
+    PluginPrivate *d;
+};
+} // namespace preferences_editor
 
 #define PREFERENCES_EDITOR_EXPORT_PLUGIN(name, className) \
-    extern "C" PREFERENCES_EDITOR_SYMBOL_EXPORT preferences_editor::Plugin* preferences_editor_plugin_init() \
+    extern "C" PREFERENCES_EDITOR_SYMBOL_EXPORT ::preferences_editor::Plugin *gpui_plugin_init() \
     { \
         return new className; \
     }
 
 #define PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(name, pluginClass) \
-    registerPluginClass(name, [](){ return new pluginClass(); })
+    registerPluginClass(name, []() { return new pluginClass(); })
 
-#endif // PREFERENCES_EDITOR_PLUGIN_H
+#endif // GPUI_PLUGIN_H

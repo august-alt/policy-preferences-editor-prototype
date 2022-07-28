@@ -23,6 +23,13 @@
 
 #include <QtTest>
 
+#include <drives/driveswidget.h>
+
+namespace mvvm_folders
+{
+    class DrivesWidget;
+}
+
 namespace tests 
 {
     class DrivesWidgetTest : public QObject
@@ -30,7 +37,11 @@ namespace tests
         Q_OBJECT
 
         private slots:
-            void test();
+            void displayWidgetTest();
+            void actionCreateDrivesWidgetTest();
+            void actionCreateDrivesWidgetTest_data();
+    private:
+            std::unique_ptr<mvvm_folders::DrivesWidget> readXmlFile(const QString &dataPath);
     };
 }
 

@@ -22,16 +22,18 @@
 
 #include "iniformat.h"
 
-namespace preferences_editor {
-    class IniPlugin : public Plugin
+namespace preferences_editor
+{
+class IniPlugin : public Plugin
+{
+public:
+    IniPlugin()
+        : Plugin("ini")
     {
-    public:
-        IniPlugin()
-            : Plugin("ini")
-        {
-            PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(io::PolicyFileFormat<io::IniFile>).name(), IniFormat);
-        }
-    };
-}
+        PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(io::PolicyFileFormat<io::IniFile>).name(),
+                                                 IniFormat);
+    }
+};
+} // namespace preferences_editor
 
 PREFERENCES_EDITOR_EXPORT_PLUGIN(inifile, preferences_editor::IniPlugin)

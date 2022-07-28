@@ -47,7 +47,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page_1">
       <layout class="QGridLayout" name="gridLayout_3">
@@ -202,7 +202,7 @@
        <item row="4" column="0" colspan="3">
         <widget class="QLabel" name="label_1">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -299,7 +299,7 @@
        <item row="7" column="0" colspan="3">
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -717,7 +717,7 @@
        <item row="9" column="0" colspan="5">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -1034,7 +1034,7 @@
        <item row="10" column="0" colspan="3">
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>

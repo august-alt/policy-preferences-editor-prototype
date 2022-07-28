@@ -23,7 +23,7 @@
 
 #include <QtWidgets>
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ShortcutsWidget; }
@@ -46,7 +46,7 @@ class ShortcutsItemController;
 
 //! Folder item representation for editor.
 
-class ShortcutsWidget : public PreferenceWidgetInterface
+class ShortcutsWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -60,9 +60,6 @@ public:
     bool validate() override;
 
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
@@ -88,7 +85,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::ShortcutsWidget *ui {nullptr};

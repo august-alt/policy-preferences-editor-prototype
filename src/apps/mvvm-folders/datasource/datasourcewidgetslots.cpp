@@ -50,14 +50,4 @@ void DataSourceWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->attributesGroupBox->setDisabled(deleteMode);
 }
 
-void DataSourceWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

@@ -21,6 +21,10 @@
 #include "fileswidget.h"
 #include "ui_fileswidget.h"
 
+#include "gui/filedialogutils.h"
+
+using namespace preferences_editor;
+
 namespace mvvm_folders
 {
 
@@ -72,62 +76,18 @@ void FilesWidget::on_actionComboBox_currentIndexChanged(int index)
 
 void FilesWidget::on_sourceToolButton_clicked()
 {
-    std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
-
-    fileDialog->setDirectory(QDir::homePath());
-    fileDialog->setFileMode(QFileDialog::AnyFile);
-    fileDialog->setSupportedSchemes(QStringList(QStringLiteral("file")));
-
-    fileDialog->setLabelText(QFileDialog::Accept, tr("Open"));
-    fileDialog->setLabelText(QFileDialog::FileName, tr("File name"));
-    fileDialog->setLabelText(QFileDialog::LookIn, tr("Look in"));
-    fileDialog->setLabelText(QFileDialog::Reject, tr("Cancel"));
-    fileDialog->setLabelText(QFileDialog::FileType, tr("File type"));
-
-    fileDialog->setNameFilter(QObject::tr("All files (*.*)"));
-    fileDialog->setOptions(QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog);
-
-    fileDialog->setWindowTitle(tr("Open Directory"));
-
-    if (fileDialog->exec() == QDialog::Accepted)
-    {
-        ui->sourceLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
-    }
+    ui->sourceLineEdit->setText(FileDialogUtils::getOpenFileName(this, QObject::tr("All files (*.*)")));
 }
 
 void FilesWidget::on_destinationToolButton_clicked()
 {
-    std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
-
-    QFileDialog::Options options;
     if (fileMode)
     {
-        fileDialog->setFileMode(QFileDialog::AnyFile);
-        options = QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog;
+        ui->destinationLineEdit->setText(FileDialogUtils::getOpenFileName(this, QObject::tr("All files (*.*)")));
     }
     else
     {
-        fileDialog->setFileMode(QFileDialog::Directory);
-        options = QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog;
-    }
-
-    fileDialog->setDirectory(QDir::homePath());
-    fileDialog->setSupportedSchemes(QStringList(QStringLiteral("file")));
-
-    fileDialog->setLabelText(QFileDialog::Accept, tr("Open"));
-    fileDialog->setLabelText(QFileDialog::FileName, tr("File name"));
-    fileDialog->setLabelText(QFileDialog::LookIn, tr("Look in"));
-    fileDialog->setLabelText(QFileDialog::Reject, tr("Cancel"));
-    fileDialog->setLabelText(QFileDialog::FileType, tr("File type"));
-
-    fileDialog->setNameFilter(QObject::tr("All files (*.*)"));
-    fileDialog->setOptions(options);
-
-    fileDialog->setWindowTitle(tr("Open Directory"));
-
-    if (fileDialog->exec() == QDialog::Accepted)
-    {
-        ui->destinationLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
+        ui->destinationLineEdit->setText(FileDialogUtils::getOpenDirectoryName(this, QObject::tr("All files (*.*)")));
     }
 }
 
@@ -144,16 +104,6 @@ void FilesWidget::on_sourceLineEdit_textChanged(const QString &text)
         fileMode = true;
 
         ui->destinationLabel->setText(tr("Destination file:"));
-    }
-}
-
-void FilesWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
     }
 }
 

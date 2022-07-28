@@ -37,14 +37,4 @@ void DialUpWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->phoneLineEdit->setDisabled(index == DELETE__MODE);
 }
 
-void DialUpWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

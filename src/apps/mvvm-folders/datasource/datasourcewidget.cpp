@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 DataSourceWidget::DataSourceWidget(QWidget *parent, DataSourceItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::DataSourceWidget())
 {
     ui->setupUi(this);
@@ -74,11 +73,6 @@ void DataSourceWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->systemDataSourceRadioButton, 8);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool DataSourceWidget::validate()
-{
-    return true;
 }
 
 QString DataSourceWidget::name() const
