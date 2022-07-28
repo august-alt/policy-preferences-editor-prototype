@@ -68,6 +68,7 @@ done
 
 %_libdir/preferences_editor/plugins/libinifile-plugin.so
 %_libdir/preferences_editor/plugins/libpreferences-plugin.so
+%_libdir/preferences_editor/plugins/libscripts-plugin.so
 %_libdir/preferences_editor/plugins/libsmb-storage-plugin.so
 
 %_datadir/icons/hicolor/48x48/apps/preferences_editor.png
