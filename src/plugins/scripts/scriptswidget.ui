@@ -92,7 +92,7 @@
    <item row="9" column="0" colspan="2">
     <widget class="QLabel" name="viewLabel">
      <property name="text">
-      <string>To view the script filess stored in this Group Policy Object, press the button below</string>
+      <string>To view the script files stored in this Group Policy Object, press the button below</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
