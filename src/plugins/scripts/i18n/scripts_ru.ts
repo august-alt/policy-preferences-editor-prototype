@@ -2,6 +2,48 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>AddScriptWidget</name>
+    <message>
+        <source>Form</source>
+        <translation>Форма</translation>
+    </message>
+    <message>
+        <source>Script Name:</source>
+        <translation>Имя сценария:</translation>
+    </message>
+    <message>
+        <source>Browse...</source>
+        <translation>Обзор...</translation>
+    </message>
+    <message>
+        <source>Script Parameters:</source>
+        <translation>Параметры сценария:</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>ScriptsDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Диалог</translation>
+    </message>
+    <message>
+        <source>Scripts</source>
+        <translation>Сценарий</translation>
+    </message>
+    <message>
+        <source>PowerShell Scripts</source>
+        <translation>Скрипты PowerShell</translation>
+    </message>
+</context>
+<context>
     <name>ScriptsPowerShellWidget</name>
     <message>
         <source>Form</source>
