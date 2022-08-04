@@ -13,17 +13,21 @@ set(CMAKE_AUTOUIC ON)
 set(HEADERS
     scriptssnapin.h
     scriptswidget.h
+    scriptspowershellwidget.h
 )
 
 set(SOURCES
     scriptssnapin.cpp
     scriptsplugin.cpp
     scriptswidget.cpp
+    scriptspowershellwidget.cpp
 )
 
 set(UIFORMS
     scriptswidget.ui
-    )
+    scriptsdialog.ui
+    scriptspowershellwidget.ui
+)
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UIFORMS})
 
