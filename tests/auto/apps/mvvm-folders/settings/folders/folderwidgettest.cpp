@@ -42,8 +42,6 @@ std::unique_ptr<FolderWidget> FolderWidgetTest::readXmlFile(const QString &dataP
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<FolderWidget> folderWidget = nullptr;
-
     bool ok = file.good();
     if(!ok)
     {
@@ -51,31 +49,25 @@ std::unique_ptr<FolderWidget> FolderWidgetTest::readXmlFile(const QString &dataP
         return nullptr;
     }
 
-    auto operation = [&]()
+    std::unique_ptr<FolderWidget> folderWidget = nullptr;
+
+    auto files = Folders_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<FolderModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
+
+    folderWidget = std::make_unique<FolderWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<FolderContainerItem*>(containerItem);
+
+
+    if (!filesContainer)
     {
-        auto folder = Folders_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<FolderModelBuilder>();
-        auto model = modelBuilder->schemaToModel(folder);
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-        folderWidget = std::make_unique<FolderWidget>();
-        auto containerItem = model->topItem();
-        auto folderContainer = dynamic_cast<FolderContainerItem*>(containerItem);
-
-        if (!folderContainer)
-        {
-            qWarning() << "Unable to read folder container!";
-        }
-
-        folderWidget->setItem(folderContainer->children().back());
-        folderWidget->show();
-    };
-
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
-
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    folderWidget->setItem(filesContainer->children().back());
+    folderWidget->show();
 
     file.close();
 

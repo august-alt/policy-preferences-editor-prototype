@@ -33,7 +33,7 @@ namespace mvvm_folders
 class CommonItem;
 class LocalGroupItem;
 
-template <typename LocalItem>
+template <typename LocalGroupItem>
 class LocalGroupContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
 {
 public:
@@ -50,11 +50,11 @@ public:
 
     explicit LocalGroupContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    LocalItem getLocalGroup() const;
-    void setLocalGroup(const LocalItem& item);
+    LocalGroupItem getLocalGroup() const;
+    void setLocalGroup(const LocalGroupItem& item);
 
     void setupListeners() override;
 };

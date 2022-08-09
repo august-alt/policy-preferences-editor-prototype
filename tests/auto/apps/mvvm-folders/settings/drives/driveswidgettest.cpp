@@ -43,8 +43,6 @@ std::unique_ptr<DrivesWidget> DrivesWidgetTest::readXmlFile(const QString &dataP
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<DrivesWidget> folderWidget = nullptr;
-
     bool ok = file.good();
     if(!ok)
     {
@@ -52,35 +50,29 @@ std::unique_ptr<DrivesWidget> DrivesWidgetTest::readXmlFile(const QString &dataP
         return nullptr;
     }
 
-    auto operation = [&]()
+    std::unique_ptr<DrivesWidget> drivesWidget = nullptr;
+
+    auto files = Drives_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<DrivesModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
+
+    drivesWidget = std::make_unique<DrivesWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<DrivesContainerItem*>(containerItem);
+
+
+    if (!filesContainer)
     {
-        auto folder = Drives_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<DrivesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(folder);
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-        folderWidget = std::make_unique<DrivesWidget>();
-        auto containerItem = model->topItem();
-        auto folderContainer = dynamic_cast<DrivesContainerItem*>(containerItem);
-
-        if (!folderContainer)
-        {
-            qWarning() << "Unable to read folder container!";
-        }
-
-        folderWidget->setItem(folderContainer->children().back());
-        folderWidget->show();
-    };
-
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
-
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    drivesWidget->setItem(filesContainer->children().back());
+    drivesWidget->show();
 
     file.close();
 
-    return folderWidget;
+    return drivesWidget;
 }
 
 void DrivesWidgetTest::displayWidgetTest()

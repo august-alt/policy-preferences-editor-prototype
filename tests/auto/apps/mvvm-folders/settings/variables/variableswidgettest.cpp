@@ -42,8 +42,6 @@ std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString 
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
-
     bool ok = file.good();
     if(!ok)
     {
@@ -51,31 +49,25 @@ std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString 
         return nullptr;
     }
 
-    auto operation = [&]()
+    std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
+
+    auto files = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<VariablesModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
+
+    variablesWidget = std::make_unique<VariablesWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
+
+
+    if (!filesContainer)
     {
-        auto variables = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<VariablesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(variables);
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-        variablesWidget = std::make_unique<VariablesWidget>();
-        auto containerItem = model->topItem();
-        auto variablesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
-
-        if (!variablesContainer)
-        {
-            qWarning() << "Unable to read variables container!";
-        }
-
-        variablesWidget->setItem(variablesContainer->children().back());
-        variablesWidget->show();
-    };
-
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
-
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    variablesWidget->setItem(filesContainer->children().back());
+    variablesWidget->show();
 
     file.close();
 

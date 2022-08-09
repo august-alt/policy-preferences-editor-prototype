@@ -42,8 +42,6 @@ std::unique_ptr<SharesWidget> SharesWidgetTest::readXmlFile(const QString &dataP
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<SharesWidget> sharesWidget = nullptr;
-
     bool ok = file.good();
     if(!ok)
     {
@@ -51,31 +49,25 @@ std::unique_ptr<SharesWidget> SharesWidgetTest::readXmlFile(const QString &dataP
         return nullptr;
     }
 
-    auto operation = [&]()
+    std::unique_ptr<SharesWidget> sharesWidget = nullptr;
+
+    auto files = NetworkShareSettings_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<SharesModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
+
+    sharesWidget = std::make_unique<SharesWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<SharesContainerItem*>(containerItem);
+
+
+    if (!filesContainer)
     {
-        auto shares = NetworkShareSettings_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<SharesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(shares);
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-        sharesWidget = std::make_unique<SharesWidget>();
-        auto containerItem = model->topItem();
-        auto sharesContainer = dynamic_cast<SharesContainerItem*>(containerItem);
-
-        if (!sharesContainer)
-        {
-            qWarning() << "Unable to read shares container!";
-        }
-
-        sharesWidget->setItem(sharesContainer->children().back());
-        sharesWidget->show();
-    };
-
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
-
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    sharesWidget->setItem(filesContainer->children().back());
+    sharesWidget->show();
 
     file.close();
 

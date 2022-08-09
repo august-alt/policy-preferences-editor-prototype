@@ -22,25 +22,62 @@
 
 #include <fstream>
 
+#include "local_users_and_groups/localgroupcontaineritem.h"
+#include "local_users_and_groups/localgroupitem.h"
+#include "local_users_and_groups/localgroupwidget.h"
+#include "local_users_and_groups/groupmodelbuilder.h"
+
 const std::string dataPath = "../../../../data/preferences/";
+
+using namespace mvvm_folders;
 
 namespace tests 
 {
 
 void LocalGroupWidgetTest::test()
 {
-    std::ifstream file;
 
-    file.open(dataPath + "localgroupwidget.xml", std::ifstream::in);
-    if (file.good()) 
-    {
-       
-    }
+}
 
-    file.close();
+std::unique_ptr<LocalGroupWidget> LocalGroupWidgetTest::readXmlFile(const QString &dataPath)
+{
+//    std::ifstream file;
+
+//    file.open(dataPath.toStdString(), std::ifstream::in);
+
+//    bool ok = file.good();
+//    if (!ok)
+//    {
+//        qWarning() << "Failed to read file: " << dataPath;
+//        return nullptr;
+//    }
+
+//    std::unique_ptr<LocalGroupWidget> localGroupWidget = nullptr;
+
+//    auto group = Groups_ (file, ::xsd::cxx::tree::flags::dont_validate);
+//    auto modelBuilder = std::make_unique<GroupModelBuilder>();
+//    auto model = modelBuilder->schemaToModel(group);
+
+//    localGroupWidget = std::make_unique<LocalGroupWidget>();
+//    auto containerItem = model->topItem();
+//    auto filesContainer = dynamic_cast<LocalGroupContainerItem<LocalGroupItem>*>(containerItem);
+
+
+//    if (!filesContainer)
+//    {
+//        qWarning() << "Unable to read ini container!";
+//        return nullptr;
+//    }
+
+//    localGroupWidget->setItem(filesContainer->children().back());
+//    localGroupWidget->show();
+
+//    file.close();
+
+//    return localGroupWidget;
+    return nullptr;
 }
 
 }
 
 QTEST_MAIN(tests::LocalGroupWidgetTest)
-
