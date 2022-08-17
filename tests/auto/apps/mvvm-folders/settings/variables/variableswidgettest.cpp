@@ -24,8 +24,8 @@
 
 #include "variables/variablescontaineritem.h"
 #include "variables/variablesitem.h"
-#include "variables/variableswidget.h"
 #include "variables/variablesmodelbuilder.h"
+#include "variables/variableswidget.h"
 
 #include "plugins/common/exceptionhandler.h"
 
@@ -35,7 +35,6 @@ using namespace mvvm_folders;
 
 namespace tests
 {
-
 std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
@@ -45,21 +44,20 @@ std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString 
     std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
 
     bool ok = file.good();
-    if(!ok)
+    if (!ok)
     {
         qWarning() << "Failed to read file: " << dataPath;
         return nullptr;
     }
 
-    auto operation = [&]()
-    {
-        auto variables = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto operation = [&]() {
+        auto variables    = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
         auto modelBuilder = std::make_unique<VariablesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(variables);
+        auto model        = modelBuilder->schemaToModel(variables);
 
-        variablesWidget = std::make_unique<VariablesWidget>();
-        auto containerItem = model->topItem();
-        auto variablesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
+        variablesWidget         = std::make_unique<VariablesWidget>();
+        auto containerItem      = model->topItem();
+        auto variablesContainer = dynamic_cast<VariablesContainerItem *>(containerItem);
 
         if (!variablesContainer)
         {
@@ -70,12 +68,9 @@ std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString 
         variablesWidget->show();
     };
 
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
+    auto errorHandler = [&](const std::string &error) { qWarning() << error.c_str(); };
 
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    preferences_editor::ExceptionHandler::handleOperation(operation, errorHandler);
 
     file.close();
 
@@ -107,9 +102,9 @@ void VariablesWidgetTest::pathVariableTest()
 
     QVERIFY(folderWidget);
 
-    auto nameLineEdit = folderWidget->findChild<QLineEdit*>("nameLineEdit");
-    auto pathCheckBox = folderWidget->findChild<QCheckBox*>("pathCheckBox");
-    auto partialCheckBox = folderWidget->findChild<QCheckBox*>("partialCheckBox");
+    auto nameLineEdit    = folderWidget->findChild<QLineEdit *>("nameLineEdit");
+    auto pathCheckBox    = folderWidget->findChild<QCheckBox *>("pathCheckBox");
+    auto partialCheckBox = folderWidget->findChild<QCheckBox *>("partialCheckBox");
 
     QVERIFY(nameLineEdit);
     QVERIFY(pathCheckBox);
@@ -132,23 +127,16 @@ void VariablesWidgetTest::pathVariableTest_data()
     QTest::addColumn<bool>("partialCheckBoxEnabled");
     QTest::addColumn<bool>("pathCheckBoxChecked");
 
-    QTest::newRow("Is Path")     << QString::fromStdString(dataPath + "path.xml")         << "PATH"
-                                 << false << true << true;
-    QTest::newRow("Is Not Path") << QString::fromStdString(dataPath + "environment.xml")  << "name"
+    QTest::newRow("Is Path") << QString::fromStdString(dataPath + "path.xml") << "PATH" << false
+                             << true << true;
+    QTest::newRow("Is Not Path") << QString::fromStdString(dataPath + "environment.xml") << "name"
                                  << false << false << false;
 }
 
-void VariablesWidgetTest::variableTypeTest()
-{
+void VariablesWidgetTest::variableTypeTest() {}
 
-}
+void VariablesWidgetTest::variableTypeTest_data() {}
 
-void VariablesWidgetTest::variableTypeTest_data()
-{
-
-}
-
-}
+} // namespace tests
 
 QTEST_MAIN(tests::VariablesWidgetTest)
-
