@@ -23,7 +23,7 @@
 
 #include "core.h"
 
-#include <QStandardItem>
+#include <QAbstractItemModel>
 #include <QUuid>
 #include <QVersionNumber>
 
@@ -66,7 +66,7 @@ public:
      * The identifier is unique across snap-in instances within a application.
      * This value can never be a null value or invalid.
      */
-    virtual QStandardItem *getRootNode() const = 0;
+    virtual QAbstractItemModel *getRootNode() const = 0;
 
     /**
      * @brief getDisplayName Returns display name of a snap-in.

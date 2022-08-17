@@ -29,7 +29,7 @@ class AbstractSnapInPrivate
 public:
     QString name{};
     QUuid id{};
-    QStandardItem *rootNode{};
+    QAbstractItemModel *rootNode{nullptr};
     QString type{};
     QString helpText{};
     QVersionNumber version{};
@@ -42,7 +42,7 @@ QUuid AbstractSnapIn::getId() const
     return d->id;
 }
 
-QStandardItem *AbstractSnapIn::getRootNode() const
+QAbstractItemModel *AbstractSnapIn::getRootNode() const
 {
     return d->rootNode;
 }
@@ -103,7 +103,7 @@ void AbstractSnapIn::setId(QUuid id)
     d->id = id;
 }
 
-void AbstractSnapIn::setRootNode(QStandardItem *rootNode)
+void AbstractSnapIn::setRootNode(QAbstractItemModel *rootNode)
 {
     d->rootNode = rootNode;
 }

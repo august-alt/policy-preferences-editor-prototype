@@ -41,6 +41,8 @@
 
 #include "../plugins/storage/smb/smbfile.h"
 
+#include "../core/isnapinmanager.h"
+
 void registerResources()
 {
     Q_INIT_RESOURCE(translations);
@@ -134,6 +136,16 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInMana
     }
 
     loadPolicyBundleFolder(d->options.policyBundle, d->localeName);
+
+    for (auto &snapIn : manager->getSnapIns())
+    {
+        if (snapIn->getRootNode())
+        {
+            ui->treeView->setModel(snapIn->getRootNode());
+            ui->treeView->setColumnHidden(1, true);
+            ui->treeView->resizeColumnToContents(0);
+        }
+    }
 
     if (!d->options.path.isEmpty())
     {
