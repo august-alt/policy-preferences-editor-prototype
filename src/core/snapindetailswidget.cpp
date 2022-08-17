@@ -45,7 +45,7 @@ SnapInDetailsWidget::~SnapInDetailsWidget()
 
 void SnapInDetailsWidget::setSnapIn(const ISnapIn *snapIn)
 {
-    ui->categoryLineEdit->setText(snapIn->getRootNode().toString());
+    ui->categoryLineEdit->setText(snapIn->getId().toString());
     ui->copyrightLineEdit->setText(snapIn->getCopyright());
     ui->descriptionPlainTextEdit->setPlainText(snapIn->getHelpText());
     ui->licensePlainTextEdit->setPlainText(snapIn->getLicense());

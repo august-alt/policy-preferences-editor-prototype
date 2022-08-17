@@ -26,6 +26,7 @@
 #include "isnapin.h"
 #include "plugin.h"
 
+#include <QStandardItem>
 #include <QUuid>
 #include <QVersionNumber>
 
@@ -43,7 +44,7 @@ public:
 
     QString getType() const override;
 
-    QUuid getRootNode() const override;
+    QStandardItem *getRootNode() const override;
 
     QString getDisplayName() const override;
 
@@ -67,7 +68,7 @@ protected:
 protected:
     void setId(QUuid id);
 
-    void setRootNode(QUuid rootNode);
+    void setRootNode(QStandardItem *rootNode);
 
     void setHelpText(QString text);
 
