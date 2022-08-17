@@ -65,6 +65,7 @@ done
 %_libdir/libpreferences_editor-gui.so
 %_libdir/libpreferences_editor-io.so
 %_libdir/libpreferences_editor-core.so
+%_libdir/libadministrative-templates-plugin.so
 
 %_libdir/preferences_editor/plugins/libinifile-plugin.so
 %_libdir/preferences_editor/plugins/libpreferences-plugin.so
