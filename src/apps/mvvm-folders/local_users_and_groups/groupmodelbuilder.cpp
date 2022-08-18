@@ -102,7 +102,49 @@ std::unique_ptr<Groups> GroupModelBuilder::modelToSchema(std::unique_ptr<Prefere
 
     for (const auto& containerItem : model->topItems())
     {
+        if (auto groupContainer = dynamic_cast<LocalGroupContainerItem<LocalGroupItem>*>(containerItem); groupContainer)
+        {
+            auto groupModel = groupContainer->getLocalGroup();
+            auto commonModel = groupContainer->getCommon();
 
+            auto group = createRootElement<Group_t>("{6D4A79E4-529C-4481-ABD0-F5BD7EA93BA7}");
+
+            auto properties = GroupProperties_t(groupModel.property<std::string>(LocalGroupItem::GROUP_NAME));
+            properties.action(groupModel.property<std::string>(LocalGroupItem::ACTION));
+            properties.groupSid(groupModel.property<std::string>(LocalGroupItem::GROUP_SID));
+            properties.newName(groupModel.property<std::string>(LocalGroupItem::NEW_NAME));
+            properties.description(groupModel.property<std::string>(LocalGroupItem::DESCRIPTION));
+            properties.userAction(groupModel.property<std::string>(LocalGroupItem::USER_ACTION));
+            properties.removeAccounts(groupModel.property<bool>(LocalGroupItem::REMOVE_ACCOUNTS));
+            properties.deleteAllUsers(groupModel.property<bool>(LocalGroupItem::DELETE_ALL_USERS));
+            properties.deleteAllGroups(groupModel.property<bool>(LocalGroupItem::DELETE_ALL_GROUPS));
+
+            setCommonModelData(group, commonModel);
+            group.Properties().push_back(properties);
+
+            //TODO: Implement members
+        }
+
+        if (auto userContainer = dynamic_cast<LocalGroupContainerItem<LocalUserItem>*>(containerItem); userContainer)
+        {
+            auto userModel = userContainer->getLocalGroup();
+            auto commonModel = userContainer->getCommon();
+
+            auto user = createRootElement<User_t>("{DF5F1855-51E5-4d24-8B1A-D9BDE98BA1D1}");
+            auto properties = UserProperties_t(userModel.property<std::string>(LocalUserItem::NEW_NAME),
+                                               userModel.property<std::string>(LocalUserItem::FULL_NAME),
+                                               userModel.property<std::string>(LocalUserItem::USER_NAME));
+            properties.description(userModel.property<std::string>(LocalUserItem::DESCRIPTION));
+            properties.cpassword(userModel.property<std::string>(LocalUserItem::CPASSWORD));
+            properties.changeLogon(userModel.property<bool>(LocalUserItem::CHANGE_LOGON));
+            properties.acctDisabled(userModel.property<bool>(LocalUserItem::ACCOUNT_DISABLED));
+            properties.neverExpires(userModel.property<bool>(LocalUserItem::ACCOUNT_NEVER_EXPIRES));
+            properties.expires(userModel.property<QDate>(LocalUserItem::EXPIRES).toString().toStdString());
+            properties.noChange(userModel.property<bool>(LocalUserItem::NO_CHANGE));
+
+            setCommonModelData(user, commonModel);
+            user.Properties().push_back(properties);
+        }
     }
 
     return groups;

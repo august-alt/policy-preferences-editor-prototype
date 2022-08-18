@@ -52,13 +52,13 @@
 
 <xs:complexType name="Members_t">
    <xs:sequence>
-      <xs:element name="Member" type="Member_t"/>
+      <xs:element name="Member" type="Member_t" maxOccurs="unbounded"/>
    </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="GroupProperties_t">
    <xs:sequence>
-      <xs:element name="Members" type="Members_t"/>
+      <xs:element name="Members" type="Members_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="action"
      type="xs:string" use="optional" />
