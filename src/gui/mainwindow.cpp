@@ -114,6 +114,9 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInMana
             this,
             &MainWindow::onRegistrySourceSave);
     connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) {
+        qWarning() << index.data().toString();
+    });
+    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) {
         d->itemName = index.data().toString();
     });
 
