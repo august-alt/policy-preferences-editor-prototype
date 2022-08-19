@@ -95,8 +95,10 @@ std::unique_ptr<PreferencesModel> NetworkModelBuilder::schemaToModel(std::unique
             auto common = sessionItem->getCommon();
             setCommonItemData(common, networkoptionsschema);
         }
-        return model;
+
     }
+    return model;
+}
 
 std::unique_ptr<NetworkOptions> NetworkModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
@@ -110,8 +112,31 @@ std::unique_ptr<NetworkOptions> NetworkModelBuilder::modelToSchema(std::unique_p
                 auto commonModel = vpnContainer->getCommon();
                 auto vpn = createRootElement<VPN_t>("{0532F359-3205-4d32-ADB7-9AEC6402BECF}");
 
-                auto properties = VPNProperties_t(vpnModel.property<std::string>(VpnItem::ACTION));
-                properties.action(vpnModel.propertyToString(VpnItem::ACTION));
+                auto properties = VPNProperties_t(vpnModel.property<bool>(VpnItem::propertyToString(VpnItem::USER)),
+                                                  vpnModel.property<std::string>(VpnItem::propertyToString(VpnItem::NAME)),
+                                                  vpnModel.property<std::string>(VpnItem::propertyToString(VpnItem::IP_ADDRESS)));
+                properties.useDNS(vpnModel.propertyToString(VpnItem::USE_DNS));
+                properties.dialFirst(vpnModel.propertyToString(VpnItem::DIAL_FIRST));
+                properties.trayIcon(vpnModel.propertyToString(VpnItem::TRAY_ICON));
+                properties.showProgress(vpnModel.propertyToString(VpnItem::SHOW_PROGRESS));
+                properties.showPassword(vpnModel.propertyToString(VpnItem::SHOW_PASSWORD));
+                properties.showDomain(vpnModel.propertyToString(VpnItem::SHOW_DOMAIN));
+                properties.redialCount(vpnModel.propertyToInt(VpnItem::REDIAL_COUNT));
+                properties.redialPause(vpnModel.propertyToString(VpnItem::REDIAL_PAUSE));
+                properties.idleDisconnect(vpnModel.propertyToString(VpnItem::IDLE_DISCONNECT));
+                properties.reconnect(vpnModel.propertyToString(VpnItem::RECONNECT));
+                properties.customSettings(vpnModel.propertyToString(VpnItem::CUSTOM_SETTINGS));
+                properties.securePassword(vpnModel.propertyToString(VpnItem::SECURE_PASSWORD));
+                properties.secureData(vpnModel.propertyToString(VpnItem::SECURE_DATA));
+                properties.useLogon(vpnModel.propertyToString(VpnItem::USE_LOGON));
+                properties.vpnStrategy(vpnModel.propertyToString(VpnItem::VPN_STRATEGY));
+                properties.encryptionType(vpnModel.propertyToString(VpnItem::ENCRYPTION_TYPE));
+                properties.eap(vpnModel.propertyToString(VpnItem::EAP));
+                properties.pap(vpnModel.propertyToString(VpnItem::PAP));
+                properties.spap(vpnModel.propertyToString(VpnItem::SPAP));
+                properties.msChap(vpnModel.propertyToString(VpnItem::MS_CHAP));
+                properties.msChapV2(vpnModel.propertyToString(VpnItem::MS_CHAP_V2));
+                properties.oldMsChap(vpnModel.propertyToString(VpnItem::OLD_MS_CHAP));
 
                 setCommonModelData(vpn, commonModel);
                 vpn.Properties().push_back(properties);
@@ -123,15 +148,17 @@ std::unique_ptr<NetworkOptions> NetworkModelBuilder::modelToSchema(std::unique_p
                 auto commonModel = dunContainer->getCommon();
                 auto dun = createRootElement<DUN_t>("{9B0D030D-9396-49c1-8DEF-08B35B5BB79E}");
 
-                auto properties = DUNProperties_t(dunModel.property<std::string>(DialUpItem::ACTION));
-                properties.name(dunModel.propertyToString(DialUpItem::NAME));
+                auto properties = DUNProperties_t(dunModel.property<bool>(DialUpItem::propertyToString(DialUpItem::USER)),
+                                                  dunModel.property<std::string>(DialUpItem::propertyToString(DialUpItem::NAME)),
+                                                  dunModel.property<std::string>(DialUpItem::propertyToString(DialUpItem::PHONE_NUMBER)));
+
 
                 setCommonModelData(dun, commonModel);
                 dun.Properties().push_back(properties);
 
             }
         }
-        return nullptr;
+        return networks;
 }
 }
 
