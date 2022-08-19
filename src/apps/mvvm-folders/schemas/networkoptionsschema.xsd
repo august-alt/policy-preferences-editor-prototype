@@ -61,7 +61,7 @@
 
 <xs:complexType name="VPN_t">
    <xs:sequence>
-      <xs:element name="Properties" type="VPNProperties_t" />
+      <xs:element name="Properties" type="VPNProperties_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -87,7 +87,7 @@
 
 <xs:complexType name="DUN_t">
    <xs:sequence>
-      <xs:element name="Properties" type="DUNProperties_t"/>
+      <xs:element name="Properties" type="DUNProperties_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -103,8 +103,8 @@
 <xs:element name="NetworkOptions">
   <xs:complexType>
      <xs:sequence>
-        <xs:element name="VPN" type="VPN_t" />
-        <xs:element name="DUN" type="DUN_t" />
+        <xs:element name="VPN" type="VPN_t" maxOccurs="unbounded"/>
+        <xs:element name="DUN" type="DUN_t" maxOccurs="unbounded"/>
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required" />
      <xs:attribute name="disabled" type="xs:boolean" use="optional" />
