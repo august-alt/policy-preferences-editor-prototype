@@ -50,7 +50,7 @@ public:
 
     explicit NetworkContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
     NetworkItem getNetwork() const;
