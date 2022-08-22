@@ -140,7 +140,6 @@ std::unique_ptr<NetworkOptions> NetworkModelBuilder::modelToSchema(std::unique_p
 
                 setCommonModelData(vpn, commonModel);
                 vpn.Properties().push_back(properties);
-                //TODO: Implement members
             }
             if (auto dunContainer = dynamic_cast<NetworkContainerItem<DialUpItem>*>(containerItem); dunContainer)
             {
