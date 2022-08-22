@@ -42,12 +42,7 @@ private slots:
     void test();
     void actionWidgetStateTest();
     void actionWidgetStateTest_data();
-    void actionWidgetStateTest();
-    void actionWidgetStateTest_data();
     void checkBoxesStateTest();
-    void checkBoxesStateTest_data();
-    void lineEditTest();
-    void lineEditTest_data();
     void checkBoxesStateTest_data();
     void lineEditTest();
     void lineEditTest_data();

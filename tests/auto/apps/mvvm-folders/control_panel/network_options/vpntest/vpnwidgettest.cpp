@@ -111,7 +111,7 @@ void VpnWidgetTest::actionWidgetStateTest()
 
     QCOMPARE(actionComboBox->currentText(), action);
     QCOMPARE(connectionNameLineEdit->text(), connectionNameLineEditState);
-    QCOMPARE(ipaddressLineEdit->text(), ipaddressLineEditState);
+    QCOMPARE(ipaddressLineEdit->text(), ipaddressLabelText);
     QCOMPARE(useDnsCheckBox->isEnabled(), useDnsCheckBoxState);
     QCOMPARE(showIconCheckBox->isEnabled(), showIconCheckBoxState);
 //    QCOMPARE(archiveCheckBox->isEnabled(), groupBoxState);
