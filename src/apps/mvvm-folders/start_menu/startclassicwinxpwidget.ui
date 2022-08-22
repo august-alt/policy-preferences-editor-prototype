@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StartAdvancedWinXPWidget</class>
- <widget class="QWidget" name="StartAdvancedWinXPWidget">
+ <class>StartClassicWinXPWidget</class>
+ <widget class="QWidget" name="StartClassicWinXPWidget">
   <property name="geometry">
    <rect>
     <x>0</x>

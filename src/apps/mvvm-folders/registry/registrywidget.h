@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_REGISTRY_WIDGET_H
 #define MVVM_FOLDERS_REGISTRY_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -46,7 +46,7 @@ class RegistryItemController;
 
 //! Folder item representation for editor.
 
-class RegistryWidget : public PreferenceWidgetInterface
+class RegistryWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -60,9 +60,6 @@ public:
     bool validate() override;
 
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_defaultValueNameCheckBox_stateChanged(int arg1);
@@ -85,7 +82,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::RegistryWidget *ui {nullptr};

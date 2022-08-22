@@ -30,11 +30,10 @@ namespace mvvm_folders
 {
 
 CommonView::CommonView(QWidget *parent)
-    : QWidget(parent)
+    : BasePreferenceWidget(parent)
     , ui(new Ui::CommonView())
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
 {
     ui->setupUi(this);
 }
@@ -58,20 +57,17 @@ void CommonView::setItem(ModelView::SessionItem *item)
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());
 
-    mapper->addMapping(ui->descriptionPlainTextEdit, 2);
-    mapper->addMapping(ui->stopOnErrorCheckBox, 3);
-    mapper->addMapping(ui->userContextCheckBox, 4);
-    mapper->addMapping(ui->removeThisCheckBox,  5);
+    mapper->addMapping(ui->descriptionPlainTextEdit, CommonItem::propertyToInt(CommonItem::DESC));
+    mapper->addMapping(ui->stopOnErrorCheckBox, CommonItem::propertyToInt(CommonItem::BYPASS_ERRORS));
+    mapper->addMapping(ui->userContextCheckBox, CommonItem::propertyToInt(CommonItem::USER_CONTEXT));
+    mapper->addMapping(ui->removeThisCheckBox,  CommonItem::propertyToInt(CommonItem::REMOVE_POLICY));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-void CommonView::submit()
+QString CommonView::name() const
 {
-    if (mapper)
-    {
-        mapper->submit();
-    }
+    return tr("Common");
 }
 
 }

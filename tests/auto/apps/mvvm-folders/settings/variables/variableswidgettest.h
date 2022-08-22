@@ -23,14 +23,28 @@
 
 #include <QtTest>
 
-namespace tests 
+namespace mvvm_folders
+{
+    class VariablesWidget;
+}
+
+namespace tests
 {
     class VariablesWidgetTest : public QObject
     {
         Q_OBJECT
 
-        private slots:
-            void test();
+    private:
+        std::unique_ptr<mvvm_folders::VariablesWidget> readXmlFile(const QString &dataPath);
+
+    private slots:
+        void displayWdigetTest();
+
+        void pathVariableTest();
+        void pathVariableTest_data();
+
+        void variableTypeTest();
+        void variableTypeTest_data();
     };
 }
 

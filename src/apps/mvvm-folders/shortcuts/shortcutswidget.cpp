@@ -21,23 +21,21 @@
 #include "shortcutswidget.h"
 #include "ui_shortcutswidget.h"
 
-#include "shortcutsitem.h"
 #include "common/commonutils.h"
+#include "shortcutsitem.h"
 
 #include <mvvm/factories/viewmodelfactory.h>
 #include <mvvm/viewmodel/viewmodeldelegate.h>
 
 #include <QDataWidgetMapper>
 
-namespace  mvvm_folders
+namespace mvvm_folders
 {
-
 ShortcutsWidget::ShortcutsWidget(QWidget *parent, ShortcutsItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::ShortcutsWidget())
 {
     ui->setupUi(this);
@@ -50,7 +48,7 @@ ShortcutsWidget::~ShortcutsWidget()
     delete ui;
 }
 
-void ShortcutsWidget::setItem(ModelView::SessionItem* item)
+void ShortcutsWidget::setItem(ModelView::SessionItem *item)
 {
     view_model = ModelView::Factory::CreatePropertyFlatViewModel(item->model());
     view_model->setRootSessionItem(item);
@@ -70,7 +68,7 @@ void ShortcutsWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->targetPathLineEdit, 4);
     mapper->addMapping(ui->argumentsLineEdit, 5);
     mapper->addMapping(ui->startInLineEdit, 6);
-//    mapper->addMapping(ui->shortkutKeySequenceEdit, 7);
+    //    mapper->addMapping(ui->shortkutKeySequenceEdit, 7);
     mapper->addMapping(ui->runComboBox, 8);
     mapper->addMapping(ui->commentLineEdit, 9);
     mapper->addMapping(ui->iconFilePathLineEdit, 10);
@@ -86,7 +84,8 @@ bool ShortcutsWidget::validate()
         return false;
     }
 
-    if (!CommonUtils::validateLineEdit(ui->targetPathLineEdit, tr("Please input target path value.")))
+    if (!CommonUtils::validateLineEdit(ui->targetPathLineEdit,
+                                       tr("Please input target path value.")))
     {
         return false;
     }
@@ -99,4 +98,4 @@ QString ShortcutsWidget::name() const
     return "General";
 }
 
-}
+} // namespace mvvm_folders

@@ -43,10 +43,10 @@ std::unique_ptr<PreferencesModel> SharesModelBuilder::schemaToModel(std::unique_
         {
             auto sessionItem = model->insertItem<SharesContainerItem>(model->rootItem());
             auto shareItem = sessionItem->getShares();
-            shareItem->setProperty(SharesItem::ACTION, getOptionalPropertyData(properties.action()).c_str());
+            shareItem->setProperty(SharesItem::ACTION, getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str()));
             shareItem->setProperty(SharesItem::NAME, properties.name().c_str());
-            shareItem->setProperty(SharesItem::PATH, properties.path().c_str());
-            shareItem->setProperty(SharesItem::COMMENT, properties.comment().c_str());
+            shareItem->setProperty(SharesItem::PATH, getOptionalPropertyData(properties.path()).c_str());
+            shareItem->setProperty(SharesItem::COMMENT, getOptionalPropertyData(properties.comment()).c_str());
             shareItem->setProperty(SharesItem::ALL_REGULAR, getOptionalPropertyData(properties.allRegular()));
             shareItem->setProperty(SharesItem::ALL_HIDDEN, getOptionalPropertyData(properties.allHidden()));
             shareItem->setProperty(SharesItem::ALL_ADMIN_DRIVE, getOptionalPropertyData(properties.allAdminDrive()));
@@ -75,9 +75,9 @@ std::unique_ptr<NetworkShareSettings> SharesModelBuilder::modelToSchema(std::uni
 
             auto share = createRootElement<NetShare_t>("{2888C5E7-94FC-4739-90AA-2C1536D68BC0}");
 
-            auto properties = ShareProperties_t(sharesModel->property<std::string>(SharesItem::NAME),
-                                                sharesModel->property<std::string>(SharesItem::PATH),
-                                                sharesModel->property<std::string>(SharesItem::COMMENT));
+            auto properties = ShareProperties_t(sharesModel->property<std::string>(SharesItem::NAME));
+            properties.comment(sharesModel->property<std::string>(SharesItem::COMMENT));
+            properties.path(sharesModel->property<std::string>(SharesItem::PATH));
             properties.action(sharesModel->property<std::string>(SharesItem::ACTION));
             properties.allRegular(sharesModel->property<bool>(SharesItem::ALL_REGULAR));
             properties.allHidden(sharesModel->property<bool>(SharesItem::ALL_HIDDEN));

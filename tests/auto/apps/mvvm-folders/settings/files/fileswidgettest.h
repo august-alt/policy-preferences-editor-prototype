@@ -22,6 +22,10 @@
 #define MVVM_FOLDERS_FILESWIDGET_WIDGET_TEST_H
 
 #include <QtTest>
+namespace mvvm_folders
+{
+    class FilesWidget;
+}
 
 namespace tests 
 {
@@ -29,8 +33,17 @@ namespace tests
     {
         Q_OBJECT
 
-        private slots:
-            void test();
+    private slots:
+        void test();
+        void actionWidgetStateTest();
+        void actionWidgetStateTest_data();
+        void checkBoxesStateTest();
+        void checkBoxesStateTest_data();
+        void lineEditTest();
+        void lineEditTest_data();
+
+    private:
+            std::unique_ptr<mvvm_folders::FilesWidget> readXmlFile(const QString &dataPath);
     };
 }
 

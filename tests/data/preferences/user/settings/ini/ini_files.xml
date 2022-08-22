@@ -7,7 +7,8 @@
          status="property" 
          image="1" 
          changed="2022-05-12 12:53:08"
-         uid="{FE6682DC-3888-49DE-A6E9-A5ADC71ADFAB}">
+         uid="{FE6682DC-3888-49DE-A6E9-A5ADC71ADFAB}"
+         desc="Test Description">
          <Properties path="path"
                      section="volume"
                      value="value"

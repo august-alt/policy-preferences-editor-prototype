@@ -33,11 +33,10 @@ namespace  mvvm_folders
 {
 
 IniWidget::IniWidget(QWidget *parent, IniItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::IniWidget())
 {
     ui->setupUi(this);
@@ -71,6 +70,8 @@ void IniWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->propertyLineEdit, 4);
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
+
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 bool IniWidget::validate()

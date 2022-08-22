@@ -67,16 +67,10 @@ done
 %_libdir/libpreferences_editor-core.so
 
 %_libdir/preferences_editor/plugins/libinifile-plugin.so
-
-%_libdir/preferences_editor/plugins/libdrives-plugin.so
-%_libdir/preferences_editor/plugins/libfiles-plugin.so
-%_libdir/preferences_editor/plugins/libfolders-plugin.so
-%_libdir/preferences_editor/plugins/libini-plugin.so
-%_libdir/preferences_editor/plugins/libshares-plugin.so
-%_libdir/preferences_editor/plugins/libshortcuts-plugin.so
-%_libdir/preferences_editor/plugins/libvariables-plugin.so
-
+%_libdir/preferences_editor/plugins/libpreferences-plugin.so
+%_libdir/preferences_editor/plugins/libscripts-plugin.so
 %_libdir/preferences_editor/plugins/libsmb-storage-plugin.so
+%_libdir/preferences_editor/plugins/libadministrative-templates-plugin.so
 
 %_datadir/icons/hicolor/48x48/apps/preferences_editor.png
 %_datadir/icons/hicolor/64x64/apps/preferences_editor.png

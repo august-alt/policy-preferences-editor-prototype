@@ -43,7 +43,8 @@ std::unique_ptr<PreferencesModel> IniModelBuilder::schemaToModel(std::unique_ptr
         {
             auto sessionItem = model->insertItem<IniContainerItem>(model->rootItem());
             auto iniItem = sessionItem->getIni();
-            iniItem->setProperty(IniItem::ACTION, getOptionalPropertyData(properties.action()).c_str());
+            auto action = getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str());
+            iniItem->setProperty(IniItem::ACTION, action);
             iniItem->setProperty(IniItem::PATH, properties.path().c_str());
             iniItem->setProperty(IniItem::SECTION, getOptionalPropertyData(properties.section()).c_str());
             iniItem->setProperty(IniItem::VALUE, getOptionalPropertyData(properties.value()).c_str());

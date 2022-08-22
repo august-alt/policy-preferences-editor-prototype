@@ -45,7 +45,7 @@ std::unique_ptr<PreferencesModel> FilesModelBuilder::schemaToModel(std::unique_p
         {
             auto files = sessionItem->getFiles();
             files->setProperty(FilesItem::ACTION, getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str()));
-            files->setProperty(FilesItem::FROM_PATH, properties.fromPath().c_str());
+            files->setProperty(FilesItem::FROM_PATH, getOptionalPropertyData(properties.fromPath()).c_str());
             files->setProperty(FilesItem::TARGET_PATH, properties.targetPath().c_str());
             files->setProperty(FilesItem::SUPPRESS, getOptionalPropertyData(properties.suppress()));
             files->setProperty(FilesItem::READONLY, getOptionalPropertyData(properties.readOnly()));
@@ -73,8 +73,8 @@ std::unique_ptr<Files> FilesModelBuilder::modelToSchema(std::unique_ptr<Preferen
 
             auto file = createRootElement<File_t>("{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}");
 
-            auto properties = FileProperties_t(driveModel->property<std::string>(FilesItem::FROM_PATH),
-                                               driveModel->property<std::string>(FilesItem::TARGET_PATH));
+            auto properties = FileProperties_t(driveModel->property<std::string>(FilesItem::TARGET_PATH));
+            properties.action(driveModel->property<std::string>(FilesItem::FROM_PATH));
             properties.action(driveModel->property<std::string>(FilesItem::ACTION));
             properties.action(driveModel->property<std::string>(FilesItem::SUPPRESS));
             properties.action(driveModel->property<std::string>(FilesItem::READONLY));

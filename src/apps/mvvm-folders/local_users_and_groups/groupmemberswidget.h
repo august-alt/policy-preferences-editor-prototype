@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_GROUPMEMBERS_WIDGET_H
 #define MVVM_FOLDERS_GROUPMEMBERS_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -46,7 +46,7 @@ class GroupMembersContainerItem;
 
 //! Folder item representation for editor.
 
-class GroupMembersWidget : public PreferenceWidgetInterface
+class GroupMembersWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -57,12 +57,7 @@ public:
 
     void setItem(ModelView::SessionItem *item) override;
 
-    bool validate() override;
-
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_addPushButton_clicked();

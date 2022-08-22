@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnvironmentVariables 
+           clsid="{BF141A63-327B-438a-B9BF-2C188F13B7AD}" 
+           disabled="1">
+           <EnvironmentVariable clsid="{78570023-8373-4a19-BA80-2F150738EA19}" 
+                                name="PATH" 
+                                status="PATH = 123" 
+                                image="2" 
+                                changed="2022-04-26 03:42:07" 
+                                uid="{0A05D6E5-E07D-400B-8DF3-44FBFD8510D7}" 
+                                bypassErrors="1">
+                                <Properties action="U" 
+                                            name="PATH" 
+                                            value="123" 
+                                            user="0" 
+                                            partial="1"/>
+                                            <Filters>
+                                                    <FilterRunOnce hidden="1" not="0" bool="AND" id="{92B5BEF8-1089-4D92-B32C-8973DBE855D9}"/>
+                                            </Filters>
+           </EnvironmentVariable>
+</EnvironmentVariables>

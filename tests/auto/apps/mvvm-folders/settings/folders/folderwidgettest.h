@@ -23,14 +23,28 @@
 
 #include <QtTest>
 
-namespace tests 
+namespace mvvm_folders
+{
+    class FolderWidget;
+}
+
+namespace tests
 {
     class FolderWidgetTest : public QObject
     {
         Q_OBJECT
 
-        private slots:
-            void test();
+    private:
+        std::unique_ptr<mvvm_folders::FolderWidget> readXmlFile(const QString &dataPath);
+
+    private slots:
+        void displayWidgetTest();
+
+        void actionStateTest();
+        void actionStateTest_data();
+
+        void booleanValuesTest();
+        void booleanValuesTest_data();
     };
 }
 

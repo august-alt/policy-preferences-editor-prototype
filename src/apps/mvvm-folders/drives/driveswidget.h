@@ -23,7 +23,7 @@
 
 #include <QtWidgets>
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DrivesWidget; }
@@ -46,7 +46,7 @@ class DrivesItemController;
 
 //! Folder item representation for editor.
 
-class DrivesWidget : public PreferenceWidgetInterface
+class DrivesWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -64,8 +64,6 @@ public:
     ~DrivesWidget() override;
 
     void setItem(ModelView::SessionItem *item) override;
-
-    bool validate() override;
 
     QString name() const override;
 
@@ -95,7 +93,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::DrivesWidget *ui {nullptr};

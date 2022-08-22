@@ -16,13 +16,13 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="leftMargin">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
@@ -32,7 +32,7 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLineEdit" name="searchLineEdit">
@@ -65,7 +65,7 @@
         <item>
          <widget class="QTreeView" name="treeView">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>1</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -83,6 +83,7 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="contentWidget" native="true"/>
      </widget>
     </item>
    </layout>
@@ -118,7 +119,14 @@
     <addaction name="actionManual"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionPreferences"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menuEdit"/>
    <addaction name="menu_View"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -308,6 +316,11 @@
   <action name="actionManual">
    <property name="text">
     <string>&amp;Manual</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>&amp;Preferences</string>
    </property>
   </action>
  </widget>

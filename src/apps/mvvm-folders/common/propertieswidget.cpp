@@ -21,6 +21,8 @@
 #include "propertieswidget.h"
 #include "ui_propertieswidget.h"
 
+#include "common/commonitem.h"
+
 #include "common/preferencesdialog.h"
 #include "interfaces/containeriteminterface.h"
 #include "shortcuts/shortcutscontaineritem.h"
@@ -64,11 +66,11 @@ void PropertiesWidget::setItem(ModelView::SessionItem *item)
     mapper->setItemDelegate(delegate.get());
     mapper->setRootIndex(QModelIndex());
 
-    mapper->addMapping(ui->stopProcessingStatusLabel, 3, "text");
-    mapper->addMapping(ui->runInUsersContextStatusLabel, 4, "text");
-    mapper->addMapping(ui->removeIfNotAppliedStatusLabel, 5, "text");
+    mapper->addMapping(ui->stopProcessingStatusLabel, CommonItem::propertyToInt(CommonItem::BYPASS_ERRORS), "text");
+    mapper->addMapping(ui->runInUsersContextStatusLabel, CommonItem::propertyToInt(CommonItem::USER_CONTEXT), "text");
+    mapper->addMapping(ui->removeIfNotAppliedStatusLabel, CommonItem::propertyToInt(CommonItem::REMOVE_POLICY), "text");
 
-    mapper->addMapping(ui->plainTextEdit, 2);
+    mapper->addMapping(ui->plainTextEdit, CommonItem::propertyToInt(CommonItem::DESC));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 

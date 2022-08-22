@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 **
-** Copyright (C) 2021 BaseALT Ltd. <org@basealt.ru>
+** Copyright (C) 2022 BaseALT Ltd. <org@basealt.ru>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef PREFERENCES_EDITOR_PLUGINSTORAGE_H
-#define PREFERENCES_EDITOR_PLUGINSTORAGE_H
+#ifndef GPUI_PLUGINSTORAGE_H
+#define GPUI_PLUGINSTORAGE_H
 
 #include "core.h"
 
@@ -30,8 +30,8 @@
 
 class QFileInfo;
 
-namespace preferences_editor {
-
+namespace preferences_editor
+{
 class Plugin;
 class PluginStoragePrivate;
 
@@ -39,9 +39,9 @@ class PluginStoragePrivate;
  * \class PluginStorage
  * \brief The PluginStorage class
  *
- * \ingroup preferences_editor
+ * \ingroup gpui
  */
-class PREFERENCES_EDITOR_MODEL_EXPORT PluginStorage
+class PREFERENCES_EDITOR_CORE_EXPORT PluginStorage
 {
 public:
     /*!
@@ -49,34 +49,35 @@ public:
      * \param pluginName
      * \return
      */
-    Plugin *getPlugin(const QString& pluginName);
+    Plugin *getPlugin(const QString &pluginName);
 
     /*!
      * \brief loadPlugin
      * \param fileName
+     * \param pluginName - If load operation was successfull contains name of a plugin.
      * \return
      */
-    bool loadPlugin(const QFileInfo &fileName);
+    bool loadPlugin(const QFileInfo &fileName, QString &pluginName);
 
     /*!
      * \brief loadPluginDirectory
      * \param directoryName
      */
-    void loadPluginDirectory(const QString& directoryName);
+    void loadPluginDirectory(const QString &directoryName);
 
     /*!
      * \brief unloadPlugin
      * \param pluginName
      * \return
      */
-    bool unloadPlugin(const QString& pluginName);
+    bool unloadPlugin(const QString &pluginName);
 
     /*!
      * \brief unloadPlugin
      * \param plugin
      * \return
      */
-    bool unloadPlugin(Plugin* plugin);
+    bool unloadPlugin(Plugin *plugin);
 
     /**
      * @brief loadDefaultPlugins
@@ -87,32 +88,34 @@ public:
      *  \brief createPluginClass
      */
     template<typename T>
-    T* createPluginClass(const QString& pluginName)
+    T *createPluginClass(const QString &pluginName)
     {
-        return reinterpret_cast<T*>(createPluginClass(typeid(T).name(), pluginName));
+        return reinterpret_cast<T *>(createPluginClass(typeid(T).name(), pluginName));
     }
 
-    static PluginStorage* instance();
+    static PluginStorage *instance();
 
 private:
-    void registerPluginClass(const QString& pluginName, const QString& className, std::function<void*()> constructor);
-    bool unregisterPluginClass(const QString& pluginName, const QString& className);
+    void registerPluginClass(const QString &pluginName,
+                             const QString &className,
+                             std::function<void *()> constructor);
+    bool unregisterPluginClass(const QString &pluginName, const QString &className);
 
-    void *createPluginClass(const QString& className, const QString& pluginName);
+    void *createPluginClass(const QString &className, const QString &pluginName);
 
     PluginStorage();
     ~PluginStorage();
 
 private:
-    PluginStorage(const PluginStorage&)            = delete;   // copy ctor
-    PluginStorage(PluginStorage&&)                 = delete;   // move ctor
-    PluginStorage& operator=(const PluginStorage&) = delete;   // copy assignment
-    PluginStorage& operator=(PluginStorage&&)      = delete;   // move assignment
+    PluginStorage(const PluginStorage &) = delete;            // copy ctor
+    PluginStorage(PluginStorage &&)      = delete;            // move ctor
+    PluginStorage &operator=(const PluginStorage &) = delete; // copy assignment
+    PluginStorage &operator=(PluginStorage &&) = delete;      // move assignment
 
 private:
-    PluginStoragePrivate* d;
+    PluginStoragePrivate *d;
 };
 
-}
+} // namespace preferences_editor
 
-#endif // PREFERENCES_EDITOR_PLUGINSTORAGE_H
+#endif // GPUI_PLUGINSTORAGE_H

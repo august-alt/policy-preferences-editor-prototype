@@ -23,7 +23,7 @@
 
 #include <QtWidgets>
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SharesWidget; }
@@ -46,7 +46,7 @@ class SharesItemController;
 
 //! Folder item representation for editor.
 
-class SharesWidget : public PreferenceWidgetInterface
+class SharesWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -83,7 +83,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::SharesWidget *ui {nullptr};

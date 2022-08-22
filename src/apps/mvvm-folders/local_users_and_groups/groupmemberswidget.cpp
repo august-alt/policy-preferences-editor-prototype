@@ -36,7 +36,7 @@ namespace  mvvm_folders
 {
 
 GroupMembersWidget::GroupMembersWidget(QWidget *parent, GroupMembersContainerItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
@@ -78,19 +78,9 @@ void GroupMembersWidget::setItem(ModelView::SessionItem* item)
     setupConnections();
 }
 
-bool GroupMembersWidget::validate()
-{
-    return true;
-}
-
 QString GroupMembersWidget::name() const
 {
     return "Group Members";
-}
-
-void GroupMembersWidget::submit()
-{
-    emit dataChanged();
 }
 
 }

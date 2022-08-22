@@ -21,23 +21,32 @@
 #ifndef MVVM_FOLDERS_COMMONITEM_H
 #define MVVM_FOLDERS_COMMONITEM_H
 
-#include <mvvm/model/compounditem.h>
+#include "basepreferenceitem.h"
 
 namespace mvvm_folders
 {
 
 //! Common item representation for editor.
 
-class CommonItem : public ModelView::CompoundItem
+class CommonItem : public BasePreferenceItem<CommonItem>
 {
 public:
-    static inline const std::string NAME = "name";
-    static inline const std::string CHANGED = "changed";
-    static inline const std::string DESC = "desc";
-    static inline const std::string BYPASS_ERRORS = "bypassErrors";
-    static inline const std::string USER_CONTEXT = "userContext";
-    static inline const std::string REMOVE_POLICY = "removePolicy";
+    enum PropertyType
+    {
+        CLSID           = 0,
+        DISABLED        = 1,
+        NAME            = 2,
+        STATUS          = 3,
+        IMAGE           = 4,
+        CHANGED         = 5,
+        UID             = 6,
+        DESC            = 7,
+        BYPASS_ERRORS   = 8,
+        USER_CONTEXT    = 9,
+        REMOVE_POLICY   = 10,
+    };
 
+public:
     CommonItem();
     CommonItem(const CommonItem &other);
 
@@ -58,6 +67,25 @@ public:
 
     bool removePolicy() const;
     void setRemovePolicy(bool state);
+
+    constexpr static inline const char* propertyToString(const PropertyType& type)
+    {
+        switch (type)
+        {
+        case CLSID        : return "clsid";
+        case DISABLED     : return "disabled";
+        case NAME         : return "name";
+        case STATUS       : return "status";
+        case IMAGE        : return "image";
+        case CHANGED      : return "changed";
+        case UID          : return "uid";
+        case DESC         : return "desc";
+        case BYPASS_ERRORS: return "bypassErrors";
+        case USER_CONTEXT : return "userContext ";
+        case REMOVE_POLICY: return "removePolicy";
+        }
+        return "";
+    }
 };
 
 }

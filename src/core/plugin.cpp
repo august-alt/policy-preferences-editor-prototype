@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 **
-** Copyright (C) 2021 BaseALT Ltd. <org@basealt.ru>
+** Copyright (C) 2022 BaseALT Ltd. <org@basealt.ru>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License
@@ -23,55 +23,53 @@
 
 #include <QLibrary>
 
-namespace preferences_editor {
+namespace preferences_editor
+{
+class PluginPrivate
+{
+public:
+    QString name                                             = {};
+    std::unique_ptr<QLibrary> library                        = nullptr;
+    std::map<QString, std::function<void *()>> pluginClasses = {};
+};
 
-    class PluginPrivate
-    {
-    public:
-        QString name = {};
-        std::unique_ptr<QLibrary> library = nullptr;
-        std::map<QString, std::function<void*()> > pluginClasses = {};
-    };
-
-    Plugin::~Plugin()
-    {
-        delete d;
-    }
-
-    const QString& Plugin::getName() const
-    {
-        return d->name;
-    }
-
-    void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
-    {
-        d->library = std::move(library);
-    }
-
-    QLibrary* Plugin::getLibrary() const
-    {
-        return d->library.get();
-    }
-
-    const std::map<QString, std::function<void*()> >& Plugin::getPluginClasses() const
-    {
-        return d->pluginClasses;
-    }
-
-    Plugin::Plugin(const QString& name)
-        : d(new PluginPrivate())
-    {
-        d->name = name;
-    }
-
-    Plugin::Plugin(const char *name)
-        : Plugin(QString(name))
-    {
-
-    }
-
-    void Plugin::registerPluginClass(const QString &name, std::function<void*()> constructor)
-    {
-        d->pluginClasses[name] = constructor;
-    }
+Plugin::~Plugin()
+{
+    delete d;
 }
+
+const QString &Plugin::getName() const
+{
+    return d->name;
+}
+
+void Plugin::setLibrary(std::unique_ptr<QLibrary> library)
+{
+    d->library = std::move(library);
+}
+
+QLibrary *Plugin::getLibrary() const
+{
+    return d->library.get();
+}
+
+const std::map<QString, std::function<void *()>> &Plugin::getPluginClasses() const
+{
+    return d->pluginClasses;
+}
+
+Plugin::Plugin(const QString &name)
+    : d(new PluginPrivate())
+{
+    d->name = name;
+}
+
+Plugin::Plugin(const char *name)
+    : Plugin(QString(name))
+{}
+
+void Plugin::registerPluginClass(const QString &name, std::function<void *()> constructor)
+{
+    d->pluginClasses[name] = constructor;
+}
+} // namespace preferences_editor

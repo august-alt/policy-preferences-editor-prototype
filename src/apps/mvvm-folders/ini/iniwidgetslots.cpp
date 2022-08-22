@@ -21,6 +21,8 @@
 #include "iniwidget.h"
 #include "ui_iniwidget.h"
 
+#include "gui/filedialogutils.h"
+
 namespace mvvm_folders
 {
 
@@ -39,7 +41,7 @@ void IniWidget::on_actionComboBox_currentIndexChanged(int index)
     case ViewMode::CREATE__MODE:
     case ViewMode::UPDATE__MODE:
     case ViewMode::REPLACE_MODE:
-        if (ui->propertyLineEdit->isEnabled())
+        if (!ui->propertyLineEdit->text().isEmpty())
         {
             ui->valueLineEdit->setEnabled(true);
         }
@@ -56,27 +58,9 @@ void IniWidget::on_actionComboBox_currentIndexChanged(int index)
 
 void IniWidget::on_pathToolButton_clicked()
 {
-    std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
+    using namespace preferences_editor;
 
-    fileDialog->setDirectory(QDir::homePath());
-    fileDialog->setFileMode(QFileDialog::AnyFile);
-    fileDialog->setSupportedSchemes(QStringList(QStringLiteral("file")));
-
-    fileDialog->setLabelText(QFileDialog::Accept, tr("Open"));
-    fileDialog->setLabelText(QFileDialog::FileName, tr("File name"));
-    fileDialog->setLabelText(QFileDialog::LookIn, tr("Look in"));
-    fileDialog->setLabelText(QFileDialog::Reject, tr("Cancel"));
-    fileDialog->setLabelText(QFileDialog::FileType, tr("File type"));
-
-    fileDialog->setNameFilter(QObject::tr("Ini files (*.ini)"));
-    fileDialog->setOptions(QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog);
-
-    fileDialog->setWindowTitle(tr("Open File"));
-
-    if (fileDialog->exec() == QDialog::Accepted)
-    {
-        ui->pathLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
-    }
+    ui->pathLineEdit->setText(FileDialogUtils::getOpenFileName(this, QObject::tr("Ini files (*.ini)")));
 }
 
 void IniWidget::on_pathLineEdit_textChanged(const QString &text)
@@ -107,16 +91,6 @@ void IniWidget::on_propertyLineEdit_textChanged(const QString &text)
     bool disabled = text.isEmpty();
 
     ui->valueLineEdit->setDisabled(disabled);
-}
-
-void IniWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 }

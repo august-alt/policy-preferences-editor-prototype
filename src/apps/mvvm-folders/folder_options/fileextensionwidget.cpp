@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 FileExtensionWidget::FileExtensionWidget(QWidget *parent, FileExtensionItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::FileExtensionWidget())
 {
     ui->setupUi(this);
@@ -77,21 +76,9 @@ void FileExtensionWidget::setItem(ModelView::SessionItem* item)
     mapper->setCurrentModelIndex(view_model->index(0, 1));
 }
 
-bool FileExtensionWidget::validate()
+QString FileExtensionWidget::name() const
 {
-    // TODO: Implement.
-
-    return true;
-}
-
-void FileExtensionWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
+    return "File Extenision";
 }
 
 void FileExtensionWidget::on_actionComboBox_currentIndexChanged(int index)

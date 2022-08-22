@@ -24,8 +24,10 @@
 
 #include "variables/variablescontaineritem.h"
 #include "variables/variablesitem.h"
-#include "variables/variableswidget.h"
 #include "variables/variablesmodelbuilder.h"
+#include "variables/variableswidget.h"
+
+#include "plugins/common/exceptionhandler.h"
 
 const std::string dataPath = "../../../../../data/preferences/user/settings/variables/";
 
@@ -33,38 +35,108 @@ using namespace mvvm_folders;
 
 namespace tests
 {
-
-void VariablesWidgetTest::test()
+std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
-    file.open(dataPath + "environment.xml", std::ifstream::in);
+    file.open(dataPath.toStdString(), std::ifstream::in);
 
-    QVERIFY(file.good());
+    std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
 
-    if (file.good())
+    bool ok = file.good();
+    if (!ok)
     {
-        auto variables = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<VariablesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(variables);
-
-        auto variablesWidget = std::make_unique<VariablesWidget>();
-        auto containerItem = model->topItem();
-        auto variablesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
-
-        if (variablesContainer)
-        {
-            variablesWidget->setItem(variablesContainer->children().back());
-            variablesWidget->show();
-        }
-
-        QTest::qWait(10000);
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
     }
 
+    auto operation = [&]() {
+        auto variables    = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<VariablesModelBuilder>();
+        auto model        = modelBuilder->schemaToModel(variables);
+
+        variablesWidget         = std::make_unique<VariablesWidget>();
+        auto containerItem      = model->topItem();
+        auto variablesContainer = dynamic_cast<VariablesContainerItem *>(containerItem);
+
+        if (!variablesContainer)
+        {
+            qWarning() << "Unable to read variables container!";
+        }
+
+        variablesWidget->setItem(variablesContainer->children().back());
+        variablesWidget->show();
+    };
+
+    auto errorHandler = [&](const std::string &error) { qWarning() << error.c_str(); };
+
+    preferences_editor::ExceptionHandler::handleOperation(operation, errorHandler);
+
     file.close();
+
+    return variablesWidget;
 }
 
+void VariablesWidgetTest::displayWdigetTest()
+{
+    std::ifstream file;
+
+    auto variablesWidget = readXmlFile(QString::fromStdString(dataPath + "environment.xml"));
+
+    QVERIFY(variablesWidget);
+
+    QTest::qWait(1000);
 }
+
+void VariablesWidgetTest::pathVariableTest()
+{
+    QFETCH(QString, localDataPath);
+    QFETCH(QString, variableName);
+    QFETCH(bool, pathCheckBoxEnabled);
+    QFETCH(bool, partialCheckBoxEnabled);
+    QFETCH(bool, pathCheckBoxChecked);
+
+    std::ifstream file;
+
+    auto folderWidget = readXmlFile(localDataPath);
+
+    QVERIFY(folderWidget);
+
+    auto nameLineEdit    = folderWidget->findChild<QLineEdit *>("nameLineEdit");
+    auto pathCheckBox    = folderWidget->findChild<QCheckBox *>("pathCheckBox");
+    auto partialCheckBox = folderWidget->findChild<QCheckBox *>("partialCheckBox");
+
+    QVERIFY(nameLineEdit);
+    QVERIFY(pathCheckBox);
+    QVERIFY(partialCheckBox);
+
+    QCOMPARE(nameLineEdit->text(), variableName);
+
+    QCOMPARE(pathCheckBox->isEnabled(), pathCheckBoxEnabled);
+    QCOMPARE(partialCheckBox->isEnabled(), partialCheckBoxEnabled);
+    QCOMPARE(pathCheckBox->isChecked(), pathCheckBoxChecked);
+
+    QTest::qWait(5000);
+}
+
+void VariablesWidgetTest::pathVariableTest_data()
+{
+    QTest::addColumn<QString>("localDataPath");
+    QTest::addColumn<QString>("variableName");
+    QTest::addColumn<bool>("pathCheckBoxEnabled");
+    QTest::addColumn<bool>("partialCheckBoxEnabled");
+    QTest::addColumn<bool>("pathCheckBoxChecked");
+
+    QTest::newRow("Is Path") << QString::fromStdString(dataPath + "path.xml") << "PATH" << false
+                             << true << true;
+    QTest::newRow("Is Not Path") << QString::fromStdString(dataPath + "environment.xml") << "name"
+                                 << false << false << false;
+}
+
+void VariablesWidgetTest::variableTypeTest() {}
+
+void VariablesWidgetTest::variableTypeTest_data() {}
+
+} // namespace tests
 
 QTEST_MAIN(tests::VariablesWidgetTest)
-

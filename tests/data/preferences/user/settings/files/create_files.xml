@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Files clsid="{215B2E53-57CE-475c-80FE-9EEC14635851}">
+      <File clsid="{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}"
+            uid="{348D9C09-C6CA-4E29-8BD2-4D2EAEDB0102}" 
+            changed="2022-06-14 15:32:35" 
+            image="0"
+            status="2" 
+            name="2">
+            <Properties hidden="0" 
+                        archive="1" 
+                        readOnly="0" 
+                        targetPath="2" 
+                        fromPath="1" 
+                        action="C"/>
+      </File>
+</Files>
