@@ -58,7 +58,7 @@
 
 <xs:complexType name="GroupProperties_t">
    <xs:sequence>
-      <xs:element name="Members" type="Members_t" maxOccurs="unbounded"/>
+      <xs:element name="Members" type="Members_t" minOccurs="0" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="action"
      type="xs:string" use="optional" />
