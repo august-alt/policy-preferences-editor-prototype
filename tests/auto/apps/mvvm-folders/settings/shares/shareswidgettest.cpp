@@ -24,8 +24,8 @@
 
 #include "shares/sharescontaineritem.h"
 #include "shares/sharesitem.h"
-#include "shares/shareswidget.h"
 #include "shares/sharesmodelbuilder.h"
+#include "shares/shareswidget.h"
 
 #include "plugins/common/exceptionhandler.h"
 
@@ -35,7 +35,6 @@ using namespace mvvm_folders;
 
 namespace tests
 {
-
 std::unique_ptr<SharesWidget> SharesWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
@@ -45,21 +44,20 @@ std::unique_ptr<SharesWidget> SharesWidgetTest::readXmlFile(const QString &dataP
     std::unique_ptr<SharesWidget> sharesWidget = nullptr;
 
     bool ok = file.good();
-    if(!ok)
+    if (!ok)
     {
         qWarning() << "Failed to read file: " << dataPath;
         return nullptr;
     }
 
-    auto operation = [&]()
-    {
-        auto shares = NetworkShareSettings_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto operation = [&]() {
+        auto shares       = NetworkShareSettings_(file, ::xsd::cxx::tree::flags::dont_validate);
         auto modelBuilder = std::make_unique<SharesModelBuilder>();
-        auto model = modelBuilder->schemaToModel(shares);
+        auto model        = modelBuilder->schemaToModel(shares);
 
-        sharesWidget = std::make_unique<SharesWidget>();
-        auto containerItem = model->topItem();
-        auto sharesContainer = dynamic_cast<SharesContainerItem*>(containerItem);
+        sharesWidget         = std::make_unique<SharesWidget>();
+        auto containerItem   = model->topItem();
+        auto sharesContainer = dynamic_cast<SharesContainerItem *>(containerItem);
 
         if (!sharesContainer)
         {
@@ -70,12 +68,9 @@ std::unique_ptr<SharesWidget> SharesWidgetTest::readXmlFile(const QString &dataP
         sharesWidget->show();
     };
 
-    auto errorHandler = [&](const std::string& error)
-    {
-        qWarning() << error.c_str();
-    };
+    auto errorHandler = [&](const std::string &error) { qWarning() << error.c_str(); };
 
-    gpui::ExceptionHandler::handleOperation(operation, errorHandler);
+    preferences_editor::ExceptionHandler::handleOperation(operation, errorHandler);
 
     file.close();
 
@@ -107,10 +102,12 @@ void SharesWidgetTest::radioButtonsTest()
 
     QVERIFY(sharesWidget);
 
-    auto noChangeUsersRadioButton = sharesWidget->findChild<QRadioButton*>("noChangeUsers");
-    auto maximumAllowedUsersRadioButton = sharesWidget->findChild<QRadioButton*>("maximumAllowedUsers");
-    auto allowThisNumberOfUsersRadioButton = sharesWidget->findChild<QRadioButton*>("allowThisNumberOfUsers");
-    auto numberOfUsersSpinBox = sharesWidget->findChild<QSpinBox*>("numberOfUsers");
+    auto noChangeUsersRadioButton       = sharesWidget->findChild<QRadioButton *>("noChangeUsers");
+    auto maximumAllowedUsersRadioButton = sharesWidget->findChild<QRadioButton *>(
+        "maximumAllowedUsers");
+    auto allowThisNumberOfUsersRadioButton = sharesWidget->findChild<QRadioButton *>(
+        "allowThisNumberOfUsers");
+    auto numberOfUsersSpinBox = sharesWidget->findChild<QSpinBox *>("numberOfUsers");
 
     QVERIFY(noChangeUsersRadioButton);
     QVERIFY(maximumAllowedUsersRadioButton);
@@ -133,10 +130,10 @@ void SharesWidgetTest::radioButtonsTest_data()
 
     QTest::newRow("No change") << QString::fromStdString(dataPath + "no_change_network_shares.xml")
                                << true << false << false << 0;
-    QTest::newRow("Maximum")   << QString::fromStdString(dataPath + "maximum_network_shares.xml")
-                               << false << true << false << 0;
-    QTest::newRow("10 Users")  << QString::fromStdString(dataPath + "10_users_network_shares.xml")
-                               << false << false << true << 10;
+    QTest::newRow("Maximum") << QString::fromStdString(dataPath + "maximum_network_shares.xml")
+                             << false << true << false << 0;
+    QTest::newRow("10 Users") << QString::fromStdString(dataPath + "10_users_network_shares.xml")
+                              << false << false << true << 10;
 }
 
 void SharesWidgetTest::actionStateTest()
@@ -152,10 +149,10 @@ void SharesWidgetTest::actionStateTest()
 
     QVERIFY(sharesWidget);
 
-    auto actionComboBox = sharesWidget->findChild<QComboBox*>("actionComboBox");
-    auto modifiersFrame = sharesWidget->findChild<QFrame*>("modifiersFrame");
-    auto userFrame = sharesWidget->findChild<QFrame*>("userFrame");
-    auto accessFrame = sharesWidget->findChild<QFrame*>("accessFrame");
+    auto actionComboBox = sharesWidget->findChild<QComboBox *>("actionComboBox");
+    auto modifiersFrame = sharesWidget->findChild<QFrame *>("modifiersFrame");
+    auto userFrame      = sharesWidget->findChild<QFrame *>("userFrame");
+    auto accessFrame    = sharesWidget->findChild<QFrame *>("accessFrame");
 
     QVERIFY(actionComboBox);
     QVERIFY(modifiersFrame);
@@ -175,14 +172,14 @@ void SharesWidgetTest::actionStateTest_data()
     QTest::addColumn<bool>("modifiersEnabled");
     QTest::addColumn<bool>("groupBoxesEnabled");
 
-    QTest::newRow("Create")   << QString::fromStdString(dataPath + "create_network_shares.xml")
-                              << "Create" << false << true;
-    QTest::newRow("Update")   << QString::fromStdString(dataPath + "update_network_shares.xml")
-                              << "Update" << true << true;
-    QTest::newRow("Delete")   << QString::fromStdString(dataPath + "delete_network_shares.xml")
-                              << "Delete" << true << false;
-    QTest::newRow("Replace")  << QString::fromStdString(dataPath + "replace_network_shares.xml")
-                              << "Replace" << false << true;
+    QTest::newRow("Create") << QString::fromStdString(dataPath + "create_network_shares.xml")
+                            << "Create" << false << true;
+    QTest::newRow("Update") << QString::fromStdString(dataPath + "update_network_shares.xml")
+                            << "Update" << true << true;
+    QTest::newRow("Delete") << QString::fromStdString(dataPath + "delete_network_shares.xml")
+                            << "Delete" << true << false;
+    QTest::newRow("Replace") << QString::fromStdString(dataPath + "replace_network_shares.xml")
+                             << "Replace" << false << true;
 }
 
 void SharesWidgetTest::modifiersTest()
@@ -198,9 +195,10 @@ void SharesWidgetTest::modifiersTest()
 
     QVERIFY(sharesWidget);
 
-    auto updateAllRegularShares = sharesWidget->findChild<QCheckBox*>("updateAllRegularShares");
-    auto updateAllHiddenShares = sharesWidget->findChild<QCheckBox*>("updateAllHiddenShares");
-    auto updateAllAdministrativeDrives = sharesWidget->findChild<QCheckBox*>("updateAllAdministrativeDrives");
+    auto updateAllRegularShares = sharesWidget->findChild<QCheckBox *>("updateAllRegularShares");
+    auto updateAllHiddenShares  = sharesWidget->findChild<QCheckBox *>("updateAllHiddenShares");
+    auto updateAllAdministrativeDrives = sharesWidget->findChild<QCheckBox *>(
+        "updateAllAdministrativeDrives");
 
     QCOMPARE(updateAllRegularShares->isChecked(), updateAllRegularSharesState);
     QCOMPARE(updateAllHiddenShares->isChecked(), updateAllHiddenSharesState);
@@ -214,13 +212,12 @@ void SharesWidgetTest::modifiersTest_data()
     QTest::addColumn<bool>("updateAllHiddenSharesState");
     QTest::addColumn<bool>("updateAllAdministrativeDrivesState");
 
-    QTest::newRow("On")  << QString::fromStdString(dataPath + "modifiers_on__network_shares.xml")
-                         << true << true << true;
+    QTest::newRow("On") << QString::fromStdString(dataPath + "modifiers_on__network_shares.xml")
+                        << true << true << true;
     QTest::newRow("Off") << QString::fromStdString(dataPath + "modifiers_off_network_shares.xml")
                          << false << false << false;
 }
 
-}
+} // namespace tests
 
 QTEST_MAIN(tests::SharesWidgetTest)
-

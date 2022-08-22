@@ -18,39 +18,25 @@
 **
 ***********************************************************************************************************************/
 
-#include "snapindetailswidget.h"
-#include "ui_snapindetailswidget.h"
+#include "plugin.h"
 
-#include <QWidget>
+#include "administrativetemplatessnapin.h"
+
+#include "isnapin.h"
 
 namespace preferences_editor
 {
-SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent, ::preferences_editor::ISnapIn *snapIn)
-    : SnapInDetailsWidget(parent)
+class AdministrativeTemplatesPlugin : public Plugin
 {
-    setSnapIn(snapIn);
-}
-
-SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::SnapInDetailsWidget())
-{
-    ui->setupUi(this);
-}
-
-SnapInDetailsWidget::~SnapInDetailsWidget()
-{
-    delete ui;
-}
-
-void SnapInDetailsWidget::setSnapIn(const ISnapIn *snapIn)
-{
-    ui->categoryLineEdit->setText(snapIn->getId().toString());
-    ui->copyrightLineEdit->setText(snapIn->getCopyright());
-    ui->descriptionPlainTextEdit->setPlainText(snapIn->getHelpText());
-    ui->licensePlainTextEdit->setPlainText(snapIn->getLicense());
-    ui->nameLineEdit->setText(snapIn->getDisplayName());
-    ui->versionLineEdit->setText(snapIn->getVersion().toString());
-}
-
+public:
+    AdministrativeTemplatesPlugin()
+        : Plugin("AdministrativeTemplatesSnapIn")
+    {
+        PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(::preferences_editor::ISnapIn).name(),
+                                                 AdministrativeTemplatesSnapIn);
+    }
+};
 } // namespace preferences_editor
+
+PREFERENCES_EDITOR_EXPORT_PLUGIN(AdministrativeTemplates,
+                                 ::preferences_editor::AdministrativeTemplatesPlugin)

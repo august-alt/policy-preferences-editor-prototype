@@ -70,6 +70,7 @@ done
 %_libdir/preferences_editor/plugins/libpreferences-plugin.so
 %_libdir/preferences_editor/plugins/libscripts-plugin.so
 %_libdir/preferences_editor/plugins/libsmb-storage-plugin.so
+%_libdir/preferences_editor/plugins/libadministrative-templates-plugin.so
 
 %_datadir/icons/hicolor/48x48/apps/preferences_editor.png
 %_datadir/icons/hicolor/64x64/apps/preferences_editor.png
