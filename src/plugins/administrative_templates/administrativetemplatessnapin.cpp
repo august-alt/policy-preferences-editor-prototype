@@ -34,7 +34,7 @@ class AdministrativeTemplatesSnapInPrivate
 public:
     AdministrativeTemplatesSnapInPrivate() {}
 
-    std::unique_ptr<QStandardItemModel> model;
+    std::unique_ptr<QStandardItemModel> model = nullptr;
 
 private:
     AdministrativeTemplatesSnapInPrivate(const AdministrativeTemplatesSnapInPrivate &)
