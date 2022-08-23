@@ -18,7 +18,7 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
+#include "../../core/plugin.h"
 
 #include "administrativetemplatessnapin.h"
 
@@ -30,7 +30,7 @@ class AdministrativeTemplatesPlugin : public Plugin
 {
 public:
     AdministrativeTemplatesPlugin()
-        : Plugin("AdministrativeTemplatesSnapIn")
+        : preferences_editor::Plugin("AdministrativeTemplatesSnapIn")
     {
         PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(::preferences_editor::ISnapIn).name(),
                                                  AdministrativeTemplatesSnapIn);
