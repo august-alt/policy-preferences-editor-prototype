@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkOptions clsid="{09686AD1-5D80-48ee-A940-690A6DF02A90}"><VPN clsid="{0532F359-3205-4d32-ADB7-9AEC6402BECF}" name="Connection" image="3" changed="2022-08-23 11:35:10" uid="{1AE6F82F-6303-44CD-AB03-60AA64DCB177}" userContext="1" removePolicy="0"><Properties showProgress="1" showPassword="1" showDomain="1" redialCount="0" redialPause="1" idleDisconnect="NEVER" reconnect="1" customSettings="0" securePassword="1" secureData="0" useLogon="0" vpnStrategy="VS_Default" action="D" user="1" name="Connection" dialFirst="Test" trayIcon="0"/></VPN>
+</NetworkOptions>
+

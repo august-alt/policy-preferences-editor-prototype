@@ -28,7 +28,7 @@
 #include <network_options/networkcontaineritem.h>
 #include <network_options/networkmodelbuilder.h>
 
-const std::string dataPath = "../../../../data/preferences/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/network_options/";
 
 using namespace mvvm_folders;
 
@@ -50,104 +50,116 @@ std::unique_ptr<VpnWidget> VpnWidgetTest::readXmlFile(const QString &dataPath)
 
     std::unique_ptr<VpnWidget> vpnWidget = nullptr;
 
-    auto files = NetworkOptions_(file, ::xsd::cxx::tree::flags::dont_validate);
-    auto modelBuilder = std::make_unique<NetworkModelBuilder>();
-    auto model = modelBuilder->schemaToModel(files);
+    try {
+        auto files = NetworkOptions_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<NetworkModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
 
-    vpnWidget = std::make_unique<VpnWidget>();
-    auto containerItem = model->topItem();
-    auto networkContainer = dynamic_cast<NetworkContainerItem<VpnItem>*>(containerItem);
+        vpnWidget = std::make_unique<VpnWidget>();
+        auto containerItem = model->topItem();
+        auto networkContainer = dynamic_cast<NetworkContainerItem<VpnItem>*>(containerItem);
 
+        if (!networkContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
 
-    if (!networkContainer)
-    {
-        qWarning() << "Unable to read ini container!";
-        return nullptr;
+        vpnWidget->setItem(networkContainer->children().back());
+        vpnWidget->show();
     }
-
-    vpnWidget->setItem(networkContainer->children().back());
-    vpnWidget->show();
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
+    }
 
     file.close();
 
     return vpnWidget;
 }
 
-void VpnWidgetTest::test()
-{
-
-}
 void VpnWidgetTest::actionWidgetStateTest()
 {
     QFETCH(QString, dataPath);
     QFETCH(QString, action);
-    QFETCH(QString, connectionNameLineEditState);
-    QFETCH(QString, ipaddressLabelText);
-    QFETCH(bool, useDnsCheckBoxState);
-    QFETCH(QString, dialLabeleEditState);
+    QFETCH(bool, ipaddressLineEditState);
+    QFETCH(bool, ipaddressLabelState);
+    QFETCH(bool, connectionNameLineEditState);
     QFETCH(bool, showIconCheckBoxState);
     QFETCH(bool, userConnectionRadioButtonState);
     QFETCH(bool, allUsersConnectionRadioButtonState);
 
     auto widget = readXmlFile(dataPath);
 
-    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
-    auto connectionNameLineEdit = widget->findChild<QLineEdit*>("connectionNameLineEdit");
+    QVERIFY(widget);
+
+    auto ipaddressLabel = widget->findChild<QLabel*>("ipaddressLabel");
     auto ipaddressLineEdit = widget->findChild<QLineEdit*>("ipaddressLineEdit");
-    auto useDnsCheckBox = widget->findChild<QCheckBox*>("useDnsCheckBox");
+    auto connectionNameLineEdit = widget->findChild<QLineEdit*>("connectionNameLineEdit");
     auto showIconCheckBox = widget->findChild<QCheckBox*>("showIconCheckBox");
     auto userConnectionRadioButton = widget->findChild<QRadioButton*>("userConnectionRadioButton");
     auto allUsersConnectionRadioButton = widget->findChild<QRadioButton*>("allUsersConnectionRadioButton");
-
+    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
 
     QTest::qWait(1000);
 
-    QVERIFY(actionComboBox);
-    QVERIFY(connectionNameLineEdit);
+    QVERIFY(ipaddressLabel);
     QVERIFY(ipaddressLineEdit);
-    QVERIFY(useDnsCheckBox);
+    QVERIFY(connectionNameLineEdit);
     QVERIFY(showIconCheckBox);
-// to do for radiobutton
+    QVERIFY(userConnectionRadioButton);
+    QVERIFY(allUsersConnectionRadioButton);
+    QVERIFY(actionComboBox);
 
     QCOMPARE(actionComboBox->currentText(), action);
-    QCOMPARE(connectionNameLineEdit->text(), connectionNameLineEditState);
-    QCOMPARE(ipaddressLineEdit->text(), ipaddressLabelText);
-    QCOMPARE(useDnsCheckBox->isEnabled(), useDnsCheckBoxState);
+    QCOMPARE(ipaddressLabel->isEnabled(), ipaddressLabelState);
+    QCOMPARE(ipaddressLineEdit->isEnabled(), ipaddressLineEditState);
+    QCOMPARE(connectionNameLineEdit->isEnabled(), connectionNameLineEditState);
     QCOMPARE(showIconCheckBox->isEnabled(), showIconCheckBoxState);
-//    QCOMPARE(archiveCheckBox->isEnabled(), groupBoxState);
-//    QCOMPARE(readOnlyCheckBox->isEnabled(), groupBoxState);
-//    QCOMPARE(archiveCheckBox->isChecked(), archiveCheckBoxState);
+    QCOMPARE(userConnectionRadioButton->isChecked(), userConnectionRadioButtonState);
+    QCOMPARE(allUsersConnectionRadioButton->isChecked(), allUsersConnectionRadioButtonState);
 
 }
 void VpnWidgetTest::actionWidgetStateTest_data()
 {
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<QString>("action");
+    QTest::addColumn<bool>("ipaddressLabelState");
+    QTest::addColumn<bool>("ipaddressLineEditState");
+    QTest::addColumn<bool>("connectionNameLineEditState");
+    QTest::addColumn<bool>("showIconCheckBoxState");
+    QTest::addColumn<bool>("userConnectionRadioButtonState");
+    QTest::addColumn<bool>("allUsersConnectionRadioButtonState");
 
+    QTest::addRow("Replace") << QString::fromStdString(dataPath + "replace_vpn.xml") << "Replace" << true << true << true << true << true << false;
+    QTest::addRow("Create")  << QString::fromStdString(dataPath + "create_vpn.xml")  << "Create"  << true << true << true << true << true << false;
+    QTest::addRow("Update")  << QString::fromStdString(dataPath + "update_vpn.xml")  << "Update"  << true << true << true << true << true << false;
+    QTest::addRow("Delete")  << QString::fromStdString(dataPath + "delete_vpn.xml")  << "Delete"  << false << false << true << false << true << false;
 }
-void VpnWidgetTest::checkBoxesStateTest()
+
+void VpnWidgetTest::checkBoxesStateDNS()
 {
+    QFETCH(QString, dataPath);
+    QFETCH(bool, useDnsCheckBoxState);
 
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto useDnsCheckBox = widget->findChild<QCheckBox*>("useDnsCheckBox");
+
+    QTest::qWait(1000);
+
+    QVERIFY(useDnsCheckBox);
+    QCOMPARE(useDnsCheckBox->isChecked(), useDnsCheckBoxState);
 }
-void VpnWidgetTest::checkBoxesStateTest_data()
+void VpnWidgetTest::checkBoxesStateDNS_data()
 {
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<bool>("useDnsCheckBoxState");
 
+    QTest::addRow("CreateDNS")  << QString::fromStdString(dataPath + "createDns_vpn.xml") << true;
 }
-void VpnWidgetTest::lineEditTest()
-{
-
-}
-void VpnWidgetTest::lineEditTest_data()
-{
-
-}
-void VpnWidgetTest::radioButtonStateTest()
-{
-
-}
-void VpnWidgetTest::radioButtonStateTest_data()
-{
-
-}
-
 
 }
 

@@ -34,7 +34,13 @@ enum ViewMode
 
 void VpnWidget::on_actionComboBox_currentIndexChanged(int index)
 {
-    Q_UNUSED(index);
-}
+    bool deleteMode = (index == ViewMode::DELETE__MODE);
 
+    ui->ipaddressLabel->setDisabled(deleteMode);
+    ui->ipaddressLineEdit->setDisabled(deleteMode);
+
+    ui->useDnsCheckBox->setDisabled(deleteMode);
+    ui->firstConnectGroupBox->setDisabled(deleteMode);
+    ui->showIconCheckBox->setDisabled(deleteMode);
+}
 }

@@ -52,9 +52,9 @@ void NetworkContainerItem<NetworkItem>::setCommon(const CommonItem &item)
 }
 
 template <typename NetworkItem>
-NetworkItem NetworkContainerItem<NetworkItem>::getNetwork() const
+NetworkItem* NetworkContainerItem<NetworkItem>::getNetwork() const
 {
-    return property<NetworkItem>(NETWORK);
+    return static_cast<NetworkItem*>(children()[childrenCount() - 1]);
 }
 
 template <typename NetworkItem>

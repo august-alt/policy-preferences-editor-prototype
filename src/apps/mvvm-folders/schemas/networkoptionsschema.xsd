@@ -8,7 +8,7 @@
    <xs:attribute name="name"
      type="xs:string" use="required" />
    <xs:attribute name="ipAddress"
-     type="xs:string" use="required" />
+     type="xs:string" use="optional" />
    <xs:attribute name="useDNS"
      type="xs:boolean" use="optional" />
    <xs:attribute name="dialFirst"

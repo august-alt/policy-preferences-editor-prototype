@@ -43,23 +43,4 @@ DialUpItem::DialUpItem(const DialUpItem &other)
     addProperty(propertyToString(SYSTEM), !property<bool>(propertyToString(USER)));
 }
 
-constexpr const char *DialUpItem::propertyToString(const DialUpItem::PropertyType &type)
-{
-    switch (type)
-    {
-    case ACTION:
-        return "action";
-    case PHONE_NUMBER:
-        return "phoneNumber";
-    case NAME:
-        return "name";
-    case USER:
-        return "user";
-    case SYSTEM:
-        return "system";
-    }
-
-    return "";
-}
-
 }
