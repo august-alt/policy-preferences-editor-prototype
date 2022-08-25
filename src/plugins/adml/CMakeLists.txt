@@ -10,6 +10,8 @@ set(HEADERS
 set(SOURCES
     admlformat.cpp
     admlplugin.cpp
+    ${CMAKE_SOURCE_DIR}/src/plugins/administrative_templates/presentation/presentationwidget.h
+    ${CMAKE_SOURCE_DIR}/src/plugins/administrative_templates/presentation/presentationwidget.cpp
 )
 
 add_preferences_editor_plugin(adml-plugin ${SOURCES})
