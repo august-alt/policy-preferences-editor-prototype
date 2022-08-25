@@ -6,9 +6,11 @@ set(HEADERS
     aboutdialog.h
     commandlineoptions.h
     commandlineparser.h
+    concatenatetreesproxymodel.h
+    concatenatetreesproxymodel_p.h
     editorpreferencesdialog.h
-    gui.h
     filedialogutils.h
+    gui.h
     listboxdialog.h
     mainwindow.h
     mainwindowsettings.h
@@ -18,9 +20,10 @@ set(HEADERS
 set(SOURCES
     aboutdialog.cpp
     commandlineparser.cpp
+    concatenatetreesproxymodel.cpp
     editorpreferencesdialog.cpp
-    gui.cpp
     filedialogutils.cpp
+    gui.cpp
     listboxdialog.cpp
     mainwindow.cpp
     mainwindowsettings.cpp
@@ -36,6 +39,7 @@ set(UI_FORMS
 
 set(MOC_HEADERS
     aboutdialog.h
+    concatenatetreesproxymodel.h
     editorpreferencesdialog.h
     listboxdialog.h
     mainwindow.h
