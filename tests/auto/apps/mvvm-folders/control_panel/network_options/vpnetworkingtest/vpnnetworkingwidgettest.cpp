@@ -22,25 +22,97 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include <network_options/vpnitem.h>
+#include <network_options/vpnnetworkingwidget.h>
+#include <network_options/basenetworkitem.h>
+#include <network_options/networkcontaineritem.h>
+#include <network_options/networkmodelbuilder.h>
+
+//const std::string dataPath = "../../../../data/preferences/";
+
+const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/network_options/";
+
+using namespace mvvm_folders;
 
 namespace tests 
 {
-
-void VpnNetworkingWidgetTest::test()
+std::unique_ptr<VpnNetworkingWidget> VpnNetworkingWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
-    file.open(dataPath + "vpnnetworkingwidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath.toStdString(), std::ifstream::in);
+
+    bool ok = file.good();
+    if(!ok)
     {
-       
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
+
+    std::unique_ptr<VpnNetworkingWidget> vpnNetworkingWidget = nullptr;
+
+    try {
+        auto files = NetworkOptions_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<NetworkModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
+
+        vpnNetworkingWidget = std::make_unique<VpnNetworkingWidget>();
+        auto containerItem = model->topItem();
+        auto networkContainer = dynamic_cast<NetworkContainerItem<VpnItem>*>(containerItem);
+
+        if (!networkContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
+
+        vpnNetworkingWidget->setItem(networkContainer->children().back());
+        vpnNetworkingWidget->show();
+    }
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
     }
 
     file.close();
+
+    return vpnNetworkingWidget;
 }
+
+void VpnNetworkingWidgetTest::test()
+{
 
 }
 
+void VpnNetworkingWidgetTest::comboBoxeState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(bool, typeLabelState);
+    QFETCH(QString, typeComboBoxState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto typeLabel = widget->findChild<QLabel*>("typeLabel");
+    auto typeComboBox = widget->findChild<QComboBox*>("typeComboBox");
+
+    QTest::qWait(1000);
+
+    QVERIFY(typeLabel);
+    QVERIFY(typeComboBox);
+
+    QCOMPARE(typeLabel->isEnabled(), typeLabelState);
+    QCOMPARE(typeComboBox->currentText(), typeComboBoxState);
+}
+void VpnNetworkingWidgetTest::comboBoxeState_data()
+{
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<bool>("typeLabelState");
+    QTest::addColumn<QString>("typeComboBoxState");
+
+    QTest::addRow("Options-on")  << QString::fromStdString(dataPath + "options_on.xml") << true << "Automatic" ;
+}
+}
 QTEST_MAIN(tests::VpnNetworkingWidgetTest)
 

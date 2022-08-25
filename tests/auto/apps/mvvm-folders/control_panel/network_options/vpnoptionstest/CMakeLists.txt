@@ -19,5 +19,6 @@ set(SOURCES ${SOURCES} ${HEADERS})
 
 add_executable(vpnoptionswidgettest ${SOURCES})
 target_link_libraries(vpnoptionswidgettest Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Test XercesC::XercesC)
-add_preferences_editor_test(preferences.vpnoptionswidgettest vpnoptionswidgettest)
+target_link_libraries(vpnoptionswidgettest mvvm-folders_static)
 
+add_preferences_editor_test(preferences.vpnoptionswidgettest vpnoptionswidgettest)
