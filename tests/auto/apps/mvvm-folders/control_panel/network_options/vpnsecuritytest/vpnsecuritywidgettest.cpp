@@ -163,15 +163,60 @@ void VpnSecurityWidgetTest::radioButtonState_data()
 
 void VpnSecurityWidgetTest::checkBoxState()
 {
-// TODO
+    QFETCH(QString, dataPath);
+    QFETCH(bool, passwordCheckBoxState);
+    QFETCH(bool, encryptionCheckBoxState);
+    QFETCH(bool, papCheckBoxState);
+    QFETCH(bool, spapCheckBoxState);
+    QFETCH(bool, chapCheckBoxState);
+    QFETCH(bool, mschapCheckBoxState);
+    QFETCH(bool, oldMschapCheckBoxState);
+    QFETCH(bool, mschap2CheckBoxState);
+    QFETCH(bool, useLogonCheckBoxState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto passwordCheckBox = widget->findChild<QCheckBox*>("passwordCheckBox");
+    auto encryptionCheckBox = widget->findChild<QCheckBox*>("encryptionCheckBox");
+    auto papCheckBox = widget->findChild<QCheckBox*>("papCheckBox");
+    auto spapCheckBox = widget->findChild<QCheckBox*>("spapCheckBox");
+    auto chapCheckBox = widget->findChild<QCheckBox*>("chapCheckBox");
+    auto mschapCheckBox = widget->findChild<QCheckBox*>("mschapCheckBox");
+    auto oldMschapCheckBox = widget->findChild<QCheckBox*>("oldMschapCheckBox");
+    auto mschap2CheckBox = widget->findChild<QCheckBox*>("mschap2CheckBox");
+    auto useLogonCheckBox = widget->findChild<QCheckBox*>("useLogonCheckBox");
+
+    QTest::qWait(1000);
+
+    QCOMPARE(passwordCheckBox->isChecked(), passwordCheckBoxState);
+    QCOMPARE(encryptionCheckBox->isChecked(), encryptionCheckBoxState);
+    QCOMPARE(papCheckBox->isChecked(), papCheckBoxState);
+    QCOMPARE(spapCheckBox->isChecked(), spapCheckBoxState);
+    QCOMPARE(chapCheckBox->isChecked(), chapCheckBoxState);
+    QCOMPARE(mschapCheckBox->isChecked(), mschapCheckBoxState);
+    QCOMPARE(oldMschapCheckBox->isChecked(), oldMschapCheckBoxState);
+    QCOMPARE(mschap2CheckBox->isChecked(), mschap2CheckBoxState);
+    QCOMPARE(useLogonCheckBox->isChecked(), useLogonCheckBoxState);
 }
 
 void VpnSecurityWidgetTest::checkBoxState_data()
 {
-// TODO
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<bool>("passwordCheckBoxState");
+    QTest::addColumn<bool>("encryptionCheckBoxState");
+    QTest::addColumn<bool>("papCheckBoxState");
+    QTest::addColumn<bool>("spapCheckBoxState");
+    QTest::addColumn<bool>("chapCheckBoxState");
+    QTest::addColumn<bool>("mschapCheckBoxState");
+    QTest::addColumn<bool>("oldMschapCheckBoxState");
+    QTest::addColumn<bool>("mschap2CheckBoxState");
+    QTest::addColumn<bool>("useLogonCheckBoxState");
+
+    QTest::addRow("Options") << QString::fromStdString(dataPath + "options_on.xml") << true << false <<false << false << false << false << false<< false << false ;
+
 }
-
-
 
 }
 
