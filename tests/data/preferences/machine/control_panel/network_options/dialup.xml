@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkOptions clsid="{09686AD1-5D80-48ee-A940-690A6DF02A90}">
+    <DUN clsid="{9B0D030D-9396-49c1-8DEF-08B35B5BB79E}" name="Connection 1" userContext="1" image="2" changed="2022-08-29 10:39:46" uid="{C445FFDF-656E-46E0-A3AC-28276C87318D}"><Properties action="U" user="0" name="Connection 1" phoneNumber="8 800 000 20 02"/></DUN>
+</NetworkOptions>
+

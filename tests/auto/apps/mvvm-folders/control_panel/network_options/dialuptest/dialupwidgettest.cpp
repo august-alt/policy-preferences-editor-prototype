@@ -22,22 +22,102 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include <network_options/dialupitem.h>
+#include <network_options/dialupwidget.h>
+#include <network_options/basenetworkitem.h>
+#include <network_options/networkcontaineritem.h>
+#include <network_options/networkmodelbuilder.h>
+
+//const std::string dataPath = "../../../../data/preferences/";
+
+const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/network_options/";
+
+using namespace mvvm_folders;
 
 namespace tests 
 {
-
-void DialUpWidgetTest::test()
+std::unique_ptr<DialUpWidget> DialUpWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
-    file.open(dataPath + "dialupwidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath.toStdString(), std::ifstream::in);
+
+    bool ok = file.good();
+    if(!ok)
     {
-       
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
+
+    std::unique_ptr<DialUpWidget> dialUpWidget = nullptr;
+
+    try {
+        auto files = NetworkOptions_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<NetworkModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
+
+        dialUpWidget = std::make_unique<DialUpWidget>();
+        auto containerItem = model->topItem();
+        auto networkContainer = dynamic_cast<NetworkContainerItem<DialUpItem>*>(containerItem);
+
+        if (!networkContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
+
+        dialUpWidget->setItem(networkContainer->children().back());
+        dialUpWidget->show();
+    }
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
     }
 
     file.close();
+
+    return dialUpWidget;
+}
+
+void DialUpWidgetTest::WidgetState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(bool, userRadioButtonState);
+    QFETCH(bool, systemRadioButtonState);
+    QFETCH(bool, connectionLineEditState);
+    QFETCH(bool, phoneLineEditState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto userRadioButton = widget->findChild<QRadioButton*>("userRadioButton");
+    auto systemRadioButton = widget->findChild<QRadioButton*>("systemRadioButton");
+    auto connectionLineEdit = widget->findChild<QLineEdit*>("connectionLineEdit");
+    auto phoneLineEdit = widget->findChild<QLineEdit*>("phoneLineEdit");
+
+    QTest::qWait(1000);
+
+    QVERIFY(userRadioButton);
+    QVERIFY(systemRadioButton);
+    QVERIFY(connectionLineEdit);
+    QVERIFY(phoneLineEdit);
+
+    QCOMPARE(userRadioButton->isChecked(), userRadioButtonState);
+    QCOMPARE(systemRadioButton->isChecked(), systemRadioButtonState);
+    QCOMPARE(connectionLineEdit->isEnabled(), connectionLineEditState);
+    QCOMPARE(phoneLineEdit->isEnabled(), phoneLineEditState);
+}
+void DialUpWidgetTest::WidgetState_data()
+{
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<bool>("userRadioButtonState");
+    QTest::addColumn<bool>("systemRadioButtonState");
+    QTest::addColumn<bool>("connectionLineEditState");
+    QTest::addColumn<bool>("phoneLineEditState");
+
+    QTest::addRow("DialUp")  << QString::fromStdString(dataPath + "dialup.xml") << false << true << true << true ;
+    QTest::addRow("DialUp1")  << QString::fromStdString(dataPath + "dialup1.xml") << true << false << true << true ;
 }
 
 }

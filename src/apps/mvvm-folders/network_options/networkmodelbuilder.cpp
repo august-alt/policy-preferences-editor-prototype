@@ -88,6 +88,7 @@ std::unique_ptr<PreferencesModel> NetworkModelBuilder::schemaToModel(std::unique
 
             dun->setProperty<std::string>(DialUpItem::propertyToString(DialUpItem::ACTION), action);
             dun->setProperty<bool>(DialUpItem::propertyToString(DialUpItem::USER), properties.user());
+            dun->setProperty<bool>(DialUpItem::propertyToString(DialUpItem::SYSTEM), !properties.user());
             dun->setProperty<std::string>(DialUpItem::propertyToString(DialUpItem::NAME), properties.name());
             dun->setProperty<std::string>(DialUpItem::propertyToString(DialUpItem::PHONE_NUMBER), properties.phoneNumber());
 
