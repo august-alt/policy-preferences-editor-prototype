@@ -160,6 +160,7 @@ set(HEADERS
     variables/variableswidget.h
 
     preferencestreemodel.h
+    preferencestreeproxymodel.h
 
     preferenceswidget.h
 )
@@ -316,6 +317,7 @@ set(SOURCES
     variables/variableswidgetslots.cpp
 
     preferencestreemodel.cpp
+    preferencestreeproxymodel.cpp
 
     preferenceswidget.cpp
 )
