@@ -63,7 +63,7 @@ void LocalUserWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, 0);
-    mapper->addMapping(ui->userNameLineEdit, 1);
+    mapper->addMapping(ui->userComboBox, 1);
     mapper->addMapping(ui->renameLineEdit, 2);
     mapper->addMapping(ui->fullNameLineEdit, 3);
     mapper->addMapping(ui->descriptionLineEdit, 4);
