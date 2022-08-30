@@ -24,6 +24,7 @@
 
 namespace preferences_editor
 {
+class PreferencesSnapInPrivate;
 
 class PreferencesSnapIn final : public AbstractSnapIn
 {
@@ -33,6 +34,9 @@ public:
     void onInitialize() override;
 
     void onShutdown() override;
+
+private:
+    std::unique_ptr<PreferencesSnapInPrivate> d;
 };
 
 } // namespace preferences_editor

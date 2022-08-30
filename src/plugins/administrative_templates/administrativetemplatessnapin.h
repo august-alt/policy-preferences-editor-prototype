@@ -17,40 +17,28 @@
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **
 ***********************************************************************************************************************/
+#ifndef ADMINISTRATIVE_TEMPLATES_SNAP_IN_H
+#define ADMINISTRATIVE_TEMPLATES_SNAP_IN_H
 
-#include "snapindetailswidget.h"
-#include "ui_snapindetailswidget.h"
-
-#include <QWidget>
+#include "abstractsnapin.h"
 
 namespace preferences_editor
 {
-SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent, ::preferences_editor::ISnapIn *snapIn)
-    : SnapInDetailsWidget(parent)
-{
-    setSnapIn(snapIn);
-}
+class AdministrativeTemplatesSnapInPrivate;
 
-SnapInDetailsWidget::SnapInDetailsWidget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::SnapInDetailsWidget())
+class AdministrativeTemplatesSnapIn final : public AbstractSnapIn
 {
-    ui->setupUi(this);
-}
+public:
+    AdministrativeTemplatesSnapIn();
 
-SnapInDetailsWidget::~SnapInDetailsWidget()
-{
-    delete ui;
-}
+    void onInitialize() override;
 
-void SnapInDetailsWidget::setSnapIn(const ISnapIn *snapIn)
-{
-    ui->categoryLineEdit->setText(snapIn->getId().toString());
-    ui->copyrightLineEdit->setText(snapIn->getCopyright());
-    ui->descriptionPlainTextEdit->setPlainText(snapIn->getHelpText());
-    ui->licensePlainTextEdit->setPlainText(snapIn->getLicense());
-    ui->nameLineEdit->setText(snapIn->getDisplayName());
-    ui->versionLineEdit->setText(snapIn->getVersion().toString());
-}
+    void onShutdown() override;
+
+private:
+    std::unique_ptr<AdministrativeTemplatesSnapInPrivate> d;
+};
 
 } // namespace preferences_editor
+
+#endif // ADMINISTRATIVE_TEMPLATES_SNAP_IN_H

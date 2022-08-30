@@ -20,6 +20,8 @@
 
 #include "abstractsnapin.h"
 
+#include <qstandarditemmodel.h>
+
 namespace preferences_editor
 {
 class AbstractSnapInPrivate
@@ -27,7 +29,7 @@ class AbstractSnapInPrivate
 public:
     QString name{};
     QUuid id{};
-    QUuid rootNode{};
+    QAbstractItemModel *rootNode{nullptr};
     QString type{};
     QString helpText{};
     QVersionNumber version{};
@@ -40,7 +42,7 @@ QUuid AbstractSnapIn::getId() const
     return d->id;
 }
 
-QUuid AbstractSnapIn::getRootNode() const
+QAbstractItemModel *AbstractSnapIn::getRootNode() const
 {
     return d->rootNode;
 }
@@ -101,7 +103,7 @@ void AbstractSnapIn::setId(QUuid id)
     d->id = id;
 }
 
-void AbstractSnapIn::setRootNode(QUuid rootNode)
+void AbstractSnapIn::setRootNode(QAbstractItemModel *rootNode)
 {
     d->rootNode = rootNode;
 }
