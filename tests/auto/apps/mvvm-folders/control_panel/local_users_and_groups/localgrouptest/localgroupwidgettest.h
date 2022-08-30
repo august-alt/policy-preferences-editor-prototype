@@ -24,21 +24,27 @@
 #include <QtTest>
 namespace mvvm_folders
 {
-    class LocalGroupWidget;
+class LocalGroupWidget;
 }
 
 namespace tests
 {
-    class LocalGroupWidgetTest : public QObject
-    {
-        Q_OBJECT
+class LocalGroupWidgetTest : public QObject
+{
+    Q_OBJECT
 
-        private slots:
-            void test();
+private slots:
+//    void test();
+    void LineEditCheck();
+    void LineEditCheck_data();
+    void RadioButtonCheck();
+    void RadioButtonCheck_data();
+    void CheckBox();
+    void CheckBox_data();
 
-    private:
-            std::unique_ptr<mvvm_folders::LocalGroupWidget> readXmlFile(const QString &dataPath);
-    };
+private:
+    std::unique_ptr<mvvm_folders::LocalGroupWidget> readXmlFile(const QString &dataPath);
+};
 }
 
 #endif//MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H

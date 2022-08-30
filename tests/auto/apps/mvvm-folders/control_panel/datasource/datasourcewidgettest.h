@@ -23,14 +23,21 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class DataSourceWidget;
+}
 namespace tests 
 {
     class DataSourceWidgetTest : public QObject
     {
         Q_OBJECT
+    private:
+        std::unique_ptr<mvvm_folders::DataSourceWidget> readXmlFile(const QString &dataPath);
 
         private slots:
-            void test();
+//            void test();
+            void WidgetState();
     };
 }
 
