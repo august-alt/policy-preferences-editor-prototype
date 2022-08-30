@@ -26,44 +26,54 @@
 #include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class PreferencesWidget; }
+namespace Ui
+{
+class PreferencesWidget;
+}
 QT_END_NAMESPACE
 
-namespace ModelView { class SessionModel; class ViewModel; class ViewModelDelegate; }
+namespace ModelView
+{
+class SessionModel;
+class ViewModel;
+class ViewModelDelegate;
+} // namespace ModelView
 
 namespace mvvm_folders
 {
+class PreferencesTreeProxyModel;
 
 class PreferencesWidget : public QWidget
 {
 public:
     Q_OBJECT
 public:
-    explicit PreferencesWidget(::ModelView::SessionModel* model, QWidget *parent = nullptr);
+    explicit PreferencesWidget(::ModelView::SessionModel *model, QWidget *parent = nullptr);
     ~PreferencesWidget();
 
-    void setModel(::ModelView::SessionModel* model);
+    void setModel(::ModelView::SessionModel *model);
 
 private:
-    PreferencesWidget(const PreferencesWidget&)            = delete;   // copy ctor
-    PreferencesWidget(PreferencesWidget&&)                 = delete;   // move ctor
-    PreferencesWidget& operator=(const PreferencesWidget&) = delete;   // copy assignment
-    PreferencesWidget& operator=(PreferencesWidget&&)      = delete;   // move assignment
+    PreferencesWidget(const PreferencesWidget &) = delete;            // copy ctor
+    PreferencesWidget(PreferencesWidget &&)      = delete;            // move ctor
+    PreferencesWidget &operator=(const PreferencesWidget &) = delete; // copy assignment
+    PreferencesWidget &operator=(PreferencesWidget &&) = delete;      // move assignment
 
 private:
-    Ui::PreferencesWidget* ui;
+    Ui::PreferencesWidget *ui;
 
 private:
     std::unique_ptr<::ModelView::ViewModel> m_verticalViewModel;
     std::unique_ptr<::ModelView::ViewModel> m_horizontalViewModel;
     std::unique_ptr<QItemSelectionModel> m_selectionModel;
     std::unique_ptr<::ModelView::ViewModelDelegate> m_delegate;
-    std::unique_ptr<std::map<std::string, ::ModelView::SessionModel*> > m_modelsMap;
+    std::unique_ptr<std::map<std::string, ::ModelView::SessionModel *>> m_modelsMap;
+    std::unique_ptr<PreferencesTreeProxyModel> m_proxyModel;
 
 private:
     void setupConnections();
 };
 
-}
+} // namespace mvvm_folders
 
-#endif//MVVM_FOLDERS_PREFERENCES_WIDGET_H
+#endif //MVVM_FOLDERS_PREFERENCES_WIDGET_H

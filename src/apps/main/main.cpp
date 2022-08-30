@@ -45,8 +45,7 @@ int main(int argc, char **argv)
 
     auto snapInLoader = std::make_unique<preferences_editor::SnapInLoader>(snapInManager.get());
 
-    auto pluginDirectory = QDir(
-        "/home/august/Develop/policy-preferences-editor/build/lib64/preferences_editor/plugins/");
+    auto pluginDirectory = QDir("./build/lib64/preferences_editor/plugins/");
 
     snapInLoader->loadSnapIns(pluginDirectory);
 

@@ -1,4 +1,4 @@
-find_package(Qt5 COMPONENTS Widgets Qml LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets Qml LinguistTools REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -6,9 +6,11 @@ set(HEADERS
     aboutdialog.h
     commandlineoptions.h
     commandlineparser.h
+    concatenatetreesproxymodel.h
+    concatenatetreesproxymodel_p.h
     editorpreferencesdialog.h
-    gui.h
     filedialogutils.h
+    gui.h
     listboxdialog.h
     mainwindow.h
     mainwindowsettings.h
@@ -18,9 +20,10 @@ set(HEADERS
 set(SOURCES
     aboutdialog.cpp
     commandlineparser.cpp
+    concatenatetreesproxymodel.cpp
     editorpreferencesdialog.cpp
-    gui.cpp
     filedialogutils.cpp
+    gui.cpp
     listboxdialog.cpp
     mainwindow.cpp
     mainwindowsettings.cpp
@@ -36,6 +39,7 @@ set(UI_FORMS
 
 set(MOC_HEADERS
     aboutdialog.h
+    concatenatetreesproxymodel.h
     editorpreferencesdialog.h
     listboxdialog.h
     mainwindow.h
@@ -68,6 +72,6 @@ add_translation_resource(RESOURCES_SRC ${QM_FILES})
 qt5_add_resources(LIB_RESOURCES ${RESOURCES_SRC} ${ICON_RESOURCES})
 
 add_preferences_editor_library(preferences_editor-gui ${UI_SOURCES} ${MOC_SOURCES} ${SOURCES} ${LIB_RESOURCES})
-target_link_libraries(preferences_editor-gui Qt5::Widgets Qt5::Qml)
+target_link_libraries(preferences_editor-gui Qt5::Core Qt5::Widgets Qt5::Qml)
 target_link_libraries(preferences_editor-gui preferences_editor-core preferences_editor-io)
 target_link_libraries(preferences_editor-gui smb-storage-static)
