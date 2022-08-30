@@ -23,15 +23,23 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class VpnNetworkingWidget;
+}
 namespace tests 
 {
-    class VpnNetworkingWidgetTest : public QObject
-    {
-        Q_OBJECT
+class VpnNetworkingWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::VpnNetworkingWidget> readXmlFile(const QString &dataPath);
 
-        private slots:
-            void test();
-    };
+private slots:
+    void test();
+    void comboBoxeState();
+    void comboBoxeState_data();
+};
 }
 
 #endif//MVVM_FOLDERS_VPNNETWORKINGWIDGET_WIDGET_TEST_H

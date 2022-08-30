@@ -9,6 +9,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 set(PREFERENCES_EDITOR_DIR "${CMAKE_BINARY_DIR}")
 
+set (CMAKE_CXX_STANDARD 17)
+
 include(TranslationUtils)
 include(FindXsd)
 

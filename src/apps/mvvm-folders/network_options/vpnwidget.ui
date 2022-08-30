@@ -64,14 +64,17 @@
    <item row="2" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QRadioButton" name="userConnerctionRadioButton">
+      <widget class="QRadioButton" name="userConnectionRadioButton">
        <property name="text">
         <string>User connection</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="allUsersConnectionsRadioButton">
+      <widget class="QRadioButton" name="allUsersConnectionRadioButton">
        <property name="text">
         <string>All users connections</string>
        </property>
@@ -136,8 +139,14 @@
    </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="useDnsCheckBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="text">
       <string>Use DNS name</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -187,8 +196,8 @@
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>userConnerctionRadioButton</tabstop>
-  <tabstop>allUsersConnectionsRadioButton</tabstop>
+  <tabstop>userConnectionRadioButton</tabstop>
+  <tabstop>allUsersConnectionRadioButton</tabstop>
   <tabstop>connectionNameLineEdit</tabstop>
   <tabstop>sourceToolButton</tabstop>
   <tabstop>ipaddressLineEdit</tabstop>

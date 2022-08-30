@@ -27,7 +27,7 @@
 
 <xs:complexType name="User_t">
    <xs:sequence>
-      <xs:element name="Properties" type="UserProperties_t" />
+      <xs:element name="Properties" type="UserProperties_t" maxOccurs="unbounded" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -52,13 +52,13 @@
 
 <xs:complexType name="Members_t">
    <xs:sequence>
-      <xs:element name="Member" type="Member_t"/>
+      <xs:element name="Member" type="Member_t" maxOccurs="unbounded"/>
    </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="GroupProperties_t">
    <xs:sequence>
-      <xs:element name="Members" type="Members_t"/>
+      <xs:element name="Members" type="Members_t" minOccurs="0" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="action"
      type="xs:string" use="optional" />
@@ -84,11 +84,12 @@
 
 <xs:complexType name="Group_t">
    <xs:sequence>
-      <xs:element name="Properties" type="GroupProperties_t" />
+      <xs:element name="Properties" type="GroupProperties_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
    <xs:attribute name="image" type="xs:unsignedByte" use="optional" />
+   <xs:attribute name="status" type="xs:string" use="optional"/>
    <xs:attribute name="changed" type="xs:string" use="optional" />
    <xs:attribute name="uid" type="xs:string" use="required" />
    <xs:attribute name="desc" type="xs:string" use="optional" />
@@ -100,8 +101,8 @@
 <xs:element name="Groups">
   <xs:complexType>
      <xs:sequence>
-        <xs:element name="User" type="User_t" />
-        <xs:element name="Group" type="Group_t" />
+        <xs:element name="User" type="User_t" maxOccurs="unbounded"/>
+        <xs:element name="Group" type="Group_t" maxOccurs="unbounded"/>
      </xs:sequence>
      <xs:attribute name="clsid" type="xs:string" use="required" />
      <xs:attribute name="disabled" type="xs:boolean" use="optional" />

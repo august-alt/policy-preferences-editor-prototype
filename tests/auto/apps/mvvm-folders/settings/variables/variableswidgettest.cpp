@@ -24,8 +24,8 @@
 
 #include "variables/variablescontaineritem.h"
 #include "variables/variablesitem.h"
-#include "variables/variablesmodelbuilder.h"
 #include "variables/variableswidget.h"
+#include "variables/variablesmodelbuilder.h"
 
 #include "plugins/common/exceptionhandler.h"
 
@@ -35,42 +35,39 @@ using namespace mvvm_folders;
 
 namespace tests
 {
+
 std::unique_ptr<VariablesWidget> VariablesWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
-
     bool ok = file.good();
-    if (!ok)
+    if(!ok)
     {
         qWarning() << "Failed to read file: " << dataPath;
         return nullptr;
     }
 
-    auto operation = [&]() {
-        auto variables    = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<VariablesModelBuilder>();
-        auto model        = modelBuilder->schemaToModel(variables);
+    std::unique_ptr<VariablesWidget> variablesWidget = nullptr;
 
-        variablesWidget         = std::make_unique<VariablesWidget>();
-        auto containerItem      = model->topItem();
-        auto variablesContainer = dynamic_cast<VariablesContainerItem *>(containerItem);
+    auto files = EnvironmentVariables_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<VariablesModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
 
-        if (!variablesContainer)
-        {
-            qWarning() << "Unable to read variables container!";
-        }
+    variablesWidget = std::make_unique<VariablesWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<VariablesContainerItem*>(containerItem);
 
-        variablesWidget->setItem(variablesContainer->children().back());
-        variablesWidget->show();
-    };
 
-    auto errorHandler = [&](const std::string &error) { qWarning() << error.c_str(); };
+    if (!filesContainer)
+    {
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-    preferences_editor::ExceptionHandler::handleOperation(operation, errorHandler);
+    variablesWidget->setItem(filesContainer->children().back());
+    variablesWidget->show();
 
     file.close();
 
@@ -102,9 +99,9 @@ void VariablesWidgetTest::pathVariableTest()
 
     QVERIFY(folderWidget);
 
-    auto nameLineEdit    = folderWidget->findChild<QLineEdit *>("nameLineEdit");
-    auto pathCheckBox    = folderWidget->findChild<QCheckBox *>("pathCheckBox");
-    auto partialCheckBox = folderWidget->findChild<QCheckBox *>("partialCheckBox");
+    auto nameLineEdit = folderWidget->findChild<QLineEdit*>("nameLineEdit");
+    auto pathCheckBox = folderWidget->findChild<QCheckBox*>("pathCheckBox");
+    auto partialCheckBox = folderWidget->findChild<QCheckBox*>("partialCheckBox");
 
     QVERIFY(nameLineEdit);
     QVERIFY(pathCheckBox);
@@ -127,16 +124,23 @@ void VariablesWidgetTest::pathVariableTest_data()
     QTest::addColumn<bool>("partialCheckBoxEnabled");
     QTest::addColumn<bool>("pathCheckBoxChecked");
 
-    QTest::newRow("Is Path") << QString::fromStdString(dataPath + "path.xml") << "PATH" << false
-                             << true << true;
-    QTest::newRow("Is Not Path") << QString::fromStdString(dataPath + "environment.xml") << "name"
+    QTest::newRow("Is Path")     << QString::fromStdString(dataPath + "path.xml")         << "PATH"
+                                 << false << true << true;
+    QTest::newRow("Is Not Path") << QString::fromStdString(dataPath + "environment.xml")  << "name"
                                  << false << false << false;
 }
 
-void VariablesWidgetTest::variableTypeTest() {}
+void VariablesWidgetTest::variableTypeTest()
+{
 
-void VariablesWidgetTest::variableTypeTest_data() {}
+}
 
-} // namespace tests
+void VariablesWidgetTest::variableTypeTest_data()
+{
+
+}
+
+}
 
 QTEST_MAIN(tests::VariablesWidgetTest)
+

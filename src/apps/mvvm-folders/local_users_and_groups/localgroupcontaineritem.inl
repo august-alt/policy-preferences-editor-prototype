@@ -40,9 +40,9 @@ LocalGroupContainerItem<LocalItem>::LocalGroupContainerItem()
 }
 
 template <typename LocalItem>
-CommonItem LocalGroupContainerItem<LocalItem>::getCommon() const
+CommonItem* LocalGroupContainerItem<LocalItem>::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 template <typename LocalItem>
