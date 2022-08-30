@@ -22,14 +22,16 @@
 #include "ui_preferenceswidget.h"
 
 #include <mvvm/model/compounditem.h>
-#include <mvvm/model/sessionmodel.h>
 #include <mvvm/model/sessionitemtags.h>
+#include <mvvm/model/sessionmodel.h>
 #include <mvvm/signals/itemmapper.h>
-#include <mvvm/viewmodel/viewmodel.h>
 #include <mvvm/viewmodel/defaultviewmodel.h>
-#include <mvvm/viewmodel/topitemsviewmodel.h>
-#include <mvvm/viewmodel/viewmodeldelegate.h>
 #include <mvvm/viewmodel/propertytableviewmodel.h>
+#include <mvvm/viewmodel/topitemsviewmodel.h>
+#include <mvvm/viewmodel/viewmodel.h>
+#include <mvvm/viewmodel/viewmodeldelegate.h>
+
+#include "preferencestreeproxymodel.h"
 
 #include "common/preferencesmodel.h"
 #include "shortcuts/shortcutswidget.h"
@@ -41,7 +43,6 @@ const std::string TYPE = "type";
 
 namespace mvvm_folders
 {
-
 PreferencesWidget::PreferencesWidget(ModelView::SessionModel *model, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PreferencesWidget())
@@ -49,7 +50,8 @@ PreferencesWidget::PreferencesWidget(ModelView::SessionModel *model, QWidget *pa
     , m_horizontalViewModel(nullptr)
     , m_selectionModel(std::make_unique<QItemSelectionModel>())
     , m_delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , m_modelsMap(std::make_unique<std::map<std::string, ::ModelView::SessionModel*> >())
+    , m_modelsMap(std::make_unique<std::map<std::string, ::ModelView::SessionModel *>>())
+    , m_proxyModel(nullptr)
 {
     ui->setupUi(this);
 
@@ -72,7 +74,11 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
 
     // setting up left tree
     m_verticalViewModel = std::make_unique<ModelView::TopItemsViewModel>(model);
-    ui->treeView->setModel(m_verticalViewModel.get());
+
+    m_proxyModel = std::make_unique<PreferencesTreeProxyModel>();
+    m_proxyModel->setSourceModel(m_verticalViewModel.get());
+
+    ui->treeView->setModel(m_proxyModel.get());
     ui->treeView->setColumnHidden(1, true);
     ui->treeView->setItemDelegate(m_delegate.get());
     ui->treeView->expandAll();
@@ -82,44 +88,44 @@ void PreferencesWidget::setModel(ModelView::SessionModel *model)
 void PreferencesWidget::setupConnections()
 {
     connect(ui->treeView->selectionModel(),
-                    &QItemSelectionModel::selectionChanged,
-            [&](const QItemSelection &selected, const QItemSelection &deselected)
-    {
-        Q_UNUSED(deselected);
-        if (selected.isEmpty() || selected.first().indexes().isEmpty())
-        {
-            return;
-        }
-
-        auto indexes = selected.indexes();
-        if (!indexes.empty())
-        {
-            auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
-
-            if (!item->itemTags()->isTag(TYPE))
-            {
-                return;
-            }
-
-            std::map<std::string, QString> types = item->property<std::map<std::string, QString>>(TYPE);
-            if (types.size() > 0)
-            {
-                auto modelType = types.begin()->first;
-
-                ui->detailsWidget->onItemTypeChange(types);
-
-                auto model = m_modelsMap->find(modelType);
-
-                if (model == m_modelsMap->end())
+            &QItemSelectionModel::selectionChanged,
+            [&](const QItemSelection &selected, const QItemSelection &deselected) {
+                Q_UNUSED(deselected);
+                if (selected.isEmpty() || selected.first().indexes().isEmpty())
                 {
-                    m_modelsMap->insert(std::pair(modelType, new PreferencesModel()));
-                    model = m_modelsMap->find(modelType);
+                    return;
                 }
 
-                ui->detailsWidget->setModel(model->second);
-            }
-        }
-    });
+                auto indexes = selected.indexes();
+                if (!indexes.empty())
+                {
+                    auto item = m_verticalViewModel->sessionItemFromIndex(indexes.at(0));
+
+                    if (!item->itemTags()->isTag(TYPE))
+                    {
+                        return;
+                    }
+
+                    std::map<std::string, QString> types
+                        = item->property<std::map<std::string, QString>>(TYPE);
+                    if (types.size() > 0)
+                    {
+                        auto modelType = types.begin()->first;
+
+                        ui->detailsWidget->onItemTypeChange(types);
+
+                        auto model = m_modelsMap->find(modelType);
+
+                        if (model == m_modelsMap->end())
+                        {
+                            m_modelsMap->insert(std::pair(modelType, new PreferencesModel()));
+                            model = m_modelsMap->find(modelType);
+                        }
+
+                        ui->detailsWidget->setModel(model->second);
+                    }
+                }
+            });
 }
 
-}
+} // namespace mvvm_folders

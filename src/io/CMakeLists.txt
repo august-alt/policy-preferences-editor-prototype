@@ -11,9 +11,13 @@ set(HEADERS
     policyfileformat.inl
     registryfileformat.h
     registryfileformat.inl
+    policydefinitionsfile.h
+    policyresourcesfile.h
 )
 
-set(SOURCES    
+set(SOURCES
+    policyresourcesfile.cpp
+    policydefinitionsfile.cpp
     inifile.cpp
     io.cpp
 )

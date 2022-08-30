@@ -18,7 +18,7 @@
 **
 ***********************************************************************************************************************/
 
-#include "plugin.h"
+#include "../../core/plugin.h"
 
 #include "preferencessnapin.h"
 
@@ -30,7 +30,7 @@ class PreferencesPlugin : public Plugin
 {
 public:
     PreferencesPlugin()
-        : Plugin("PreferencesSnapIn")
+        : preferences_editor::Plugin("PreferencesSnapIn")
     {
         PREFERENCES_EDITOR_REGISTER_PLUGIN_CLASS(typeid(::preferences_editor::ISnapIn).name(),
                                                  PreferencesSnapIn);

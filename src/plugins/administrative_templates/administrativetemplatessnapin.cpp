@@ -22,12 +22,19 @@
 
 #include <iostream>
 
+#include <QAbstractItemModel>
+#include <QStandardItemModel>
+
+#include "bundle/policybundle.h"
+
 namespace preferences_editor
 {
 class AdministrativeTemplatesSnapInPrivate
 {
 public:
     AdministrativeTemplatesSnapInPrivate() {}
+
+    std::unique_ptr<QStandardItemModel> model = nullptr;
 
 private:
     AdministrativeTemplatesSnapInPrivate(const AdministrativeTemplatesSnapInPrivate &)
@@ -52,6 +59,13 @@ AdministrativeTemplatesSnapIn::AdministrativeTemplatesSnapIn()
 
 void AdministrativeTemplatesSnapIn::onInitialize()
 {
+    auto bundle = std::make_unique<model::bundle::PolicyBundle>();
+    d->model    = bundle->loadFolder("/home/august/Downloads/ADMX/Program Files/Microsoft Group "
+                                  "Policy/Windows 10 October 2020 Update (20H2)/PolicyDefinitions/",
+                                  "ru-ru");
+
+    setRootNode(static_cast<QAbstractItemModel *>(d->model.get()));
+
     std::cout << std::string(__PRETTY_FUNCTION__) << std::endl;
 }
 

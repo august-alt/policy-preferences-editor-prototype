@@ -43,6 +43,8 @@
 
 #include "../core/isnapinmanager.h"
 
+#include <QAbstractItemModel>
+
 void registerResources()
 {
     Q_INIT_RESOURCE(translations);
@@ -53,7 +55,7 @@ namespace preferences_editor
 class MainWindowPrivate
 {
 public:
-    std::unique_ptr<QStandardItemModel> model    = nullptr;
+    std::unique_ptr<QAbstractItemModel> model    = nullptr;
     std::unique_ptr<MainWindowSettings> settings = nullptr;
 
     std::unique_ptr<QSortFilterProxyModel> itemNameSortModel = nullptr;
@@ -83,6 +85,26 @@ private:
     MainWindowPrivate &operator=(const MainWindowPrivate &) = delete; // copy assignment
     MainWindowPrivate &operator=(MainWindowPrivate &&) = delete;      // move assignment
 };
+
+void iterateModelAndInsertToTarget(QStandardItem *target,
+                                   const QAbstractItemModel *model,
+                                   const QModelIndex &parent)
+{
+    for (int r = 0; r < model->rowCount(parent); ++r)
+    {
+        QModelIndex index = model->index(r, 0, parent);
+
+        QStandardItem *child = new QStandardItem();
+        child->setData(index.data(Qt::DisplayRole), Qt::DisplayRole);
+        child->setData(index.data(Qt::DecorationRole), Qt::DecorationRole);
+        target->insertRow(r, child);
+
+        if (model->hasChildren(index))
+        {
+            iterateModelAndInsertToTarget(child, model, index);
+        }
+    }
+}
 
 MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInManager *manager)
     : QMainWindow(parent)
@@ -140,15 +162,26 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInMana
 
     loadPolicyBundleFolder(d->options.policyBundle, d->localeName);
 
+    auto concatenateRowsModel = std::make_unique<QStandardItemModel>();
+
+    QStandardItem *item = concatenateRowsModel->invisibleRootItem();
+    item->setData("Root Item", Qt::DisplayRole);
+
     for (auto &snapIn : manager->getSnapIns())
     {
         if (snapIn->getRootNode())
         {
-            ui->treeView->setModel(snapIn->getRootNode());
-            ui->treeView->setColumnHidden(1, true);
-            ui->treeView->resizeColumnToContents(0);
+            QAbstractItemModel *snapInModel = snapIn->getRootNode();
+
+            iterateModelAndInsertToTarget(item, snapInModel, snapInModel->index(0, 0));
         }
     }
+
+    d->model = std::move(concatenateRowsModel);
+
+    ui->treeView->setModel(d->model.get());
+    ui->treeView->setColumnHidden(1, true);
+    ui->treeView->resizeColumnToContents(0);
 
     if (!d->options.path.isEmpty())
     {

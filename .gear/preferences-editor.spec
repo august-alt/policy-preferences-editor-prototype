@@ -66,6 +66,8 @@ done
 %_libdir/libpreferences_editor-io.so
 %_libdir/libpreferences_editor-core.so
 
+%_libdir/preferences_editor/plugins/libadmx-plugin.so
+%_libdir/preferences_editor/plugins/libadml-plugin.so
 %_libdir/preferences_editor/plugins/libinifile-plugin.so
 %_libdir/preferences_editor/plugins/libpreferences-plugin.so
 %_libdir/preferences_editor/plugins/libscripts-plugin.so
