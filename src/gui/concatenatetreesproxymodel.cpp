@@ -25,10 +25,10 @@ namespace preferences_editor
 {
 class ConcatenateTreesProxyModelPrivate
 {
-    Q_DECLARE_PUBLIC(ConcatenateTreesProxyModel);
+    Q_DECLARE_PUBLIC(ConcatenateTreesProxyModel)
 
 private:
-    ConcatenateTreesProxyModel *q_ptr;
+    ConcatenateTreesProxyModel *q_ptr = nullptr;
 
 public:
     ConcatenateTreesProxyModelPrivate();

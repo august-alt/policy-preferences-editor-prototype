@@ -21,12 +21,14 @@
 #ifndef CONCATENATE_TREES_PROXY_MODEL_H
 #define CONCATENATE_TREES_PROXY_MODEL_H
 
+#include "gui.h"
+
 #include <QAbstractProxyModel>
 
 namespace preferences_editor
 {
 class ConcatenateTreesProxyModelPrivate;
-class ConcatenateTreesProxyModel : public QAbstractProxyModel
+class PREFERENCES_EDITOR_GUI_EXPORT ConcatenateTreesProxyModel : public QAbstractProxyModel
 {
     Q_OBJECT
 public:
