@@ -28,10 +28,25 @@ QVariant PreferencesTreeProxyModel::data(const QModelIndex &proxyIndex, int role
 {
     static QVariant folder = QVariant(QIcon::fromTheme("folder"));
 
+    static QVariant computer = QVariant(QIcon::fromTheme("computer"));
+
+    static QVariant user = QVariant(QIcon::fromTheme("user-home"));
+
     if (role == Qt::DecorationRole)
     {
+        if (proxyIndex.data(Qt::DisplayRole).toString().compare("Machine", Qt::CaseInsensitive) == 0)
+        {
+            return computer;
+        }
+
+        if (proxyIndex.data(Qt::DisplayRole).toString().compare("User", Qt::CaseInsensitive) == 0)
+        {
+            return user;
+        }
+
         return folder;
     }
+
     return QIdentityProxyModel::data(proxyIndex, role);
 }
 
