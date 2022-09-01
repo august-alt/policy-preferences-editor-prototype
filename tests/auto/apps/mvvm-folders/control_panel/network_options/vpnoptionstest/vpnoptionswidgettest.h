@@ -39,6 +39,10 @@ private slots:
     void test();
     void checkBoxesState();
     void checkBoxesState_data();
+    void spinBoxState();
+    void spinBoxState_data();
+    void comboBoxState();
+    void comboBoxState_data();
 };
 }
 

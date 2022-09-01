@@ -123,6 +123,65 @@ void VpnOptionsWidgetTest::checkBoxesState_data()
 
 }
 
+void VpnOptionsWidgetTest::spinBoxState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(int, redialAttemptsSpinBoxState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto redialAttemptsSpinBox = widget->findChild<QSpinBox*>("redialAttemptsSpinBox");
+
+    QTest::qWait(1000);
+
+    QVERIFY(redialAttemptsSpinBox);
+
+    QCOMPARE(redialAttemptsSpinBox->value(), redialAttemptsSpinBoxState);
+
+}
+
+void VpnOptionsWidgetTest::spinBoxState_data()
+{
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<int>("redialAttemptsSpinBoxState");
+
+    QTest::addRow("Options-on") << QString::fromStdString(dataPath + "options_on.xml") << 10 ;
+}
+
+void VpnOptionsWidgetTest::comboBoxState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(QString, timeComboBoxState);
+    QFETCH(QString, idleTimeComboBoxState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto timeComboBox = widget->findChild<QComboBox*>("timeComboBox");
+    auto idleTimeComboBox = widget->findChild<QComboBox*>("idleTimeComboBox");
+
+    QTest::qWait(1000);
+
+    QVERIFY(timeComboBox);
+    QVERIFY(idleTimeComboBox);
+
+    QCOMPARE(timeComboBox->currentText(), timeComboBoxState);
+    QCOMPARE(idleTimeComboBox->currentText(), idleTimeComboBoxState);
+}
+
+void VpnOptionsWidgetTest::comboBoxState_data()
+{
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<QString>("timeComboBoxState");
+    QTest::addColumn<QString>("idleTimeComboBoxState");
+
+
+    QTest::addRow("Options-on") << QString::fromStdString(dataPath + "options_on.xml") << "1 second" << "never" ;
+}
+
 }
 
 QTEST_MAIN(tests::VpnOptionsWidgetTest)
