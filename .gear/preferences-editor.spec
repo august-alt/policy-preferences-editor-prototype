@@ -39,8 +39,11 @@ Group policy editor
 %setup -q
 
 %build
-%cmake
+%cmake -DPREFERENCES_EDITOR_BUILD_TESTS:BOOL=ON
 %cmake_build
+
+cd %_cmake__builddir
+%make test
 
 %install
 %cmakeinstall_std
