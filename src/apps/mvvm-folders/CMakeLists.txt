@@ -188,6 +188,7 @@ set(SOURCES
 
     device/deviceitem.cpp
     device/devicecontaineritem.cpp
+    device/devicemodelbuilder.cpp
     drives/drivesmodelbuilder.cpp
     device/devicewidget.cpp
 

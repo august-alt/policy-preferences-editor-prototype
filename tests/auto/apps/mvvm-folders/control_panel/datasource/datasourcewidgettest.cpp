@@ -35,55 +35,61 @@ using namespace mvvm_folders;
 
 namespace tests
 {
-//    std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QString &dataPath)
-//    {
-//        std::ifstream file;
 
-//        file.open(dataPath.toStdString(), std::ifstream::in);
+std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QString &dataPath)
+{
+    std::ifstream file;
 
-//        bool ok = file.good();
-//        if(!ok)
-//        {
-//            qWarning() << "Failed to read file: " << dataPath;
-//            return nullptr;
-//        }
+    file.open(dataPath.toStdString(), std::ifstream::in);
 
-//        std::unique_ptr<DataSourceWidget> datasourceWidget = nullptr;
+    bool ok = file.good();
+    if(!ok)
+    {
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
 
-//        try {
-//            auto files = DataSource_(file, ::xsd::cxx::tree::flags::dont_validate);
-//            auto modelBuilder = std::make_unique<DataSourceModelBuilder>();
-//            auto model = modelBuilder->schemaToModel(files);
+    std::unique_ptr<DataSourceWidget> datasourceWidget = nullptr;
 
-//            datasourceWidget = std::make_unique<DataSourceWidget>();
-//            auto containerItem = model->topItem();
-//            auto dataContainer = dynamic_cast<DataSourceContainerItem<DataSourceItem>*>(containerItem);
+    try {
+        auto files = DataSources_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<DataSourceModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
 
-//            if (!dataContainer)
-//            {
-//                qWarning() << "Unable to read ini container!";
-//                return nullptr;
-//            }
+        datasourceWidget = std::make_unique<DataSourceWidget>();
+        auto containerItem = model->topItem();
+        auto dataContainer = dynamic_cast<DataSourceContainerItem*>(containerItem);
 
-//            datasourceWidget->setItem(dataContainer->children().back());
-//            datasourceWidget->show();
-//        }
-//        catch(const std::exception& e)
-//        {
-//            qWarning() << e.what();
-//        }
+        if (!dataContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
 
-//        file.close();
+        datasourceWidget->setItem(dataContainer->children().back());
+        datasourceWidget->show();
+    }
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
+    }
 
-//        return dialUpWidget;
+    file.close();
+
+    return datasourceWidget;
 }
 
-void tests::DataSourceWidgetTest::WidgetState()
+void DataSourceWidgetTest::widgetState()
 {
 
 }
 
+void DataSourceWidgetTest::widgetState_data()
+{
 
+}
+
+}
 
 QTEST_MAIN(tests::DataSourceWidgetTest)
 
