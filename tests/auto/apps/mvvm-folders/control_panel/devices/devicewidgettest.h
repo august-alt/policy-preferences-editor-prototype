@@ -23,14 +23,22 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class DeviceWidget;
+}
 namespace tests 
 {
-    class DeviceWidgetTest : public QObject
-    {
-        Q_OBJECT
+class DeviceWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::DeviceWidget> readXmlFile(const QString &dataPath);
 
-        private slots:
-            void test();
+
+private slots:
+    void actionState();
+    void actionState_data();
     };
 }
 
