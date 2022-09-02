@@ -77,7 +77,7 @@ std::unique_ptr<DialUpWidget> DialUpWidgetTest::readXmlFile(const QString &dataP
     return dialUpWidget;
 }
 
-void DialUpWidgetTest::WidgetState()
+void DialUpWidgetTest::widgetState()
 {
     QFETCH(QString, dataPath);
     QFETCH(bool, userRadioButtonState);
@@ -106,7 +106,7 @@ void DialUpWidgetTest::WidgetState()
     QCOMPARE(connectionLineEdit->isEnabled(), connectionLineEditState);
     QCOMPARE(phoneLineEdit->isEnabled(), phoneLineEditState);
 }
-void DialUpWidgetTest::WidgetState_data()
+void DialUpWidgetTest::widgetState_data()
 {
     QTest::addColumn<QString>("dataPath");
     QTest::addColumn<bool>("userRadioButtonState");
