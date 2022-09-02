@@ -39,9 +39,9 @@ DeviceContainerItem::DeviceContainerItem()
     addProperty<DeviceItem>(DEVICE)->setVisible(false);
 }
 
-CommonItem DeviceContainerItem::getCommon() const
+CommonItem* DeviceContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void DeviceContainerItem::setCommon(const CommonItem &item)
@@ -49,9 +49,9 @@ void DeviceContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-DeviceItem DeviceContainerItem::getDevice() const
+DeviceItem *DeviceContainerItem::getDevice() const
 {
-    return property<DeviceItem>(DEVICE);
+    return static_cast<DeviceItem*>(children().back());
 }
 
 void DeviceContainerItem::setDevice(const DeviceItem &item)
