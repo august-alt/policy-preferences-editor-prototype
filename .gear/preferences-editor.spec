@@ -9,7 +9,7 @@ License: GPLv2+
 Group: Other
 Url: https://github.com/august-alt/preferences_editor
 
-BuildRequires: cmake
+BuildRequires: cmake ctest
 BuildRequires: rpm-macros-cmake
 BuildRequires: cmake-modules
 BuildRequires: gcc-c++
@@ -42,8 +42,8 @@ Group policy editor
 %cmake -DPREFERENCES_EDITOR_BUILD_TESTS:BOOL=ON
 %cmake_build
 
-cd %_cmake__builddir
-%make test
+%check
+make test
 
 %install
 %cmakeinstall_std
