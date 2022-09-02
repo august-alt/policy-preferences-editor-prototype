@@ -28,6 +28,8 @@ BuildRequires: desktop-file-utils ImageMagick-tools
 
 BuildRequires: libqt-mvvm-devel
 
+BuildRequires: xorg-xvfb xvfb-run
+
 Requires: admx-basealt
 
 Source0: %name-%version.tar
@@ -43,7 +45,8 @@ Group policy editor
 %cmake_build
 
 %check
-make test
+cd %_cmake__builddir
+xvfb-run make test
 
 %install
 %cmakeinstall_std
