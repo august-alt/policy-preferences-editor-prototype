@@ -84,7 +84,7 @@ std::unique_ptr<LocalGroupWidget> LocalGroupWidgetTest::readXmlFile(const QStrin
 
     return groupWidget;
 }
-void LocalGroupWidgetTest::LineEditCheck()
+void LocalGroupWidgetTest::lineEditCheck()
 {
     QFETCH(QString, dataPath);
     QFETCH(int, groupComboBoxState);
@@ -107,7 +107,7 @@ void LocalGroupWidgetTest::LineEditCheck()
     QCOMPARE(descriptionLineEdit->isEnabled(), descriptionLineEditState);
 }
 
-void LocalGroupWidgetTest::LineEditCheck_data()
+void LocalGroupWidgetTest::lineEditCheck_data()
 {
     QTest::addColumn<QString>("dataPath");
     QTest::addColumn<int>("groupComboBoxState");
@@ -118,7 +118,7 @@ void LocalGroupWidgetTest::LineEditCheck_data()
 
 }
 
-void LocalGroupWidgetTest::RadioButtonCheck()
+void LocalGroupWidgetTest::radioButtonCheck()
 {
     QFETCH(QString, dataPath);
     QFETCH(bool, doNotUserradioButtonState);
@@ -135,7 +135,7 @@ void LocalGroupWidgetTest::RadioButtonCheck()
     QCOMPARE(doNotUserradioButton->isChecked(), doNotUserradioButtonState);
 }
 
-void LocalGroupWidgetTest::RadioButtonCheck_data()
+void LocalGroupWidgetTest::radioButtonCheck_data()
 {
     QTest::addColumn<QString>("dataPath");
     QTest::addColumn<bool>("doNotUserradioButtonState");
@@ -144,16 +144,15 @@ void LocalGroupWidgetTest::RadioButtonCheck_data()
 
 }
 
-void LocalGroupWidgetTest::CheckBox()
+void LocalGroupWidgetTest::checkBox()
 {
 
 }
 
-void LocalGroupWidgetTest::CheckBox_data()
+void LocalGroupWidgetTest::checkBox_data()
 {
 
 }
-
 
 }
 

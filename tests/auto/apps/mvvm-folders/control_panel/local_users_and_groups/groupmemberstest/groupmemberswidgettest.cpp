@@ -93,7 +93,7 @@ void GroupMembersWidgetTest::test()
     //    file.close();
 }
 
-void GroupMembersWidgetTest::TableViewState()
+void GroupMembersWidgetTest::tableViewState()
 {
     QFETCH(QString, dataPath);
     QFETCH(bool, membersTableViewState);
@@ -112,7 +112,7 @@ void GroupMembersWidgetTest::TableViewState()
     QCOMPARE(membersTableView->isEnabled(), membersTableViewState);
 }
 
-void GroupMembersWidgetTest::TableViewState_data()
+void GroupMembersWidgetTest::tableViewState_data()
 {
     QTest::addColumn<QString>("dataPath");
     QTest::addColumn<bool>("membersTableViewState");
