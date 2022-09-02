@@ -28,7 +28,7 @@
 namespace mvvm_folders
 {
 
-std::unique_ptr<PreferencesModel> ModelBuilder::schemaToModel(std::unique_ptr<DataSources> &dataSources)
+std::unique_ptr<PreferencesModel> DataSourceModelBuilder::schemaToModel(std::unique_ptr<DataSources> &dataSources)
 {
     auto model = std::make_unique<PreferencesModel>();
 
@@ -53,7 +53,7 @@ std::unique_ptr<PreferencesModel> ModelBuilder::schemaToModel(std::unique_ptr<Da
     return model;
 }
 
-std::unique_ptr<DataSources> ModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
+std::unique_ptr<DataSources> DataSourceModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
     Q_UNUSED(model);
 
