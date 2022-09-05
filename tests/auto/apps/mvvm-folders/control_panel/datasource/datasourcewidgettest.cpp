@@ -81,11 +81,68 @@ std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QStrin
 
 void DataSourceWidgetTest::widgetState()
 {
+    QFETCH(QString, dataPath);
+    QFETCH(bool, userDataSourceRadioButtonState);
+    QFETCH(bool, systemDataSourceRadioButtonState);
+    QFETCH(bool, dataSourceLineEditState);
+    QFETCH(bool, driverLineEditState);
+    QFETCH(bool, descriptionLineEditState);
+    QFETCH(bool, userNameLineEditState);
+    QFETCH(bool, passwordLineEditState);
+    QFETCH(bool, confirmPasswordLineEditState);
+    QFETCH(bool, attributesTableViewState);
 
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto userDataSourceRadioButton = widget->findChild<QRadioButton*>("userDataSourceRadioButton");
+    auto systemDataSourceRadioButton = widget->findChild<QRadioButton*>("systemDataSourceRadioButton");
+    auto dataSourceLineEdit = widget->findChild<QLineEdit*>("dataSourceLineEdit");
+    auto driverLineEdit = widget->findChild<QLineEdit*>("driverLineEdit");
+    auto userNameLineEdit = widget->findChild<QLineEdit*>("userNameLineEdit");
+    auto passwordLineEdit = widget->findChild<QLineEdit*>("passwordLineEdit");
+    auto confirmPasswordLineEdit = widget->findChild<QLineEdit*>("confirmPasswordLineEdit");
+    auto attributesTableView = widget->findChild<QTableView*>("attributesTableView");
+    auto descriptionLineEdit = widget->findChild<QLineEdit*>("descriptionLineEdit");
+
+    QTest::qWait(1000);
+
+    QVERIFY(userDataSourceRadioButton);
+    QVERIFY(systemDataSourceRadioButton);
+    QVERIFY(dataSourceLineEdit);
+    QVERIFY(driverLineEdit);
+    QVERIFY(descriptionLineEdit);
+    QVERIFY(userNameLineEdit);
+    QVERIFY(passwordLineEdit);
+    QVERIFY(confirmPasswordLineEdit);
+    QVERIFY(attributesTableView);
+
+    QCOMPARE(userDataSourceRadioButton->isEnabled(), userDataSourceRadioButtonState);
+    QCOMPARE(systemDataSourceRadioButton->isChecked(), systemDataSourceRadioButtonState);
+    QCOMPARE(dataSourceLineEdit->isEnabled(), dataSourceLineEditState);
+    QCOMPARE(driverLineEdit->isEnabled(), driverLineEditState);
+    QCOMPARE(descriptionLineEdit->isEnabled(), descriptionLineEditState);
+    QCOMPARE(userNameLineEdit->isEnabled(), userNameLineEditState);
+    QCOMPARE(passwordLineEdit->isEnabled(), passwordLineEditState);
+    QCOMPARE(confirmPasswordLineEdit->isEnabled(), confirmPasswordLineEditState);
+    QCOMPARE(attributesTableView->isEnabled(), attributesTableViewState);
 }
 
 void DataSourceWidgetTest::widgetState_data()
 {
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<int>("userDataSourceRadioButtonState");
+    QTest::addColumn<bool>("systemDataSourceRadioButtonState");
+    QTest::addColumn<bool>("dataSourceLineEditState");
+    QTest::addColumn<int>("driverLineEditState");
+    QTest::addColumn<bool>("descriptionLineEditState");
+    QTest::addColumn<bool>("userNameLineEditState");
+    QTest::addColumn<int>("passwordLineEditState");
+    QTest::addColumn<bool>("confirmPasswordLineEditState");
+    QTest::addColumn<bool>("attributesTableViewState");
+
+    QTest::addRow("DataSource")  << QString::fromStdString(dataPath + "datasource.xml") << false << true << true << true << true << true << true << true << true ;
 
 }
 
