@@ -38,8 +38,8 @@ namespace tests
 
         private slots:
             void test();
-            void TableViewState();
-            void TableViewState_data();
+            void tableViewState();
+            void tableViewState_data();
     };
 }
 

@@ -36,8 +36,8 @@ private:
     std::unique_ptr<mvvm_folders::DialUpWidget> readXmlFile(const QString &dataPath);
 
 private slots:
-    void WidgetState();
-    void WidgetState_data();
+    void widgetState();
+    void widgetState_data();
 };
 }
 

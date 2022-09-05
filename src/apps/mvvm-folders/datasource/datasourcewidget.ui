@@ -29,7 +29,10 @@
      </widget>
      <widget class="QComboBox" name="actionComboBox">
       <property name="currentText">
-       <string>Create</string>
+       <string>Update</string>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
       </property>
       <item>
        <property name="text">
@@ -63,6 +66,9 @@
    </item>
    <item row="2" column="0">
     <widget class="QRadioButton" name="userDataSourceRadioButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>User Data Source</string>
      </property>
@@ -72,6 +78,9 @@
     <widget class="QRadioButton" name="systemDataSourceRadioButton">
      <property name="text">
       <string>System Data Source</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -262,7 +271,7 @@
          <bool>true</bool>
         </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>

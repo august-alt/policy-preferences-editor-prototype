@@ -36,8 +36,8 @@ namespace tests
         std::unique_ptr<mvvm_folders::DataSourceWidget> readXmlFile(const QString &dataPath);
 
         private slots:
-//            void test();
-            void WidgetState();
+            void widgetState();
+            void widgetState_data();
     };
 }
 

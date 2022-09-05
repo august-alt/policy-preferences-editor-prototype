@@ -45,10 +45,10 @@ public:
 
     explicit DeviceContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    DeviceItem getDevice() const;
+    DeviceItem* getDevice() const;
     void setDevice(const DeviceItem& item);
 
     void setupListeners() override;

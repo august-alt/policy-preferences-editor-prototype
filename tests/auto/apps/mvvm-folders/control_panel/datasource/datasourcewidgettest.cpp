@@ -35,55 +35,118 @@ using namespace mvvm_folders;
 
 namespace tests
 {
-//    std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QString &dataPath)
-//    {
-//        std::ifstream file;
 
-//        file.open(dataPath.toStdString(), std::ifstream::in);
-
-//        bool ok = file.good();
-//        if(!ok)
-//        {
-//            qWarning() << "Failed to read file: " << dataPath;
-//            return nullptr;
-//        }
-
-//        std::unique_ptr<DataSourceWidget> datasourceWidget = nullptr;
-
-//        try {
-//            auto files = DataSource_(file, ::xsd::cxx::tree::flags::dont_validate);
-//            auto modelBuilder = std::make_unique<DataSourceModelBuilder>();
-//            auto model = modelBuilder->schemaToModel(files);
-
-//            datasourceWidget = std::make_unique<DataSourceWidget>();
-//            auto containerItem = model->topItem();
-//            auto dataContainer = dynamic_cast<DataSourceContainerItem<DataSourceItem>*>(containerItem);
-
-//            if (!dataContainer)
-//            {
-//                qWarning() << "Unable to read ini container!";
-//                return nullptr;
-//            }
-
-//            datasourceWidget->setItem(dataContainer->children().back());
-//            datasourceWidget->show();
-//        }
-//        catch(const std::exception& e)
-//        {
-//            qWarning() << e.what();
-//        }
-
-//        file.close();
-
-//        return dialUpWidget;
-}
-
-void tests::DataSourceWidgetTest::WidgetState()
+std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QString &dataPath)
 {
+    std::ifstream file;
+
+    file.open(dataPath.toStdString(), std::ifstream::in);
+
+    bool ok = file.good();
+    if(!ok)
+    {
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
+
+    std::unique_ptr<DataSourceWidget> datasourceWidget = nullptr;
+
+    try {
+        auto files = DataSources_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<DataSourceModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
+
+        datasourceWidget = std::make_unique<DataSourceWidget>();
+        auto containerItem = model->topItem();
+        auto dataContainer = dynamic_cast<DataSourceContainerItem*>(containerItem);
+
+        if (!dataContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
+
+        datasourceWidget->setItem(dataContainer->children().back());
+        datasourceWidget->show();
+    }
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
+    }
+
+    file.close();
+
+    return datasourceWidget;
+}
+
+void DataSourceWidgetTest::widgetState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(bool, userDataSourceRadioButtonState);
+    QFETCH(bool, systemDataSourceRadioButtonState);
+    QFETCH(bool, dataSourceLineEditState);
+    QFETCH(bool, driverLineEditState);
+    QFETCH(bool, descriptionLineEditState);
+    QFETCH(bool, userNameLineEditState);
+    QFETCH(bool, passwordLineEditState);
+    QFETCH(bool, confirmPasswordLineEditState);
+    QFETCH(bool, attributesTableViewState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto userDataSourceRadioButton = widget->findChild<QRadioButton*>("userDataSourceRadioButton");
+    auto systemDataSourceRadioButton = widget->findChild<QRadioButton*>("systemDataSourceRadioButton");
+    auto dataSourceLineEdit = widget->findChild<QLineEdit*>("dataSourceLineEdit");
+    auto driverLineEdit = widget->findChild<QLineEdit*>("driverLineEdit");
+    auto userNameLineEdit = widget->findChild<QLineEdit*>("userNameLineEdit");
+    auto passwordLineEdit = widget->findChild<QLineEdit*>("passwordLineEdit");
+    auto confirmPasswordLineEdit = widget->findChild<QLineEdit*>("confirmPasswordLineEdit");
+    auto attributesTableView = widget->findChild<QTableView*>("attributesTableView");
+    auto descriptionLineEdit = widget->findChild<QLineEdit*>("descriptionLineEdit");
+
+    QTest::qWait(1000);
+
+    QVERIFY(userDataSourceRadioButton);
+    QVERIFY(systemDataSourceRadioButton);
+    QVERIFY(dataSourceLineEdit);
+    QVERIFY(driverLineEdit);
+    QVERIFY(descriptionLineEdit);
+    QVERIFY(userNameLineEdit);
+    QVERIFY(passwordLineEdit);
+    QVERIFY(confirmPasswordLineEdit);
+    QVERIFY(attributesTableView);
+
+    QCOMPARE(userDataSourceRadioButton->isEnabled(), userDataSourceRadioButtonState);
+    QCOMPARE(systemDataSourceRadioButton->isChecked(), systemDataSourceRadioButtonState);
+    QCOMPARE(dataSourceLineEdit->isEnabled(), dataSourceLineEditState);
+    QCOMPARE(driverLineEdit->isEnabled(), driverLineEditState);
+    QCOMPARE(descriptionLineEdit->isEnabled(), descriptionLineEditState);
+    QCOMPARE(userNameLineEdit->isEnabled(), userNameLineEditState);
+    QCOMPARE(passwordLineEdit->isEnabled(), passwordLineEditState);
+    QCOMPARE(confirmPasswordLineEdit->isEnabled(), confirmPasswordLineEditState);
+    QCOMPARE(attributesTableView->isEnabled(), attributesTableViewState);
+}
+
+void DataSourceWidgetTest::widgetState_data()
+{
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<int>("userDataSourceRadioButtonState");
+    QTest::addColumn<bool>("systemDataSourceRadioButtonState");
+    QTest::addColumn<bool>("dataSourceLineEditState");
+    QTest::addColumn<int>("driverLineEditState");
+    QTest::addColumn<bool>("descriptionLineEditState");
+    QTest::addColumn<bool>("userNameLineEditState");
+    QTest::addColumn<int>("passwordLineEditState");
+    QTest::addColumn<bool>("confirmPasswordLineEditState");
+    QTest::addColumn<bool>("attributesTableViewState");
+
+    QTest::addRow("DataSource")  << QString::fromStdString(dataPath + "datasource.xml") << false << true << true << true << true << true << true << true << true ;
 
 }
 
-
+}
 
 QTEST_MAIN(tests::DataSourceWidgetTest)
 

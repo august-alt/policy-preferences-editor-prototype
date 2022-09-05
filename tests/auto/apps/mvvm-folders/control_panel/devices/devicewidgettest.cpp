@@ -22,22 +22,90 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include <device/deviceitem.h>
+#include <device/devicewidget.h>
+#include <device/devicemodelbuilder.h>
+#include <device/devicecontaineritem.h>
 
-namespace tests 
+//const std::string dataPath = "../../../../data/preferences/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/network_options/";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
-
-void DeviceWidgetTest::test()
+std::unique_ptr<DeviceWidget> DeviceWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
-    file.open(dataPath + "devicewidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath.toStdString(), std::ifstream::in);
+
+    bool ok = file.good();
+    if(!ok)
     {
-       
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
+
+    std::unique_ptr<DeviceWidget> deviceWidget = nullptr;
+
+    try {
+        auto files = Devices_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<DeviceModelBuilder>();
+        auto model = modelBuilder->schemaToModel(files);
+
+        deviceWidget = std::make_unique<DeviceWidget>();
+        auto containerItem = model->topItem();
+        auto deviceContainer = dynamic_cast<DeviceContainerItem*>(containerItem);
+
+        if (!deviceContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
+
+        deviceWidget->setItem(deviceContainer->children().back());
+        deviceWidget->show();
+    }
+    catch(const std::exception& e)
+    {
+        qWarning() << e.what();
     }
 
     file.close();
+
+    return deviceWidget;
+}
+
+void DeviceWidgetTest::actionState()
+{
+    QFETCH(QString, dataPath);
+    QFETCH(QString, actionComboBoxState);
+    QFETCH(bool, deviceClassLineEditState);
+    QFETCH(bool, deviceTypeLineEditState);
+
+    auto widget = readXmlFile(dataPath);
+
+    QVERIFY(widget);
+
+    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
+    auto deviceClassLineEdit = widget->findChild<QLineEdit*>("deviceClassLineEdit");
+    auto deviceTypeLineEdit = widget->findChild<QLineEdit*>("deviceTypeLineEdit");
+
+    QTest::qWait(1000);
+
+    QVERIFY(actionComboBox);
+    QVERIFY(deviceTypeLineEdit);
+    QVERIFY(deviceClassLineEdit);
+
+    QCOMPARE(actionComboBox->currentText(), actionComboBoxState);
+    QCOMPARE(deviceTypeLineEdit->isEnabled(), deviceTypeLineEditState);
+    QCOMPARE(deviceClassLineEdit->isEnabled(), deviceClassLineEditState);
+}
+
+void DeviceWidgetTest::actionState_data()
+{
+
 }
 
 }

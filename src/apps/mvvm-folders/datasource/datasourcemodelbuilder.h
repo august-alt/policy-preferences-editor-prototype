@@ -28,7 +28,7 @@
 
 namespace mvvm_folders
 {
-    class ModelBuilder
+    class DataSourceModelBuilder
     {
     public:
         std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<::DataSources>& dataSources);
