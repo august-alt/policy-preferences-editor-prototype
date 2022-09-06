@@ -9,10 +9,12 @@ include_directories("${CMAKE_SOURCE_DIR}/src/core")
 include_directories("${CMAKE_SOURCE_DIR}/src/apps/mvvm-folders")
 
 set(HEADERS
+    modelcreator.h
     preferencessnapin.h
 )
 
 set(SOURCES
+    modelcreator.cpp
     preferencessnapin.cpp
     preferencesplugin.cpp
 )

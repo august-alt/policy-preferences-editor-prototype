@@ -17,34 +17,35 @@
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **
 ***********************************************************************************************************************/
-#ifndef PREFERENCES_SNAP_IN_H
-#define PREFERENCES_SNAP_IN_H
 
-#include "abstractsnapin.h"
+#ifndef PREFERENCES_SNAPIN_MODEL_CREATOR_H
+#define PREFERENCES_SNAPIN_MODEL_CREATOR_H
 
-namespace preferences_editor
+#include <string>
+#include <memory>
+
+#include "common/preferencesmodel.h"
+
+namespace mvvm_folders
 {
-class PreferencesSnapInPrivate;
 
-class PreferencesSnapIn final : public AbstractSnapIn
+class ModelCreator
 {
 public:
-    PreferencesSnapIn();
+    ModelCreator();
 
-    void onInitialize() override;
-
-    void onShutdown() override;
-
-    void onPolicyLoad(const std::string &policyPath);
-
-    void onPolicySave();
-
-    void onRetranslateUI(const std::string &locale);
+    void populateModels(const std::string& policyPath,
+                        const std::string &policyType,
+                        std::map<std::string, std::unique_ptr<PreferencesModel>>* map);
 
 private:
-    std::unique_ptr<PreferencesSnapInPrivate> d;
+    ModelCreator(const ModelCreator&)            = delete;   // copy ctor
+    ModelCreator(ModelCreator&&)                 = delete;   // move ctor
+    ModelCreator& operator=(const ModelCreator&) = delete;   // copy assignment
+    ModelCreator& operator=(ModelCreator&&)      = delete;   // move assignment
+
 };
 
-} // namespace preferences_editor
+}
 
-#endif // PREFERENCES_SNAP_IN_H
+#endif//PREFERENCES_SNAPIN_MODEL_CREATOR_H

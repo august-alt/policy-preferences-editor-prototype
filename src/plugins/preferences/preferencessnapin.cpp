@@ -22,17 +22,26 @@
 
 #include <iostream>
 
+#include "common/preferencesmodel.h"
 #include "preferencestreemodel.h"
+
+#include "modelcreator.h"
 
 #include <mvvm/viewmodel/topitemsviewmodel.h>
 
 namespace preferences_editor
 {
+using namespace mvvm_folders;
+
 class PreferencesSnapInPrivate
 {
+    typedef std::unique_ptr<PreferencesModel> PreferencesModelPtr;
+    typedef std::map<std::string, PreferencesModelPtr> PreferencesModelMap;
+
 public:
-    std::unique_ptr<mvvm_folders::PreferencesTreeModel> model = nullptr;
+    std::unique_ptr<PreferencesTreeModel> model               = nullptr;
     std::unique_ptr<ModelView::TopItemsViewModel> viewModel   = nullptr;
+    std::unique_ptr<PreferencesModelMap> preferencesModelsMap = nullptr;
 
 public:
     PreferencesSnapInPrivate() {}
@@ -68,6 +77,18 @@ void PreferencesSnapIn::onInitialize()
 void PreferencesSnapIn::onShutdown()
 {
     std::cout << std::string(__PRETTY_FUNCTION__) << std::endl;
+}
+
+void PreferencesSnapIn::onPolicyLoad(const std::string &policyPath)
+{
+    Q_UNUSED(policyPath);
+}
+
+void PreferencesSnapIn::onPolicySave() {}
+
+void PreferencesSnapIn::onRetranslateUI(const std::string &locale)
+{
+    Q_UNUSED(locale);
 }
 
 } // namespace preferences_editor
