@@ -50,7 +50,8 @@ PreferencesWidget::PreferencesWidget(ModelView::SessionModel *model, QWidget *pa
     , m_horizontalViewModel(nullptr)
     , m_selectionModel(std::make_unique<QItemSelectionModel>())
     , m_delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , m_modelsMap(std::make_unique<std::map<std::string, ::ModelView::SessionModel *>>())
+    , m_modelsMap(
+          std::make_unique<std::map<std::string, std::unique_ptr<::ModelView::SessionModel>>>())
     , m_proxyModel(nullptr)
 {
     ui->setupUi(this);
@@ -122,7 +123,7 @@ void PreferencesWidget::setupConnections()
                             model = m_modelsMap->find(modelType);
                         }
 
-                        ui->detailsWidget->setModel(model->second);
+                        ui->detailsWidget->setModel(model->second.get());
                     }
                 }
             });

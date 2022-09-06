@@ -67,7 +67,7 @@ private:
     std::unique_ptr<::ModelView::ViewModel> m_horizontalViewModel;
     std::unique_ptr<QItemSelectionModel> m_selectionModel;
     std::unique_ptr<::ModelView::ViewModelDelegate> m_delegate;
-    std::unique_ptr<std::map<std::string, ::ModelView::SessionModel *>> m_modelsMap;
+    std::unique_ptr<std::map<std::string, std::unique_ptr<::ModelView::SessionModel>>> m_modelsMap;
     std::unique_ptr<PreferencesTreeProxyModel> m_proxyModel;
 
 private:
