@@ -23,25 +23,18 @@
 
 #include <QtTest>
 
-
 namespace mvvm_folders
 {
 class GroupMembersWidget;
 }
-namespace tests 
+namespace tests
 {
-    class GroupMembersWidgetTest : public QObject
-    {
-        Q_OBJECT
-    private:
-        std::unique_ptr<mvvm_folders::GroupMembersWidget> readXmlFile(const QString &dataPath);
+class GroupMembersWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::GroupMembersWidget> readXmlFile(const QString &dataPath);
+};
+} // namespace tests
 
-        private slots:
-            void test();
-            void TableViewState();
-            void TableViewState_data();
-    };
-}
-
-#endif//MVVM_FOLDERS_GROUPMEMBERSWIDGET_WIDGET_TEST_H
-
+#endif //MVVM_FOLDERS_GROUPMEMBERSWIDGET_WIDGET_TEST_H

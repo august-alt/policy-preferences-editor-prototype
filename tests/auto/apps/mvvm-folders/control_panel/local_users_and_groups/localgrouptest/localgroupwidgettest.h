@@ -33,19 +33,10 @@ class LocalGroupWidgetTest : public QObject
 {
     Q_OBJECT
 
-private slots:
-//    void test();
-    void LineEditCheck();
-    void LineEditCheck_data();
-    void RadioButtonCheck();
-    void RadioButtonCheck_data();
-    void CheckBox();
-    void CheckBox_data();
-
 private:
     std::unique_ptr<mvvm_folders::LocalGroupWidget> readXmlFile(const QString &dataPath);
 };
-}
 
-#endif//MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H
+} // namespace tests
 
+#endif //MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H
