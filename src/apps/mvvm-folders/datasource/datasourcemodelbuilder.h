@@ -23,18 +23,21 @@
 
 #include <memory>
 
+#include "common/basemodelbuilder.h"
 #include "common/preferencesmodel.h"
 #include "schemas/datasourcesschema.h"
 
 namespace mvvm_folders
 {
-    class DataSourceModelBuilder
-    {
-    public:
-        std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<::DataSources>& dataSources);
+class DataSourceModelBuilder : public BaseModelBuilder
+{
+public:
+    DataSourceModelBuilder();
 
-        std::unique_ptr<::DataSources> modelToSchema(std::unique_ptr<PreferencesModel>& model);
-    };
+    std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<DataSources>& dataSources);
+
+    std::unique_ptr<DataSources> modelToSchema(std::unique_ptr<PreferencesModel>& model);
+};
 }
 
 #endif // MVVM_FOLDERS_DRIVES_MODEL_BUILDER_H

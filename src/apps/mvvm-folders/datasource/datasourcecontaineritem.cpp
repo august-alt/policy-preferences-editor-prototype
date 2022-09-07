@@ -42,9 +42,9 @@ DataSourceContainerItem::DataSourceContainerItem()
     addProperty<DataSourceItem>(DATASOURCE)->setVisible(false);
 }
 
-CommonItem DataSourceContainerItem::getCommon() const
+CommonItem* DataSourceContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void DataSourceContainerItem::setCommon(const CommonItem &item)
@@ -52,9 +52,9 @@ void DataSourceContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-DataSourceItem DataSourceContainerItem::getDataSource() const
+DataSourceItem *DataSourceContainerItem::getDataSource() const
 {
-    return property<DataSourceItem>(DATASOURCE);
+    return static_cast<DataSourceItem*>(children().back());
 }
 
 void DataSourceContainerItem::setDataSource(const DataSourceItem &item)

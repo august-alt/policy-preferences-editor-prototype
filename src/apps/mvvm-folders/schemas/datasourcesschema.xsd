@@ -4,10 +4,10 @@
 
 <xs:complexType name="Properties_t">
    <xs:sequence>
-      <xs:element name="Attributes">
+      <xs:element name="Attributes" maxOccurs="unbounded">
          <xs:complexType>
             <xs:sequence>
-               <xs:element name="Attribute">
+               <xs:element name="Attribute" maxOccurs="unbounded">
                   <xs:complexType>
                      <xs:attribute name="name" type="xs:string" use="required" />
                      <xs:attribute name="value" type="xs:string" use="required" />

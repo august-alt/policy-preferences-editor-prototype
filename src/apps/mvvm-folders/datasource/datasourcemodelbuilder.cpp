@@ -28,6 +28,11 @@
 namespace mvvm_folders
 {
 
+DataSourceModelBuilder::DataSourceModelBuilder()
+    : BaseModelBuilder()
+{
+}
+
 std::unique_ptr<PreferencesModel> DataSourceModelBuilder::schemaToModel(std::unique_ptr<DataSources> &dataSources)
 {
     auto model = std::make_unique<PreferencesModel>();
@@ -55,9 +60,33 @@ std::unique_ptr<PreferencesModel> DataSourceModelBuilder::schemaToModel(std::uni
 
 std::unique_ptr<DataSources> DataSourceModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
+    auto datasource = std::make_unique<DataSources>("{380F820F-F21B-41ac-A3CC-24D4F80F067B}");
 
-    return nullptr;
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto dataContainer = dynamic_cast<DataSourceContainerItem*>(containerItem); dataContainer)
+        {
+            auto dataModel = dataContainer->getDataSource();
+            auto commonModel = dataContainer->getCommon();
+
+            auto data = createRootElement<DataSource_t>("{5C209626-D820-4d69-8D50-1FACD6214488}");
+
+            auto properties = Properties_t(dataModel->property<std::string>(DataSourceItem::DSN),
+                                           dataModel->property<std::string>(DataSourceItem::DRIVER));
+            properties.action(dataModel->property<std::string>(DataSourceItem::ACTION));
+            properties.username(dataModel->property<std::string>(DataSourceItem::USERNAME));
+            properties.cpassword(dataModel->property<std::string>(DataSourceItem::CPASSWORD));
+            properties.description(dataModel->property<std::string>(DataSourceItem::DESCRIPTION));
+//            properties.userDSN(dataModel->property<std::string>(DataSourceItem::USERDSN));
+
+            data.Properties().push_back(properties);
+            setCommonModelData(data, commonModel);
+
+            datasource->DataSource().push_back(data);
+
+        }
+    }
+    return datasource;
 }
 
 }

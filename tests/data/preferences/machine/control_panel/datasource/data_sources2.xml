@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSources clsid="{380F820F-F21B-41ac-A3CC-24D4F80F067B}"><DataSource clsid="{5C209626-D820-4d69-8D50-1FACD6214488}" userContext="1" name="Name" image="2" changed="2022-04-29 13:05:10" uid="{B342A8FA-44FC-4534-849B-9DF53F117294}"><Properties action="U" userDSN="1" dsn="Name" driver="SQL Server" description="Test" username="User" cpassword="KIpruAJgGAvuzk+Po6eSPA"><Attributes><Attribute name="Test" value="Value"/></Attributes></Properties></DataSource>
+</DataSources>
+

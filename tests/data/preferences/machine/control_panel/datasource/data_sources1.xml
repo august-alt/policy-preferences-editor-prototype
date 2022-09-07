@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSources clsid="{380F820F-F21B-41ac-A3CC-24D4F80F067B}"><DataSource clsid="{5C209626-D820-4d69-8D50-1FACD6214488}" userContext="1" name="Name" image="2" changed="2022-04-29 12:32:24" uid=""><Properties action="U" userDSN="0" dsn="Name" driver="Driver" description="Description" username="User" cpassword=""><Attributes><Attribute name="Name" value="Value"/></Attributes></Properties></DataSource>
+</DataSources>
+
