@@ -39,9 +39,10 @@ class PreferencesSnapInPrivate
     typedef std::map<std::string, PreferencesModelPtr> PreferencesModelMap;
 
 public:
-    std::unique_ptr<PreferencesTreeModel> model               = nullptr;
-    std::unique_ptr<ModelView::TopItemsViewModel> viewModel   = nullptr;
-    std::unique_ptr<PreferencesModelMap> preferencesModelsMap = nullptr;
+    std::unique_ptr<PreferencesTreeModel> model                   = nullptr;
+    std::unique_ptr<ModelView::TopItemsViewModel> viewModel       = nullptr;
+    std::unique_ptr<PreferencesModelMap> machinePreferencesModels = nullptr;
+    std::unique_ptr<PreferencesModelMap> userPreferencesModels    = nullptr;
 
 public:
     PreferencesSnapInPrivate() {}
@@ -81,7 +82,10 @@ void PreferencesSnapIn::onShutdown()
 
 void PreferencesSnapIn::onPolicyLoad(const std::string &policyPath)
 {
-    Q_UNUSED(policyPath);
+    auto modelCreator = std::make_unique<ModelCreator>();
+
+    modelCreator->populateModels(policyPath, "MACHINE", d->machinePreferencesModels.get());
+    modelCreator->populateModels(policyPath, "USER", d->userPreferencesModels.get());
 }
 
 void PreferencesSnapIn::onPolicySave() {}

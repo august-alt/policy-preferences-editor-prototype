@@ -13,6 +13,7 @@ set(HEADERS
     common/basemodelbuilder.h
     common/basepreferenceitem.h
     common/basepreferencewidget.h
+    common/basepreferencereader.h
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
@@ -38,6 +39,7 @@ set(HEADERS
     drives/driveswidget.h
 
     folders/foldercontaineritem.h
+    folders/folderpreferencereader.h
     folders/folderitem.h
     folders/foldermodelbuilder.h
     folders/folderwidget.h
@@ -55,14 +57,18 @@ set(HEADERS
     folder_options/fileextensionwidget.h
 
     files/filesitem.h
+    files/filespreferencereader.h
     files/filescontaineritem.h
     files/filesmodelbuilder.h
     files/fileswidget.h
 
     ini/iniitem.h
+    ini/inipreferencereader.h
     ini/inicontaineritem.h
     ini/inimodelbuilder.h
     ini/iniwidget.h
+
+    interfaces/preferencesreaderinterface.h
 
     local_users_and_groups/baselocalitem.h
     local_users_and_groups/groupmemberdialog.h
@@ -117,6 +123,7 @@ set(HEADERS
     printers/tcpprinterportwidget.h
 
     registry/registrycontaineritem.h
+    registry/registrypreferencereader.h
     registry/registryitem.h
     registry/registrymodelbuilder.h
     registry/registrywidget.h
@@ -145,16 +152,19 @@ set(HEADERS
     start_menu/startmenuwinxpitem.h
 
     shares/sharesitem.h
+    shares/sharespreferencereader.h
     shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
 
     shortcuts/shortcutsitem.h
+    shortcuts/shortcutspreferencereader.h
     shortcuts/shortcutsmodelbuilder.h
     shortcuts/shortcutscontaineritem.h
     shortcuts/shortcutswidget.h
 
     variables/variablesitem.h
+    variables/variablespreferencereader.h
     variables/variablesmodelbuilder.h
     variables/variablescontaineritem.h
     variables/variableswidget.h
@@ -170,6 +180,7 @@ set(SOURCES
 
     common/basemodelbuilder.cpp
     common/basepreferencewidget.cpp
+    common/basepreferencereader.cpp
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
@@ -197,6 +208,7 @@ set(SOURCES
     drives/driveswidgetslots.cpp
 
     folders/foldercontaineritem.cpp
+    folders/folderpreferencereader.cpp
     folders/folderitem.cpp
     folders/foldermodelbuilder.cpp
     folders/folderwidget.cpp
@@ -214,12 +226,14 @@ set(SOURCES
     folder_options/fileextensionwidget.cpp
 
     files/filesitem.cpp
+    files/filespreferencereader.cpp
     files/filescontaineritem.cpp
     files/filesmodelbuilder.cpp
     files/fileswidget.cpp
     files/fileswidgetslots.cpp
 
     ini/iniitem.cpp
+    ini/inipreferencereader.cpp
     ini/inicontaineritem.cpp
     ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
@@ -293,24 +307,28 @@ set(SOURCES
     start_menu/startmenuwinxpitem.cpp
 
     registry/registrycontaineritem.cpp
+    registry/registrypreferencereader.cpp
     registry/registryitem.cpp
     registry/registrymodelbuilder.cpp
     registry/registrywidget.cpp
     registry/registrywidgetslots.cpp
 
     shares/sharesitem.cpp
+    shares/sharespreferencereader.cpp
     shares/sharescontaineritem.cpp
     shares/sharesmodelbuilder.cpp
     shares/shareswidget.cpp
     shares/shareswidgetslots.cpp
 
     shortcuts/shortcutsitem.cpp
+    shortcuts/shortcutspreferencereader.cpp
     shortcuts/shortcutscontaineritem.cpp
     shortcuts/shortcutsmodelbuilder.cpp
     shortcuts/shortcutswidget.cpp
     shortcuts/shortcutswidgetslots.cpp
 
     variables/variablesitem.cpp
+    variables/variablespreferencereader.cpp
     variables/variablescontaineritem.cpp
     variables/variablesmodelbuilder.cpp
     variables/variableswidget.cpp

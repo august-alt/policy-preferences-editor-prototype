@@ -24,75 +24,40 @@
 
 #include <fstream>
 
-#include "files/filesmodelbuilder.h"
-#include "folders/foldermodelbuilder.h"
-#include "ini/inimodelbuilder.h"
-#include "registry/registrymodelbuilder.h"
-#include "shares/sharesmodelbuilder.h"
-#include "shortcuts/shortcutsmodelbuilder.h"
-#include "variables/variablesmodelbuilder.h"
-
-#include "schemas/filesschema.h"
-#include "schemas/foldersschema.h"
-#include "schemas/inischema.h"
-#include "schemas/registryschema.h"
-#include "schemas/sharesschema.h"
-#include "schemas/shortcutsschema.h"
-#include "schemas/variablesschema.h"
+#include "files/filespreferencereader.h"
+#include "folders/folderpreferencereader.h"
+#include "ini/inipreferencereader.h"
+#include "interfaces/preferencesreaderinterface.h"
+#include "registry/registrypreferencereader.h"
+#include "shares/sharespreferencereader.h"
+#include "shortcuts/shortcutspreferencereader.h"
+#include "variables/variablespreferencereader.h"
 
 namespace mvvm_folders
 {
-template<typename TModelBuilder>
-class ModelBuilderAdapter
-{
-public:
-    template<typename T>
-    std::unique_ptr<PreferencesModel> schemaToModel(
-        std::function<std::unique_ptr<T>(
-            std::istream &, ::xsd::cxx::tree::flags f, ::xml_schema::Properties p)> xmlReader,
-        const std::string &path)
-    {
-        std::unique_ptr<PreferencesModel> result;
-
-        std::ifstream file;
-
-        file.open(path, std::ifstream::in);
-
-        bool ok = file.good();
-        if (!ok)
-        {
-            qWarning() << "Failed to read file: " << path.c_str();
-            return nullptr;
-        }
-
-        try
-        {
-            auto schema       = xmlReader(file,
-                                    ::xsd::cxx::tree::flags::dont_validate,
-                                    ::xml_schema::Properties());
-            auto modelBuilder = std::make_unique<TModelBuilder>();
-            result            = modelBuilder->schemaToModel(schema);
-        }
-        catch (const std::exception &e)
-        {
-            qWarning() << e.what();
-        }
-
-        file.close();
-
-        return result;
-    }
-};
-
 ModelCreator::ModelCreator() {}
 
 void ModelCreator::populateModels(const std::string &policyPath,
                                   const std::string &policyType,
                                   std::map<std::string, std::unique_ptr<PreferencesModel>> *map)
 {
-    Q_UNUSED(policyPath);
-    Q_UNUSED(policyType);
-    Q_UNUSED(map);
+    std::map<std::string, std::unique_ptr<PreferenceReaderInterface>> readers;
+    readers["Files\\Files.xml"]                 = std::make_unique<FilesPreferenceReader>();
+    readers["Folders\\Folders.xml"]             = std::make_unique<FolderPreferenceReader>();
+    readers["IniFiles\\IniFiles.xml"]           = std::make_unique<IniPreferenceReader>();
+    readers["Registry\\Registry.xml"]           = std::make_unique<RegistryPreferenceReader>();
+    readers["NetworkShares\\NetworkShares.xml"] = std::make_unique<SharesPreferenceReader>();
+    readers["Shortcuts\\Shortcuts.xml"]         = std::make_unique<ShortcutsPreferenceReader>();
+    readers["EnvironmentVariables\\EnvironmentVariables.xml"]
+        = std::make_unique<VariablesPreferenceReader>();
+
+    for (const auto &readerPair : readers)
+    {
+        auto &reader = readerPair.second;
+        auto model   = reader->read(policyPath + "\\" + policyType + "\\" + readerPair.first);
+        map->insert(std::pair<std::string, std::unique_ptr<PreferencesModel>>(reader->getType(),
+                                                                              std::move(model)));
+    }
 }
 
 } // namespace mvvm_folders
