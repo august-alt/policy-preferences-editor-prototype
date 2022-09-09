@@ -18,40 +18,77 @@
 **
 ***********************************************************************************************************************/
 #include "concatenatetreesproxymodel.h"
+#include "concatenatetreesproxymodel_p.h"
 
 #include <QSize>
 
 namespace preferences_editor
 {
-class ConcatenateTreesProxyModelPrivate
-{
-    Q_DECLARE_PUBLIC(ConcatenateTreesProxyModel)
-
-private:
-    ConcatenateTreesProxyModel *q_ptr = nullptr;
-
-public:
-    ConcatenateTreesProxyModelPrivate();
-};
-
-ConcatenateTreesProxyModelPrivate::ConcatenateTreesProxyModelPrivate() {}
-
 ConcatenateTreesProxyModel::ConcatenateTreesProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
-{
-    Q_UNUSED(parent);
-}
+    , d_ptr(new ConcatenateTreesProxyModelPrivate())
+{}
 
 ConcatenateTreesProxyModel::~ConcatenateTreesProxyModel() {}
 
 void ConcatenateTreesProxyModel::addSourceModel(QAbstractItemModel *sourceModel)
 {
-    Q_UNUSED(sourceModel);
+    Q_D(ConcatenateTreesProxyModel);
+    if (!sourceModel || d->models.contains(sourceModel))
+    {
+        return;
+    }
+
+    connect(sourceModel, &QAbstractItemModel::dataChanged, d, &ConcatenateTreesProxyModelPrivate::dataChanged);
+    connect(sourceModel, &QAbstractItemModel::rowsInserted, d, &ConcatenateTreesProxyModelPrivate::rowsInserted);
+    connect(sourceModel, &QAbstractItemModel::rowsRemoved, d, &ConcatenateTreesProxyModelPrivate::rowsRemoved);
+    connect(sourceModel,
+            &QAbstractItemModel::rowsAboutToBeInserted,
+            d,
+            &ConcatenateTreesProxyModelPrivate::rowsAboutToBeInserted);
+    connect(sourceModel,
+            &QAbstractItemModel::rowsAboutToBeRemoved,
+            d,
+            &ConcatenateTreesProxyModelPrivate::rowsAboutToBeRemoved);
+    connect(sourceModel, &QAbstractItemModel::columnsInserted, d, &ConcatenateTreesProxyModelPrivate::columnsInserted);
+    connect(sourceModel, &QAbstractItemModel::columnsRemoved, d, &ConcatenateTreesProxyModelPrivate::columnsRemoved);
+    connect(sourceModel,
+            &QAbstractItemModel::columnsAboutToBeInserted,
+            d,
+            &ConcatenateTreesProxyModelPrivate::columnsAboutToBeInserted);
+    connect(sourceModel,
+            &QAbstractItemModel::columnsAboutToBeRemoved,
+            d,
+            &ConcatenateTreesProxyModelPrivate::columnsAboutToBeRemoved);
+    connect(sourceModel,
+            &QAbstractItemModel::layoutAboutToBeChanged,
+            d,
+            &ConcatenateTreesProxyModelPrivate::layoutAboutToBeChanged);
+    connect(sourceModel, &QAbstractItemModel::layoutChanged, d, &ConcatenateTreesProxyModelPrivate::layoutChanged);
+
+    connect(sourceModel,
+            &QAbstractItemModel::modelAboutToBeReset,
+            d,
+            &ConcatenateTreesProxyModelPrivate::modelAboutToBeReset);
+    connect(sourceModel, &QAbstractItemModel::modelReset, d, &ConcatenateTreesProxyModelPrivate::modelReset);
+
+    // TODO: Update row and column count.
+
+    d->models.insert(sourceModel);
 }
 
 void ConcatenateTreesProxyModel::removeSourceModel(QAbstractItemModel *sourceModel)
 {
-    Q_UNUSED(sourceModel);
+    Q_D(ConcatenateTreesProxyModel);
+    if (!d->models.contains(sourceModel))
+    {
+        return;
+    }
+    disconnect(sourceModel, nullptr, d, nullptr);
+
+    // TODO: Update row and column count.
+
+    d->models.remove(sourceModel);
 }
 
 QModelIndex ConcatenateTreesProxyModel::mapFromSource(const QModelIndex &sourceIndex) const
@@ -92,8 +129,7 @@ QMap<int, QVariant> ConcatenateTreesProxyModel::itemData(const QModelIndex &prox
     return QMap<int, QVariant>();
 }
 
-bool ConcatenateTreesProxyModel::setItemData(const QModelIndex &index,
-                                             const QMap<int, QVariant> &roles)
+bool ConcatenateTreesProxyModel::setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles)
 {
     Q_UNUSED(index);
     Q_UNUSED(roles);
@@ -131,9 +167,7 @@ int ConcatenateTreesProxyModel::rowCount(const QModelIndex &parent) const
     return 0;
 }
 
-QVariant ConcatenateTreesProxyModel::headerData(int section,
-                                                Qt::Orientation orientation,
-                                                int role) const
+QVariant ConcatenateTreesProxyModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(section);
     Q_UNUSED(orientation);
@@ -161,11 +195,8 @@ QMimeData *ConcatenateTreesProxyModel::mimeData(const QModelIndexList &indexes) 
     return nullptr;
 }
 
-bool ConcatenateTreesProxyModel::canDropMimeData(const QMimeData *data,
-                                                 Qt::DropAction action,
-                                                 int row,
-                                                 int column,
-                                                 const QModelIndex &parent) const
+bool ConcatenateTreesProxyModel::canDropMimeData(
+    const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
 {
     Q_UNUSED(data);
     Q_UNUSED(action);

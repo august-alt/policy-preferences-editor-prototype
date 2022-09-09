@@ -23,16 +23,25 @@
 #include "concatenatetreesproxymodel.h"
 
 #include <QAbstractItemModelTester>
+#include <QStandardItemModel>
 
 namespace tests
 {
 void ConcatenatateTreesProxyModelTest::autotestModel()
 {
     auto modelToBeTested = std::make_unique<preferences_editor::ConcatenateTreesProxyModel>();
-    new QAbstractItemModelTester(modelToBeTested.get(),
-                                 QAbstractItemModelTester::FailureReportingMode::Fatal,
-                                 this);
+    new QAbstractItemModelTester(modelToBeTested.get(), QAbstractItemModelTester::FailureReportingMode::Fatal, this);
 }
+
+void ConcatenatateTreesProxyModelTest::addSourceModel()
+{
+    auto modelToBeTested = std::make_unique<preferences_editor::ConcatenateTreesProxyModel>();
+    auto sourceModelA    = std::make_unique<QStandardItemModel>();
+
+    modelToBeTested->addSourceModel(sourceModelA.get());
+}
+
+void ConcatenatateTreesProxyModelTest::removeSourceModel() {}
 
 } // namespace tests
 

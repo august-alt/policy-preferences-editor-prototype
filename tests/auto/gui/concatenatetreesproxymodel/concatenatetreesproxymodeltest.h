@@ -31,6 +31,9 @@ class ConcatenatateTreesProxyModelTest : public QObject
 
 private slots:
     void autotestModel();
+
+    void addSourceModel();
+    void removeSourceModel();
 };
 } // namespace tests
 

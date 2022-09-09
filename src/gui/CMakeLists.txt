@@ -21,6 +21,7 @@ set(SOURCES
     aboutdialog.cpp
     commandlineparser.cpp
     concatenatetreesproxymodel.cpp
+    concatenatetreesproxymodel_p.cpp
     editorpreferencesdialog.cpp
     filedialogutils.cpp
     gui.cpp
@@ -40,6 +41,7 @@ set(UI_FORMS
 set(MOC_HEADERS
     aboutdialog.h
     concatenatetreesproxymodel.h
+    concatenatetreesproxymodel_p.h
     editorpreferencesdialog.h
     listboxdialog.h
     mainwindow.h

@@ -31,6 +31,7 @@ class ConcatenateTreesProxyModelPrivate;
 class PREFERENCES_EDITOR_GUI_EXPORT ConcatenateTreesProxyModel : public QAbstractProxyModel
 {
     Q_OBJECT
+
 public:
     explicit ConcatenateTreesProxyModel(QObject *parent = nullptr);
     ~ConcatenateTreesProxyModel();
@@ -46,27 +47,24 @@ public:
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    QVariant headerData(int section,
-                        Qt::Orientation orientation,
-                        int role = Qt::DisplayRole) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QStringList mimeTypes() const override;
     QMimeData *mimeData(const QModelIndexList &indexes) const override;
-    bool canDropMimeData(const QMimeData *data,
-                         Qt::DropAction action,
-                         int row,
-                         int column,
-                         const QModelIndex &parent) const override;
-    bool dropMimeData(const QMimeData *data,
-                      Qt::DropAction action,
-                      int row,
-                      int column,
-                      const QModelIndex &parent) override;
+    bool canDropMimeData(
+        const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const override;
+    bool dropMimeData(
+        const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) override;
     QSize span(const QModelIndex &index) const override;
 
 private:
+    QScopedPointer<ConcatenateTreesProxyModelPrivate> d_ptr;
     Q_DECLARE_PRIVATE(ConcatenateTreesProxyModel)
     Q_DISABLE_COPY(ConcatenateTreesProxyModel)
+
+public:
+    ConcatenateTreesProxyModel(ConcatenateTreesProxyModel &&) = delete;            // move ctor
+    ConcatenateTreesProxyModel &operator=(ConcatenateTreesProxyModel &&) = delete; // move assignment
 };
 
 } // namespace preferences_editor
