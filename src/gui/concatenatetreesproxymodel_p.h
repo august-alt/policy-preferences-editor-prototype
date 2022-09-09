@@ -68,6 +68,12 @@ public slots:
 
     void modelAboutToBeReset();
     void modelReset();
+
+private:
+    ConcatenateTreesProxyModelPrivate(const ConcatenateTreesProxyModelPrivate &) = delete;            // copy ctor
+    ConcatenateTreesProxyModelPrivate(ConcatenateTreesProxyModelPrivate &&)      = delete;            // move ctor
+    ConcatenateTreesProxyModelPrivate &operator=(const ConcatenateTreesProxyModelPrivate &) = delete; // copy assignment
+    ConcatenateTreesProxyModelPrivate &operator=(ConcatenateTreesProxyModelPrivate &&) = delete;      // move assignment
 };
 
 } // namespace preferences_editor
