@@ -20,13 +20,15 @@
 #include "concatenatetreesproxymodel.h"
 #include "concatenatetreesproxymodel_p.h"
 
+#include <QAbstractItemModel>
+#include <QDebug>
 #include <QSize>
 
 namespace preferences_editor
 {
 ConcatenateTreesProxyModel::ConcatenateTreesProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
-    , d_ptr(new ConcatenateTreesProxyModelPrivate())
+    , d_ptr(new ConcatenateTreesProxyModelPrivate(this))
 {}
 
 ConcatenateTreesProxyModel::~ConcatenateTreesProxyModel() {}
@@ -93,48 +95,93 @@ void ConcatenateTreesProxyModel::removeSourceModel(QAbstractItemModel *sourceMod
 
 QModelIndex ConcatenateTreesProxyModel::mapFromSource(const QModelIndex &sourceIndex) const
 {
-    Q_UNUSED(sourceIndex);
+    Q_D(const ConcatenateTreesProxyModel);
+    if (!sourceIndex.isValid())
+    {
+        return QModelIndex();
+    }
+    const QAbstractItemModel *sourceModel = sourceIndex.model();
+    if (!d->models.contains(const_cast<QAbstractItemModel *>(sourceModel)))
+    {
+        qWarning() << "ConcatenateTreesProxyModel::mapFromSource index from wrong model passed.";
+        return QModelIndex();
+    }
 
-    return QModelIndex();
+    // TODO: Implement row and column calculation.
+
+    return createIndex(sourceIndex.row(), sourceIndex.column(), sourceIndex.internalPointer());
 }
 
 QModelIndex ConcatenateTreesProxyModel::mapToSource(const QModelIndex &proxyIndex) const
 {
-    Q_UNUSED(proxyIndex);
+    Q_D(const ConcatenateTreesProxyModel);
+    if (!proxyIndex.isValid())
+    {
+        return QModelIndex();
+    }
 
-    return QModelIndex();
+    if (proxyIndex.model() != this)
+    {
+        qWarning() << "ConcatenateTreesProxyModel::mapToSource index from wrong model passed.";
+        return QModelIndex();
+    }
+
+    int row                               = proxyIndex.row();
+    const QAbstractItemModel *sourceModel = d->sourceModelForRow(row);
+
+    if (!sourceModel)
+    {
+        return QModelIndex();
+    }
+
+    return sourceModel->index(row, proxyIndex.column());
 }
 
 QVariant ConcatenateTreesProxyModel::data(const QModelIndex &index, int role) const
 {
-    Q_UNUSED(index);
-    Q_UNUSED(role);
+    const QModelIndex sourceIndex = mapToSource(index);
+    if (sourceIndex.isValid())
+    {
+        return sourceIndex.data(role);
+    }
 
     return QVariant();
 }
 
 bool ConcatenateTreesProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    Q_UNUSED(index);
-    Q_UNUSED(value);
-    Q_UNUSED(role);
+    const QModelIndex sourceIndex = mapToSource(index);
+    if (!sourceIndex.isValid())
+    {
+        return false;
+    }
+    QAbstractItemModel *sourceModel = const_cast<QAbstractItemModel *>(sourceIndex.model());
 
-    return false;
+    return sourceModel->setData(sourceIndex, value, role);
 }
 
 QMap<int, QVariant> ConcatenateTreesProxyModel::itemData(const QModelIndex &proxyIndex) const
 {
-    Q_UNUSED(proxyIndex);
+    const QModelIndex sourceIndex = mapToSource(proxyIndex);
+    if (!sourceIndex.isValid())
+    {
+        return QMap<int, QVariant>();
+    }
 
-    return QMap<int, QVariant>();
+    return sourceIndex.model()->itemData(sourceIndex);
 }
 
 bool ConcatenateTreesProxyModel::setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles)
 {
-    Q_UNUSED(index);
-    Q_UNUSED(roles);
+    const QModelIndex sourceIndex = mapToSource(index);
+    if (!sourceIndex.isValid())
+    {
+        return false;
+    }
 
-    return false;
+    QAbstractItemModel *sourceModel = const_cast<QAbstractItemModel *>(sourceIndex.model());
+
+    return sourceModel->setItemData(sourceIndex, roles);
 }
 
 Qt::ItemFlags ConcatenateTreesProxyModel::flags(const QModelIndex &index) const
@@ -146,11 +193,15 @@ Qt::ItemFlags ConcatenateTreesProxyModel::flags(const QModelIndex &index) const
 
 QModelIndex ConcatenateTreesProxyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    Q_UNUSED(row);
-    Q_UNUSED(column);
-    Q_UNUSED(parent);
+    Q_D(const ConcatenateTreesProxyModel);
+    if (!hasIndex(row, column, parent))
+    {
+        return QModelIndex();
+    }
 
-    return QModelIndex();
+    QAbstractItemModel *sourceModel = d->sourceModelForRow(row);
+
+    return mapFromSource(sourceModel->index(row, column));
 }
 
 QModelIndex ConcatenateTreesProxyModel::parent(const QModelIndex &index) const
@@ -185,7 +236,14 @@ int ConcatenateTreesProxyModel::columnCount(const QModelIndex &parent) const
 
 QStringList ConcatenateTreesProxyModel::mimeTypes() const
 {
-    return {};
+    Q_D(const ConcatenateTreesProxyModel);
+    if (d->models.isEmpty())
+    {
+        return {};
+    }
+    QAbstractItemModel *firstModel = const_cast<QAbstractItemModel *>(*d->models.begin());
+
+    return firstModel->mimeTypes();
 }
 
 QMimeData *ConcatenateTreesProxyModel::mimeData(const QModelIndexList &indexes) const

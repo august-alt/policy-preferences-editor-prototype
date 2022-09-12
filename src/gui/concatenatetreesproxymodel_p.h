@@ -39,8 +39,11 @@ private:
     QSet<QAbstractItemModel *> models;
 
 public:
-    ConcatenateTreesProxyModelPrivate();
+    ConcatenateTreesProxyModelPrivate(ConcatenateTreesProxyModel *model);
     virtual ~ConcatenateTreesProxyModelPrivate();
+
+public:
+    QAbstractItemModel *sourceModelForRow(int &row) const;
 
 public slots:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);

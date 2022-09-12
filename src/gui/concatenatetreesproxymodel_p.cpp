@@ -22,11 +22,18 @@
 
 namespace preferences_editor
 {
-ConcatenateTreesProxyModelPrivate::ConcatenateTreesProxyModelPrivate()
-    : models()
+ConcatenateTreesProxyModelPrivate::ConcatenateTreesProxyModelPrivate(ConcatenateTreesProxyModel *model)
+    : q_ptr(model)
+    , models()
 {}
 
 ConcatenateTreesProxyModelPrivate::~ConcatenateTreesProxyModelPrivate() {}
+
+QAbstractItemModel *ConcatenateTreesProxyModelPrivate::sourceModelForRow(int &row) const
+{
+    Q_UNUSED(row);
+    return nullptr;
+}
 
 void ConcatenateTreesProxyModelPrivate::dataChanged(const QModelIndex &topLeft,
                                                     const QModelIndex &bottomRight,
