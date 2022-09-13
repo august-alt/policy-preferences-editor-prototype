@@ -39,20 +39,23 @@ std::unique_ptr<PreferencesModel> DataSourceModelBuilder::schemaToModel(std::uni
 
     for (const auto& dataSourceSchema : dataSources->DataSource())
     {
-        auto properties = dataSourceSchema.Properties();
-        auto dataSource = DataSourceItem();
-        dataSource.setProperty(DataSourceItem::ACTION, properties.action()->c_str());
-        dataSource.setProperty(DataSourceItem::USERDSN, properties.userDSN().get());
-        dataSource.setProperty(DataSourceItem::DSN, properties.dsn().c_str());
-        dataSource.setProperty(DataSourceItem::DRIVER, properties.driver().c_str());
-        dataSource.setProperty(DataSourceItem::DESCRIPTION, properties.description()->c_str());
-        dataSource.setProperty(DataSourceItem::USERNAME, properties.username()->c_str());
-        dataSource.setProperty(DataSourceItem::CPASSWORD, properties.cpassword()->c_str());
-        dataSource.setProperty(DataSourceItem::USERSOURCE, properties.userDSN() ? true : false);
-        dataSource.setProperty(DataSourceItem::SYSTEMSOURCE, properties.userDSN() ? false : true);
-
         auto sessionItem = model->insertItem<DataSourceContainerItem>(model->rootItem());
-        sessionItem->setDataSource(dataSource);
+        for (const auto& properties: dataSourceSchema.Properties())
+        {
+            auto dataSource = sessionItem->getDataSource();
+            dataSource->setProperty(DataSourceItem::ACTION, getActionCheckboxState(getOptionalPropertyData(properties.action()).c_str()));
+            dataSource->setProperty(DataSourceItem::USERDSN, getOptionalPropertyData(properties.userDSN()));
+            dataSource->setProperty(DataSourceItem::DSN, properties.dsn().c_str());
+            dataSource->setProperty(DataSourceItem::DRIVER, properties.driver().c_str());
+            dataSource->setProperty(DataSourceItem::DESCRIPTION, getOptionalPropertyData(properties.description()).c_str());
+            dataSource->setProperty(DataSourceItem::USERNAME, getOptionalPropertyData(properties.username()).c_str());
+            dataSource->setProperty(DataSourceItem::CPASSWORD, getOptionalPropertyData(properties.cpassword()).c_str());
+            dataSource->setProperty(DataSourceItem::USERSOURCE, getOptionalPropertyData(properties.userDSN()) ? true : false);
+            dataSource->setProperty(DataSourceItem::SYSTEMSOURCE, getOptionalPropertyData(properties.userDSN()) ? false : true);
+
+            auto common = sessionItem->getCommon();
+            setCommonItemData(common, dataSourceSchema);
+        }
     }
 
     return model;
@@ -77,7 +80,7 @@ std::unique_ptr<DataSources> DataSourceModelBuilder::modelToSchema(std::unique_p
             properties.username(dataModel->property<std::string>(DataSourceItem::USERNAME));
             properties.cpassword(dataModel->property<std::string>(DataSourceItem::CPASSWORD));
             properties.description(dataModel->property<std::string>(DataSourceItem::DESCRIPTION));
-//            properties.userDSN(dataModel->property<std::string>(DataSourceItem::USERDSN));
+            properties.userDSN(dataModel->property<bool>(DataSourceItem::USERDSN));
 
             data.Properties().push_back(properties);
             setCommonModelData(data, commonModel);

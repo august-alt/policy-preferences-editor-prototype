@@ -29,8 +29,8 @@
 
 <xs:complexType name="DataSource_t">
    <xs:sequence>
-      <xs:element name="Properties" type="Properties_t"/>
-      <xs:element minOccurs="0" name="Filters" type="Filters_t" />
+      <xs:element name="Properties" type="Properties_t" maxOccurs="unbounded" />
+      <xs:element minOccurs="0" name="Filters" type="Filters_t" maxOccurs="unbounded" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
