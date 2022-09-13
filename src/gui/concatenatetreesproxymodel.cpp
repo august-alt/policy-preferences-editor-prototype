@@ -186,9 +186,17 @@ bool ConcatenateTreesProxyModel::setItemData(const QModelIndex &index, const QMa
 
 Qt::ItemFlags ConcatenateTreesProxyModel::flags(const QModelIndex &index) const
 {
-    Q_UNUSED(index);
-
-    return Qt::NoItemFlags;
+    Q_D(const ConcatenateTreesProxyModel);
+    if (d->models.isEmpty() || !index.isValid())
+    {
+        return Qt::NoItemFlags;
+    }
+    const QModelIndex sourceIndex = mapToSource(index);
+    if (!sourceIndex.isValid())
+    {
+        return Qt::NoItemFlags;
+    }
+    return sourceIndex.model()->flags(sourceIndex);
 }
 
 QModelIndex ConcatenateTreesProxyModel::index(int row, int column, const QModelIndex &parent) const
@@ -207,6 +215,7 @@ QModelIndex ConcatenateTreesProxyModel::index(int row, int column, const QModelI
 QModelIndex ConcatenateTreesProxyModel::parent(const QModelIndex &index) const
 {
     Q_UNUSED(index);
+    // TODO:
 
     return QModelIndex();
 }
