@@ -127,7 +127,7 @@ QModelIndex ConcatenateTreesProxyModel::mapToSource(const QModelIndex &proxyInde
     }
 
     int row                               = proxyIndex.row();
-    const QAbstractItemModel *sourceModel = d->sourceModelForRow(row);
+    const QAbstractItemModel *sourceModel = d->getModelForRow(row);
 
     if (!sourceModel)
     {
@@ -199,7 +199,7 @@ QModelIndex ConcatenateTreesProxyModel::index(int row, int column, const QModelI
         return QModelIndex();
     }
 
-    QAbstractItemModel *sourceModel = d->sourceModelForRow(row);
+    QAbstractItemModel *sourceModel = d->getModelForRow(row);
 
     return mapFromSource(sourceModel->index(row, column));
 }
@@ -218,18 +218,40 @@ int ConcatenateTreesProxyModel::rowCount(const QModelIndex &parent) const
     return 0;
 }
 
-QVariant ConcatenateTreesProxyModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant ConcatenateTreesProxyModel::headerData(int row, Qt::Orientation orientation, int role) const
 {
-    Q_UNUSED(section);
-    Q_UNUSED(orientation);
-    Q_UNUSED(role);
+    Q_D(const ConcatenateTreesProxyModel);
+    if (d->models.isEmpty())
+    {
+        return {};
+    }
 
-    return QVariant();
+    switch (orientation)
+    {
+    case Qt::Horizontal:
+        return (*d->models.begin())->headerData(row, orientation, role);
+    case Qt::Vertical: {
+        const QAbstractItemModel *sourceModel = d->getModelForRow(row);
+        if (!sourceModel)
+        {
+            return {};
+        }
+        return sourceModel->headerData(row, orientation, role);
+    }
+    default:
+        break;
+    }
+
+    return {};
 }
 
 int ConcatenateTreesProxyModel::columnCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent);
+    const QModelIndex sourceIndex = mapToSource(parent);
+    if (sourceIndex.isValid())
+    {
+        return sourceIndex.model()->columnCount(sourceIndex);
+    }
 
     return 0;
 }
@@ -279,9 +301,14 @@ bool ConcatenateTreesProxyModel::dropMimeData(
 
 QSize ConcatenateTreesProxyModel::span(const QModelIndex &index) const
 {
-    Q_UNUSED(index);
+    Q_D(const ConcatenateTreesProxyModel);
+    if (!index.isValid() || d->models.isEmpty())
+    {
+        return {};
+    }
+    const QModelIndex sourceIndex = mapToSource(index);
 
-    return {};
+    return sourceIndex.model()->span(sourceIndex);
 }
 
 } // namespace preferences_editor

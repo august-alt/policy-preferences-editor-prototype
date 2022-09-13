@@ -29,7 +29,7 @@ ConcatenateTreesProxyModelPrivate::ConcatenateTreesProxyModelPrivate(Concatenate
 
 ConcatenateTreesProxyModelPrivate::~ConcatenateTreesProxyModelPrivate() {}
 
-QAbstractItemModel *ConcatenateTreesProxyModelPrivate::sourceModelForRow(int &row) const
+QAbstractItemModel *ConcatenateTreesProxyModelPrivate::getModelForRow(int &row) const
 {
     Q_UNUSED(row);
     return nullptr;
