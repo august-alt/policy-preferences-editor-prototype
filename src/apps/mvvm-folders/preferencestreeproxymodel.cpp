@@ -20,7 +20,11 @@
 
 #include "preferencestreeproxymodel.h"
 
+#include <mvvm/model/sessionitem.h>
+#include <mvvm/viewmodel/viewmodel.h>
+
 #include <QIcon>
+#include <QUuid>
 
 namespace mvvm_folders
 {
@@ -45,6 +49,19 @@ QVariant PreferencesTreeProxyModel::data(const QModelIndex &proxyIndex, int role
         }
 
         return folder;
+    }
+
+    if (role == Qt::UserRole + 12)
+    {
+        auto viewModel = static_cast<const ModelView::ViewModel *>(proxyIndex.model());
+        auto item      = viewModel->sessionItemFromIndex(proxyIndex);
+        return QVariant::fromValue(item->property<QUuid>("NODE_ID"));
+    }
+
+    if (role == Qt::UserRole + 13)
+    {
+        auto viewModel = static_cast<const ModelView::ViewModel *>(proxyIndex.model());
+        return QVariant::fromValue(viewModel->sessionItemFromIndex(proxyIndex)->property<QUuid>("PARENT_ID"));
     }
 
     return QIdentityProxyModel::data(proxyIndex, role);

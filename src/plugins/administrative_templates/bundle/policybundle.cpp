@@ -82,8 +82,7 @@ PolicyBundle::~PolicyBundle()
     delete d;
 }
 
-std::unique_ptr<QStandardItemModel> PolicyBundle::loadFolder(const std::string &path,
-                                                             const std::string &language)
+std::unique_ptr<QStandardItemModel> PolicyBundle::loadFolder(const std::string &path, const std::string &language)
 {
     d->treeModel = std::make_unique<QStandardItemModel>();
 
@@ -101,7 +100,8 @@ std::unique_ptr<QStandardItemModel> PolicyBundle::loadFolder(const std::string &
                                     QObject::tr("Machine level policies"),
                                     ItemType::ITEM_TYPE_CATEGORY,
                                     model::admx::PolicyType::Machine);
-    d->rootUserItem    = createItem(QObject::tr("User"),
+    d->rootMachineItem->setData(QUuid("{123e4567-e89b-12d3-a456-426652340000}"), Qt::UserRole + 12);
+    d->rootUserItem = createItem(QObject::tr("User"),
                                  "user-home",
                                  QObject::tr("User level policies"),
                                  ItemType::ITEM_TYPE_CATEGORY,
@@ -147,8 +147,7 @@ std::unique_ptr<TPolicies> loadPolicies(const QString &pluginName, const QFileIn
 {
     std::unique_ptr<TPolicies> policies;
 
-    TFormat *format = preferences_editor::PluginStorage::instance()->createPluginClass<TFormat>(
-        pluginName);
+    TFormat *format = preferences_editor::PluginStorage::instance()->createPluginClass<TFormat>(pluginName);
 
     if (!format)
     {
@@ -165,8 +164,7 @@ std::unique_ptr<TPolicies> loadPolicies(const QString &pluginName, const QFileIn
 
         if (!format->read(file, policies.get()))
         {
-            qWarning() << admxFileName.fileName() + " "
-                              + QString::fromStdString(format->getErrorString());
+            qWarning() << admxFileName.fileName() + " " + QString::fromStdString(format->getErrorString());
         }
     }
 
@@ -201,8 +199,7 @@ QString PolicyBundle::constructFileName(const QFileInfo &fileName)
     return admlFileName;
 }
 
-std::string findStringById(const std::string &id,
-                           const std::unique_ptr<io::PolicyResourcesFile> &resource)
+std::string findStringById(const std::string &id, const std::unique_ptr<io::PolicyResourcesFile> &resource)
 {
     if (id.length() < 10 || id.compare(0, 9, "$(string.") != 0)
     {
@@ -274,16 +271,14 @@ void handlePresentation(const std::shared_ptr<model::presentation::Presentation>
 bool PolicyBundle::loadAdmxAndAdml(const QFileInfo &admxFileName)
 {
     auto policyDefinitions
-        = loadPolicies<io::PolicyDefinitionsFile,
-                       io::PolicyFileFormat<io::PolicyDefinitionsFile>>("admx", admxFileName);
+        = loadPolicies<io::PolicyDefinitionsFile, io::PolicyFileFormat<io::PolicyDefinitionsFile>>("admx", admxFileName);
     if (!policyDefinitions.get())
     {
         return false;
     }
     QString admlFileName = constructFileName(admxFileName);
-    auto policyResources = loadPolicies<io::PolicyResourcesFile,
-                                        io::PolicyFileFormat<io::PolicyResourcesFile>>("adml",
-                                                                                       admlFileName);
+    auto policyResources
+        = loadPolicies<io::PolicyResourcesFile, io::PolicyFileFormat<io::PolicyResourcesFile>>("adml", admlFileName);
     if (!policyResources.get())
     {
         return false;
@@ -293,23 +288,20 @@ bool PolicyBundle::loadAdmxAndAdml(const QFileInfo &admxFileName)
     {
         for (auto &category : definition->categories)
         {
-            QString displayName = QString::fromStdString(
-                findStringById(category->displayName, policyResources));
-            QString explainText = QString::fromStdString(
-                findStringById(category->explainText, policyResources));
+            QString displayName = QString::fromStdString(findStringById(category->displayName, policyResources));
+            QString explainText = QString::fromStdString(findStringById(category->explainText, policyResources));
 
-            d->categoryItemMap[category->name].machineItem
-                = createItem(displayName,
-                             "folder",
-                             explainText,
-                             ItemType::ITEM_TYPE_CATEGORY,
-                             model::admx::PolicyType::Machine);
-            d->categoryItemMap[category->name].userItem = createItem(displayName,
+            d->categoryItemMap[category->name].machineItem = createItem(displayName,
+                                                                        "folder",
+                                                                        explainText,
+                                                                        ItemType::ITEM_TYPE_CATEGORY,
+                                                                        model::admx::PolicyType::Machine);
+            d->categoryItemMap[category->name].userItem    = createItem(displayName,
                                                                      "folder",
                                                                      explainText,
                                                                      ItemType::ITEM_TYPE_CATEGORY,
                                                                      model::admx::PolicyType::User);
-            d->categoryItemMap[category->name].category = *category;
+            d->categoryItemMap[category->name].category    = *category;
 
             if (category->parentCategory.size() == 0)
             {
@@ -322,17 +314,14 @@ bool PolicyBundle::loadAdmxAndAdml(const QFileInfo &admxFileName)
         {
             for (auto &supportedOn : definition->supportedOn->definitions)
             {
-                d->supportedOnMap[supportedOn->name] = findStringById(supportedOn->displayName,
-                                                                      policyResources);
+                d->supportedOnMap[supportedOn->name] = findStringById(supportedOn->displayName, policyResources);
             }
         }
 
         for (auto &policy : definition->policies)
         {
-            QString displayName = QString::fromStdString(
-                findStringById(policy->displayName, policyResources));
-            QString explainText = QString::fromStdString(
-                findStringById(policy->explainText, policyResources));
+            QString displayName = QString::fromStdString(findStringById(policy->displayName, policyResources));
+            QString explainText = QString::fromStdString(findStringById(policy->explainText, policyResources));
 
             auto policyItem = createItem(displayName,
                                          "text-x-generic",
@@ -345,17 +334,14 @@ bool PolicyBundle::loadAdmxAndAdml(const QFileInfo &admxFileName)
             container.item     = policyItem;
             container.type     = policy->policyType;
 
-            policyItem->setData(QString::fromStdString(policy->supportedOn),
-                                PolicyRoles::SUPPORTED_ON);
+            policyItem->setData(QString::fromStdString(policy->supportedOn), PolicyRoles::SUPPORTED_ON);
 
             if (policy->presentation)
             {
-                auto presentation = findPresentationById(*policy->presentation.get(),
-                                                         policyResources);
+                auto presentation = findPresentationById(*policy->presentation.get(), policyResources);
                 if (presentation)
                 {
-                    policyItem->setData(QVariant::fromValue(presentation),
-                                        PolicyRoles::PRESENTATION);
+                    policyItem->setData(QVariant::fromValue(presentation), PolicyRoles::PRESENTATION);
                     handlePresentation(presentation, policy, policyResources);
                 }
             }
@@ -429,9 +415,7 @@ void model::bundle::PolicyBundle::rearrangeTreeItems()
 {
     for (const auto &entry : d->categoryItemMap)
     {
-        assignParentCategory(entry.second.category.parentCategory,
-                             entry.second.machineItem,
-                             entry.second.userItem);
+        assignParentCategory(entry.second.category.parentCategory, entry.second.machineItem, entry.second.userItem);
     }
 
     for (const auto &item : d->unassignedItems)
@@ -446,14 +430,12 @@ void model::bundle::PolicyBundle::rearrangeTreeItems()
         }
         else
         {
-            item.item->setData(static_cast<uint32_t>(model::admx::PolicyType::Machine),
-                               PolicyRoles::POLICY_TYPE);
-            QStandardItem *copyItem
-                = createItem(item.item->text(),
-                             "text-x-generic",
-                             item.item->data(PolicyRoles::EXPLAIN_TEXT).value<QString>(),
-                             ItemType::ITEM_TYPE_POLICY,
-                             model::admx::PolicyType::User);
+            item.item->setData(static_cast<uint32_t>(model::admx::PolicyType::Machine), PolicyRoles::POLICY_TYPE);
+            QStandardItem *copyItem = createItem(item.item->text(),
+                                                 "text-x-generic",
+                                                 item.item->data(PolicyRoles::EXPLAIN_TEXT).value<QString>(),
+                                                 ItemType::ITEM_TYPE_POLICY,
+                                                 model::admx::PolicyType::User);
             copyItem->setData(item.item->data(PolicyRoles::SUPPORTED_ON), PolicyRoles::SUPPORTED_ON);
             copyItem->setData(item.item->data(PolicyRoles::PRESENTATION), PolicyRoles::PRESENTATION);
             assignParentCategory(item.category, item.item, copyItem);
@@ -467,9 +449,8 @@ void PolicyBundle::assignSupportedOn()
     {
         if (item->data(PolicyRoles::ITEM_TYPE).value<uint>() == 1)
         {
-            QStringList supportedRaw
-                = item->data(PolicyRoles::SUPPORTED_ON).value<QString>().split(':');
-            QString *toFind = nullptr;
+            QStringList supportedRaw = item->data(PolicyRoles::SUPPORTED_ON).value<QString>().split(':');
+            QString *toFind          = nullptr;
             if (supportedRaw.size() > 1)
             {
                 toFind = &supportedRaw[1];
@@ -492,16 +473,15 @@ void PolicyBundle::assignSupportedOn()
     }
 }
 
-void PolicyBundle::iterateModelAndRemoveEmptyFolders(QAbstractItemModel *model,
-                                                     const QModelIndex &parent)
+void PolicyBundle::iterateModelAndRemoveEmptyFolders(QAbstractItemModel *model, const QModelIndex &parent)
 {
     for (int r = 0; r < model->rowCount(parent); ++r)
     {
         QModelIndex index = model->index(r, 0, parent);
         QVariant data     = model->data(index, PolicyRoles::ITEM_TYPE);
 
-        qDebug() << "Folder " << model->data(index)
-                 << " has children: " << model->hasChildren(index) << " type: " << data;
+        qDebug() << "Folder " << model->data(index) << " has children: " << model->hasChildren(index)
+                 << " type: " << data;
 
         if (model->hasChildren(index))
         {

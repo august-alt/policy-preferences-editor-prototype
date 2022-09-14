@@ -22,6 +22,8 @@
 #include "mainwindowsettings.h"
 #include "ui_mainwindow.h"
 
+#include <stack>
+
 #include "aboutdialog.h"
 
 #include "commandlineoptions.h"
@@ -86,9 +88,7 @@ private:
     MainWindowPrivate &operator=(MainWindowPrivate &&) = delete;      // move assignment
 };
 
-void iterateModelAndInsertToTarget(QStandardItem *target,
-                                   const QAbstractItemModel *model,
-                                   const QModelIndex &parent)
+void iterateModelAndInsertToTarget(QStandardItem *target, const QAbstractItemModel *model, const QModelIndex &parent)
 {
     for (int r = 0; r < model->rowCount(parent); ++r)
     {
@@ -102,6 +102,114 @@ void iterateModelAndInsertToTarget(QStandardItem *target,
         if (model->hasChildren(index))
         {
             iterateModelAndInsertToTarget(child, model, index);
+        }
+    }
+}
+
+void appendModel(QStandardItem *target, const QAbstractItemModel *model, const QModelIndex &parent)
+{
+    auto findParent = [](QAbstractItemModel *model, const QModelIndex &parent, const QUuid &id) {
+        auto stack = std::make_unique<std::stack<QModelIndex>>();
+        stack->push(parent);
+
+        while (!stack->empty())
+        {
+            auto current = stack->top();
+            stack->pop();
+
+            auto currentId = current.data(Qt::UserRole + 12).value<QUuid>();
+            if (currentId == id)
+            {
+                return current;
+            }
+
+            for (int row = 0; row < model->rowCount(current); ++row)
+            {
+                QModelIndex index = model->index(row, 0, current);
+                auto indexId      = index.data(Qt::UserRole + 12).value<QUuid>();
+                if (indexId == id)
+                {
+                    return index;
+                }
+
+                if (model->hasChildren(index))
+                {
+                    for (int childRow = 0; childRow < model->rowCount(index); ++childRow)
+                    {
+                        QModelIndex childIndex = model->index(childRow, 0, index);
+                        stack->push(childIndex);
+                    }
+                }
+            }
+        }
+
+        return QModelIndex();
+    };
+
+    //    QModelIndex topIndex = parent;
+    //    auto parentId        = topIndex.data(Qt::UserRole + 13);
+    //    auto parentIndex     = QModelIndex();
+    //    auto currentId       = topIndex.data(Qt::UserRole + 12).value<QUuid>();
+    //    if (!currentId.isNull())
+    //    {
+    //        qWarning() << "Current id: " << currentId;
+    //    }
+    //    if (!parentId.isNull())
+    //    {
+    //        qWarning() << "Non null uuid" << topIndex.data();
+    //        parentIndex = findParent(target->model(), target->model()->index(0, 0), parentId.value<QUuid>());
+    //    }
+
+    //    QStandardItem *top = new QStandardItem();
+    //    top->setData(topIndex.data(Qt::DisplayRole), Qt::DisplayRole);
+    //    top->setData(topIndex.data(Qt::DecorationRole), Qt::DecorationRole);
+    //    top->setData(topIndex.data(Qt::UserRole + 12), Qt::UserRole + 12);
+    //    top->setData(topIndex.data(Qt::UserRole + 13), Qt::UserRole + 13);
+
+    //    if (parentIndex.isValid())
+    //    {
+    //        qWarning() << "Found valid index" << parentIndex.data();
+    //    }
+    //    else
+    //    {
+    //        target->insertRow(0, top);
+    //    }
+
+    for (int rowIndex = 0; rowIndex < model->rowCount(parent); ++rowIndex)
+    {
+        QModelIndex index = model->index(rowIndex, 0, parent);
+        auto parentId     = index.data(Qt::UserRole + 13);
+        auto parentIndex  = QModelIndex();
+        auto currentId    = index.data(Qt::UserRole + 12).value<QUuid>();
+        if (!currentId.isNull())
+        {
+            qWarning() << "Current id: " << currentId;
+        }
+        if (!parentId.isNull())
+        {
+            qWarning() << "Non null uuid" << index.data() << parentId;
+            parentIndex = findParent(target->model(), target->model()->index(0, 0), parentId.value<QUuid>());
+        }
+
+        QStandardItem *child = new QStandardItem();
+        child->setData(index.data(Qt::DisplayRole), Qt::DisplayRole);
+        child->setData(index.data(Qt::DecorationRole), Qt::DecorationRole);
+        child->setData(index.data(Qt::UserRole + 12), Qt::UserRole + 12);
+        child->setData(index.data(Qt::UserRole + 13), Qt::UserRole + 13);
+
+        if (parentIndex.isValid())
+        {
+            qWarning() << "Found valid index" << parentIndex.data();
+            target->model()->itemFromIndex(parentIndex)->appendRow(child);
+        }
+        else
+        {
+            target->insertRow(rowIndex, child);
+        }
+
+        if (model->hasChildren(index))
+        {
+            appendModel(child, model, index);
         }
     }
 }
@@ -131,16 +239,9 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInMana
     });
 
     connect(ui->actionOpenPolicyDirectory, &QAction::triggered, this, &MainWindow::onDirectoryOpen);
-    connect(ui->actionSaveRegistrySource,
-            &QAction::triggered,
-            this,
-            &MainWindow::onRegistrySourceSave);
-    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) {
-        qWarning() << index.data().toString();
-    });
-    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) {
-        d->itemName = index.data().toString();
-    });
+    connect(ui->actionSaveRegistrySource, &QAction::triggered, this, &MainWindow::onRegistrySourceSave);
+    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) { qWarning() << index.data().toString(); });
+    connect(ui->treeView, &QTreeView::clicked, [&](const QModelIndex &index) { d->itemName = index.data().toString(); });
 
     QLocale locale(!d->localeName.trimmed().isEmpty() ? d->localeName.replace("-", "_")
                                                       : QLocale::system().name().replace("-", "_"));
@@ -172,8 +273,8 @@ MainWindow::MainWindow(CommandLineOptions &options, QWidget *parent, ISnapInMana
         if (snapIn->getRootNode())
         {
             QAbstractItemModel *snapInModel = snapIn->getRootNode();
-
-            iterateModelAndInsertToTarget(item, snapInModel, snapInModel->index(0, 0));
+            qWarning() << "Appending model from: " << snapIn->getDisplayName();
+            appendModel(item, snapInModel, snapInModel->index(0, 0));
         }
     }
 
@@ -235,8 +336,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString &path,
-                                                            const QString &locale)
+void preferences_editor::MainWindow::loadPolicyBundleFolder(const QString &path, const QString &locale)
 {
     Q_UNUSED(path);
     Q_UNUSED(locale);
@@ -351,8 +451,7 @@ void MainWindow::onIniFileOpen(const QString &path)
         std::string pluginName("ini");
 
         auto reader  = std::make_unique<io::GenericReader>();
-        auto iniFile = reader->load<io::IniFile, io::PolicyFileFormat<io::IniFile>>(*iss,
-                                                                                    pluginName);
+        auto iniFile = reader->load<io::IniFile, io::PolicyFileFormat<io::IniFile>>(*iss, pluginName);
         if (!iniFile)
         {
             qWarning() << "Unable to load registry file contents.";
@@ -371,15 +470,13 @@ void MainWindow::onIniFileOpen(const QString &path)
             {
                 qWarning() << "display name " << displayName.value().c_str();
 
-                setWindowTitle(
-                    QString::fromStdString("PREFERENCES_EDITOR - " + displayName.value()));
+                setWindowTitle(QString::fromStdString("PREFERENCES_EDITOR - " + displayName.value()));
             }
         }
     }
     catch (std::exception &e)
     {
-        qWarning() << "Warning: Unable to read file: " << qPrintable(path)
-                   << " description: " << e.what();
+        qWarning() << "Warning: Unable to read file: " << qPrintable(path) << " description: " << e.what();
     }
 }
 

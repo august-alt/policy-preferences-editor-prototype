@@ -20,15 +20,18 @@
 
 #include "preferencecategoryitem.h"
 
+#include <QUuid>
+
 namespace mvvm_folders
 {
-
 PreferenceCategoryItem::PreferenceCategoryItem()
     : ModelView::CompoundItem("PreferenceCategoryItem")
 {
     setDisplayName("");
 
     addProperty(TYPE, std::map<std::string, QString>());
+    addProperty(NODE_ID, QUuid::createUuid());
+    addProperty(PARENT_ID, QUuid::createUuid());
 }
 
 PreferenceCategoryItem::PreferenceCategoryItem(const PreferenceCategoryItem &other)
@@ -37,6 +40,8 @@ PreferenceCategoryItem::PreferenceCategoryItem(const PreferenceCategoryItem &oth
     setDisplayName(other.displayName());
 
     setProperty(TYPE, other.property<std::map<std::string, QString>>(TYPE));
+    setProperty(NODE_ID, other.property<QUuid>(NODE_ID));
+    setProperty(PARENT_ID, other.property<QUuid>(PARENT_ID));
 }
 
-}
+} // namespace mvvm_folders

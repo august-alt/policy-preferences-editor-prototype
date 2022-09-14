@@ -24,6 +24,7 @@
 
 #include "common/preferencesmodel.h"
 #include "preferencestreemodel.h"
+#include "preferencestreeproxymodel.h"
 
 #include "modelcreator.h"
 
@@ -40,7 +41,8 @@ class PreferencesSnapInPrivate
 
 public:
     std::unique_ptr<PreferencesTreeModel> model                   = nullptr;
-    std::unique_ptr<ModelView::TopItemsViewModel> viewModel       = nullptr;
+    std::unique_ptr<ModelView::ViewModel> viewModel               = nullptr;
+    std::unique_ptr<QAbstractItemModel> proxyViewModel            = nullptr;
     std::unique_ptr<PreferencesModelMap> machinePreferencesModels = nullptr;
     std::unique_ptr<PreferencesModelMap> userPreferencesModels    = nullptr;
 
@@ -51,7 +53,7 @@ private:
     PreferencesSnapInPrivate(const PreferencesSnapInPrivate &) = delete;            // copy ctor
     PreferencesSnapInPrivate(PreferencesSnapInPrivate &&)      = delete;            // move ctor
     PreferencesSnapInPrivate &operator=(const PreferencesSnapInPrivate &) = delete; // copy assignment
-    PreferencesSnapInPrivate &operator=(PreferencesSnapInPrivate &&) = delete; // move assignment
+    PreferencesSnapInPrivate &operator=(PreferencesSnapInPrivate &&) = delete;      // move assignment
 };
 
 PreferencesSnapIn::PreferencesSnapIn()
@@ -68,9 +70,14 @@ void PreferencesSnapIn::onInitialize()
 {
     d->model = std::make_unique<mvvm_folders::PreferencesTreeModel>();
 
-    d->viewModel = std::make_unique<ModelView::TopItemsViewModel>(d->model.get());
+    auto proxyModel = std::make_unique<PreferencesTreeProxyModel>();
 
-    setRootNode(d->viewModel.get());
+    d->viewModel = std::make_unique<ModelView::TopItemsViewModel>(d->model.get());
+    proxyModel->setSourceModel(d->viewModel.get());
+
+    setRootNode(proxyModel.get());
+
+    d->proxyViewModel = std::move(proxyModel);
 
     std::cout << std::string(__PRETTY_FUNCTION__) << std::endl;
 }
