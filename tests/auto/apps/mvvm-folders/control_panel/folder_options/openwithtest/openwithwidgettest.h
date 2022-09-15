@@ -23,15 +23,23 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class OpenWithWidget;
+}
 namespace tests 
 {
-    class OpenWithWidgetTest : public QObject
-    {
-        Q_OBJECT
+class OpenWithWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::OpenWithWidget> readXmlFile(const QString &dataPath);
 
-        private slots:
-            void test();
-    };
+private slots:
+    void checkWidget();
+    void checkWidget_data();
+};
+
 }
 
 #endif//MVVM_FOLDERS_OPENWITHWIDGET_WIDGET_TEST_H

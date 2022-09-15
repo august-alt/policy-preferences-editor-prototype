@@ -105,7 +105,9 @@ void DeviceWidgetTest::actionState()
 
 void DeviceWidgetTest::actionState_data()
 {
+    QTest::addColumn<bool>("attributesTableViewState");
 
+    QTest::addRow("Device")  << QString::fromStdString(dataPath + "device.xml") << "Use this device (enable)" << true << true ;
 }
 
 }

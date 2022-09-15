@@ -37,9 +37,7 @@ GroupModelBuilder::GroupModelBuilder()
 
 std::unique_ptr<PreferencesModel> GroupModelBuilder::schemaToModel(std::unique_ptr<Groups> &group)
 {
-// Q_UNUSED(group);
     auto model = std::make_unique<PreferencesModel>();
-    // TODO: Implement.
     for (const auto& groupsSchema : group->Group())
     {
         auto sessionItem = model->insertItem<LocalGroupContainerItem<LocalGroupItem>>(model->rootItem());
@@ -122,7 +120,6 @@ std::unique_ptr<Groups> GroupModelBuilder::modelToSchema(std::unique_ptr<Prefere
             setCommonModelData(group, commonModel);
             group.Properties().push_back(properties);
 
-            //TODO: Implement members
         }
 
         if (auto userContainer = dynamic_cast<LocalGroupContainerItem<LocalUserItem>*>(containerItem); userContainer)

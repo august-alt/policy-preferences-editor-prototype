@@ -23,15 +23,24 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class FolderOptionsWidget;
+}
+
 namespace tests 
 {
-    class FolderOptionsWidgetTest : public QObject
-    {
-        Q_OBJECT
+class FolderOptionsWidgetTest : public QObject
+{
+    Q_OBJECT
 
-        private slots:
-            void test();
-    };
+private:
+    std::unique_ptr<mvvm_folders::FolderOptionsWidget> readXmlFile(const QString &dataPath);
+
+private slots:
+    void checkWidget();
+    void checkWidget_data();
+};
 }
 
 #endif//MVVM_FOLDERS_FOLDEROPTIONSWIDGET_WIDGET_TEST_H

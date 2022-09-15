@@ -23,15 +23,24 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class FileExtensionWidget;
+}
+
 namespace tests 
 {
-    class FileExtensionWidgetTest : public QObject
-    {
-        Q_OBJECT
+class FileExtensionWidgetTest : public QObject
+{
+    Q_OBJECT
 
-        private slots:
-            void test();
-    };
+private:
+    std::unique_ptr<mvvm_folders::FileExtensionWidget> readXmlFile(const QString &dataPath);
+
+private slots:
+    void checkWidget();
+    void checkWidget_data();
+};
 }
 
 #endif//MVVM_FOLDERS_FILEEXTENSIONWIDGET_WIDGET_TEST_H

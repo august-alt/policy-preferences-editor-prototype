@@ -48,10 +48,10 @@ public:
 
     explicit FolderOptionsContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    FolderOptionItem getFolderOption() const;
+    FolderOptionItem* getFolderOption() const;
     void setFolderOption(const FolderOptionItem &item);
 
     void setupListeners() override;

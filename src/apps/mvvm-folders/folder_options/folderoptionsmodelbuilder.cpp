@@ -22,19 +22,49 @@
 
 #include "folderoptionscontaineritem.h"
 #include "folderoptionsitem.h"
+#include "fileextensionactionitem.h"
+#include "fileextensioncontaineritem.h"
+#include "fileextensionitem.h"
+#include "openwithitem.h"
+#include "openwithwidget.h"
 
 #include "common/commonitem.h"
 
 namespace mvvm_folders
 {
 
+FolderOptionsModelBuilder::FolderOptionsModelBuilder()
+    : BaseModelBuilder()
+{
+}
+
 std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::unique_ptr<FolderOptions> &folderOptionsSource)
 {
-    Q_UNUSED(folderOptionsSource);
-
     auto model = std::make_unique<PreferencesModel>();
+    for (const auto& folderoptionsSchema : folderOptionsSource->FileType())
+    {
+        auto sessionItem = model->insertItem<FolderOptionsContainerItem<FileExtensionItem>>(model->rootItem());
 
-    // TODO: Implement.
+        for (const auto& properties:folderoptionsSchema.Properties())
+        {
+            auto fileEx = sessionItem->getFolderOption();
+            auto action = properties.action();
+            auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::ICON_INDEX), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::ICON_INDEX), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::FILE_EXT), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::CONFIRM_OPEN), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::CONFIG_ACTIONS), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::APP_PROG_ID), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::APPLICATION), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::ALWAYS_SHOW), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::ACTIONS), "");
+            fileEx->setProperty(FileExtensionItem::propertyToString(FileExtensionItem::ACTION), "");
+
+            auto common = sessionItem->getCommon();
+            setCommonItemData(common, folderoptionsSchema);
+        }
+    }
 
     return model;
 }

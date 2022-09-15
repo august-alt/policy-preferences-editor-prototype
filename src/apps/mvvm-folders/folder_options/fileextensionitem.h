@@ -25,9 +25,6 @@
 
 namespace mvvm_folders
 {
-
-//! FileExtension item representation for editor.
-
 class FileExtensionItem : public BasePreferenceItem<FileExtensionItem>
 {
 public:
