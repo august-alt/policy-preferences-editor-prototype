@@ -84,19 +84,19 @@ void VpnOptionsWidgetTest::test()
 void VpnOptionsWidgetTest::checkBoxesState()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, displayProgressCheckBoxState);
-    QFETCH(bool, includeCheckBoxState);
-    QFETCH(bool, promptCheckBoxState);
-    QFETCH(bool, redailCheckBoxState);
+    QFETCH(bool,    displayProgressCheckBoxState);
+    QFETCH(bool,    includeCheckBoxState);
+    QFETCH(bool,    promptCheckBoxState);
+    QFETCH(bool,    redailCheckBoxState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto displayProgressCheckBox = widget->findChild<QCheckBox*>("displayProgressCheckBox");
-    auto includeCheckBox = widget->findChild<QCheckBox*>("includeCheckBox");
-    auto promptCheckBox = widget->findChild<QCheckBox*>("promptCheckBox");
-    auto redailCheckBox = widget->findChild<QCheckBox*>("redailCheckBox");
+    auto displayProgressCheckBox    = widget->findChild<QCheckBox*>("displayProgressCheckBox");
+    auto includeCheckBox            = widget->findChild<QCheckBox*>("includeCheckBox");
+    auto promptCheckBox             = widget->findChild<QCheckBox*>("promptCheckBox");
+    auto redailCheckBox             = widget->findChild<QCheckBox*>("redailCheckBox");
 
     QTest::qWait(1000);
 
@@ -106,9 +106,9 @@ void VpnOptionsWidgetTest::checkBoxesState()
     QVERIFY(redailCheckBox);
 
     QCOMPARE(displayProgressCheckBox->isChecked(), displayProgressCheckBoxState);
-    QCOMPARE(includeCheckBox->isChecked(), includeCheckBoxState);
-    QCOMPARE(promptCheckBox->isChecked(), promptCheckBoxState);
-    QCOMPARE(redailCheckBox->isChecked(), redailCheckBoxState);
+    QCOMPARE(includeCheckBox        ->isChecked(), includeCheckBoxState);
+    QCOMPARE(promptCheckBox         ->isChecked(), promptCheckBoxState);
+    QCOMPARE(redailCheckBox         ->isChecked(), redailCheckBoxState);
 }
 void VpnOptionsWidgetTest::checkBoxesState_data()
 {
@@ -160,16 +160,16 @@ void VpnOptionsWidgetTest::comboBoxState()
 
     QVERIFY(widget);
 
-    auto timeComboBox = widget->findChild<QComboBox*>("timeComboBox");
-    auto idleTimeComboBox = widget->findChild<QComboBox*>("idleTimeComboBox");
+    auto timeComboBox       = widget->findChild<QComboBox*>("timeComboBox");
+    auto idleTimeComboBox   = widget->findChild<QComboBox*>("idleTimeComboBox");
 
     QTest::qWait(1000);
 
     QVERIFY(timeComboBox);
     QVERIFY(idleTimeComboBox);
 
-    QCOMPARE(timeComboBox->currentText(), timeComboBoxState);
-    QCOMPARE(idleTimeComboBox->currentText(), idleTimeComboBoxState);
+    QCOMPARE(timeComboBox       ->currentText(), timeComboBoxState);
+    QCOMPARE(idleTimeComboBox   ->currentText(), idleTimeComboBoxState);
 }
 
 void VpnOptionsWidgetTest::comboBoxState_data()

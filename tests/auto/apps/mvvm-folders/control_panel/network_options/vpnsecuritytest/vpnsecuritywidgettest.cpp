@@ -77,19 +77,6 @@ std::unique_ptr<VpnSecurityWidget> VpnSecurityWidgetTest::readXmlFile(const QStr
     return vpnSecurityWidget;
 }
 
-void VpnSecurityWidgetTest::test()
-{
-//    std::ifstream file;
-
-//    file.open(dataPath + "vpnsecuritywidget.xml", std::ifstream::in);
-//    if (file.good())
-//    {
-       
-//    }
-
-//    file.close();
-}
-
 void VpnSecurityWidgetTest::comboBoxeState()
 {
     QFETCH(QString, dataPath);
@@ -120,20 +107,20 @@ void VpnSecurityWidgetTest::comboBoxeState_data()
 void VpnSecurityWidgetTest::radioButtonState()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, typicalRadioButtonState);
-    QFETCH(bool, advancedRadioButtonState);
-    QFETCH(bool, eapRadioButtonState);
-    QFETCH(bool, otherRadioButtonState);
+    QFETCH(bool,    typicalRadioButtonState);
+    QFETCH(bool,    advancedRadioButtonState);
+    QFETCH(bool,    eapRadioButtonState);
+    QFETCH(bool,    otherRadioButtonState);
 
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto typicalRadioButton = widget->findChild<QRadioButton*>("typicalRadioButton");
-    auto advancedRadioButton = widget->findChild<QRadioButton*>("advancedRadioButton");
-    auto eapRadioButton = widget->findChild<QRadioButton*>("eapRadioButton");
-    auto otherRadioButton = widget->findChild<QRadioButton*>("otherRadioButton");
+    auto typicalRadioButton     = widget->findChild<QRadioButton*>("typicalRadioButton");
+    auto advancedRadioButton    = widget->findChild<QRadioButton*>("advancedRadioButton");
+    auto eapRadioButton         = widget->findChild<QRadioButton*>("eapRadioButton");
+    auto otherRadioButton       = widget->findChild<QRadioButton*>("otherRadioButton");
 
     QTest::qWait(1000);
 
@@ -141,10 +128,10 @@ void VpnSecurityWidgetTest::radioButtonState()
     QVERIFY(advancedRadioButton);
     QVERIFY(otherRadioButton);
 
-    QCOMPARE(typicalRadioButton->isChecked(), typicalRadioButtonState);
+    QCOMPARE(typicalRadioButton ->isChecked(), typicalRadioButtonState);
     QCOMPARE(advancedRadioButton->isChecked(), advancedRadioButtonState);
-    QCOMPARE(eapRadioButton->isChecked(), eapRadioButtonState);
-    QCOMPARE(otherRadioButton->isChecked(), otherRadioButtonState);
+    QCOMPARE(eapRadioButton     ->isChecked(), eapRadioButtonState);
+    QCOMPARE(otherRadioButton   ->isChecked(), otherRadioButtonState);
 
 }
 
@@ -162,41 +149,41 @@ void VpnSecurityWidgetTest::radioButtonState_data()
 void VpnSecurityWidgetTest::checkBoxState()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, passwordCheckBoxState);
-    QFETCH(bool, encryptionCheckBoxState);
-    QFETCH(bool, papCheckBoxState);
-    QFETCH(bool, spapCheckBoxState);
-    QFETCH(bool, chapCheckBoxState);
-    QFETCH(bool, mschapCheckBoxState);
-    QFETCH(bool, oldMschapCheckBoxState);
-    QFETCH(bool, mschap2CheckBoxState);
-    QFETCH(bool, useLogonCheckBoxState);
+    QFETCH(bool,    passwordCheckBoxState);
+    QFETCH(bool,    encryptionCheckBoxState);
+    QFETCH(bool,    papCheckBoxState);
+    QFETCH(bool,    spapCheckBoxState);
+    QFETCH(bool,    chapCheckBoxState);
+    QFETCH(bool,    mschapCheckBoxState);
+    QFETCH(bool,    oldMschapCheckBoxState);
+    QFETCH(bool,    mschap2CheckBoxState);
+    QFETCH(bool,    useLogonCheckBoxState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto passwordCheckBox = widget->findChild<QCheckBox*>("passwordCheckBox");
+    auto passwordCheckBox   = widget->findChild<QCheckBox*>("passwordCheckBox");
     auto encryptionCheckBox = widget->findChild<QCheckBox*>("encryptionCheckBox");
-    auto papCheckBox = widget->findChild<QCheckBox*>("papCheckBox");
-    auto spapCheckBox = widget->findChild<QCheckBox*>("spapCheckBox");
-    auto chapCheckBox = widget->findChild<QCheckBox*>("chapCheckBox");
-    auto mschapCheckBox = widget->findChild<QCheckBox*>("mschapCheckBox");
-    auto oldMschapCheckBox = widget->findChild<QCheckBox*>("oldMschapCheckBox");
-    auto mschap2CheckBox = widget->findChild<QCheckBox*>("mschap2CheckBox");
-    auto useLogonCheckBox = widget->findChild<QCheckBox*>("useLogonCheckBox");
+    auto papCheckBox        = widget->findChild<QCheckBox*>("papCheckBox");
+    auto spapCheckBox       = widget->findChild<QCheckBox*>("spapCheckBox");
+    auto chapCheckBox       = widget->findChild<QCheckBox*>("chapCheckBox");
+    auto mschapCheckBox     = widget->findChild<QCheckBox*>("mschapCheckBox");
+    auto oldMschapCheckBox  = widget->findChild<QCheckBox*>("oldMschapCheckBox");
+    auto mschap2CheckBox    = widget->findChild<QCheckBox*>("mschap2CheckBox");
+    auto useLogonCheckBox   = widget->findChild<QCheckBox*>("useLogonCheckBox");
 
     QTest::qWait(1000);
 
-    QCOMPARE(passwordCheckBox->isChecked(), passwordCheckBoxState);
-    QCOMPARE(encryptionCheckBox->isChecked(), encryptionCheckBoxState);
-    QCOMPARE(papCheckBox->isChecked(), papCheckBoxState);
-    QCOMPARE(spapCheckBox->isChecked(), spapCheckBoxState);
-    QCOMPARE(chapCheckBox->isChecked(), chapCheckBoxState);
-    QCOMPARE(mschapCheckBox->isChecked(), mschapCheckBoxState);
-    QCOMPARE(oldMschapCheckBox->isChecked(), oldMschapCheckBoxState);
-    QCOMPARE(mschap2CheckBox->isChecked(), mschap2CheckBoxState);
-    QCOMPARE(useLogonCheckBox->isChecked(), useLogonCheckBoxState);
+    QCOMPARE(passwordCheckBox   ->isChecked(), passwordCheckBoxState);
+    QCOMPARE(encryptionCheckBox ->isChecked(), encryptionCheckBoxState);
+    QCOMPARE(papCheckBox        ->isChecked(), papCheckBoxState);
+    QCOMPARE(spapCheckBox       ->isChecked(), spapCheckBoxState);
+    QCOMPARE(chapCheckBox       ->isChecked(), chapCheckBoxState);
+    QCOMPARE(mschapCheckBox     ->isChecked(), mschapCheckBoxState);
+    QCOMPARE(oldMschapCheckBox  ->isChecked(), oldMschapCheckBoxState);
+    QCOMPARE(mschap2CheckBox    ->isChecked(), mschap2CheckBoxState);
+    QCOMPARE(useLogonCheckBox   ->isChecked(), useLogonCheckBoxState);
 }
 
 void VpnSecurityWidgetTest::checkBoxState_data()

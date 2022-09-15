@@ -85,23 +85,23 @@ void VpnNetworkingWidgetTest::test()
 void VpnNetworkingWidgetTest::comboBoxeState()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, typeLabelState);
+    QFETCH(bool,    typeLabelState);
     QFETCH(QString, typeComboBoxState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto typeLabel = widget->findChild<QLabel*>("typeLabel");
-    auto typeComboBox = widget->findChild<QComboBox*>("typeComboBox");
+    auto typeLabel      = widget->findChild<QLabel*>    ("typeLabel");
+    auto typeComboBox   = widget->findChild<QComboBox*> ("typeComboBox");
 
     QTest::qWait(1000);
 
     QVERIFY(typeLabel);
     QVERIFY(typeComboBox);
 
-    QCOMPARE(typeLabel->isEnabled(), typeLabelState);
-    QCOMPARE(typeComboBox->currentText(), typeComboBoxState);
+    QCOMPARE(typeLabel      ->isEnabled(),      typeLabelState);
+    QCOMPARE(typeComboBox   ->currentText(),    typeComboBoxState);
 }
 void VpnNetworkingWidgetTest::comboBoxeState_data()
 {

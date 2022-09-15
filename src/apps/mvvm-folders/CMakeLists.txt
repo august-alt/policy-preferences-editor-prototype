@@ -30,6 +30,7 @@ set(HEADERS
 
     device/deviceitem.h
     device/devicecontaineritem.h
+    device/devicemodelbuilder.h
     device/devicewidget.h
 
     drives/drivesitem.h
@@ -189,11 +190,12 @@ set(SOURCES
     device/deviceitem.cpp
     device/devicecontaineritem.cpp
     device/devicemodelbuilder.cpp
-    drives/drivesmodelbuilder.cpp
+    device/deviceslots.cpp
     device/devicewidget.cpp
 
     drives/drivesitem.cpp
     drives/drivescontaineritem.cpp
+    drives/drivesmodelbuilder.cpp
     drives/driveswidget.cpp
     drives/driveswidgetslots.cpp
 

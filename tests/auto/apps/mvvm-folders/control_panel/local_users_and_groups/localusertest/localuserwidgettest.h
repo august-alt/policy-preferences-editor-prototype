@@ -23,6 +23,11 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class LocalUserWidget;
+}
+
 namespace tests 
 {
     class LocalUserWidgetTest : public QObject
@@ -30,7 +35,15 @@ namespace tests
         Q_OBJECT
 
         private slots:
-            void test();
+        void lineEdit();
+        void lineEdit_data();
+        void checkBox();
+        void checkBox_data();
+        void dateEdit();
+        void dateEdit_data();
+
+        private:
+            std::unique_ptr<mvvm_folders::LocalUserWidget> readXmlFile(const QString &dataPath);
     };
 }
 

@@ -82,24 +82,24 @@ void VpnWidgetTest::actionWidgetStateTest()
 {
     QFETCH(QString, dataPath);
     QFETCH(QString, action);
-    QFETCH(bool, ipaddressLineEditState);
-    QFETCH(bool, ipaddressLabelState);
-    QFETCH(bool, connectionNameLineEditState);
-    QFETCH(bool, showIconCheckBoxState);
-    QFETCH(bool, userConnectionRadioButtonState);
-    QFETCH(bool, allUsersConnectionRadioButtonState);
+    QFETCH(bool,    ipaddressLineEditState);
+    QFETCH(bool,    ipaddressLabelState);
+    QFETCH(bool,    connectionNameLineEditState);
+    QFETCH(bool,    showIconCheckBoxState);
+    QFETCH(bool,    userConnectionRadioButtonState);
+    QFETCH(bool,    allUsersConnectionRadioButtonState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto ipaddressLabel = widget->findChild<QLabel*>("ipaddressLabel");
-    auto ipaddressLineEdit = widget->findChild<QLineEdit*>("ipaddressLineEdit");
-    auto connectionNameLineEdit = widget->findChild<QLineEdit*>("connectionNameLineEdit");
-    auto showIconCheckBox = widget->findChild<QCheckBox*>("showIconCheckBox");
-    auto userConnectionRadioButton = widget->findChild<QRadioButton*>("userConnectionRadioButton");
-    auto allUsersConnectionRadioButton = widget->findChild<QRadioButton*>("allUsersConnectionRadioButton");
-    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
+    auto ipaddressLabel                 = widget->findChild<QLabel*>        ("ipaddressLabel");
+    auto ipaddressLineEdit              = widget->findChild<QLineEdit*>     ("ipaddressLineEdit");
+    auto connectionNameLineEdit         = widget->findChild<QLineEdit*>     ("connectionNameLineEdit");
+    auto showIconCheckBox               = widget->findChild<QCheckBox*>     ("showIconCheckBox");
+    auto userConnectionRadioButton      = widget->findChild<QRadioButton*>  ("userConnectionRadioButton");
+    auto allUsersConnectionRadioButton  = widget->findChild<QRadioButton*>  ("allUsersConnectionRadioButton");
+    auto actionComboBox                 = widget->findChild<QComboBox*>     ("actionComboBox");
 
     QTest::qWait(1000);
 
@@ -111,13 +111,13 @@ void VpnWidgetTest::actionWidgetStateTest()
     QVERIFY(allUsersConnectionRadioButton);
     QVERIFY(actionComboBox);
 
-    QCOMPARE(actionComboBox->currentText(), action);
-    QCOMPARE(ipaddressLabel->isEnabled(), ipaddressLabelState);
-    QCOMPARE(ipaddressLineEdit->isEnabled(), ipaddressLineEditState);
-    QCOMPARE(connectionNameLineEdit->isEnabled(), connectionNameLineEditState);
-    QCOMPARE(showIconCheckBox->isEnabled(), showIconCheckBoxState);
-    QCOMPARE(userConnectionRadioButton->isChecked(), userConnectionRadioButtonState);
-    QCOMPARE(allUsersConnectionRadioButton->isChecked(), allUsersConnectionRadioButtonState);
+    QCOMPARE(actionComboBox                 ->currentText(),    action);
+    QCOMPARE(ipaddressLabel                 ->isEnabled(),      ipaddressLabelState);
+    QCOMPARE(ipaddressLineEdit              ->isEnabled(),      ipaddressLineEditState);
+    QCOMPARE(connectionNameLineEdit         ->isEnabled(),      connectionNameLineEditState);
+    QCOMPARE(showIconCheckBox               ->isEnabled(),      showIconCheckBoxState);
+    QCOMPARE(userConnectionRadioButton      ->isChecked(),      userConnectionRadioButtonState);
+    QCOMPARE(allUsersConnectionRadioButton  ->isChecked(),      allUsersConnectionRadioButtonState);
 
 }
 void VpnWidgetTest::actionWidgetStateTest_data()
@@ -140,7 +140,7 @@ void VpnWidgetTest::actionWidgetStateTest_data()
 void VpnWidgetTest::checkBoxesStateDNS()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, useDnsCheckBoxState);
+    QFETCH(bool,    useDnsCheckBoxState);
 
     auto widget = readXmlFile(dataPath);
 
@@ -151,6 +151,7 @@ void VpnWidgetTest::checkBoxesStateDNS()
     QTest::qWait(1000);
 
     QVERIFY(useDnsCheckBox);
+
     QCOMPARE(useDnsCheckBox->isChecked(), useDnsCheckBoxState);
 }
 void VpnWidgetTest::checkBoxesStateDNS_data()

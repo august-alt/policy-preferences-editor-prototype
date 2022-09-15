@@ -37,7 +37,6 @@ namespace tests
         std::unique_ptr<mvvm_folders::GroupMembersWidget> readXmlFile(const QString &dataPath);
 
         private slots:
-            void test();
             void tableViewState();
             void tableViewState_data();
     };

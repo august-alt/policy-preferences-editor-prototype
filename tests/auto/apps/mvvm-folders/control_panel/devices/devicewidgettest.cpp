@@ -27,7 +27,6 @@
 #include <device/devicemodelbuilder.h>
 #include <device/devicecontaineritem.h>
 
-//const std::string dataPath = "../../../../data/preferences/";
 const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/network_options/";
 
 using namespace mvvm_folders;
@@ -83,31 +82,44 @@ void DeviceWidgetTest::actionState()
     QFETCH(QString, actionComboBoxState);
     QFETCH(bool, deviceClassLineEditState);
     QFETCH(bool, deviceTypeLineEditState);
+    QFETCH(bool, deviceClassLabelState);
+    QFETCH(bool, deviceTypeLabelState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
-    auto deviceClassLineEdit = widget->findChild<QLineEdit*>("deviceClassLineEdit");
-    auto deviceTypeLineEdit = widget->findChild<QLineEdit*>("deviceTypeLineEdit");
+    auto actionComboBox         = widget->findChild<QComboBox*> ("actionComboBox");
+    auto deviceClassLineEdit    = widget->findChild<QLineEdit*> ("deviceClassLineEdit");
+    auto deviceTypeLineEdit     = widget->findChild<QLineEdit*> ("deviceTypeLineEdit");
+    auto deviceClassLabel       = widget->findChild<QLabel*>    ("deviceClassLabel");
+    auto deviceTypeLabel        = widget->findChild<QLabel*>    ("deviceTypeLabel");
 
     QTest::qWait(1000);
 
     QVERIFY(actionComboBox);
     QVERIFY(deviceTypeLineEdit);
     QVERIFY(deviceClassLineEdit);
+    QVERIFY(deviceClassLabel);
+    QVERIFY(deviceTypeLabel);
 
-    QCOMPARE(actionComboBox->currentText(), actionComboBoxState);
-    QCOMPARE(deviceTypeLineEdit->isEnabled(), deviceTypeLineEditState);
-    QCOMPARE(deviceClassLineEdit->isEnabled(), deviceClassLineEditState);
+    QCOMPARE(actionComboBox     ->currentText(),    actionComboBoxState);
+    QCOMPARE(deviceTypeLineEdit ->isEnabled(),      deviceTypeLineEditState);
+    QCOMPARE(deviceClassLineEdit->isEnabled(),      deviceClassLineEditState);
+    QCOMPARE(deviceClassLabel   ->isEnabled(),      deviceClassLabelState);
+    QCOMPARE(deviceTypeLabel    ->isEnabled(),      deviceTypeLabelState);
 }
 
 void DeviceWidgetTest::actionState_data()
 {
+    QTest::addColumn<bool>("dataPath");
+    QTest::addColumn<bool>("actionComboBoxState");
+    QTest::addColumn<bool>("deviceTypeLineEditState");
     QTest::addColumn<bool>("attributesTableViewState");
+    QTest::addColumn<bool>("deviceClassLabelState");
+    QTest::addColumn<bool>("deviceTypeLabelState");
 
-    QTest::addRow("Device")  << QString::fromStdString(dataPath + "device.xml") << "Use this device (enable)" << true << true ;
+    QTest::addRow("Device")  << QString::fromStdString(dataPath + "device.xml") << "Use this device (enable)" << true << true << true << true ;
 }
 
 }

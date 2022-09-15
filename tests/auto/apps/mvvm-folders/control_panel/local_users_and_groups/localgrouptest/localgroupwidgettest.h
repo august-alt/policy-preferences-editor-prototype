@@ -22,6 +22,7 @@
 #define MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H
 
 #include <QtTest>
+
 namespace mvvm_folders
 {
 class LocalGroupWidget;
@@ -34,7 +35,6 @@ class LocalGroupWidgetTest : public QObject
     Q_OBJECT
 
 private slots:
-//    void test();
     void lineEditCheck();
     void lineEditCheck_data();
     void radioButtonCheck();

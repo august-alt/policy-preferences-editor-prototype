@@ -36,7 +36,6 @@ private:
     std::unique_ptr<mvvm_folders::VpnSecurityWidget> readXmlFile(const QString &dataPath);
 
 private slots:
-    void test();
     void comboBoxeState();
     void comboBoxeState_data();
     void radioButtonState();

@@ -27,8 +27,7 @@
 #include <folder_options/folderoptionsmodelbuilder.h>
 #include <folder_options/folderoptionswidget.h>
 
-//const std::string dataPath = "../../../../data/preferences/";
-const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/folder_options/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/folder_options/";
 
 using namespace mvvm_folders;
 

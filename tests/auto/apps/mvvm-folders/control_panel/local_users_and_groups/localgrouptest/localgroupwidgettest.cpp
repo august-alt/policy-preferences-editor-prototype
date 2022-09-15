@@ -34,9 +34,7 @@
 #include "local_users_and_groups/groupmemberswidget.h"
 
 
-//const std::string dataPath = "../../../../data/preferences/";
-
-const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/local_users_and_groups/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/local_users_and_groups/";
 
 using namespace mvvm_folders;
 
@@ -87,32 +85,32 @@ std::unique_ptr<LocalGroupWidget> LocalGroupWidgetTest::readXmlFile(const QStrin
 void LocalGroupWidgetTest::lineEditCheck()
 {
     QFETCH(QString, dataPath);
-    QFETCH(int, groupComboBoxState);
-    QFETCH(bool, renameLineEditState);
-    QFETCH(bool, descriptionLineEditState);
+    QFETCH(int,     groupComboBoxState);
+    QFETCH(bool,    renameLineEditState);
+    QFETCH(bool,     descriptionLineEditState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto groupComboBox = widget->findChild<QComboBox*>("groupComboBox");
-    auto renameLineEdit = widget->findChild<QLineEdit*>("renameLineEdit");
-    auto descriptionLineEdit = widget->findChild<QLineEdit*>("descriptionLineEdit");
+    auto groupComboBox          = widget->findChild<QComboBox*>("groupComboBox");
+    auto renameLineEdit         = widget->findChild<QLineEdit*>("renameLineEdit");
+    auto descriptionLineEdit    = widget->findChild<QLineEdit*>("descriptionLineEdit");
 
     QTest::qWait(1000);
 
     QVERIFY(groupComboBox);
-    QCOMPARE(groupComboBox->currentIndex(), groupComboBoxState);
-    QCOMPARE(renameLineEdit->isEnabled(), renameLineEditState);
-    QCOMPARE(descriptionLineEdit->isEnabled(), descriptionLineEditState);
+    QCOMPARE(groupComboBox      ->currentIndex(),   groupComboBoxState);
+    QCOMPARE(renameLineEdit     ->isEnabled(),      renameLineEditState);
+    QCOMPARE(descriptionLineEdit->isEnabled(),      descriptionLineEditState);
 }
 
 void LocalGroupWidgetTest::lineEditCheck_data()
 {
-    QTest::addColumn<QString>("dataPath");
-    QTest::addColumn<int>("groupComboBoxState");
-    QTest::addColumn<bool>("renameLineEditState");
-    QTest::addColumn<bool>("descriptionLineEditState");
+    QTest::addColumn<QString>   ("dataPath");
+    QTest::addColumn<int>       ("groupComboBoxState");
+    QTest::addColumn<bool>      ("renameLineEditState");
+    QTest::addColumn<bool>      ("descriptionLineEditState");
 
     QTest::addRow("LocalGroup")  << QString::fromStdString(dataPath + "local_users_and_groups_local_groups.xml") << 0 << true << true ;
 
@@ -132,6 +130,7 @@ void LocalGroupWidgetTest::radioButtonCheck()
     QTest::qWait(1000);
 
     QVERIFY(doNotUserradioButton);
+
     QCOMPARE(doNotUserradioButton->isChecked(), doNotUserradioButtonState);
 }
 
@@ -146,12 +145,34 @@ void LocalGroupWidgetTest::radioButtonCheck_data()
 
 void LocalGroupWidgetTest::checkBox()
 {
+    QFETCH(QString,     dataPath);
+    QFETCH(bool,        deleteGroupCheckBoxState);
+    QFETCH(bool,        deleteUsersCheckBoxState);
 
+    auto widget = readXmlFile(dataPath);
+
+
+    QVERIFY(widget);
+
+    auto deleteGroupCheckBox = widget->findChild<QCheckBox*>("deleteGroupCheckBox");
+    auto deleteUsersCheckBox = widget->findChild<QCheckBox*>("deleteUsersCheckBox");
+
+    QTest::qWait(1000);
+
+    QVERIFY(deleteGroupCheckBox);
+
+    QCOMPARE(deleteGroupCheckBox->isChecked(), deleteGroupCheckBoxState);
+    QCOMPARE(deleteUsersCheckBox->isChecked(), deleteUsersCheckBoxState);
 }
 
 void LocalGroupWidgetTest::checkBox_data()
 {
+    QTest::addColumn<QString>("dataPath");
+    QTest::addColumn<bool>("deleteGroupCheckBoxState");
+    QTest::addColumn<bool>("deleteUsersCheckBoxState");
 
+
+    QTest::addRow("LocalGroup")  << QString::fromStdString(dataPath + "local_users_and_groups_local_groups.xml") << false << false ;
 }
 
 }

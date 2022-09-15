@@ -27,9 +27,7 @@
 #include <datasource/datasourcewidget.h>
 #include <datasource/datasourcemodelbuilder.h>
 
-//const std::string dataPath = "../../../../data/preferences/";
-
-const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/datasource/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/datasource/";
 
 using namespace mvvm_folders;
 
@@ -83,7 +81,7 @@ void DataSourceWidgetTest::widgetState()
 {
     QFETCH(QString, dataPath);
     QFETCH(QString, action);
-     QFETCH(bool, userDataSourceRadioButtonState);
+    QFETCH(bool, userDataSourceRadioButtonState);
     QFETCH(bool, systemDataSourceRadioButtonState);
     QFETCH(bool, dataSourceLineEditState);
     QFETCH(bool, driverLineEditState);
@@ -97,16 +95,16 @@ void DataSourceWidgetTest::widgetState()
 
     QVERIFY(widget);
 
-    auto actionComboBox = widget->findChild<QComboBox*>("actionComboBox");
-    auto userDataSourceRadioButton = widget->findChild<QRadioButton*>("userDataSourceRadioButton");
-    auto systemDataSourceRadioButton = widget->findChild<QRadioButton*>("systemDataSourceRadioButton");
-    auto dataSourceLineEdit = widget->findChild<QLineEdit*>("dataSourceLineEdit");
-    auto driverLineEdit = widget->findChild<QLineEdit*>("driverLineEdit");
-    auto userNameLineEdit = widget->findChild<QLineEdit*>("userNameLineEdit");
-    auto passwordLineEdit = widget->findChild<QLineEdit*>("passwordLineEdit");
-    auto confirmPasswordLineEdit = widget->findChild<QLineEdit*>("confirmPasswordLineEdit");
-    auto descriptionLineEdit = widget->findChild<QLineEdit*>("descriptionLineEdit");
-    auto attributesTableView = widget->findChild<QTableView*>("attributesTableView");
+    auto actionComboBox                 = widget->findChild<QComboBox*>     ("actionComboBox");
+    auto userDataSourceRadioButton      = widget->findChild<QRadioButton*>  ("userDataSourceRadioButton");
+    auto systemDataSourceRadioButton    = widget->findChild<QRadioButton*>  ("systemDataSourceRadioButton");
+    auto dataSourceLineEdit             = widget->findChild<QLineEdit*>     ("dataSourceLineEdit");
+    auto driverLineEdit                 = widget->findChild<QLineEdit*>     ("driverLineEdit");
+    auto userNameLineEdit               = widget->findChild<QLineEdit*>     ("userNameLineEdit");
+    auto passwordLineEdit               = widget->findChild<QLineEdit*>     ("passwordLineEdit");
+    auto confirmPasswordLineEdit        = widget->findChild<QLineEdit*>     ("confirmPasswordLineEdit");
+    auto descriptionLineEdit            = widget->findChild<QLineEdit*>     ("descriptionLineEdit");
+    auto attributesTableView            = widget->findChild<QTableView*>    ("attributesTableView");
 
     QTest::qWait(1000);
 
@@ -121,16 +119,16 @@ void DataSourceWidgetTest::widgetState()
     QVERIFY(confirmPasswordLineEdit);
     QVERIFY(attributesTableView);
 
-    QCOMPARE(actionComboBox->currentText(), action);
-    QCOMPARE(userDataSourceRadioButton->isEnabled(), userDataSourceRadioButtonState);
-    QCOMPARE(systemDataSourceRadioButton->isChecked(), systemDataSourceRadioButtonState);
-    QCOMPARE(dataSourceLineEdit->isEnabled(), dataSourceLineEditState);
-    QCOMPARE(driverLineEdit->isEnabled(), driverLineEditState);
-    QCOMPARE(descriptionLineEdit->isEnabled(), descriptionLineEditState);
-    QCOMPARE(userNameLineEdit->isEnabled(), userNameLineEditState);
-    QCOMPARE(passwordLineEdit->isEnabled(), passwordLineEditState);
-    QCOMPARE(confirmPasswordLineEdit->isEnabled(), confirmPasswordLineEditState);
-    QCOMPARE(attributesTableView->isEnabled(), attributesTableViewState);
+    QCOMPARE(actionComboBox             ->currentText(),    action);
+    QCOMPARE(userDataSourceRadioButton  ->isEnabled(),      userDataSourceRadioButtonState);
+    QCOMPARE(systemDataSourceRadioButton->isChecked(),      systemDataSourceRadioButtonState);
+    QCOMPARE(dataSourceLineEdit         ->isEnabled(),      dataSourceLineEditState);
+    QCOMPARE(driverLineEdit             ->isEnabled(),      driverLineEditState);
+    QCOMPARE(descriptionLineEdit        ->isEnabled(),      descriptionLineEditState);
+    QCOMPARE(userNameLineEdit           ->isEnabled(),      userNameLineEditState);
+    QCOMPARE(passwordLineEdit           ->isEnabled(),      passwordLineEditState);
+    QCOMPARE(confirmPasswordLineEdit    ->isEnabled(),      confirmPasswordLineEditState);
+    QCOMPARE(attributesTableView        ->isEnabled(),      attributesTableViewState);
 }
 
 void DataSourceWidgetTest::widgetState_data()

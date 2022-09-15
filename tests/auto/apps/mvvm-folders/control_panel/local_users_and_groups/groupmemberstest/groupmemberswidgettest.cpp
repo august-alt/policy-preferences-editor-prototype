@@ -28,9 +28,7 @@
 #include <local_users_and_groups/groupmodelbuilder.h>
 #include <local_users_and_groups/baselocalitem.h>
 
-//const std::string dataPath = "../../../../data/preferences/";
-
-const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/local_users_and_groups/";
+const std::string dataPath = "../../../../../../data/preferences/machine/control_panel/local_users_and_groups/";
 
 using namespace mvvm_folders;
 
@@ -79,20 +77,6 @@ std::unique_ptr<GroupMembersWidget> GroupMembersWidgetTest::readXmlFile(const QS
     return membersWidget;
 }
 
-
-void GroupMembersWidgetTest::test()
-{
-//    std::ifstream file;
-
-//    file.open(dataPath + "groupmemberswidget.xml", std::ifstream::in);
-//    if (file.good())
-//    {
-       
-//    }
-
-    //    file.close();
-}
-
 void GroupMembersWidgetTest::tableViewState()
 {
     QFETCH(QString, dataPath);
@@ -114,10 +98,10 @@ void GroupMembersWidgetTest::tableViewState()
 
 void GroupMembersWidgetTest::tableViewState_data()
 {
-    QTest::addColumn<QString>("dataPath");
-    QTest::addColumn<bool>("membersTableViewState");
+    QTest::addColumn<QString>   ("dataPath");
+    QTest::addColumn<bool>      ("membersTableViewState");
 
-    QTest::addRow("GroupMembers")  << QString::fromStdString(dataPath + "local_users_and_groups_local_groups.xml") << true ;
+    QTest::addRow("GroupMembers")  << QString::fromStdString(dataPath + "local_users_and_groups_local_members.xml") << true ;
 }
 
 }

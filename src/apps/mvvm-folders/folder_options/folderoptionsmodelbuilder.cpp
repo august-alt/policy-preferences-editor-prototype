@@ -45,6 +45,17 @@ std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::
     {
         auto sessionItem = model->insertItem<FolderOptionsContainerItem<FileExtensionItem>>(model->rootItem());
 
+        for (const auto& properties: folderoptionsSchema.Properties())
+        {
+            auto open = sessionItem->getFolderOption();
+            auto action = properties.action();
+            auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
+            open->setProperty(FolderOptionsItem::ACTION, state);
+
+            auto common = sessionItem->getCommon();
+            setCommonItemData(common, folderoptionsSchema);
+
+        }
         for (const auto& properties:folderoptionsSchema.Properties())
         {
             auto fileEx = sessionItem->getFolderOption();
@@ -63,6 +74,20 @@ std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::
 
             auto common = sessionItem->getCommon();
             setCommonItemData(common, folderoptionsSchema);
+        }
+        for (const auto& properties: folderoptionsSchema.Properties())
+        {
+            auto open = sessionItem->getFolderOption();
+            auto action = properties.action();
+            auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
+            open->setProperty(OpenWithItem::ACTION, state);
+            open->setProperty(OpenWithItem::FILE_EXTENSION, state);
+            open->setProperty(OpenWithItem::APPLICATION_PATH, state);
+            open->setProperty(OpenWithItem::DEFAULT, state);
+
+            auto common = sessionItem->getCommon();
+            setCommonItemData(common, folderoptionsSchema);
+
         }
     }
 

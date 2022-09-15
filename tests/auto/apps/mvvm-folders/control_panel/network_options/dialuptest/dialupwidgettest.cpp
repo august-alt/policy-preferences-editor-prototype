@@ -80,19 +80,19 @@ std::unique_ptr<DialUpWidget> DialUpWidgetTest::readXmlFile(const QString &dataP
 void DialUpWidgetTest::widgetState()
 {
     QFETCH(QString, dataPath);
-    QFETCH(bool, userRadioButtonState);
-    QFETCH(bool, systemRadioButtonState);
-    QFETCH(bool, connectionLineEditState);
-    QFETCH(bool, phoneLineEditState);
+    QFETCH(bool,    userRadioButtonState);
+    QFETCH(bool,    systemRadioButtonState);
+    QFETCH(bool,    connectionLineEditState);
+    QFETCH(bool,    phoneLineEditState);
 
     auto widget = readXmlFile(dataPath);
 
     QVERIFY(widget);
 
-    auto userRadioButton = widget->findChild<QRadioButton*>("userRadioButton");
-    auto systemRadioButton = widget->findChild<QRadioButton*>("systemRadioButton");
-    auto connectionLineEdit = widget->findChild<QLineEdit*>("connectionLineEdit");
-    auto phoneLineEdit = widget->findChild<QLineEdit*>("phoneLineEdit");
+    auto userRadioButton    = widget->findChild<QRadioButton*>  ("userRadioButton");
+    auto systemRadioButton  = widget->findChild<QRadioButton*>  ("systemRadioButton");
+    auto connectionLineEdit = widget->findChild<QLineEdit*>     ("connectionLineEdit");
+    auto phoneLineEdit      = widget->findChild<QLineEdit*>     ("phoneLineEdit");
 
     QTest::qWait(1000);
 
@@ -101,10 +101,10 @@ void DialUpWidgetTest::widgetState()
     QVERIFY(connectionLineEdit);
     QVERIFY(phoneLineEdit);
 
-    QCOMPARE(userRadioButton->isChecked(), userRadioButtonState);
-    QCOMPARE(systemRadioButton->isChecked(), systemRadioButtonState);
-    QCOMPARE(connectionLineEdit->isEnabled(), connectionLineEditState);
-    QCOMPARE(phoneLineEdit->isEnabled(), phoneLineEditState);
+    QCOMPARE(userRadioButton    ->isChecked(), userRadioButtonState);
+    QCOMPARE(systemRadioButton  ->isChecked(), systemRadioButtonState);
+    QCOMPARE(connectionLineEdit ->isEnabled(), connectionLineEditState);
+    QCOMPARE(phoneLineEdit      ->isEnabled(), phoneLineEditState);
 }
 void DialUpWidgetTest::widgetState_data()
 {
