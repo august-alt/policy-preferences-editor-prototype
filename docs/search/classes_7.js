@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['icompositesnapin_1079',['ICompositeSnapIn',['../classpreferences__editor_1_1_i_composite_snap_in.html',1,'preferences_editor']]],
+  ['immediateactionwin7widget_1080',['ImmediateActionWin7Widget',['../classmvvm__folders_1_1_immediate_action_win7_widget.html',1,'mvvm_folders']]],
+  ['immediateconditionswin7widget_1081',['ImmediateConditionsWin7Widget',['../classmvvm__folders_1_1_immediate_conditions_win7_widget.html',1,'mvvm_folders']]],
+  ['immediatesettingswidget_1082',['ImmediateSettingsWidget',['../classmvvm__folders_1_1_immediate_settings_widget.html',1,'mvvm_folders']]],
+  ['immediatesettingswin7widget_1083',['ImmediateSettingsWin7Widget',['../classmvvm__folders_1_1_immediate_settings_win7_widget.html',1,'mvvm_folders']]],
+  ['immediatetaskswidget_1084',['ImmediateTasksWidget',['../classmvvm__folders_1_1_immediate_tasks_widget.html',1,'mvvm_folders']]],
+  ['immediatewin7widget_1085',['ImmediateWin7Widget',['../classmvvm__folders_1_1_immediate_win7_widget.html',1,'mvvm_folders']]],
+  ['inicontaineritem_1086',['IniContainerItem',['../classmvvm__folders_1_1_ini_container_item.html',1,'mvvm_folders']]],
+  ['inifile_1087',['IniFile',['../classio_1_1_ini_file.html',1,'io']]],
+  ['inifileprivate_1088',['IniFilePrivate',['../classio_1_1_ini_file_private.html',1,'io']]],
+  ['iniformat_1089',['IniFormat',['../classpreferences__editor_1_1_ini_format.html',1,'preferences_editor']]],
+  ['iniitem_1090',['IniItem',['../classmvvm__folders_1_1_ini_item.html',1,'mvvm_folders']]],
+  ['inimodelbuilder_1091',['IniModelBuilder',['../classmvvm__folders_1_1_ini_model_builder.html',1,'mvvm_folders']]],
+  ['iniplugin_1092',['IniPlugin',['../classpreferences__editor_1_1_ini_plugin.html',1,'preferences_editor']]],
+  ['inipreferencereader_1093',['IniPreferenceReader',['../classmvvm__folders_1_1_ini_preference_reader.html',1,'mvvm_folders']]],
+  ['iniwidget_1094',['IniWidget',['../classmvvm__folders_1_1_ini_widget.html',1,'mvvm_folders']]],
+  ['isnapin_1095',['ISnapIn',['../classpreferences__editor_1_1_i_snap_in.html',1,'preferences_editor']]],
+  ['isnapindetailsdialog_1096',['ISnapInDetailsDialog',['../classpreferences__editor_1_1_i_snap_in_details_dialog.html',1,'preferences_editor']]],
+  ['isnapinmanager_1097',['ISnapInManager',['../classpreferences__editor_1_1_i_snap_in_manager.html',1,'preferences_editor']]],
+  ['item_1098',['Item',['../class_group_policy_1_1_policy_definitions_1_1_item.html',1,'GroupPolicy::PolicyDefinitions']]],
+  ['itemname_1099',['ItemName',['../class_group_policy_1_1_policy_definitions_1_1_item_name.html',1,'GroupPolicy::PolicyDefinitions']]],
+  ['itemreference_1100',['ItemReference',['../class_group_policy_1_1_policy_definitions_1_1_item_reference.html',1,'GroupPolicy::PolicyDefinitions']]]
+];

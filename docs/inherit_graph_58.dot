@@ -1,0 +1,24 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node163 [label="QDialog",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node163 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="mvvm_folders::GroupMember\lDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_group_member_dialog.html",tooltip=" "];
+  Node163 -> Node165 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node165 [label="mvvm_folders::Preferences\lDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_preferences_dialog.html",tooltip=" "];
+  Node163 -> Node166 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node166 [label="preferences_editor\l::AboutDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_about_dialog.html",tooltip=" "];
+  Node163 -> Node167 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node167 [label="preferences_editor\l::EditorPreferencesDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_editor_preferences_dialog.html",tooltip=" "];
+  Node163 -> Node168 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node168 [label="preferences_editor\l::ISnapInDetailsDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_i_snap_in_details_dialog.html",tooltip="Common interface for a details dialog."];
+  Node168 -> Node169 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node169 [label="preferences_editor\l::CompositeSnapInDetailsDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_composite_snap_in_details_dialog.html",tooltip="Shows properties and dependencies of composite snap-in."];
+  Node168 -> Node170 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node170 [label="preferences_editor\l::SnapInDetailsDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_snap_in_details_dialog.html",tooltip="class SnapInDetailsDialog Shows properties of a snap-in. Provides information on snap-in name,..."];
+  Node163 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node171 [label="preferences_editor\l::ListBoxDialog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_list_box_dialog.html",tooltip=" "];
+}

@@ -1,0 +1,38 @@
+var classmvvm__folders_1_1_vpn_item =
+[
+    [ "PropertyType", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6", [
+      [ "ACTION", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a2bc03da6b815c4e2960dbf7c8d324401", null ],
+      [ "USER", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a8bbc29dadcb639f53ebc364cb18fd1a5", null ],
+      [ "NAME", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a1c4e7787f4409845cabe03d6962a51b1", null ],
+      [ "IP_ADDRESS", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a19886e75bf81f0dece88ca8d8d8286d4", null ],
+      [ "USE_DNS", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a29c4c85cbab407f9b6bb2581a799c975", null ],
+      [ "DIAL_FIRST", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a1effc4ae4486d91e868f1b5ee9818af2", null ],
+      [ "TRAY_ICON", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6acaf2289fd8d0d26192a5e48ec4622694", null ],
+      [ "SHOW_PROGRESS", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6aa4225b57f90f72fb40c1bd4c84b70649", null ],
+      [ "SHOW_PASSWORD", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a171406fea5275de74144a09a2c2543c8", null ],
+      [ "SHOW_DOMAIN", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6affca3d602ab7ba3162d91b0424ec1746", null ],
+      [ "REDIAL_COUNT", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6ab9e8599c16757e947f9412baa4b3571c", null ],
+      [ "REDIAL_PAUSE", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a537fbce2d4c60290edc663cef6c89bda", null ],
+      [ "IDLE_DISCONNECT", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a6d8e8850c1fc5a096e542b341b92becd", null ],
+      [ "RECONNECT", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a4e56d01c81af4afaf6160bfb3af4bbe3", null ],
+      [ "CUSTOM_SETTINGS", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6ad42e2d544a3d3f59d7168747dd666f1b", null ],
+      [ "SECURE_PASSWORD", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a98eb33b7b149e4cc8df174930a6e2f24", null ],
+      [ "SECURE_DATA", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6aad0213b05ed4658d7ae0418fd94ec7a9", null ],
+      [ "USE_LOGON", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a7e7712b1ab616aa69de882e80e842fc2", null ],
+      [ "VPN_STRATEGY", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a657cfda7d449376eab8606310445ffa7", null ],
+      [ "ENCRYPTION_TYPE", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a399e0232a03cedf5835d2a955af5e4e6", null ],
+      [ "EAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a7e109ccf5ddac30edbc94e68a6b8597f", null ],
+      [ "PAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a558258e7d8ea414e22347d001ba4b345", null ],
+      [ "SPAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a696d1d1ce92d3c4b0247266926593e2c", null ],
+      [ "CHAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6af6917bfc63260af4834f1ebcfb56cbc5", null ],
+      [ "MS_CHAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6ae36bd5bce86e9c695a32b943682653ef", null ],
+      [ "OLD_MS_CHAP", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a7fb82866c8daa1e61cc26aa035676196", null ],
+      [ "MS_CHAP_V2", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a98f2b6b1960b865b03c240447d45908c", null ],
+      [ "SYSTEM", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6ada11a999f7ed3d5ed842f6e07a488b9d", null ],
+      [ "TYPICAL", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a016ed092a8411ced75845c56d102df0d", null ],
+      [ "ADVANCED", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6aa4ef0d21caccec6427ea6559c6ee5f1b", null ],
+      [ "USE_OTHER", "classmvvm__folders_1_1_vpn_item.html#a3404f853e7be99a844a53358358627e6a74992f06140d1845a8fbcaf9a3ea5a08", null ]
+    ] ],
+    [ "VpnItem", "classmvvm__folders_1_1_vpn_item.html#a9659519b4fdbc58a43cd953f12ddcce5", null ],
+    [ "VpnItem", "classmvvm__folders_1_1_vpn_item.html#aa492918bd21b0f241fff05f789bb35e2", null ]
+];

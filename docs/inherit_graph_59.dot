@@ -1,0 +1,12 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node158 [label="QMainWindow",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node158 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="mvvm_folders::MainWindow",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmvvm__folders_1_1_main_window.html",tooltip=" "];
+  Node158 -> Node160 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node160 [label="preferences_editor\l::MainWindow",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpreferences__editor_1_1_main_window.html",tooltip=" "];
+}
