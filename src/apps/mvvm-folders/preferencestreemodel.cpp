@@ -49,9 +49,6 @@
 
 namespace
 {
-const int nodeIdRole   = Qt::UserRole + 12;
-const int parentIdRole = Qt::UserRole + 13;
-
 class FolderItem : public ModelView::GroupItem
 {
 public:
