@@ -238,9 +238,12 @@ void PreferencesTreeModel::populateModel()
 
     auto userNamespace = insertItem<FolderItem>(this->rootItem());
     userNamespace->setDisplayName("User");
+    auto userUuid = QUuid("{123e4567-e89b-12d3-a456-426652340001}");
+    userNamespace->setProperty(FolderItem::NODE_ID, userUuid);
 
     auto userPreferencesItem = insertItem<FolderItem>(userNamespace);
     userPreferencesItem->setDisplayName("Preferences");
+    userPreferencesItem->setProperty(FolderItem::PARENT_ID, userUuid);
 
     auto userSystemSettingsItem = insertItem<FolderItem>(userPreferencesItem);
     userSystemSettingsItem->setDisplayName("System Settings");
