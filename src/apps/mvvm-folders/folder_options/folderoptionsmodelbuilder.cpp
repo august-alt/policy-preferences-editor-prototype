@@ -23,10 +23,13 @@
 #include "folderoptionscontaineritem.h"
 #include "folderoptionsitem.h"
 #include "fileextensionactionitem.h"
+#include "fileextensionactioncontaineritem.h" ?????????? надо?
 #include "fileextensioncontaineritem.h"
 #include "fileextensionitem.h"
+#include "vist
 #include "openwithitem.h"
 #include "openwithwidget.h"
+#include "openwithcontaineritem.h" ?????????? надо ?
 
 #include "common/commonitem.h"
 
@@ -96,10 +99,90 @@ std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::
 
 std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::unique_ptr<PreferencesModel> &model)
 {
-    Q_UNUSED(model);
 
-    return nullptr;
+    auto folderOptions = std::make_unique<FolderOptions>("{8AB5F5D7-F676-48ab-A94E-1186E120EFDC}");
+
+    for (const auto& containerItem : model->topItems())
+    {
+        if (auto fileContainer = dynamic_cast<FolderOptionsContainerItem<FileExtensionItem>*>(containerItem); fileContainer)
+        {
+            auto fileModel = fileContainer->getFolderOption();
+            auto commonModel = fileContainer->getCommon();
+
+            auto files = createRootElement<FileType_t>("{580C4D3B-7A89-44d0-92D2-C105702C7BD0}");
+
+            auto properties = FileTypeProperties_t(fileModel->property<std::string>(FileExtensionItem::propertyToString(FileExtensionItem::FILE_EXT)),
+                                                   fileModel->property<std::string>(FileExtensionItem::propertyToString(FileExtensionItem::APPLICATION)),
+                                                   fileModel->property<std::string>(FileExtensionItem::propertyToString(FileExtensionItem::APP_PROG_ID)),
+                                                   fileModel->property<bool>(FileExtensionItem::propertyToString(FileExtensionItem::CONFIG_ACTIONS)));
+            properties.action(fileModel->property<std::string>(fileModel->propertyToString(FileExtensionItem::ACTION)));
+            properties.fileExt(fileModel->property<std::string>(fileModel->propertyToString(FileExtensionItem::FILE_EXT)));
+            properties.application(fileModel->property<std::string>(fileModel->propertyToString(FileExtensionItem::APPLICATION)));
+            properties.appProgID(fileModel->property<std::string>(fileModel->propertyToString(FileExtensionItem::APP_PROG_ID)));
+            properties.configActions(fileModel->property<bool>(fileModel->propertyToString(FileExtensionItem::CONFIG_ACTIONS)));
+            properties.iconPath(fileModel->propertyToString(FileExtensionItem::ICON_PATH));
+            properties.iconIndex(fileModel->propertyToString(FileExtensionItem::ICON_INDEX));
+            properties.confirmOpen(fileModel->propertyToString(FileExtensionItem::CONFIRM_OPEN));
+            properties.alwaysShow(fileModel->property<bool>(fileModel->propertyToString(FileExtensionItem::ALWAYS_SHOW)));
+            properties.sameWindow(fileModel->propertyToString(FileExtensionItem::SAME_WINDOW));
+
+            setCommonModelData(files, commonModel);
+            files.Properties().push_back(properties);
+
+        }
+
+        if (auto openContainer = dynamic_cast<FolderOptionsContainerItem<OpenWithItem>*>(containerItem); openContainer)
+        {
+
+            auto openModel = openContainer->getFolderOption();
+            auto commonModel = openContainer->getCommon();
+
+            auto open = createRootElement<OpenWith_t>("{100B9C09-906A-4f5a-9C41-1BD98B6CA022}");
+
+            auto properties = OpenWithProperties_t(openModel->property<std::string>(OpenWithItem::FILE_EXTENSION),
+                                                   openModel->property<std::string>(OpenWithItem::APPLICATION_PATH));
+            properties.action(openModel->property<std::string>(OpenWithItem::ACTION));
+
+            setCommonModelData(open, commonModel);
+            open.Properties().push_back(properties);
+        }
+        if (auto folderContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionsItem>*>(containerItem); folderContainer)
+        {
+            auto folderModel = folderContainer->getFolderOption();
+            auto commonModel = folderContainer->getCommon();
+
+            auto folder = createRootElement<GlobalFolderOptions_t>("{E7632293-E3FC-4fee-9CD3-584C95D8D2A0}");
+
+            auto properties = GlobalFolderOptionsProperties_t(folderModel->property<std::string>(FolderOptionsItem::ACTION),
+                                                              folderModel->property<std::string>(FolderOptionsItem::);
+//                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION)
+//                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION));
+
+            setCommonModelData(folder, commonModel);
+            folder.Properties().push_back(properties);
+        }
+
+        if (auto vistaContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionVistaItem>*>(containerItem); vistaContainer)
+        {
+            auto vistaModel = vistaContainer->getFolderOption();
+            auto commonModel = vistaContainer->getCommon();
+
+            auto vista = createRootElement<GlobalFolderOptionsVista_t>("{100B9C09-906A-4f5a-9C41-1BD98B6CA022}");
+
+            auto properties = GlobalFolderOptionsVistaProperties_t(folderModel->property<std::string>(FolderOptionVistaItem::ACTION),
+                                                                   folderModel->property<std::string>(FolderOptionVistaItem::);
+                    //                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION)
+                    //                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION));
+
+            setCommonModelData(vista, commonModel);
+            vista.Properties().push_back(properties);
+        }
+    }
+
+    return folderOptions;
 }
 
+}
+}
 }
 
