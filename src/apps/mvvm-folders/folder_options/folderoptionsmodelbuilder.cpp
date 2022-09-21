@@ -23,13 +23,10 @@
 #include "folderoptionscontaineritem.h"
 #include "folderoptionsitem.h"
 #include "fileextensionactionitem.h"
-#include "fileextensionactioncontaineritem.h" ?????????? надо?
 #include "fileextensioncontaineritem.h"
 #include "fileextensionitem.h"
-#include "vist
 #include "openwithitem.h"
 #include "openwithwidget.h"
-#include "openwithcontaineritem.h" ?????????? надо ?
 
 #include "common/commonitem.h"
 
@@ -50,10 +47,10 @@ std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::
 
         for (const auto& properties: folderoptionsSchema.Properties())
         {
-            auto open = sessionItem->getFolderOption();
+//            auto open = sessionItem->getFolderOption();
             auto action = properties.action();
             auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
-            open->setProperty(FolderOptionsItem::ACTION, state);
+//            open->setProperty(FolderOptionsItem::ACTION, state);
 
             auto common = sessionItem->getCommon();
             setCommonItemData(common, folderoptionsSchema);
@@ -146,6 +143,7 @@ std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::uni
             setCommonModelData(open, commonModel);
             open.Properties().push_back(properties);
         }
+
         if (auto folderContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionsItem>*>(containerItem); folderContainer)
         {
             auto folderModel = folderContainer->getFolderOption();
@@ -153,26 +151,37 @@ std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::uni
 
             auto folder = createRootElement<GlobalFolderOptions_t>("{E7632293-E3FC-4fee-9CD3-584C95D8D2A0}");
 
-            auto properties = GlobalFolderOptionsProperties_t(folderModel->property<std::string>(FolderOptionsItem::ACTION),
-                                                              folderModel->property<std::string>(FolderOptionsItem::);
-//                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION)
-//                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION));
+            auto properties = GlobalFolderOptionsProperties_t(folderModel->property<bool>(FolderOptionsItem::NO_NETCRAWLING),
+                                                              folderModel->property<bool>(FolderOptionsItem::fOLDER_CONTENTS_INFO_TIP),
+                                                              folderModel->property<bool>(FolderOptionsItem::FRIENDLY_TREE),
+                                                              folderModel->property<bool>(FolderOptionsItem::FULL_PATH_ADDRESS),
+                                                              folderModel->property<bool>(FolderOptionsItem::FULL_PATH),
+                                                              folderModel->property<bool>(FolderOptionsItem::DISAIBLE_THUMBNAIL_CACHE),
+                                                              folderModel->property<std::string>(FolderOptionsItem::HIDDEN),
+                                                              folderModel->property<bool>(FolderOptionsItem::HIDE_FILE_EXT),
+                                                              folderModel->property<bool>(FolderOptionsItem::SEPERATE_PROCESS),
+                                                              folderModel->property<bool>(FolderOptionsItem::SHOW_SUPER_HIDDEN),
+                                                              folderModel->property<bool>(FolderOptionsItem::PERSIST_BROWSERS),
+                                                              folderModel->property<bool>(FolderOptionsItem::CLASSIC_VIEW_STATE),
+                                                              folderModel->property<bool>(FolderOptionsItem::SHOW_CONTROL_PANEL),
+                                                              folderModel->property<bool>(FolderOptionsItem::SHOW_COMP_COLOR),
+                                                              folderModel->property<bool>(FolderOptionsItem::SHOW_INFO_TIP),
+                                                              folderModel->property<bool>(FolderOptionsItem::FORCE_GUEST),
+                                                              folderModel->property<bool>(FolderOptionsItem::WEB_VIEW_BARRICADE));
 
             setCommonModelData(folder, commonModel);
             folder.Properties().push_back(properties);
         }
 
-        if (auto vistaContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionVistaItem>*>(containerItem); vistaContainer)
+        if (auto vistaContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionsVistaItem>*>(containerItem); vistaContainer)
         {
             auto vistaModel = vistaContainer->getFolderOption();
             auto commonModel = vistaContainer->getCommon();
 
             auto vista = createRootElement<GlobalFolderOptionsVista_t>("{100B9C09-906A-4f5a-9C41-1BD98B6CA022}");
 
-            auto properties = GlobalFolderOptionsVistaProperties_t(folderModel->property<std::string>(FolderOptionVistaItem::ACTION),
-                                                                   folderModel->property<std::string>(FolderOptionVistaItem::);
-                    //                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION)
-                    //                                                    folderModel->property<std::string>(FolderOptionsItem::ACTION));
+            auto properties = GlobalFolderOptionsVistaProperties_t(vistaModel->property<std::string>(FolderOptionVistaItem::),
+                                                                   vistaModel->property<std::string>(FolderOptionVistaItem::));
 
             setCommonModelData(vista, commonModel);
             vista.Properties().push_back(properties);

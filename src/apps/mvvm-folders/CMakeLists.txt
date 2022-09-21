@@ -54,6 +54,7 @@ set(HEADERS
     folder_options/fileextensioncontaineritem.h
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
+    folder_options/folderoptionsvistaitem.h
 
     files/filesitem.h
     files/filescontaineritem.h
@@ -190,7 +191,6 @@ set(SOURCES
     device/deviceitem.cpp
     device/devicecontaineritem.cpp
     device/devicemodelbuilder.cpp
-    device/deviceslots.cpp
     device/devicewidget.cpp
 
     drives/drivesitem.cpp
@@ -215,6 +215,7 @@ set(SOURCES
     folder_options/fileextensioncontaineritem.cpp
     folder_options/fileextensionitem.cpp
     folder_options/fileextensionwidget.cpp
+    folder_options/folderoptionsvistaitem.cpp
 
     files/filesitem.cpp
     files/filescontaineritem.cpp

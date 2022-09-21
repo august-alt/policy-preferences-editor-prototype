@@ -32,7 +32,6 @@ namespace mvvm_folders
 
 class CommonItem;
 class BaseNetworkItem;
-class DialUpItem;
 
 template <typename FolderOptionItem>
 class FolderOptionsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
