@@ -25,7 +25,6 @@
 
 namespace mvvm_folders
 {
-//class FolderOptionsContainerItem;
 
 class FileExtensionItem : public BasePreferenceItem<FileExtensionItem>
 {
@@ -48,8 +47,6 @@ public:
 public:
     FileExtensionItem();
     FileExtensionItem(const FileExtensionItem &other);
-
-//    FolderOptionsContainerItem* getItem() const;
 
     constexpr static const char* propertyToString(const PropertyType& type);
 };

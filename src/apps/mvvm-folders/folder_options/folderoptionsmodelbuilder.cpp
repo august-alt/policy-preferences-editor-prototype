@@ -25,8 +25,8 @@
 #include "fileextensionactionitem.h"
 #include "fileextensioncontaineritem.h"
 #include "fileextensionitem.h"
+#include "folderoptionsvistaitem.h"
 #include "openwithitem.h"
-#include "openwithwidget.h"
 
 #include "common/commonitem.h"
 
@@ -47,16 +47,28 @@ std::unique_ptr<PreferencesModel> FolderOptionsModelBuilder::schemaToModel(std::
 
         for (const auto& properties: folderoptionsSchema.Properties())
         {
-//            auto open = sessionItem->getFolderOption();
+            auto open = sessionItem->getFolderOption();
             auto action = properties.action();
             auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
-//            open->setProperty(FolderOptionsItem::ACTION, state);
+            open->setProperty(FolderOptionsItem::ACTION, state);
 
             auto common = sessionItem->getCommon();
             setCommonItemData(common, folderoptionsSchema);
 
         }
-        for (const auto& properties:folderoptionsSchema.Properties())
+
+        for (const auto& properties: folderoptionsSchema.Properties())
+        {
+            auto vista = sessionItem->getFolderOption();
+            auto action = properties.action();
+            auto state = getActionCheckboxState(action.present() ? action->c_str() : "");
+            vista->setProperty(FoldersOptionsVistaItem::ACTION, state);
+
+            auto common = sessionItem->getCommon();
+            setCommonItemData(common, folderoptionsSchema);
+
+        }
+        for (const auto& properties: folderoptionsSchema.Properties())
         {
             auto fileEx = sessionItem->getFolderOption();
             auto action = properties.action();
@@ -173,15 +185,32 @@ std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::uni
             folder.Properties().push_back(properties);
         }
 
-        if (auto vistaContainer = dynamic_cast<FolderOptionsContainerItem<FolderOptionsVistaItem>*>(containerItem); vistaContainer)
+        if (auto vistaContainer = dynamic_cast<FolderOptionsContainerItem<FoldersOptionsVistaItem>*>(containerItem); vistaContainer)
         {
             auto vistaModel = vistaContainer->getFolderOption();
             auto commonModel = vistaContainer->getCommon();
 
             auto vista = createRootElement<GlobalFolderOptionsVista_t>("{100B9C09-906A-4f5a-9C41-1BD98B6CA022}");
 
-            auto properties = GlobalFolderOptionsVistaProperties_t(vistaModel->property<std::string>(FolderOptionVistaItem::),
-                                                                   vistaModel->property<std::string>(FolderOptionVistaItem::));
+            auto properties = GlobalFolderOptionsVistaProperties_t(vistaModel->property<bool>(FoldersOptionsVistaItem::ALWAYS_SHOW_ICONS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::ALWAYS_SHOW_MENUS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::DISOLAY_ICON_THUMB),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::DISPLAY_FILE_SIZE),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::DISPLAY_SIMPLE_FOLDERS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::FULL_PATH),
+                                                                   vistaModel->property<std::string>(FoldersOptionsVistaItem::HIDDEN),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::HIDE_FILE_EXT),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SHOW_SUPER_HIDDEN),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SEPARETE_PROCESS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::CLASSIC_VIEW_STATE),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::PERSIST_BROWSERS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SHOW_DRIVE_LETTER),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SHOW_COMP_COLOR),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SHOW_INFO_TIP),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::SHOW_PREVIEW_HANDLERS),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::USE_CHECK_BOXES),
+                                                                   vistaModel->property<bool>(FoldersOptionsVistaItem::USE_SHARING_WIZARD),
+                                                                   vistaModel->property<std::string>(FoldersOptionsVistaItem::LIST_VIEW_TYPING));
 
             setCommonModelData(vista, commonModel);
             vista.Properties().push_back(properties);
@@ -192,6 +221,5 @@ std::unique_ptr<FolderOptions> FolderOptionsModelBuilder::modelToSchema(std::uni
 }
 
 }
-}
-}
+
 

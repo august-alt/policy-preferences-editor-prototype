@@ -55,6 +55,8 @@ set(HEADERS
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
     folder_options/folderoptionsvistaitem.h
+    folder_options/folderoptionsvistacontaineritem.h
+    folder_options/folderoptionsvistacontaineritem.inl
 
     files/filesitem.h
     files/filescontaineritem.h
@@ -343,6 +345,7 @@ set(UI_FORMS
     folder_options/folderoptionswidget.ui
     folder_options/openwithwidget.ui
     folder_options/fileextensionwidget.ui
+    folder_options/folderoptionsvistawidget.ui
 
     files/fileswidget.ui
 
