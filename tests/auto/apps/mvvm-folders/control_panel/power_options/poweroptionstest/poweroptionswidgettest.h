@@ -23,15 +23,25 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class PowerOptionsWidget;
+}
+
 namespace tests 
 {
-    class PowerOptionsWidgetTest : public QObject
-    {
-        Q_OBJECT
+class PowerOptionsWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::PowerOptionsWidget> readXmlFile(const QString &dataPath);
 
-        private slots:
-            void test();
-    };
+private slots:
+    void checkBox();
+    void checkBox_data();
+    void comboBox();
+    void comboBox_data();
+};
 }
 
 #endif//MVVM_FOLDERS_POWEROPTIONSWIDGET_WIDGET_TEST_H

@@ -23,14 +23,22 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class PowerSchemeWidget;
+}
+
 namespace tests 
 {
     class PowerSchemeWidgetTest : public QObject
     {
         Q_OBJECT
+    private:
+        std::unique_ptr<mvvm_folders::PowerSchemeWidget> readXmlFile(const QString &dataPath);
 
         private slots:
             void test();
+            void test_data();
     };
 }
 

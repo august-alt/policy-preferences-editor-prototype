@@ -831,7 +831,10 @@
      <item>
       <widget class="QComboBox" name="actionComboBox">
        <property name="currentText">
-        <string>Create</string>
+        <string>Update</string>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
        </property>
        <item>
         <property name="text">
