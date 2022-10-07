@@ -23,14 +23,30 @@
 
 #include <QtTest>
 
-namespace tests 
+#include <memory>
+
+namespace mvvm_folders
+{
+    class IniWidget;
+}
+
+namespace tests
 {
     class IniWidgetTest : public QObject
     {
         Q_OBJECT
 
-        private slots:
-            void test();
+    private:
+        std::unique_ptr<mvvm_folders::IniWidget> readXmlFile(const QString& dataPath);
+
+    private slots:
+        void displayWidgetTest();
+
+        void propertyTest();
+        void propertyTest_data();
+
+        void actionStateTest();
+        void actionStateTest_data();
     };
 }
 

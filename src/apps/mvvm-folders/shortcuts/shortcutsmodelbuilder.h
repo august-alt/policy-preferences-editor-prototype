@@ -37,6 +37,11 @@ public:
     std::unique_ptr<PreferencesModel> schemaToModel(std::unique_ptr<Shortcuts>& shortcuts);
 
     std::unique_ptr<Shortcuts> modelToSchema(std::unique_ptr<PreferencesModel>& model);
+
+private:
+    std::string decodeShortcutKey(unsigned char shortcutKey);
+
+    unsigned char encodeShortcutKey(std::string shortcutKey);
 };
 }
 

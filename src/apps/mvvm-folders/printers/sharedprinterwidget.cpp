@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 SharedPrinterWidget::SharedPrinterWidget(QWidget *parent, SharedPrinterItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::SharedPrinterWidget())
 {
     ui->setupUi(this);
@@ -73,23 +72,6 @@ void SharedPrinterWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->unmapCheckBox, SharedPrinterItem::propertyToInt(SharedPrinterItem::DELETE_MAPS));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool SharedPrinterWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void SharedPrinterWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void SharedPrinterWidget::on_actionComboBox_currentIndexChanged(int index)

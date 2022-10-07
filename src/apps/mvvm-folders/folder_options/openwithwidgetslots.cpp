@@ -40,14 +40,4 @@ void OpenWithWidget::on_actionComboBox_currentIndexChanged(int index)
     ui->defaultCheckBox->setDisabled(disabled);
 }
 
-void OpenWithWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

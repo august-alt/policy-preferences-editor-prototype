@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folders clsid="{77CC39E7-3D16-4f8f-AF86-EC0BBEE2C861}">
+         <Folder clsid="{07DA02F5-F9CD-4397-A550-4AE21B6B4BD3}" 
+                 name="" 
+                 status="" 
+                 image="2" 
+                 changed="2022-06-15 10:53:13" 
+                 uid="{0503A2DE-F8AE-4974-B968-0F1540389878}">
+                 <Properties deleteFolder="0" 
+                             deleteSubFolders="0" 
+                             deleteFiles="0" 
+                             deleteReadOnly="0"
+                             deleteIgnoreErrors="0" 
+                             action="U" 
+                             path="C:\" 
+                             readOnly="0" 
+                             archive="1" 
+                             hidden="0"/>
+         </Folder>
+</Folders>
+
+

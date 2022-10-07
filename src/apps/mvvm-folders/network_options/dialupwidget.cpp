@@ -34,11 +34,10 @@ namespace  mvvm_folders
 {
 
 DialUpWidget::DialUpWidget(QWidget *parent, DialUpItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::DialUpWidget())
 {
     ui->setupUi(this);

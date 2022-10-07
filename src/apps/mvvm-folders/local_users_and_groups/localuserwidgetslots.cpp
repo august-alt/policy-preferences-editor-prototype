@@ -37,14 +37,4 @@ void LocalUserWidget::on_actionComboBox_currentIndexChanged(int index)
     Q_UNUSED(index);
 }
 
-void LocalUserWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

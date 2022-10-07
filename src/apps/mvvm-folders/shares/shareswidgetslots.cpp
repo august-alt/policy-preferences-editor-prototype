@@ -23,6 +23,8 @@
 
 #include "sharesitem.h"
 
+#include "gui/filedialogutils.h"
+
 namespace mvvm_folders
 {
 
@@ -157,29 +159,9 @@ void SharesWidget::on_allowThisNumberOfUsers_clicked()
 
 void SharesWidget::on_folderToolButton_clicked()
 {
-    std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
+    using namespace preferences_editor;
 
-    fileDialog->setDirectory(QDir::homePath());
-    fileDialog->setFileMode(QFileDialog::Directory);
-    fileDialog->setSupportedSchemes(QStringList(QStringLiteral("file")));
-
-    fileDialog->setLabelText(QFileDialog::Accept, tr("Open"));
-    fileDialog->setLabelText(QFileDialog::FileName, tr("File name"));
-    fileDialog->setLabelText(QFileDialog::LookIn, tr("Look in"));
-    fileDialog->setLabelText(QFileDialog::Reject, tr("Cancel"));
-    fileDialog->setLabelText(QFileDialog::FileType, tr("File type"));
-
-    fileDialog->setNameFilter(QObject::tr("All files (*.*)"));
-    fileDialog->setOptions(QFileDialog::ShowDirsOnly
-                           | QFileDialog::DontResolveSymlinks
-                           | QFileDialog::DontUseNativeDialog);
-
-    fileDialog->setWindowTitle(tr("Open Directory"));
-
-    if (fileDialog->exec() == QDialog::Accepted)
-    {
-        ui->folderPathLineEdit->setText(fileDialog->selectedUrls()[0].toLocalFile());
-    }
+    ui->folderPathLineEdit->setText(FileDialogUtils::getOpenDirectoryName(this, QObject::tr("All files (*.*)")));
 }
 
 }

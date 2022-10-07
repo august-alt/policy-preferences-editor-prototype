@@ -18,15 +18,43 @@
 **
 ***********************************************************************************************************************/
 
+#include "../../core/pluginstorage.h"
+#include "../../core/snapinloader.h"
+#include "../../core/snapinmanager.h"
+
+#include "../../core/compositesnapindetailsdialog.h"
+#include "../../core/snapindetailsdialog.h"
+#include "../../core/snapindetailsfactory.h"
+
 #include "../../gui/commandlineparser.h"
 #include "../../gui/mainwindow.h"
-#include "../../core/pluginstorage.h"
+
+#include <memory>
 
 #include <QApplication>
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv)
+{
+    preferences_editor::SnapInDetailsFactory::define<preferences_editor::SnapInDetailsDialog>(
+        "ISnapIn");
+    preferences_editor::SnapInDetailsFactory::define<preferences_editor::CompositeSnapInDetailsDialog>(
+        "ICompositeSnapIn");
+
     // Load plugins.
-    preferences_editor::PluginStorage::instance()->loadDefaultPlugins();
+    auto snapInManager = std::make_unique<preferences_editor::SnapInManager>();
+
+    auto snapInLoader = std::make_unique<preferences_editor::SnapInLoader>(snapInManager.get());
+
+    auto pluginDirectory = QDir("./build/lib64/preferences_editor/plugins/");
+
+    snapInLoader->loadSnapIns(pluginDirectory);
+
+    for (auto &snapIn : snapInManager->getSnapIns())
+    {
+        snapIn->onInitialize();
+
+        qWarning() << snapIn->getDisplayName();
+    }
 
     // Create window.
     QApplication app(argc, argv);
@@ -39,10 +67,11 @@ int main(int argc, char ** argv) {
     app.setApplicationVersion("0.2.0");
 
     preferences_editor::CommandLineParser parser(app);
-    preferences_editor::CommandLineOptions options {};
-    QString errorMessage {};
+    preferences_editor::CommandLineOptions options{};
+    QString errorMessage{};
 
-    preferences_editor::CommandLineParser::CommandLineParseResult parserResult = parser.parseCommandLine(&options, &errorMessage);
+    preferences_editor::CommandLineParser::CommandLineParseResult parserResult
+        = parser.parseCommandLine(&options, &errorMessage);
 
     QLocale locale;
     std::unique_ptr<QTranslator> qtTranslator = std::make_unique<QTranslator>();
@@ -69,8 +98,8 @@ int main(int argc, char ** argv) {
     default:
         break;
     }
-    
-    preferences_editor::MainWindow window(options);
+
+    preferences_editor::MainWindow window(options, nullptr, snapInManager.get());
     window.show();
 
     return app.exec();

@@ -33,11 +33,10 @@ namespace  mvvm_folders
 {
 
 SharesWidget::SharesWidget(QWidget *parent, SharesItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::SharesWidget())
 {
     ui->setupUi(this);
@@ -84,6 +83,8 @@ void SharesWidget::setItem(ModelView::SessionItem* item)
 
     setInitialUserFrameRadioButton(view_model->index(7, 1).data().toString());
     setInitialAccessFrameRadioButton(view_model->index(9, 1).data().toString());
+
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 bool SharesWidget::validate()

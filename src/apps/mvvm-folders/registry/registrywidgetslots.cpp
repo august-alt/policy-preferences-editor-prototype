@@ -61,14 +61,4 @@ void RegistryWidget::setInitialState()
     }
 }
 
-void RegistryWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
-}
-
 }

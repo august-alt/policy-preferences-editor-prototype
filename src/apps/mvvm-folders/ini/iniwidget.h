@@ -23,7 +23,7 @@
 
 #include <QtWidgets>
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class IniWidget; }
@@ -46,7 +46,7 @@ class IniItemController;
 
 //! Folder item representation for editor.
 
-class IniWidget : public PreferenceWidgetInterface
+class IniWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -60,9 +60,6 @@ public:
     bool validate() override;
 
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_actionComboBox_currentIndexChanged(int index);
@@ -83,7 +80,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::IniWidget *ui {nullptr};

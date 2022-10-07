@@ -45,7 +45,24 @@ public:
     DialUpItem(const DialUpItem &other);
 
     constexpr static int propertyToInt(const PropertyType& type);
-    constexpr static const char* propertyToString(const PropertyType& type);
+    constexpr static const char* propertyToString(const PropertyType& type)
+    {
+        switch (type)
+        {
+        case ACTION:
+            return "action";
+        case PHONE_NUMBER:
+            return "phoneNumber";
+        case NAME:
+            return "name";
+        case USER:
+            return "user";
+        case SYSTEM:
+            return "system";
+        }
+
+        return "";
+    }
 
 private:
     template <typename T>

@@ -15,6 +15,11 @@ macro(add_preferences_editor_plugin name)
 
 endmacro(add_preferences_editor_plugin)
 
+add_subdirectory(admx)
+add_subdirectory(adml)
+add_subdirectory(common)
 add_subdirectory(ini)
 add_subdirectory(preferences)
 add_subdirectory(storage)
+add_subdirectory(scripts)
+add_subdirectory(administrative_templates)

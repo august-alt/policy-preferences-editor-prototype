@@ -18,6 +18,8 @@ set(XSD_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/variablesschema.xsd"
 )
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+
 foreach(FILE ${XSD_FILES})
     string(REGEX REPLACE "[.]xsd" ".h" HEADER ${FILE})
     set(HEADERS ${HEADERS} ${HEADER})
@@ -36,6 +38,7 @@ set(OUT_FILES
 set(XSD_FLAGS cxx-tree
     --generate-doxygen
     --generate-ostream
+    --generate-serialization
     --generate-polymorphic
     --polymorphic-type-all
     --generate-wildcard

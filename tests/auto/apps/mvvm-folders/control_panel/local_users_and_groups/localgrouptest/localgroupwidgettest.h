@@ -22,17 +22,21 @@
 #define MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H
 
 #include <QtTest>
-
-namespace tests 
+namespace mvvm_folders
 {
-    class LocalGroupWidgetTest : public QObject
-    {
-        Q_OBJECT
-
-        private slots:
-            void test();
-    };
+class LocalGroupWidget;
 }
 
-#endif//MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H
+namespace tests
+{
+class LocalGroupWidgetTest : public QObject
+{
+    Q_OBJECT
 
+private:
+    std::unique_ptr<mvvm_folders::LocalGroupWidget> readXmlFile(const QString &dataPath);
+};
+
+} // namespace tests
+
+#endif //MVVM_FOLDERS_LOCALGROUPWIDGET_WIDGET_TEST_H

@@ -22,25 +22,66 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include "local_users_and_groups/baselocalitem.h"
+#include "local_users_and_groups/groupmemberdialog.h"
+#include "local_users_and_groups/groupmemberitem.h"
+#include "local_users_and_groups/groupmemberscontaineritem.h"
+#include "local_users_and_groups/groupmemberswidget.h"
+#include "local_users_and_groups/groupmodelbuilder.h"
+#include "local_users_and_groups/localgroupcontaineritem.h"
+#include "local_users_and_groups/localgroupitem.h"
+#include "local_users_and_groups/localgroupwidget.h"
 
-namespace tests 
+const std::string dataPath = "";
+
+using namespace mvvm_folders;
+
+namespace tests
 {
-
-void LocalGroupWidgetTest::test()
+std::unique_ptr<LocalGroupWidget> LocalGroupWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
-    file.open(dataPath + "localgroupwidget.xml", std::ifstream::in);
-    if (file.good()) 
+    file.open(dataPath.toStdString(), std::ifstream::in);
+
+    bool ok = file.good();
+    if (!ok)
     {
-       
+        qWarning() << "Failed to read file: " << dataPath;
+        return nullptr;
+    }
+
+    std::unique_ptr<LocalGroupWidget> groupWidget = nullptr;
+
+    try
+    {
+        auto files        = Groups_(file, ::xsd::cxx::tree::flags::dont_validate);
+        auto modelBuilder = std::make_unique<GroupModelBuilder>();
+        auto model        = modelBuilder->schemaToModel(files);
+
+        groupWidget         = std::make_unique<LocalGroupWidget>();
+        auto containerItem  = model->topItem();
+        auto groupContainer = dynamic_cast<LocalGroupContainerItem<LocalGroupItem> *>(containerItem);
+
+        if (!groupContainer)
+        {
+            qWarning() << "Unable to read ini container!";
+            return nullptr;
+        }
+
+        groupWidget->setItem(groupContainer->children().back());
+        groupWidget->show();
+    }
+    catch (const std::exception &e)
+    {
+        qWarning() << e.what();
     }
 
     file.close();
+
+    return groupWidget;
 }
 
-}
+} // namespace tests
 
 QTEST_MAIN(tests::LocalGroupWidgetTest)
-

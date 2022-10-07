@@ -12,6 +12,8 @@ set(HEADERS
 
     common/basemodelbuilder.h
     common/basepreferenceitem.h
+    common/basepreferencewidget.h
+    common/basepreferencereader.h
     common/commonitem.h
     common/commonutils.h
     common/commonview.h
@@ -37,8 +39,8 @@ set(HEADERS
     drives/driveswidget.h
 
     folders/foldercontaineritem.h
+    folders/folderpreferencereader.h
     folders/folderitem.h
-    folders/folderitemcontroller.h
     folders/foldermodelbuilder.h
     folders/folderwidget.h
 
@@ -55,14 +57,18 @@ set(HEADERS
     folder_options/fileextensionwidget.h
 
     files/filesitem.h
+    files/filespreferencereader.h
     files/filescontaineritem.h
     files/filesmodelbuilder.h
     files/fileswidget.h
 
     ini/iniitem.h
+    ini/inipreferencereader.h
     ini/inicontaineritem.h
     ini/inimodelbuilder.h
     ini/iniwidget.h
+
+    interfaces/preferencesreaderinterface.h
 
     local_users_and_groups/baselocalitem.h
     local_users_and_groups/groupmemberdialog.h
@@ -117,26 +123,54 @@ set(HEADERS
     printers/tcpprinterportwidget.h
 
     registry/registrycontaineritem.h
+    registry/registrypreferencereader.h
     registry/registryitem.h
     registry/registrymodelbuilder.h
     registry/registrywidget.h
 
+    scheduled_tasks/immediateactionwin7widget.h
+    scheduled_tasks/immediateconditionswin7widget.h
+    scheduled_tasks/immediatesettingswidget.h
+    scheduled_tasks/immediatesettingswin7widget.h
+    scheduled_tasks/immediatetaskswidget.h
+    scheduled_tasks/immediatewin7widget.h
+    scheduled_tasks/scheduleactionwin7widget.h
+    scheduled_tasks/scheduleconditionswin7widget.h
+    scheduled_tasks/scheduledtaskswidget.h
+    scheduled_tasks/scheduleschedulewidget.h
+    scheduled_tasks/schedulesettingswidget.h
+    scheduled_tasks/schedulesettingswin7widget.h
+    scheduled_tasks/scheduletriggerswin7widget.h
+    scheduled_tasks/schedulewin7widget.h
+
+    start_menu/startadvancedwinxpwidget.h
+    start_menu/startclassicvistawidget.h
+    start_menu/startclassicwinxpwidget.h
+    start_menu/startvistawidget.h
+    start_menu/startwinxpwidget.h
+    start_menu/startmenuwinvistaitem.h
+    start_menu/startmenuwinxpitem.h
+
     shares/sharesitem.h
+    shares/sharespreferencereader.h
     shares/sharesmodelbuilder.h
     shares/sharescontaineritem.h
     shares/shareswidget.h
 
     shortcuts/shortcutsitem.h
+    shortcuts/shortcutspreferencereader.h
     shortcuts/shortcutsmodelbuilder.h
     shortcuts/shortcutscontaineritem.h
     shortcuts/shortcutswidget.h
 
     variables/variablesitem.h
+    variables/variablespreferencereader.h
     variables/variablesmodelbuilder.h
     variables/variablescontaineritem.h
     variables/variableswidget.h
 
     preferencestreemodel.h
+    preferencestreeproxymodel.h
 
     preferenceswidget.h
 )
@@ -145,6 +179,8 @@ set(SOURCES
     attributes/attributesitem.cpp
 
     common/basemodelbuilder.cpp
+    common/basepreferencewidget.cpp
+    common/basepreferencereader.cpp
     common/commonitem.cpp
     common/commonutils.cpp
     common/commonview.cpp
@@ -172,8 +208,8 @@ set(SOURCES
     drives/driveswidgetslots.cpp
 
     folders/foldercontaineritem.cpp
+    folders/folderpreferencereader.cpp
     folders/folderitem.cpp
-    folders/folderitemcontroller.cpp
     folders/foldermodelbuilder.cpp
     folders/folderwidget.cpp
     folders/folderviewslots.cpp
@@ -190,12 +226,14 @@ set(SOURCES
     folder_options/fileextensionwidget.cpp
 
     files/filesitem.cpp
+    files/filespreferencereader.cpp
     files/filescontaineritem.cpp
     files/filesmodelbuilder.cpp
     files/fileswidget.cpp
     files/fileswidgetslots.cpp
 
     ini/iniitem.cpp
+    ini/inipreferencereader.cpp
     ini/inicontaineritem.cpp
     ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
@@ -244,31 +282,60 @@ set(SOURCES
     printers/tcpprinteritem.cpp
     printers/tcpprinterportwidget.cpp
 
+    scheduled_tasks/immediateactionwin7widget.cpp
+    scheduled_tasks/immediateconditionswin7widget.cpp
+    scheduled_tasks/immediatesettingswidget.cpp
+    scheduled_tasks/immediatesettingswin7widget.cpp
+    scheduled_tasks/immediatetaskswidget.cpp
+    scheduled_tasks/immediatewin7widget.cpp
+    scheduled_tasks/scheduleactionwin7widget.cpp
+    scheduled_tasks/scheduleconditionswin7widget.cpp
+    scheduled_tasks/scheduledtasksmodelbuilder.cpp
+    scheduled_tasks/scheduledtaskswidget.cpp
+    scheduled_tasks/scheduleschedulewidget.cpp
+    scheduled_tasks/schedulesettingswidget.cpp
+    scheduled_tasks/schedulesettingswin7widget.cpp
+    scheduled_tasks/scheduletriggerswin7widget.cpp
+    scheduled_tasks/schedulewin7widget.cpp
+
+    start_menu/startadvancedwinxpwidget.cpp
+    start_menu/startclassicvistawidget.cpp
+    start_menu/startclassicwinxpwidget.cpp
+    start_menu/startvistawidget.cpp
+    start_menu/startwinxpwidget.cpp
+    start_menu/startmenuwinvistaitem.cpp
+    start_menu/startmenuwinxpitem.cpp
+
     registry/registrycontaineritem.cpp
+    registry/registrypreferencereader.cpp
     registry/registryitem.cpp
     registry/registrymodelbuilder.cpp
     registry/registrywidget.cpp
     registry/registrywidgetslots.cpp
 
     shares/sharesitem.cpp
+    shares/sharespreferencereader.cpp
     shares/sharescontaineritem.cpp
     shares/sharesmodelbuilder.cpp
     shares/shareswidget.cpp
     shares/shareswidgetslots.cpp
 
     shortcuts/shortcutsitem.cpp
+    shortcuts/shortcutspreferencereader.cpp
     shortcuts/shortcutscontaineritem.cpp
     shortcuts/shortcutsmodelbuilder.cpp
     shortcuts/shortcutswidget.cpp
     shortcuts/shortcutswidgetslots.cpp
 
     variables/variablesitem.cpp
+    variables/variablespreferencereader.cpp
     variables/variablescontaineritem.cpp
     variables/variablesmodelbuilder.cpp
     variables/variableswidget.cpp
     variables/variableswidgetslots.cpp
 
     preferencestreemodel.cpp
+    preferencestreeproxymodel.cpp
 
     preferenceswidget.cpp
 )
@@ -350,6 +417,27 @@ set(UI_FORMS
 
     registry/registrywidget.ui
 
+    scheduled_tasks/immediateactionwin7widget.ui
+    scheduled_tasks/immediateconditionswin7widget.ui
+    scheduled_tasks/immediatesettingswidget.ui
+    scheduled_tasks/immediatesettingswin7widget.ui
+    scheduled_tasks/immediatetaskswidget.ui
+    scheduled_tasks/immediatewin7widget.ui
+    scheduled_tasks/scheduleactionwin7widget.ui
+    scheduled_tasks/scheduleconditionswin7widget.ui
+    scheduled_tasks/scheduledtaskswidget.ui
+    scheduled_tasks/scheduleschedulewidget.ui
+    scheduled_tasks/schedulesettingswidget.ui
+    scheduled_tasks/schedulesettingswin7widget.ui
+    scheduled_tasks/scheduletriggerswin7widget.ui
+    scheduled_tasks/schedulewin7widget.ui
+
+    start_menu/startadvancedwinxpwidget.ui
+    start_menu/startclassicvistawidget.ui
+    start_menu/startclassicwinxpwidget.ui
+    start_menu/startvistawidget.ui
+    start_menu/startwinxpwidget.ui
+
     shares/shareswidget.ui
 
     shortcuts/shortcutswidget.ui
@@ -366,6 +454,8 @@ set(APP_SOURCES
 )
 
 set(SOURCES ${SOURCES} ${HEADERS} ${UI_FORMS})
+
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_library(mvvm-folders_static STATIC ${SOURCES})
 target_link_libraries(mvvm-folders_static Qt5::Core Qt5::Widgets)

@@ -20,89 +20,101 @@
 
 #include "commonitem.h"
 
+#include <QUuid>
+
 namespace mvvm_folders
 {
 
 CommonItem::CommonItem()
-    : ModelView::CompoundItem("CommonItem")
+    : BasePreferenceItem<::mvvm_folders::CommonItem>("CommonItem")
 {
-    addProperty(NAME, "");
-    addProperty(CHANGED, "");
-    addProperty(DESC, "");
-    addProperty(BYPASS_ERRORS, false);
-    addProperty(USER_CONTEXT, false);
-    addProperty(REMOVE_POLICY, false);
+    addProperty(propertyToString(CLSID), "");
+    addProperty(propertyToString(DISABLED), false);
+    addProperty(propertyToString(NAME), "");
+    addProperty(propertyToString(STATUS), "");
+    addProperty(propertyToString(IMAGE), static_cast<int>(0));
+    addProperty(propertyToString(CHANGED), "");
+    addProperty(propertyToString(UID), QUuid::createUuid().toString().toStdString());
+    addProperty(propertyToString(DESC), "");
+    addProperty(propertyToString(BYPASS_ERRORS), false);
+    addProperty(propertyToString(USER_CONTEXT), false);
+    addProperty(propertyToString(REMOVE_POLICY), false);
 }
 
 CommonItem::CommonItem(const CommonItem &other)
-    : ModelView::CompoundItem("CommonItem")
+    : BasePreferenceItem<::mvvm_folders::CommonItem>("CommonItem")
 {
-    addProperty(NAME, other.name());
-    addProperty(CHANGED, other.changed());
-    addProperty(DESC, other.desc());
-    addProperty(BYPASS_ERRORS, other.bypassErrors());
-    addProperty(USER_CONTEXT, other.userContext());
-    addProperty(REMOVE_POLICY, other.removePolicy());
+    copyProperty<std::string>(CLSID, other);
+    copyProperty<bool>(DISABLED, other);
+    copyProperty<std::string>(NAME, other);
+    copyProperty<std::string>(STATUS, other);
+    copyProperty<int>(IMAGE, other);
+    copyProperty<std::string>(CHANGED, other);
+    copyProperty<std::string>(UID, other);
+    copyProperty<std::string>(DESC, other);
+    copyProperty<bool>(BYPASS_ERRORS, other);
+    copyProperty<bool>(USER_CONTEXT, other);
+    copyProperty<bool>(REMOVE_POLICY, other);
 }
 
 QString CommonItem::name() const
 {
-    return property<QString>(NAME);
+    return property<QString>(propertyToString(NAME));
 }
 
 void CommonItem::setName(const QString &newName)
 {
-    setProperty(NAME, newName);
+    setProperty(propertyToString(NAME), newName);
 }
 
 std::string CommonItem::changed() const
 {
-    return property<std::string>(CHANGED);
+    return property<std::string>(propertyToString(CHANGED));
 }
 
 void CommonItem::setChanged(bool state)
 {
-    setProperty(CHANGED, state);
+    setProperty(propertyToString(CHANGED), state);
 }
 
 QString CommonItem::desc() const
 {
-    return property<QString>(DESC);
+    return property<QString>(propertyToString(DESC));
 }
 
 void CommonItem::setDesc(const QString &newDesc)
 {
-    setProperty(DESC, newDesc);
+    setProperty(propertyToString(DESC), newDesc);
 }
 
 bool CommonItem::bypassErrors() const
 {
-    return property<bool>(BYPASS_ERRORS);
+    return property<bool>(propertyToString(BYPASS_ERRORS));
 }
 
 void CommonItem::setBypassErrors(bool state)
 {
-    setProperty(BYPASS_ERRORS, state);
+    setProperty(propertyToString(BYPASS_ERRORS), state);
 }
 
 bool CommonItem::userContext() const
 {
-    return property<bool>(USER_CONTEXT);
+    return property<bool>(propertyToString(USER_CONTEXT));
 }
 
 void CommonItem::setUserContext(bool state)
 {
-    setProperty(USER_CONTEXT, state);
+    setProperty(propertyToString(USER_CONTEXT), state);
 }
 
 bool CommonItem::removePolicy() const
 {
-    return property<bool>(REMOVE_POLICY);
+    return property<bool>(propertyToString(REMOVE_POLICY));
 }
 
 void CommonItem::setRemovePolicy(bool state)
 {
-    setProperty(REMOVE_POLICY, state);
+    setProperty(propertyToString(REMOVE_POLICY), state);
 }
 
 }

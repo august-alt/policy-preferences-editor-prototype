@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkShareSettings clsid="{520870D8-A6E7-47e8-A8D8-E6A4E76EAEC2}"><NetShare clsid="{2888C5E7-94FC-4739-90AA-2C1536D68BC0}" image="0" name="\\Shares" changed="2022-06-17 10:21:10" uid="{EA5D3388-4A4D-4FF7-A4E0-07480991C9A6}"><Properties action="C" name="\\Shares" path="C:\" comment="Comment" limitUsers="SET_LIMIT" userLimit="10" abe="NO_CHANGE"/></NetShare>
+</NetworkShareSettings>
+

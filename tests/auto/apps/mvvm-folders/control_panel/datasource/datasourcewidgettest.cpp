@@ -22,25 +22,68 @@
 
 #include <fstream>
 
-const std::string dataPath = "../../../../data/preferences/";
+#include <datasource/datasourceitem.h>
+#include <datasource/datasourcecontaineritem.h>
+#include <datasource/datasourcewidget.h>
+#include <datasource/datasourcemodelbuilder.h>
+
+//const std::string dataPath = "../../../../data/preferences/";
+
+const std::string dataPath = "/home/antpro/Develop/policy-preferences-editor-prototype/tests/data/preferences/machine/control_panel/datasource/";
+
+using namespace mvvm_folders;
 
 namespace tests
 {
+//    std::unique_ptr<DataSourceWidget> DataSourceWidgetTest::readXmlFile(const QString &dataPath)
+//    {
+//        std::ifstream file;
 
-void DataSourceWidgetTest::test()
+//        file.open(dataPath.toStdString(), std::ifstream::in);
+
+//        bool ok = file.good();
+//        if(!ok)
+//        {
+//            qWarning() << "Failed to read file: " << dataPath;
+//            return nullptr;
+//        }
+
+//        std::unique_ptr<DataSourceWidget> datasourceWidget = nullptr;
+
+//        try {
+//            auto files = DataSource_(file, ::xsd::cxx::tree::flags::dont_validate);
+//            auto modelBuilder = std::make_unique<DataSourceModelBuilder>();
+//            auto model = modelBuilder->schemaToModel(files);
+
+//            datasourceWidget = std::make_unique<DataSourceWidget>();
+//            auto containerItem = model->topItem();
+//            auto dataContainer = dynamic_cast<DataSourceContainerItem<DataSourceItem>*>(containerItem);
+
+//            if (!dataContainer)
+//            {
+//                qWarning() << "Unable to read ini container!";
+//                return nullptr;
+//            }
+
+//            datasourceWidget->setItem(dataContainer->children().back());
+//            datasourceWidget->show();
+//        }
+//        catch(const std::exception& e)
+//        {
+//            qWarning() << e.what();
+//        }
+
+//        file.close();
+
+//        return dialUpWidget;
+}
+
+void tests::DataSourceWidgetTest::WidgetState()
 {
-    std::ifstream file;
-
-    file.open(dataPath + "datasourcewidget.xml", std::ifstream::in);
-    if (file.good())
-    {
-
-    }
-
-    file.close();
-}
 
 }
+
+
 
 QTEST_MAIN(tests::DataSourceWidgetTest)
 

@@ -20,8 +20,8 @@
 
 #include "mainwindow.h"
 
-#include "preferenceswidget.h"
 #include "preferencestreemodel.h"
+#include "preferenceswidget.h"
 
 #include <QCoreApplication>
 #include <QSettings>
@@ -29,22 +29,23 @@
 namespace
 {
 const QString main_window_group = "MainWindow";
-const QString size_key = "size";
-const QString pos_key = "pos";
-}
+const QString size_key          = "size";
+const QString pos_key           = "pos";
+} // namespace
 
 namespace mvvm_folders
 {
-
 MainWindow::MainWindow()
+    : QMainWindow()
+    , model(new PreferencesTreeModel())
 {
-    setCentralWidget(new PreferencesWidget(new PreferencesTreeModel()));
+    setCentralWidget(new PreferencesWidget(model.get()));
     initApplication();
 }
 
 MainWindow::~MainWindow() = default;
 
-void MainWindow::closeEvent(QCloseEvent* event)
+void MainWindow::closeEvent(QCloseEvent *event)
 {
     writeSettings();
     QMainWindow::closeEvent(event);
@@ -75,4 +76,4 @@ void MainWindow::writeSettings()
     settings.endGroup();
 }
 
-}
+} // namespace mvvm_folders

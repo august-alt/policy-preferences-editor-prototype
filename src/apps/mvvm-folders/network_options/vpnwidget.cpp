@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 VpnWidget::VpnWidget(QWidget *parent, VpnItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::VpnWidget())
 {
     ui->setupUi(this);
@@ -64,21 +63,17 @@ void VpnWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, VpnItem::propertyToInt(VpnItem::ACTION));
-    mapper->addMapping(ui->userConnerctionRadioButton, VpnItem::propertyToInt(VpnItem::USER));
-    mapper->addMapping(ui->connectionNameLineEdit, VpnItem::propertyToInt(VpnItem::NAME));
+    mapper->addMapping(ui->userConnectionRadioButton, VpnItem::propertyToInt(VpnItem::USER));
+    mapper->addMapping(ui->connectionNameLineEdit, VpnItem::propertyToInt(VpnItem::NAME)); 
     mapper->addMapping(ui->ipaddressLineEdit, VpnItem::propertyToInt(VpnItem::IP_ADDRESS));
+    mapper->addMapping(ui->ipaddressLabel, VpnItem::propertyToInt(VpnItem::IP_ADDRESS));
     mapper->addMapping(ui->useDnsCheckBox, VpnItem::propertyToInt(VpnItem::USE_DNS));
     mapper->addMapping(ui->dialLineEdit, VpnItem::propertyToInt(VpnItem::DIAL_FIRST));
     mapper->addMapping(ui->showIconCheckBox, VpnItem::propertyToInt(VpnItem::TRAY_ICON));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
 
-bool VpnWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
+    on_actionComboBox_currentIndexChanged(ui->actionComboBox->currentIndex());
 }
 
 QString VpnWidget::name() const

@@ -21,7 +21,7 @@
 #ifndef MVVM_FOLDERS_FOLDER_OPTIONS_WIDGET_H
 #define MVVM_FOLDERS_FOLDER_OPTIONS_WIDGET_H
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -46,7 +46,7 @@ class FolderOptionsItemController;
 
 //! Folder item representation for editor.
 
-class FolderOptionsWidget : public PreferenceWidgetInterface
+class FolderOptionsWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -57,12 +57,7 @@ public:
 
     void setItem(ModelView::SessionItem *item) override;
 
-    bool validate() override;
-
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private:
     FolderOptionsWidget(const FolderOptionsWidget&)            = delete;   // copy ctor
@@ -76,7 +71,6 @@ private:
 
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::FolderOptionsWidget *ui {nullptr};

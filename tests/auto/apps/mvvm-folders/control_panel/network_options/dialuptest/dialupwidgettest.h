@@ -23,15 +23,22 @@
 
 #include <QtTest>
 
+namespace mvvm_folders
+{
+class DialUpWidget;
+}
 namespace tests 
 {
-    class DialUpWidgetTest : public QObject
-    {
-        Q_OBJECT
+class DialUpWidgetTest : public QObject
+{
+    Q_OBJECT
+private:
+    std::unique_ptr<mvvm_folders::DialUpWidget> readXmlFile(const QString &dataPath);
 
-        private slots:
-            void test();
-    };
+private slots:
+    void WidgetState();
+    void WidgetState_data();
+};
 }
 
 #endif//MVVM_FOLDERS_DIALUPWIDGET_WIDGET_TEST_H

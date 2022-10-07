@@ -34,11 +34,10 @@ namespace  mvvm_folders
 {
 
 PowerSchemeWidget::PowerSchemeWidget(QWidget *parent, PowerSchemeItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::PowerSchemeWidget())
 {
     ui->setupUi(this);
@@ -80,21 +79,6 @@ void PowerSchemeWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->hibernateDcComboBox, PowerSchemeItem::propertyToInt(PowerSchemeItem::HIBERNATE_DC));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool PowerSchemeWidget::validate()
-{
-    return true;
-}
-
-void PowerSchemeWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void PowerSchemeWidget::on_actionComboBox_currentIndexChanged(int index)

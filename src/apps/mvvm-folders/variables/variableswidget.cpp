@@ -33,11 +33,10 @@ namespace  mvvm_folders
 {
 
 VariablesWidget::VariablesWidget(QWidget *parent, VariablesItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::VariablesWidget())
 {
     ui->setupUi(this);

@@ -19,5 +19,7 @@ set(SOURCES ${SOURCES} ${HEADERS})
 
 add_executable(localuserwidgettest ${SOURCES})
 target_link_libraries(localuserwidgettest Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Test XercesC::XercesC)
+target_link_libraries(localuserwidgettest mvvm-folders_static)
+
 add_preferences_editor_test(preferences.localuserwidgettest localuserwidgettest)
 

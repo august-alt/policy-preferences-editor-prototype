@@ -23,14 +23,31 @@
 
 #include <QtTest>
 
-namespace tests 
+namespace mvvm_folders
+{
+    class SharesWidget;
+};
+
+namespace tests
 {
     class SharesWidgetTest : public QObject
     {
         Q_OBJECT
 
-        private slots:
-            void test();
+    private:
+        std::unique_ptr<mvvm_folders::SharesWidget> readXmlFile(const QString& path);
+
+    private slots:
+        void displayWdigetTest();
+
+        void radioButtonsTest();
+        void radioButtonsTest_data();
+
+        void actionStateTest();
+        void actionStateTest_data();
+
+        void modifiersTest();
+        void modifiersTest_data();
     };
 }
 

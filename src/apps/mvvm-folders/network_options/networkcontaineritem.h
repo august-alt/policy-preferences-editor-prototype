@@ -50,10 +50,10 @@ public:
 
     explicit NetworkContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    NetworkItem getNetwork() const;
+    NetworkItem* getNetwork() const;
     void setNetwork(const NetworkItem &item);
 
     void setupListeners() override;

@@ -19,5 +19,7 @@ set(SOURCES ${SOURCES} ${HEADERS})
 
 add_executable(folderwidgettest ${SOURCES})
 target_link_libraries(folderwidgettest Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Test XercesC::XercesC)
-add_preferences_editor_test(preferences.folderwidgettest folderwidgettest)
+target_link_libraries(folderwidgettest mvvm-folders_static)
+target_link_libraries(folderwidgettest policy-common)
 
+add_preferences_editor_test(preferences.folderwidgettest folderwidgettest)

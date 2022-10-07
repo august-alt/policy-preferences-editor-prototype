@@ -23,7 +23,7 @@
 
 #include <mvvm/model/compounditem.h>
 
-#include "interfaces/preferenceswidgetinterface.h"
+#include "common/basepreferencewidget.h"
 
 #include <QtWidgets>
 
@@ -44,11 +44,10 @@ namespace mvvm_folders
 {
 
 class FolderItem;
-class FolderItemController;
 
 //! Folder item representation for editor.
 
-class FolderWidget : public PreferenceWidgetInterface
+class FolderWidget : public BasePreferenceWidget
 {
 public:
     Q_OBJECT
@@ -57,41 +56,9 @@ public:
     explicit FolderWidget(QWidget* parent = nullptr, FolderItem* item = nullptr);
     ~FolderWidget() override;
 
-    char action() const;
-    void setAction(int action);
-
-    QString path() const;
-    void setPath(const QString& path);
-
-    bool readOnly() const;
-    void setReadOnly(bool state);
-
-    bool archive() const;
-    void setArchive(bool state);
-
-    bool hidden() const;
-    void setHidden(bool state);
-
-    bool deleteIgnoreErrors() const;
-    void setDeleteIgnoreErrors(bool state);
-
-    bool deleteFiles() const;
-    void setDeleteFiles(bool state);
-
-    bool deleteSubFolders() const;
-    void setDeleteSubFolders(bool state);
-
-    bool deleteFolder() const;
-    void setDeleteFolder(bool state);
-
     void setItem(ModelView::SessionItem *item) override;
 
-    bool validate() override;
-
     QString name() const override;
-
-public slots:
-    void submit() override;
 
 private slots:
     void on_pathToolButton_clicked();
@@ -109,11 +76,8 @@ private:
     //!< Underlying item of this view.
     FolderItem* m_item {nullptr};
 
-    std::unique_ptr<FolderItemController> m_controller;
-
     std::unique_ptr<ModelView::ViewModel> view_model;
     std::unique_ptr<ModelView::ViewModelDelegate> delegate;
-    std::unique_ptr<QDataWidgetMapper> mapper;
 
 private:
     Ui::FoldersWidget *ui {nullptr};

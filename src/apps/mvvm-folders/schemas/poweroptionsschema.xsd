@@ -28,6 +28,7 @@
    <xs:attribute name="bypassErrors" type="xs:boolean" use="optional" />
    <xs:attribute name="userContext" type="xs:boolean" use="optional" />
    <xs:attribute name="removePolicy" type="xs:boolean" use="optional" />
+   <xs:attribute name="status" type="xs:string" use="optional" />
 </xs:complexType>
 
 <xs:complexType name="GlobalPowerOptionsProperties_t">
@@ -53,6 +54,7 @@
    <xs:attribute name="bypassErrors" type="xs:boolean" use="optional" />
    <xs:attribute name="userContext" type="xs:boolean" use="optional" />
    <xs:attribute name="removePolicy" type="xs:boolean" use="optional" />
+   <xs:attribute name="status" type="xs:string" use="optional" />
 </xs:complexType>
 
 <xs:complexType name="GlobalPowerOptionsV2Properties_t">
@@ -110,6 +112,7 @@
   <xs:attribute name="bypassErrors" type="xs:boolean" use="optional" />
   <xs:attribute name="userContext" type="xs:boolean" use="optional" />
   <xs:attribute name="removePolicy" type="xs:boolean" use="optional" />
+  <xs:attribute name="status" type="xs:string" use="optional" />
 </xs:complexType>
 
 <xs:element name="PowerOptions">

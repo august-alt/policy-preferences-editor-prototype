@@ -34,11 +34,10 @@ namespace  mvvm_folders
 {
 
 LocalGroupWidget::LocalGroupWidget(QWidget *parent, LocalGroupItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::LocalGroupWidget())
 {
     ui->setupUi(this);
@@ -66,7 +65,7 @@ void LocalGroupWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, 0);
-    mapper->addMapping(ui->groupLineEdit, 1);
+    mapper->addMapping(ui->groupComboBox, 1);
     mapper->addMapping(ui->renameLineEdit, 3);
     mapper->addMapping(ui->descriptionLineEdit, 4);
     mapper->addMapping(ui->deleteUsersCheckBox, 6);
@@ -78,13 +77,6 @@ void LocalGroupWidget::setItem(ModelView::SessionItem* item)
     {
         ui->membersWidget->setItem(groupItem->getMembers());
     }
-}
-
-bool LocalGroupWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
 }
 
 QString LocalGroupWidget::name() const

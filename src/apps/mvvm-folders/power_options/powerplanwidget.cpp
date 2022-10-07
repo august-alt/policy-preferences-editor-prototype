@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 PowerPlanWidget::PowerPlanWidget(QWidget *parent, PowerPlanItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::PowerPlanWidget())
 {
     ui->setupUi(this);
@@ -67,23 +66,6 @@ void PowerPlanWidget::setItem(ModelView::SessionItem* item)
     // TODO: Implement.
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool PowerPlanWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void PowerPlanWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 void PowerPlanWidget::on_actionComboBox_currentIndexChanged(int index)

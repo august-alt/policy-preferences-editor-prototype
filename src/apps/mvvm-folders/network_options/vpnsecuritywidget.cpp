@@ -32,11 +32,10 @@ namespace  mvvm_folders
 {
 
 VpnSecurityWidget::VpnSecurityWidget(QWidget *parent, VpnItem *item)
-    : PreferenceWidgetInterface(parent)
+    : BasePreferenceWidget(parent)
     , m_item(item)
     , view_model(nullptr)
     , delegate(std::make_unique<ModelView::ViewModelDelegate>())
-    , mapper(nullptr)
     , ui(new Ui::VpnSecurityWidget())
 {
     ui->setupUi(this);
@@ -78,23 +77,6 @@ void VpnSecurityWidget::setItem(ModelView::SessionItem* item)
     mapper->addMapping(ui->otherRadioButton, VpnItem::propertyToInt(VpnItem::USE_OTHER));
 
     mapper->setCurrentModelIndex(view_model->index(0, 1));
-}
-
-bool VpnSecurityWidget::validate()
-{
-    // TODO: Implement.
-
-    return true;
-}
-
-void VpnSecurityWidget::submit()
-{
-    if (mapper && validate())
-    {
-        mapper->submit();
-
-        emit dataChanged();
-    }
 }
 
 QString VpnSecurityWidget::name() const

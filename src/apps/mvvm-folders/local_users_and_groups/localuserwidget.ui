@@ -16,28 +16,6 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="2" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="userNameLabel">
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>User Name:</string>
-       </property>
-       <property name="buddy">
-        <cstring>userNameLineEdit</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="userNameLineEdit">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="2">
       <widget class="QToolButton" name="sourceToolButton">
        <property name="text">
@@ -60,10 +38,16 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1" colspan="2">
-      <widget class="QLineEdit" name="renameLineEdit">
+     <item row="3" column="1" colspan="2">
+      <widget class="QLineEdit" name="descriptionLineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="passwordLabel">
        <property name="text">
-        <string/>
+        <string>Password:</string>
+       </property>
+       <property name="buddy">
+        <cstring>passwordLineEdit</cstring>
        </property>
       </widget>
      </item>
@@ -80,33 +64,17 @@
      <item row="2" column="1" colspan="2">
       <widget class="QLineEdit" name="fullNameLineEdit"/>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="descriptionLabel">
-       <property name="text">
-        <string>Description:</string>
-       </property>
-       <property name="buddy">
-        <cstring>descriptionLineEdit</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1" colspan="2">
-      <widget class="QLineEdit" name="descriptionLineEdit"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="passwordLabel">
-       <property name="text">
-        <string>Password:</string>
-       </property>
-       <property name="buddy">
-        <cstring>passwordLineEdit</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1" colspan="2">
-      <widget class="QLineEdit" name="passwordLineEdit">
+     <item row="5" column="1" colspan="2">
+      <widget class="QLineEdit" name="confirmPasswordLineEdit">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLineEdit" name="renameLineEdit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -120,11 +88,58 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1" colspan="2">
-      <widget class="QLineEdit" name="confirmPasswordLineEdit">
+     <item row="3" column="0">
+      <widget class="QLabel" name="descriptionLabel">
+       <property name="text">
+        <string>Description:</string>
+       </property>
+       <property name="buddy">
+        <cstring>descriptionLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1" colspan="2">
+      <widget class="QLineEdit" name="passwordLineEdit">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="userNameLabel">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>User Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="userComboBox">
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Administrator (built-in)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Guest (built-in)</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
@@ -200,6 +215,9 @@
        <property name="text">
         <string>User must change password at last logon</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -259,7 +277,6 @@
  </widget>
  <tabstops>
   <tabstop>actionComboBox</tabstop>
-  <tabstop>userNameLineEdit</tabstop>
   <tabstop>sourceToolButton</tabstop>
   <tabstop>renameLineEdit</tabstop>
   <tabstop>fullNameLineEdit</tabstop>
