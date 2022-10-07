@@ -295,6 +295,39 @@ set(UI_FORMS
 
     ini/iniwidget.ui
 
+    item_level_targeting/batterypresent.ui
+    item_level_targeting/batterypresentwidget.ui
+    item_level_targeting/computername.ui
+    item_level_targeting/computernamewidget.ui
+    item_level_targeting/cpuspeed.ui
+    item_level_targeting/cpuspeedwidget.ui
+    item_level_targeting/datematchwidget.ui
+    item_level_targeting/diskspacewidget.ui
+    item_level_targeting/domainwidget.ui
+    item_level_targeting/environmentwidget.ui
+    item_level_targeting/filematchwidget.ui
+    item_level_targeting/ipaddressrangewidget.ui
+    item_level_targeting/languagewidget.ui
+    item_level_targeting/ldapwidget.ui
+    item_level_targeting/macaddressrangewidget.ui
+    item_level_targeting/msiquerywidget.ui
+    item_level_targeting/networkconnectionwidget.ui
+    item_level_targeting/operatingsystemwidget.ui
+    item_level_targeting/organizationuniitwidget.ui
+    item_level_targeting/pcmciawidget.ui
+    item_level_targeting/portablecomputerwidget.ui
+    item_level_targeting/processingmodewidget.ui
+    item_level_targeting/ramwidget.ui
+    item_level_targeting/registrymatchversionwidget.ui
+    item_level_targeting/registrymatchwidget.ui
+    item_level_targeting/securitygroupwidget.ui
+    item_level_targeting/sitewidget.ui
+    item_level_targeting/terminalsessiontcpwidget.ui
+    item_level_targeting/terminalsessionwidget.ui
+    item_level_targeting/timerangewidget.ui
+    item_level_targeting/userwidget.ui
+    item_level_targeting/wmiquerywidget.ui
+
     local_users_and_groups/groupmemberswidget.ui
     local_users_and_groups/groupmemberdialog.ui
     local_users_and_groups/localuserwidget.ui
