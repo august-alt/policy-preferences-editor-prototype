@@ -25,19 +25,20 @@
 
 namespace mvvm_folders
 {
-
 //! Drives item representation for editor.
 
 class PreferenceCategoryItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string TYPE       = "type";
+    static inline const std::string TYPE      = "type";
+    static inline const std::string NODE_ID   = "NODE_ID";
+    static inline const std::string PARENT_ID = "PARENT_ID";
 
     explicit PreferenceCategoryItem();
     PreferenceCategoryItem(const PreferenceCategoryItem &other);
 };
 
-}
+} // namespace mvvm_folders
 
 Q_DECLARE_METATYPE(::mvvm_folders::PreferenceCategoryItem)
 

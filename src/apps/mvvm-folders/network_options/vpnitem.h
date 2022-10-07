@@ -71,7 +71,78 @@ public:
     VpnItem(const VpnItem &other);
 
     constexpr static int propertyToInt(const PropertyType& type);
-    constexpr static const char* propertyToString(const PropertyType& type);
+    constexpr static const char* propertyToString(const PropertyType& type)
+    {
+        switch (type)
+        {
+        case ACTION:
+            return "action";
+        case USER:
+            return "user";
+        case NAME:
+            return "name";
+        case IP_ADDRESS:
+            return "ipAddress";
+        case USE_DNS:
+            return "useDNS";
+        case DIAL_FIRST:
+            return "dialFirst";
+        case TRAY_ICON:
+            return "trayIcon";
+        case SHOW_PROGRESS:
+            return "showProgress";
+        case SHOW_PASSWORD:
+            return "showPassword";
+        case SHOW_DOMAIN:
+            return "showDomain";
+        case REDIAL_COUNT:
+            return "redialCount";
+        case REDIAL_PAUSE:
+            return "redialPause";
+        case IDLE_DISCONNECT:
+            return "idleDisconnect";
+        case RECONNECT:
+            return "reconnect";
+        case CUSTOM_SETTINGS:
+            return "customSettings";
+        case SECURE_PASSWORD:
+            return "securePassword";
+        case SECURE_DATA:
+            return "secureData";
+        case USE_LOGON:
+            return "useLogon";
+        case VPN_STRATEGY:
+            return "vpnStrategy";
+        case ENCRYPTION_TYPE:
+            return "encryptionType";
+        case EAP:
+            return "eap";
+        case PAP:
+            return "pap";
+        case SPAP:
+            return "spap";
+        case CHAP:
+            return "chap";
+        case MS_CHAP:
+            return "msChap";
+        case OLD_MS_CHAP:
+            return "oldMsChap";
+        case MS_CHAP_V2:
+            return "msChapV2";
+        case SYSTEM:
+            return "system";
+        case TYPICAL:
+            return "typical";
+        case ADVANCED:
+            return "advanced";
+        case USE_OTHER:
+            return "useOther";
+        default:
+            break;
+        }
+
+        return "";
+    }
 
 private:
     template <typename T>

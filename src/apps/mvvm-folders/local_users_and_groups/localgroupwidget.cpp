@@ -65,7 +65,7 @@ void LocalGroupWidget::setItem(ModelView::SessionItem* item)
     mapper->setRootIndex(QModelIndex());
 
     mapper->addMapping(ui->actionComboBox, 0);
-    mapper->addMapping(ui->groupLineEdit, 1);
+    mapper->addMapping(ui->groupComboBox, 1);
     mapper->addMapping(ui->renameLineEdit, 3);
     mapper->addMapping(ui->descriptionLineEdit, 4);
     mapper->addMapping(ui->deleteUsersCheckBox, 6);

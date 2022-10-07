@@ -22,17 +22,29 @@
 
 #include <iostream>
 
+#include "common/preferencesmodel.h"
 #include "preferencestreemodel.h"
+#include "preferencestreeproxymodel.h"
+
+#include "modelcreator.h"
 
 #include <mvvm/viewmodel/topitemsviewmodel.h>
 
 namespace preferences_editor
 {
+using namespace mvvm_folders;
+
 class PreferencesSnapInPrivate
 {
+    typedef std::unique_ptr<PreferencesModel> PreferencesModelPtr;
+    typedef std::map<std::string, PreferencesModelPtr> PreferencesModelMap;
+
 public:
-    std::unique_ptr<mvvm_folders::PreferencesTreeModel> model = nullptr;
-    std::unique_ptr<ModelView::TopItemsViewModel> viewModel   = nullptr;
+    std::unique_ptr<PreferencesTreeModel> model                   = nullptr;
+    std::unique_ptr<ModelView::ViewModel> viewModel               = nullptr;
+    std::unique_ptr<QAbstractItemModel> proxyViewModel            = nullptr;
+    std::unique_ptr<PreferencesModelMap> machinePreferencesModels = nullptr;
+    std::unique_ptr<PreferencesModelMap> userPreferencesModels    = nullptr;
 
 public:
     PreferencesSnapInPrivate() {}
@@ -41,7 +53,7 @@ private:
     PreferencesSnapInPrivate(const PreferencesSnapInPrivate &) = delete;            // copy ctor
     PreferencesSnapInPrivate(PreferencesSnapInPrivate &&)      = delete;            // move ctor
     PreferencesSnapInPrivate &operator=(const PreferencesSnapInPrivate &) = delete; // copy assignment
-    PreferencesSnapInPrivate &operator=(PreferencesSnapInPrivate &&) = delete; // move assignment
+    PreferencesSnapInPrivate &operator=(PreferencesSnapInPrivate &&) = delete;      // move assignment
 };
 
 PreferencesSnapIn::PreferencesSnapIn()
@@ -58,9 +70,14 @@ void PreferencesSnapIn::onInitialize()
 {
     d->model = std::make_unique<mvvm_folders::PreferencesTreeModel>();
 
-    d->viewModel = std::make_unique<ModelView::TopItemsViewModel>(d->model.get());
+    auto proxyModel = std::make_unique<PreferencesTreeProxyModel>();
 
-    setRootNode(d->viewModel.get());
+    d->viewModel = std::make_unique<ModelView::TopItemsViewModel>(d->model.get());
+    proxyModel->setSourceModel(d->viewModel.get());
+
+    setRootNode(proxyModel.get());
+
+    d->proxyViewModel = std::move(proxyModel);
 
     std::cout << std::string(__PRETTY_FUNCTION__) << std::endl;
 }
@@ -68,6 +85,21 @@ void PreferencesSnapIn::onInitialize()
 void PreferencesSnapIn::onShutdown()
 {
     std::cout << std::string(__PRETTY_FUNCTION__) << std::endl;
+}
+
+void PreferencesSnapIn::onPolicyLoad(const std::string &policyPath)
+{
+    auto modelCreator = std::make_unique<ModelCreator>();
+
+    modelCreator->populateModels(policyPath, "MACHINE", d->machinePreferencesModels.get());
+    modelCreator->populateModels(policyPath, "USER", d->userPreferencesModels.get());
+}
+
+void PreferencesSnapIn::onPolicySave() {}
+
+void PreferencesSnapIn::onRetranslateUI(const std::string &locale)
+{
+    Q_UNUSED(locale);
 }
 
 } // namespace preferences_editor

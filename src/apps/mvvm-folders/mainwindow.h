@@ -23,8 +23,11 @@
 
 #include <QMainWindow>
 
+#include <memory>
+
 namespace mvvm_folders
 {
+class PreferencesTreeModel;
 
 class MainWindow : public QMainWindow
 {
@@ -35,13 +38,16 @@ public:
     ~MainWindow();
 
 protected:
-    void closeEvent(QCloseEvent* event);
+    void closeEvent(QCloseEvent *event);
 
 private:
     void initApplication();
     void writeSettings();
+
+private:
+    std::unique_ptr<PreferencesTreeModel> model;
 };
 
-}
+} // namespace mvvm_folders
 
-#endif//MVVM_FOLDERS_MAIN_WINDOW_H
+#endif //MVVM_FOLDERS_MAIN_WINDOW_H

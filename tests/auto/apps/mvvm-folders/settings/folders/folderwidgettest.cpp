@@ -24,8 +24,8 @@
 
 #include "folders/foldercontaineritem.h"
 #include "folders/folderitem.h"
-#include "folders/foldermodelbuilder.h"
 #include "folders/folderwidget.h"
+#include "folders/foldermodelbuilder.h"
 
 #include "plugins/common/exceptionhandler.h"
 
@@ -35,42 +35,39 @@ using namespace mvvm_folders;
 
 namespace tests
 {
+
 std::unique_ptr<FolderWidget> FolderWidgetTest::readXmlFile(const QString &dataPath)
 {
     std::ifstream file;
 
     file.open(dataPath.toStdString(), std::ifstream::in);
 
-    std::unique_ptr<FolderWidget> folderWidget = nullptr;
-
     bool ok = file.good();
-    if (!ok)
+    if(!ok)
     {
         qWarning() << "Failed to read file: " << dataPath;
         return nullptr;
     }
 
-    auto operation = [&]() {
-        auto folder       = Folders_(file, ::xsd::cxx::tree::flags::dont_validate);
-        auto modelBuilder = std::make_unique<FolderModelBuilder>();
-        auto model        = modelBuilder->schemaToModel(folder);
+    std::unique_ptr<FolderWidget> folderWidget = nullptr;
 
-        folderWidget         = std::make_unique<FolderWidget>();
-        auto containerItem   = model->topItem();
-        auto folderContainer = dynamic_cast<FolderContainerItem *>(containerItem);
+    auto files = Folders_(file, ::xsd::cxx::tree::flags::dont_validate);
+    auto modelBuilder = std::make_unique<FolderModelBuilder>();
+    auto model = modelBuilder->schemaToModel(files);
 
-        if (!folderContainer)
-        {
-            qWarning() << "Unable to read folder container!";
-        }
+    folderWidget = std::make_unique<FolderWidget>();
+    auto containerItem = model->topItem();
+    auto filesContainer = dynamic_cast<FolderContainerItem*>(containerItem);
 
-        folderWidget->setItem(folderContainer->children().back());
-        folderWidget->show();
-    };
 
-    auto errorHandler = [&](const std::string &error) { qWarning() << error.c_str(); };
+    if (!filesContainer)
+    {
+        qWarning() << "Unable to read ini container!";
+        return nullptr;
+    }
 
-    preferences_editor::ExceptionHandler::handleOperation(operation, errorHandler);
+    folderWidget->setItem(filesContainer->children().back());
+    folderWidget->show();
 
     file.close();
 
@@ -100,8 +97,8 @@ void FolderWidgetTest::actionStateTest()
 
     QVERIFY(folderWidget);
 
-    auto actionComboBox = folderWidget->findChild<QComboBox *>("actionComboBox");
-    auto settingsWidget = folderWidget->findChild<QWidget *>("settingsWidget");
+    auto actionComboBox = folderWidget->findChild<QComboBox*>("actionComboBox");
+    auto settingsWidget = folderWidget->findChild<QWidget*>("settingsWidget");
 
     QVERIFY(actionComboBox);
     QVERIFY(settingsWidget);
@@ -116,14 +113,10 @@ void FolderWidgetTest::actionStateTest_data()
     QTest::addColumn<QString>("action");
     QTest::addColumn<bool>("settingsEnabled");
 
-    QTest::newRow("Create") << QString::fromStdString(dataPath + "create_folders.xml") << "Create"
-                            << false;
-    QTest::newRow("Replace") << QString::fromStdString(dataPath + "replace_folders.xml")
-                             << "Replace" << true;
-    QTest::newRow("Update") << QString::fromStdString(dataPath + "update_folders.xml") << "Update"
-                            << false;
-    QTest::newRow("Delete") << QString::fromStdString(dataPath + "delete_folders.xml") << "Delete"
-                            << true;
+    QTest::newRow("Create")  << QString::fromStdString(dataPath + "create_folders.xml")  << "Create"  << false;
+    QTest::newRow("Replace") << QString::fromStdString(dataPath + "replace_folders.xml") << "Replace" << true;
+    QTest::newRow("Update")  << QString::fromStdString(dataPath + "update_folders.xml")  << "Update"  << false;
+    QTest::newRow("Delete")  << QString::fromStdString(dataPath + "delete_folders.xml")  << "Delete"  << true;
 }
 
 void FolderWidgetTest::booleanValuesTest()
@@ -137,15 +130,15 @@ void FolderWidgetTest::booleanValuesTest()
 
     QVERIFY(folderWidget);
 
-    auto allowDeletionOfReadOnly = folderWidget->findChild<QCheckBox *>("allowDeletionOfReadOnly");
-    auto deleteAllFiles          = folderWidget->findChild<QCheckBox *>("deleteAllFiles");
-    auto deleteThisFolder        = folderWidget->findChild<QCheckBox *>("deleteThisFolder");
-    auto ignoreErrors            = folderWidget->findChild<QCheckBox *>("ignoreErrors");
-    auto recursiveDelete         = folderWidget->findChild<QCheckBox *>("recursiveDelete");
+    auto allowDeletionOfReadOnly= folderWidget->findChild<QCheckBox*>("allowDeletionOfReadOnly");
+    auto deleteAllFiles         = folderWidget->findChild<QCheckBox*>("deleteAllFiles");
+    auto deleteThisFolder       = folderWidget->findChild<QCheckBox*>("deleteThisFolder");
+    auto ignoreErrors           = folderWidget->findChild<QCheckBox*>("ignoreErrors");
+    auto recursiveDelete        = folderWidget->findChild<QCheckBox*>("recursiveDelete");
 
-    auto archive  = folderWidget->findChild<QCheckBox *>("archive");
-    auto hidden   = folderWidget->findChild<QCheckBox *>("hidden");
-    auto readOnly = folderWidget->findChild<QCheckBox *>("readOnly");
+    auto archive                = folderWidget->findChild<QCheckBox*>("archive");
+    auto hidden                 = folderWidget->findChild<QCheckBox*>("hidden");
+    auto readOnly               = folderWidget->findChild<QCheckBox*>("readOnly");
 
     QVERIFY(allowDeletionOfReadOnly);
     QVERIFY(deleteAllFiles);
@@ -173,12 +166,11 @@ void FolderWidgetTest::booleanValuesTest_data()
     QTest::addColumn<QString>("localDataPath");
     QTest::addColumn<bool>("controlsState");
 
-    QTest::newRow("Enabled") << QString::fromStdString(dataPath + "all_checkboxes_checked.xml")
-                             << true;
-    QTest::newRow("Disabled") << QString::fromStdString(dataPath + "all_checkboxes_empty.xml")
-                              << false;
+    QTest::newRow("Enabled")  << QString::fromStdString(dataPath + "all_checkboxes_checked.xml")  << true;
+    QTest::newRow("Disabled") << QString::fromStdString(dataPath + "all_checkboxes_empty.xml")    << false;
 }
 
-} // namespace tests
+}
 
 QTEST_MAIN(tests::FolderWidgetTest)
+

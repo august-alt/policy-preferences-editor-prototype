@@ -9,7 +9,7 @@ License: GPLv2+
 Group: Other
 Url: https://github.com/august-alt/preferences_editor
 
-BuildRequires: cmake
+BuildRequires: cmake ctest
 BuildRequires: rpm-macros-cmake
 BuildRequires: cmake-modules
 BuildRequires: gcc-c++
@@ -28,6 +28,8 @@ BuildRequires: desktop-file-utils ImageMagick-tools
 
 BuildRequires: libqt-mvvm-devel
 
+BuildRequires: xorg-xvfb xvfb-run
+
 Requires: admx-basealt
 
 Source0: %name-%version.tar
@@ -39,8 +41,12 @@ Group policy editor
 %setup -q
 
 %build
-%cmake
+%cmake -DPREFERENCES_EDITOR_BUILD_TESTS:BOOL=ON
 %cmake_build
+
+%check
+cd %_cmake__builddir
+xvfb-run make test
 
 %install
 %cmakeinstall_std
@@ -66,6 +72,8 @@ done
 %_libdir/libpreferences_editor-io.so
 %_libdir/libpreferences_editor-core.so
 
+%_libdir/preferences_editor/plugins/libadmx-plugin.so
+%_libdir/preferences_editor/plugins/libadml-plugin.so
 %_libdir/preferences_editor/plugins/libinifile-plugin.so
 %_libdir/preferences_editor/plugins/libpreferences-plugin.so
 %_libdir/preferences_editor/plugins/libscripts-plugin.so

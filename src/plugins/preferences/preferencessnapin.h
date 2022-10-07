@@ -35,6 +35,12 @@ public:
 
     void onShutdown() override;
 
+    void onPolicyLoad(const std::string &policyPath);
+
+    void onPolicySave();
+
+    void onRetranslateUI(const std::string &locale);
+
 private:
     std::unique_ptr<PreferencesSnapInPrivate> d;
 };
