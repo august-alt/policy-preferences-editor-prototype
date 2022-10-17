@@ -41,9 +41,9 @@ RegistryContainerItem::RegistryContainerItem()
     addProperty<RegistryItem>(REGISTRY)->setVisible(false);
 }
 
-CommonItem RegistryContainerItem::getCommon() const
+CommonItem* RegistryContainerItem::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 void RegistryContainerItem::setCommon(const CommonItem &item)
@@ -51,9 +51,9 @@ void RegistryContainerItem::setCommon(const CommonItem &item)
     setProperty(COMMON, item);
 }
 
-RegistryItem RegistryContainerItem::getRegistry() const
+RegistryItem *RegistryContainerItem::getRegistry() const
 {
-    return property<RegistryItem>(REGISTRY);
+    return static_cast<RegistryItem*>(children().back());
 }
 
 void RegistryContainerItem::setRegistry(const RegistryItem &item)

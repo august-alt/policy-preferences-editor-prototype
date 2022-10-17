@@ -47,10 +47,10 @@ public:
 
     explicit RegistryContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    RegistryItem getRegistry() const;
+    RegistryItem* getRegistry() const;
     void setRegistry(const RegistryItem& item);
 
     void setupListeners() override;
