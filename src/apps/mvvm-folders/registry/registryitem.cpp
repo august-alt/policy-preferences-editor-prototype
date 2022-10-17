@@ -31,7 +31,7 @@ RegistryItem::RegistryItem()
     addProperty(KEY, "");
     addProperty(NAME, "");
     addProperty(TYPE, "");
-    addProperty(VALUE, "");
+    addProperty<uint8_t>(VALUE, 0);
     addProperty(DEFAULT, false);
 }
 
@@ -43,7 +43,7 @@ RegistryItem::RegistryItem(const RegistryItem &other)
     addProperty(KEY, other.property<std::string>(KEY));
     addProperty(NAME, other.property<std::string>(NAME));
     addProperty(TYPE, other.property<std::string>(TYPE));
-    addProperty(VALUE, other.property<std::string>(VALUE));
+    addProperty(VALUE, other.property<uint8_t>(VALUE));
     addProperty(DEFAULT, other.property<bool>(DEFAULT));
 }
 
