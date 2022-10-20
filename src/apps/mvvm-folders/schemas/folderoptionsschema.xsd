@@ -44,7 +44,7 @@
 <xs:complexType name="GlobalFolderOptions_t">
    <xs:sequence>
       <xs:element name="Filters" type="Filters_t" />
-      <xs:element name="Properties" type="GlobalFolderOptionsProperties_t"/>
+      <xs:element name="Properties" type="GlobalFolderOptionsProperties_t" maxOccurs="unbounded" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="image" type="xs:unsignedByte" use="optional" />
@@ -105,7 +105,7 @@
    <xs:sequence>
       <xs:element name="Filters" type="Filters_t">
       </xs:element>
-      <xs:element name="Properties" type="GlobalFolderOptionsVistaProperties_t"/>
+      <xs:element name="Properties" type="GlobalFolderOptionsVistaProperties_t" maxOccurs="unbounded" />
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="image" type="xs:unsignedByte" use="optional" />
@@ -133,7 +133,7 @@
 
 <xs:complexType name="OpenWith_t">
    <xs:sequence>
-      <xs:element name="Properties" type="OpenWithProperties_t"/>
+      <xs:element name="Properties" type="OpenWithProperties_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -189,7 +189,7 @@
 
 <xs:complexType name="FileType_t">
    <xs:sequence>
-      <xs:element name="Properties" type="FileTypeProperties_t"/>
+      <xs:element name="Properties" type="FileTypeProperties_t" maxOccurs="unbounded"/>
    </xs:sequence>
    <xs:attribute name="clsid" type="xs:string" use="required" />
    <xs:attribute name="name" type="xs:string" use="required" />
@@ -205,10 +205,10 @@
 <xs:element name="FolderOptions">
       <xs:complexType>
          <xs:sequence>
-            <xs:element name="GlobalFolderOptions" type="GlobalFolderOptions_t"/>
-            <xs:element name="GlobalFolderOptionsVista" type="GlobalFolderOptionsVista_t"/>
-            <xs:element name="OpenWith" type="OpenWith_t"/>
-            <xs:element name="FileType" type="FileType_t"/>
+            <xs:element name="GlobalFolderOptions" type="GlobalFolderOptions_t" maxOccurs="unbounded" />
+            <xs:element name="GlobalFolderOptionsVista" type="GlobalFolderOptionsVista_t" maxOccurs="unbounded" />
+            <xs:element name="OpenWith" type="OpenWith_t" maxOccurs="unbounded" />
+            <xs:element name="FileType" type="FileType_t" maxOccurs="unbounded" />
          </xs:sequence>
          <xs:attribute name="clsid" type="xs:string" use="required" />
          <xs:attribute name="disabled" type="xs:boolean" use="optional" />

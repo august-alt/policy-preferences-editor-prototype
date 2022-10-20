@@ -55,6 +55,7 @@ set(HEADERS
     folder_options/fileextensioncontaineritem.h
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
+    folder_options/folderoptionsvistaitem.h
 
     files/filesitem.h
     files/filespreferencereader.h
@@ -216,6 +217,7 @@ set(SOURCES
 
     folder_options/folderoptionswidget.cpp
     folder_options/folderoptionsitem.cpp
+    folder_options/folderoptionsvistaitem.cpp
     folder_options/folderoptionsmodelbuilder.cpp
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp

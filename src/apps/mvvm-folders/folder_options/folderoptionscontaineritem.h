@@ -32,7 +32,6 @@ namespace mvvm_folders
 
 class CommonItem;
 class BaseNetworkItem;
-class DialUpItem;
 
 template <typename FolderOptionItem>
 class FolderOptionsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
@@ -48,7 +47,7 @@ public:
 
     explicit FolderOptionsContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
     FolderOptionItem getFolderOption() const;
