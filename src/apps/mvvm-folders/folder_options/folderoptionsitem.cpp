@@ -34,7 +34,7 @@ FolderOptionsItem::FolderOptionsItem()
     addProperty(DISAIBLE_THUMBNAIL_CACHE, false);
     addProperty(HIDDEN, false);
     addProperty(HIDE_FILE_EXT, true);
-    addProperty(SEPERATE_PROCESS, false);
+    addProperty(SEPARATE_PROCESS, false);
     addProperty(SHOW_SUPER_HIDDEN, true);
     addProperty(PERSIST_BROWSERS, true);
     addProperty(CLASSIC_VIEW_STATE, true);
@@ -56,7 +56,7 @@ FolderOptionsItem::FolderOptionsItem(const FolderOptionsItem &other)
     addProperty(DISAIBLE_THUMBNAIL_CACHE, other.property<bool>(DISAIBLE_THUMBNAIL_CACHE));
     addProperty(HIDDEN, other.property<bool>(HIDDEN));
     addProperty(HIDE_FILE_EXT, other.property<bool>(HIDE_FILE_EXT));
-    addProperty(SEPERATE_PROCESS, other.property<bool>(SEPERATE_PROCESS));
+    addProperty(SEPARATE_PROCESS, other.property<bool>(SEPARATE_PROCESS));
     addProperty(SHOW_SUPER_HIDDEN, other.property<bool>(SHOW_SUPER_HIDDEN));
     addProperty(PERSIST_BROWSERS, other.property<bool>(PERSIST_BROWSERS));
     addProperty(CLASSIC_VIEW_STATE, other.property<bool>(CLASSIC_VIEW_STATE));

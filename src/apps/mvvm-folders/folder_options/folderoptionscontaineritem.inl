@@ -34,9 +34,9 @@ FolderOptionsContainerItem<FolderOptionItem>::FolderOptionsContainerItem()
 }
 
 template <typename FolderOptionItem>
-CommonItem FolderOptionsContainerItem<FolderOptionItem>::getCommon() const
+CommonItem* FolderOptionsContainerItem<FolderOptionItem>::getCommon() const
 {
-    return property<CommonItem>(COMMON);
+    return static_cast<CommonItem*>(children()[childrenCount() - 2]);
 }
 
 template <typename FolderOptionItem>
@@ -46,9 +46,9 @@ void FolderOptionsContainerItem<FolderOptionItem>::setCommon(const CommonItem &i
 }
 
 template <typename FolderOptionItem>
-FolderOptionItem FolderOptionsContainerItem<FolderOptionItem>::getFolderOption() const
+FolderOptionItem* FolderOptionsContainerItem<FolderOptionItem>::getFolderOption() const
 {
-    return property<FolderOptionItem>(FOLDER_OPTION);
+    return static_cast<FolderOptionItem*>(children().back());
 }
 
 template <typename FolderOptionItem>

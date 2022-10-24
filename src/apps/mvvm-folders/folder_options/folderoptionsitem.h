@@ -39,7 +39,7 @@ public:
     static inline const std::string DISAIBLE_THUMBNAIL_CACHE = "DisableThumbnailCache";
     static inline const std::string HIDDEN = "Hidden";
     static inline const std::string HIDE_FILE_EXT = "HideFileExt";
-    static inline const std::string SEPERATE_PROCESS = "SeparateProcess";
+    static inline const std::string SEPARATE_PROCESS = "SeparateProcess";
     static inline const std::string SHOW_SUPER_HIDDEN = "ShowSuperHidden";
     static inline const std::string PERSIST_BROWSERS = "PersistBrowsers";
     static inline const std::string CLASSIC_VIEW_STATE = "ClassicViewState";
