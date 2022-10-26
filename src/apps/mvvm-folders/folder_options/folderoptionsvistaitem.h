@@ -21,9 +21,6 @@
 #ifndef MVVM_FOLDERS_FOLDEROPTIONSVISTAITEM_H
 #define MVVM_FOLDERS_FOLDEROPTIONSVISTAITEM_H
 
-//#ifndef MVVM_FOLDERS_OPEN_WITH_ITEM_H
-//#define MVVM_FOLDERS_OPEN_WITH_ITEM_H
-
 #include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
@@ -62,7 +59,5 @@ public:
 }
 
 Q_DECLARE_METATYPE(::mvvm_folders::FolderOptionsVistaItem)
-
-//#endif//MVVM_FOLDERS_OPEN_WITH_ITEM_H
 
 #endif // MVVM_FOLDERS_FOLDEROPTIONSVISTAITEM_H
