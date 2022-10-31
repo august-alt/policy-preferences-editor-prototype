@@ -69,6 +69,10 @@ set(HEADERS
     ini/inimodelbuilder.h
     ini/iniwidget.h
 
+    item_level_targeting/itemtargetingmodelbuilder.h
+    item_level_targeting/itemtargetingitem.h
+    item_level_targeting/batteryitem.h
+
     interfaces/preferencesreaderinterface.h
 
     local_users_and_groups/baselocalitem.h
@@ -240,6 +244,9 @@ set(SOURCES
     ini/inimodelbuilder.cpp
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
+
+    item_level_targeting/itemtargetingmodelbuilder.cpp
+    item_level_targeting/batteryitem.cpp
 
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
