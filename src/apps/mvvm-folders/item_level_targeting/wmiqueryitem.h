@@ -18,29 +18,28 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_BATTERY_ITEM_H
-#define MVVM_FOLDERS_BATTERY_ITEM_H
+#ifndef MVVM_FOLDERS_WMIQUERY_ITEM_H
+#define MVVM_FOLDERS_WMIQUERY_ITEM_H
 
 #include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-//! type item representation for editor.
+//! WMIQuery item representation for editor.
 
-class BatteryItem : public ModelView::CompoundItem
+class WMIQueryItem : public ModelView::CompoundItem
 {
 public:
     static inline const std::string ACTION = "action";
 
-    BatteryItem();
-    BatteryItem(const BatteryItem &other);
+    WMIQueryItem();
+    WMIQueryItem(const WMIQueryItem &other);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::BatteryItem)
+Q_DECLARE_METATYPE(::mvvm_folders::WMIQueryItem)
 
-#endif//MVVM_FOLDERS_BATTERY_ITEM_H
-
+#endif//MVVM_FOLDERS_WMIQUERY_ITEM_H
 

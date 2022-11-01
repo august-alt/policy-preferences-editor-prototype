@@ -72,6 +72,34 @@ set(HEADERS
     item_level_targeting/itemtargetingmodelbuilder.h
     item_level_targeting/itemtargetingitem.h
     item_level_targeting/batteryitem.h
+    item_level_targeting/computernameitem.h
+    item_level_targeting/cpuspeeditem.h
+    item_level_targeting/datematchitem.h
+    item_level_targeting/diskspaceitem.h
+    item_level_targeting/domainitem.h
+    item_level_targeting/environmentitem.h
+    item_level_targeting/filematchitem.h
+    item_level_targeting/ipaddressrangeitem.h
+    item_level_targeting/languageitem.h
+    item_level_targeting/ldapitem.h
+    item_level_targeting/macaddressrangeitem.h
+    item_level_targeting/msiqueryitem.h
+    item_level_targeting/networkconnectionitem.h
+    item_level_targeting/operatingsystemitem.h
+    item_level_targeting/organizationunititem.h
+    item_level_targeting/pcmciaitem.h
+    item_level_targeting/portablecomputeritem.h
+    item_level_targeting/processingmodeitem.h
+    item_level_targeting/ramitem.h
+    item_level_targeting/registrymatchversionitem.h
+    item_level_targeting/registrymatchitem.h
+    item_level_targeting/securitygroupitem.h
+    item_level_targeting/siteitem.h
+    item_level_targeting/terminalsessionitem.h
+    item_level_targeting/terminalsessiontcpitem.h
+    item_level_targeting/timerangeitem.h
+    item_level_targeting/useritem.h
+    item_level_targeting/wmiqueryitem.h
 
     interfaces/preferencesreaderinterface.h
 

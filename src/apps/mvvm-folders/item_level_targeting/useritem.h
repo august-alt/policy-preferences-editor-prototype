@@ -18,29 +18,28 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_BATTERY_ITEM_H
-#define MVVM_FOLDERS_BATTERY_ITEM_H
+#ifndef MVVM_FOLDERS_USER_ITEM_H
+#define MVVM_FOLDERS_USER_ITEM_H
 
 #include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-//! type item representation for editor.
+//! User item representation for editor.
 
-class BatteryItem : public ModelView::CompoundItem
+class UserItem : public ModelView::CompoundItem
 {
 public:
     static inline const std::string ACTION = "action";
 
-    BatteryItem();
-    BatteryItem(const BatteryItem &other);
+    UserItem();
+    UserItem(const UserItem &other);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::BatteryItem)
+Q_DECLARE_METATYPE(::mvvm_folders::UserItem)
 
-#endif//MVVM_FOLDERS_BATTERY_ITEM_H
-
+#endif//MVVM_FOLDERS_USER_ITEM_H
 

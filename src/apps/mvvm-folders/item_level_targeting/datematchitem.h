@@ -18,29 +18,29 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_BATTERY_ITEM_H
-#define MVVM_FOLDERS_BATTERY_ITEM_H
+#ifndef MVVM_FOLDERS_DATEMATCH_ITEM_H
+#define MVVM_FOLDERS_DATEMATCH_ITEM_H
 
 #include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-//! type item representation for editor.
+//! DateMatch item representation for editor.
 
-class BatteryItem : public ModelView::CompoundItem
+class DateMatchItem : public ModelView::CompoundItem
 {
 public:
     static inline const std::string ACTION = "action";
 
-    BatteryItem();
-    BatteryItem(const BatteryItem &other);
+    DateMatchItem();
+    DateMatchItem(const DateMatchItem &other);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::BatteryItem)
+Q_DECLARE_METATYPE(::mvvm_folders::DateMatchItem)
 
-#endif//MVVM_FOLDERS_BATTERY_ITEM_H
+#endif//MVVM_FOLDERS_DATEMATCH_ITEM_H
 
 

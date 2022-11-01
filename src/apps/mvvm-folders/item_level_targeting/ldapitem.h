@@ -18,29 +18,28 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_BATTERY_ITEM_H
-#define MVVM_FOLDERS_BATTERY_ITEM_H
+#ifndef MVVM_FOLDERS_LDAP_ITEM_H
+#define MVVM_FOLDERS_LDAP_ITEM_H
 
 #include <mvvm/model/compounditem.h>
 
 namespace mvvm_folders
 {
 
-//! type item representation for editor.
+//! LDAP item representation for editor.
 
-class BatteryItem : public ModelView::CompoundItem
+class LDAPItem : public ModelView::CompoundItem
 {
 public:
     static inline const std::string ACTION = "action";
 
-    BatteryItem();
-    BatteryItem(const BatteryItem &other);
+    LDAPItem();
+    LDAPItem(const LDAPItem &other);
 };
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::BatteryItem)
+Q_DECLARE_METATYPE(::mvvm_folders::LDAPItem)
 
-#endif//MVVM_FOLDERS_BATTERY_ITEM_H
-
+#endif//MVVM_FOLDERS_LDAP_ITEM_H
 
