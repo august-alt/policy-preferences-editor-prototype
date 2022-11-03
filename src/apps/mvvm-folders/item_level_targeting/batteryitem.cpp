@@ -1,22 +1,23 @@
 #include "batteryitem.h"
 
+#include "itemtargetingcontaineritem.h"
+
 namespace mvvm_folders
 {
 
-BatteryItem::BatteryItem()
-    : ModelView::CompoundItem("BatteryItem")
-{
-//    addProperty(FILE_EXTENSION, "");
-//    addProperty(APPLICATION_PATH, "");
-//    addProperty(DEFAULT, false);
-}
+//BatteryItem::BatteryItem()
+//    : ModelView::CompoundItem("BatteryItem")
+//{
+//}
 
-BatteryItem::BatteryItem(const BatteryItem &other)
-    : ModelView::CompoundItem("BatteryItem")
-{
-//    addProperty(FILE_EXTENSION, other.property<std::string>(FILE_EXTENSION));
-//    addProperty(APPLICATION_PATH, other.property<std::string>(APPLICATION_PATH));
-//    addProperty(DEFAULT, other.property<bool>(DEFAULT));
-}
+//BatteryItem::BatteryItem(const BatteryItem &other)
+//    : ModelView::CompoundItem("BatteryItem")
+//{
+//}
+
+//ItemTargetingContainerItem *BatteryItem::getMembers() const
+//{
+//    return dynamic_cast<ItemTargetingContainerItem*>(children().back());
+//}
 
 }

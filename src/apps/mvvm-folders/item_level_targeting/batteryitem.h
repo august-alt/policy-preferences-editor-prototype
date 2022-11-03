@@ -31,8 +31,6 @@ namespace mvvm_folders
 class BatteryItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION = "action";
-
     BatteryItem();
     BatteryItem(const BatteryItem &other);
 };

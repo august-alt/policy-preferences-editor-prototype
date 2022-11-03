@@ -70,6 +70,7 @@ set(HEADERS
     ini/iniwidget.h
 
     item_level_targeting/itemtargetingmodelbuilder.h
+    item_level_targeting/itemtargetingcontaineritem.h
     item_level_targeting/itemtargetingitem.h
     item_level_targeting/batteryitem.h
     item_level_targeting/computernameitem.h
@@ -275,6 +276,7 @@ set(SOURCES
 
     item_level_targeting/itemtargetingmodelbuilder.cpp
     item_level_targeting/batteryitem.cpp
+    item_level_targeting/cpuspeeditem.cpp
 
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
