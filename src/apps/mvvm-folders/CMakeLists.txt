@@ -55,7 +55,6 @@ set(HEADERS
     folder_options/fileextensioncontaineritem.h
     folder_options/fileextensionitem.h
     folder_options/fileextensionwidget.h
-    folder_options/folderoptionsvistaitem.h
 
     files/filesitem.h
     files/filespreferencereader.h
@@ -69,37 +68,37 @@ set(HEADERS
     ini/inimodelbuilder.h
     ini/iniwidget.h
 
-    item_level_targeting/itemtargetingmodelbuilder.h
-    item_level_targeting/itemtargetingcontaineritem.h
-    item_level_targeting/itemtargetingitem.h
-    item_level_targeting/batteryitem.h
-    item_level_targeting/computernameitem.h
     item_level_targeting/cpuspeeditem.h
-    item_level_targeting/datematchitem.h
-    item_level_targeting/diskspaceitem.h
-    item_level_targeting/domainitem.h
-    item_level_targeting/environmentitem.h
-    item_level_targeting/filematchitem.h
-    item_level_targeting/ipaddressrangeitem.h
-    item_level_targeting/languageitem.h
-    item_level_targeting/ldapitem.h
-    item_level_targeting/macaddressrangeitem.h
-    item_level_targeting/msiqueryitem.h
-    item_level_targeting/networkconnectionitem.h
-    item_level_targeting/operatingsystemitem.h
-    item_level_targeting/organizationunititem.h
-    item_level_targeting/pcmciaitem.h
-    item_level_targeting/portablecomputeritem.h
-    item_level_targeting/processingmodeitem.h
-    item_level_targeting/ramitem.h
-    item_level_targeting/registrymatchversionitem.h
-    item_level_targeting/registrymatchitem.h
-    item_level_targeting/securitygroupitem.h
+    item_level_targeting/itemtargetingitem.h
     item_level_targeting/siteitem.h
+    item_level_targeting/processingmodeitem.h
+    item_level_targeting/environmentitem.h
+    item_level_targeting/ldapitem.h
+    item_level_targeting/portablecomputeritem.h
+    item_level_targeting/registrymatchitem.h
+    item_level_targeting/organizationunititem.h
+    item_level_targeting/filematchitem.h
+    item_level_targeting/computernameitem.h
+    item_level_targeting/ramitem.h
+    item_level_targeting/timerangeitem.h
+    item_level_targeting/securitygroupitem.h
+    item_level_targeting/useritem.h
+    item_level_targeting/itemtargetingmodelbuilder.h
+    item_level_targeting/pcmciaitem.h
+    item_level_targeting/networkconnectionitem.h
+    item_level_targeting/languageitem.h
+    item_level_targeting/registrymatchversionitem.h
+    item_level_targeting/itemtargetingcontaineritem.h
+    item_level_targeting/msiqueryitem.h
     item_level_targeting/terminalsessionitem.h
     item_level_targeting/terminalsessiontcpitem.h
-    item_level_targeting/timerangeitem.h
-    item_level_targeting/useritem.h
+    item_level_targeting/macaddressrangeitem.h
+    item_level_targeting/datematchitem.h
+    item_level_targeting/ipaddressrangeitem.h
+    item_level_targeting/batteryitem.h
+    item_level_targeting/operatingsystemitem.h
+    item_level_targeting/domainitem.h
+    item_level_targeting/diskspaceitem.h
     item_level_targeting/wmiqueryitem.h
 
     interfaces/preferencesreaderinterface.h
@@ -250,7 +249,6 @@ set(SOURCES
 
     folder_options/folderoptionswidget.cpp
     folder_options/folderoptionsitem.cpp
-    folder_options/folderoptionsvistaitem.cpp
     folder_options/folderoptionsmodelbuilder.cpp
     folder_options/openwithitem.cpp
     folder_options/openwithwidget.cpp
@@ -274,9 +272,10 @@ set(SOURCES
     ini/iniwidget.cpp
     ini/iniwidgetslots.cpp
 
-    item_level_targeting/itemtargetingmodelbuilder.cpp
     item_level_targeting/batteryitem.cpp
+    item_level_targeting/computernameitem.cpp
     item_level_targeting/cpuspeeditem.cpp
+    item_level_targeting/itemtargetingmodelbuilder.cpp
 
     local_users_and_groups/baselocalitem.cpp
     local_users_and_groups/groupmemberdialog.cpp
@@ -399,40 +398,37 @@ set(UI_FORMS
 
     files/fileswidget.ui
 
-    ini/iniwidget.ui
-
-    item_level_targeting/batterypresent.ui
-    item_level_targeting/batterypresentwidget.ui
-    item_level_targeting/computername.ui
+    item_level_targeting/timerangewidget.ui
+    item_level_targeting/processingmodewidget.ui
+    item_level_targeting/registrymatchversionwidget.ui
     item_level_targeting/computernamewidget.ui
-    item_level_targeting/cpuspeed.ui
-    item_level_targeting/cpuspeedwidget.ui
-    item_level_targeting/datematchwidget.ui
-    item_level_targeting/diskspacewidget.ui
-    item_level_targeting/domainwidget.ui
-    item_level_targeting/environmentwidget.ui
-    item_level_targeting/filematchwidget.ui
+    item_level_targeting/operatingsystemwidget.ui
     item_level_targeting/ipaddressrangewidget.ui
     item_level_targeting/languagewidget.ui
-    item_level_targeting/ldapwidget.ui
-    item_level_targeting/macaddressrangewidget.ui
-    item_level_targeting/msiquerywidget.ui
-    item_level_targeting/networkconnectionwidget.ui
-    item_level_targeting/operatingsystemwidget.ui
     item_level_targeting/organizationuniitwidget.ui
-    item_level_targeting/pcmciawidget.ui
-    item_level_targeting/portablecomputerwidget.ui
-    item_level_targeting/processingmodewidget.ui
-    item_level_targeting/ramwidget.ui
-    item_level_targeting/registrymatchversionwidget.ui
-    item_level_targeting/registrymatchwidget.ui
-    item_level_targeting/securitygroupwidget.ui
-    item_level_targeting/sitewidget.ui
-    item_level_targeting/terminalsessiontcpwidget.ui
     item_level_targeting/terminalsessionwidget.ui
-    item_level_targeting/timerangewidget.ui
-    item_level_targeting/userwidget.ui
+    item_level_targeting/environmentwidget.ui
+    item_level_targeting/filematchwidget.ui
+    item_level_targeting/msiquerywidget.ui
+    item_level_targeting/batterypresentwidget.ui
+    item_level_targeting/ramwidget.ui
+    item_level_targeting/sitewidget.ui
+    item_level_targeting/macaddressrangewidget.ui
+    item_level_targeting/registrymatchwidget.ui
+    item_level_targeting/terminalsessiontcpwidget.ui
     item_level_targeting/wmiquerywidget.ui
+    item_level_targeting/networkconnectionwidget.ui
+    item_level_targeting/ldapwidget.ui
+    item_level_targeting/portablecomputerwidget.ui
+    item_level_targeting/securitygroupwidget.ui
+    item_level_targeting/pcmciawidget.ui
+    item_level_targeting/datematchwidget.ui
+    item_level_targeting/domainwidget.ui
+    item_level_targeting/cpuspeedwidget.ui
+    item_level_targeting/userwidget.ui
+    item_level_targeting/diskspacewidget.ui
+
+    ini/iniwidget.ui
 
     local_users_and_groups/groupmemberswidget.ui
     local_users_and_groups/groupmemberdialog.ui

@@ -33,6 +33,6 @@ public:
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::ItemTargetingItem)
+Q_DECLARE_METATYPE(::mvvm_folders::ItemTargetingComtainerItem)
 
 #endif // ITEMTARGETINGCONTAINERITEM_H

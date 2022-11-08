@@ -18,38 +18,53 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_COMPUTERNAME_ITEM_H
-#define MVVM_FOLDERS_COMPUTERNAME_ITEM_H
-
-#include <mvvm/model/compounditem.h>
+#include "computernameitem.h"
 
 namespace mvvm_folders
 {
 
-//! ComputerName item representation for editor.
-
-class ComputerNameItem : public ModelView::CompoundItem
+ComputerNameItem::ComputerNameItem()
+    : ModelView::CompoundItem("computernameItem")
 {
-public:
-    static inline const std::string NAME = "name";
-    static inline const std::string NET_BIOS = "netBios";
-    static inline const std::string DNS = "dns";
+    addProperty(NAME, "");
+    addProperty(NET_BIOS, true);
+    addProperty(DNS, false);
+}
 
-    ComputerNameItem();
-    ComputerNameItem(const ComputerNameItem &other);
+ComputerNameItem::ComputerNameItem(const ComputerNameItem &other)
+    : ModelView::CompoundItem("computernameItem")
+{
+    addProperty(NAME, other.name());
+    addProperty(NET_BIOS, other.netBios());
+    addProperty(DNS, other.dns());
+}
 
-    QString name() const;
-    void setName(const QString& name);
+QString ComputerNameItem::name() const
+{
+    return property<QString>(NAME);
+}
 
-    bool netBios() const;
-    void setNetBios(bool state);
+void ComputerNameItem::setName(const QString& newName)
+{
+    setProperty(NAME, newName);
+}
 
-    bool dns() const;
-    void setDns(bool state);
-};
+bool ComputerNameItem::netBios() const
+{
+    return property<bool>(NET_BIOS);
+}
+void ComputerNameItem::setNetBios(bool state)
+{
+    setProperty(NET_BIOS, state);
+}
+bool ComputerNameItem::dns() const
+{
+    return property<bool>(DNS);
+}
+void ComputerNameItem::setDns(bool state)
+{
+    setProperty(DNS, state);
+}
 
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::ComputerNameItem)
-
-#endif//MVVM_FOLDERS_COMPUTERNAME_ITEM_H
