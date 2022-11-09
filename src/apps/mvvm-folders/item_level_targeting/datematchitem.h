@@ -31,10 +31,29 @@ namespace mvvm_folders
 class DateMatchItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION = "action";
+    static inline const std::string PERIODIC = "periodic";
+    static inline const std::string DAY = "day";
+    static inline const std::string DATE = "date";
+    static inline const std::string EVERY_YEAR = "everyYear";
+    static inline const std::string EVERY_MONTH = "everyMonth";
 
     DateMatchItem();
     DateMatchItem(const DateMatchItem &other);
+
+    QString periodic() const;
+    void setPeriodic(const QString& periodic);
+
+    QString day() const;
+    void setDay(const QString& day);
+
+    QString date() const;
+    void setDate(const QString& date);
+
+    bool everyYear() const;
+    void setEveryYear(bool state);
+
+    int everyMonth() const;
+    void setEveryMonth(int everyMonth);
 };
 
 }
@@ -42,5 +61,3 @@ public:
 Q_DECLARE_METATYPE(::mvvm_folders::DateMatchItem)
 
 #endif//MVVM_FOLDERS_DATEMATCH_ITEM_H
-
-

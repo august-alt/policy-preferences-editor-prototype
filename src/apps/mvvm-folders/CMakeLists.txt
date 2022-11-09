@@ -275,6 +275,7 @@ set(SOURCES
     item_level_targeting/batteryitem.cpp
     item_level_targeting/computernameitem.cpp
     item_level_targeting/cpuspeeditem.cpp
+    item_level_targeting/datematchitem.cpp
     item_level_targeting/itemtargetingmodelbuilder.cpp
 
     local_users_and_groups/baselocalitem.cpp
