@@ -31,10 +31,13 @@ namespace mvvm_folders
 class CPUSpeedItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION = "action";
+    static inline const std::string MHZ = "Mhz";
 
     CPUSpeedItem();
     CPUSpeedItem(const CPUSpeedItem &other);
+
+    QString Mhz() const;
+    void setMhz(const QString& Mhz);
 };
 
 }
