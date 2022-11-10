@@ -18,35 +18,43 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_DISKSPACE_ITEM_H
-#define MVVM_FOLDERS_DISKSPACE_ITEM_H
-
-#include <mvvm/model/compounditem.h>
+#include "diskspaceitem.h"
 
 namespace mvvm_folders
 {
 
-//! DiskSpace item representation for editor.
-
-class DiskSpaceItem : public ModelView::CompoundItem
+DiskSpaceItem::DiskSpaceItem()
+    : ModelView::CompoundItem("DiskSpaceItem")
 {
-public:
-    static inline const std::string FREE_SPACE = "freeSpace";
-    static inline const std::string DRIVE_LETTER = "driveLetter";
-
-    DiskSpaceItem();
-    DiskSpaceItem(const DiskSpaceItem &other);
-
-    QString freeSpace() const;
-    void setFreeSpace(const QString& freeSpace);
-
-    QString driveLetter() const;
-    void setDriveLetter(const QString& driveLetter);
-};
-
+    addProperty(FREE_SPACE, "");
+    addProperty(DRIVE_LETTER, "");
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::DiskSpaceItem)
+DiskSpaceItem::DiskSpaceItem(const DiskSpaceItem &other)
+    : ModelView::CompoundItem("DiskSpaceItem")
+{
+    addProperty(FREE_SPACE, other.freeSpace());
+    addProperty(DRIVE_LETTER, other.driveLetter());
+}
 
-#endif//MVVM_FOLDERS_DISKSPACE_ITEM_H
+QString DiskSpaceItem::freeSpace() const
+{
+    return property<QString>(FREE_SPACE);
+}
 
+void DiskSpaceItem::setFreeSpace(const QString &freeSpace)
+{
+    setProperty(FREE_SPACE, freeSpace);
+}
+
+QString DiskSpaceItem::driveLetter() const
+{
+    return property<QString>(DRIVE_LETTER);
+}
+
+void DiskSpaceItem::setDriveLetter(const QString &driveLetter)
+{
+    setProperty(DRIVE_LETTER, driveLetter);
+}
+
+}
