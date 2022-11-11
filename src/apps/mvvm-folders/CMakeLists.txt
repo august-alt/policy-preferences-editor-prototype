@@ -277,6 +277,7 @@ set(SOURCES
     item_level_targeting/cpuspeeditem.cpp
     item_level_targeting/datematchitem.cpp
     item_level_targeting/diskspaceitem.cpp
+    item_level_targeting/domainitem.cpp
     item_level_targeting/itemtargetingmodelbuilder.cpp
 
     local_users_and_groups/baselocalitem.cpp

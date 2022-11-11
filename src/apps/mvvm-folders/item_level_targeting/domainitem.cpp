@@ -18,40 +18,56 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_DOMAIN_ITEM_H
-#define MVVM_FOLDERS_DOMAIN_ITEM_H
-
-#include <mvvm/model/compounditem.h>
+#include "domainitem.h"
 
 namespace mvvm_folders
 {
 
-//! Domain item representation for editor.
-
-class DomainItem : public ModelView::CompoundItem
+DomainItem::DomainItem()
+    : ModelView::CompoundItem("domainItem")
 {
-public:
-    static inline const std::string DOMAIN_NAME = "domainName";
-    static inline const std::string USER_LOGGED = "userLogged";
-    static inline const std::string COMP_IN_DOMAIN = "compInDomain";
-
-    DomainItem();
-    DomainItem(const DomainItem &other);
-
-    QString domainName() const;
-    void setDomainName(const QString& domainName);
-
-    bool userLogged() const;
-    void setUserLogged(bool state);
-
-    bool compInDomain() const;
-    void setCompInDomain(bool state);
-};
-
+    addProperty(DOMAIN_NAME, "");
+    addProperty(USER_LOGGED, "");
+    addProperty(COMP_IN_DOMAIN, "");
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::DomainItem)
+DomainItem::DomainItem(const DomainItem &other)
+    : ModelView::CompoundItem("domainItem")
+{
+    addProperty(DOMAIN_NAME, other.domainName());
+    addProperty(USER_LOGGED, other.userLogged());
+    addProperty(COMP_IN_DOMAIN, other.compInDomain());
+}
 
-#endif//MVVM_FOLDERS_DOMAIN_ITEM_H
+QString DomainItem::domainName() const
+{
+    return property<QString>(DOMAIN_NAME);
+}
 
+void DomainItem::setDomainName(const QString &domainName)
+{
+    setProperty(DOMAIN_NAME, domainName);
+}
+
+bool DomainItem::userLogged() const
+{
+    return property<bool>(USER_LOGGED);
+}
+
+void DomainItem::setUserLogged(bool state)
+{
+    setProperty(USER_LOGGED, userLogged());
+}
+
+bool DomainItem::compInDomain() const
+{
+    return property<bool>(COMP_IN_DOMAIN);
+}
+
+void DomainItem::setCompInDomain(bool state)
+{
+    setProperty(COMP_IN_DOMAIN, compInDomain());
+}
+
+}
 
