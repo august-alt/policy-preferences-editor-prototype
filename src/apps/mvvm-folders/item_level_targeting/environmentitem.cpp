@@ -18,35 +18,44 @@
 **
 ***********************************************************************************************************************/
 
-#ifndef MVVM_FOLDERS_ENVIRONMENT_ITEM_H
-#define MVVM_FOLDERS_ENVIRONMENT_ITEM_H
-
-#include <mvvm/model/compounditem.h>
+#include "environmentitem.h"
 
 namespace mvvm_folders
 {
 
-//! Environment item representation for editor.
-
-class EnvironmentItem : public ModelView::CompoundItem
+EnvironmentItem::EnvironmentItem()
+    : ModelView::CompoundItem("environmentItem")
 {
-public:
-    static inline const std::string ENV_NAME = "envName";
-    static inline const std::string ENV_VALUE = "envValue";
-
-    EnvironmentItem();
-    EnvironmentItem(const EnvironmentItem &other);
-
-    QString envName() const;
-    void setEnvName(const QString& envName);
-
-    QString envValue() const;
-    void setEnvValue(const QString& envValue);
-};
-
+    addProperty(ENV_NAME, "");
+    addProperty(ENV_VALUE, "");
 }
 
-Q_DECLARE_METATYPE(::mvvm_folders::EnvironmentItem)
+EnvironmentItem::EnvironmentItem(const EnvironmentItem &other)
+    : ModelView::CompoundItem("environmentItem")
+{
+    addProperty(ENV_NAME, other.envName());
+    addProperty(ENV_VALUE, other.envValue());
+}
 
-#endif//MVVM_FOLDERS_ENVIRONMENT_ITEM_H
+QString EnvironmentItem::envName() const
+{
+    return property<QString>(ENV_NAME);
+}
+
+void EnvironmentItem::setEnvName(const QString &envName)
+{
+    setProperty(ENV_NAME, envName);
+}
+
+QString EnvironmentItem::envValue() const
+{
+    return property<QString>(ENV_VALUE);
+}
+
+void EnvironmentItem::setEnvValue(const QString &envValue)
+{
+    setProperty(ENV_VALUE, envValue);
+}
+
+}
 
