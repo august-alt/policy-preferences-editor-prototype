@@ -52,7 +52,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>92</width>
+         <width>142</width>
          <height>0</height>
         </size>
        </property>
@@ -124,6 +124,18 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="connectionLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>135</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Connection Name:</string>
         </property>
@@ -170,6 +182,18 @@
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="phoneLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>135</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Phone number:</string>
         </property>

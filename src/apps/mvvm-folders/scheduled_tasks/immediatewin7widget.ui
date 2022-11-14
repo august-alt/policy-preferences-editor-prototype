@@ -54,7 +54,7 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>92</width>
+       <width>142</width>
        <height>0</height>
       </size>
      </property>
@@ -109,7 +109,7 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="minimumSize">
        <size>
-        <width>92</width>
+        <width>142</width>
         <height>0</height>
        </size>
       </property>
@@ -259,6 +259,18 @@ p, li { white-space: pre-wrap; }
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="descriptionLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>142</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Description:</string>
      </property>
@@ -292,6 +304,18 @@ p, li { white-space: pre-wrap; }
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="authorLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>142</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Author:</string>
      </property>
