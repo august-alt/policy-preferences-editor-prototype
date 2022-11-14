@@ -127,7 +127,7 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QComboBox" name="actionComboBox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
