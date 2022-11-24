@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>BatteryPresent</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Form</translation>
+    </message>
+    <message>
+        <source>A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</source>
+        <translation type="vanished">A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</translation>
+    </message>
+</context>
+<context>
     <name>BatteryPresentWidget</name>
     <message>
         <location filename="../batterypresentwidget.ui" line="26"/>
@@ -10,12 +21,59 @@
     </message>
     <message>
         <location filename="../batterypresentwidget.ui" line="44"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <source>A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</source>
+        <translation>A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</translation>
+    </message>
+</context>
+<context>
+    <name>CPUSpeed</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Form</translation>
+    </message>
+    <message>
+        <source>A CPU Speed targeting item allows a preference item to be applied to computers or users only if the processing computer&apos;s CPU speed is greater than or equal to the value specified in the targeting item.</source>
+        <translation type="vanished">A CPU Speed targeting item allows a preference item to be applied to computers or users only if the processing computer&apos;s CPU speed is greater than or equal to the value specified in the targeting item.</translation>
+    </message>
+    <message>
+        <source>MHz</source>
+        <translation type="vanished">MHz</translation>
+    </message>
+    <message>
+        <source>500</source>
+        <translation type="vanished">500</translation>
+    </message>
+    <message>
+        <source>1000</source>
+        <translation type="vanished">1000</translation>
+    </message>
+    <message>
+        <source>2000</source>
+        <translation type="vanished">2000</translation>
+    </message>
+    <message>
+        <source>3000</source>
+        <translation type="vanished">3000</translation>
+    </message>
+    <message>
+        <source>4000</source>
+        <translation type="vanished">4000</translation>
+    </message>
+    <message>
+        <source>5000</source>
+        <translation type="vanished">5000</translation>
+    </message>
+    <message>
+        <source>6000</source>
+        <translation type="vanished">6000</translation>
+    </message>
+    <message>
+        <source>7000</source>
+        <translation type="vanished">7000</translation>
+    </message>
+    <message>
+        <source>Greater then or equal to:</source>
+        <translation type="vanished">Greater then or equal to:</translation>
     </message>
 </context>
 <context>
@@ -1596,6 +1654,33 @@ p, li { white-space: pre-wrap; }
         <location filename="../wmiquerywidget.ui" line="107"/>
         <source>Root\cimv2</source>
         <translation>Root\cimv2</translation>
+    </message>
+</context>
+<context>
+    <name>computerName</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Form</translation>
+    </message>
+    <message>
+        <source>Computer name</source>
+        <translation type="vanished">Computer name</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="vanished">...</translation>
+    </message>
+    <message>
+        <source>NetBIOS</source>
+        <translation type="vanished">NetBIOS</translation>
+    </message>
+    <message>
+        <source>DNS</source>
+        <translation type="vanished">DNS</translation>
+    </message>
+    <message>
+        <source>A Computer name targeting item allows a preference item to be applied to computers or users only if the computer&apos;s name matches the specified computer name in the targeting item.</source>
+        <translation type="vanished">A Computer name targeting item allows a preference item to be applied to computers or users only if the computer&apos;s name matches the specified computer name in the targeting item.</translation>
     </message>
 </context>
 <context>
