@@ -2,81 +2,137 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
-    <name>BatteryPresentWidget</name>
+    <name>BatteryPresent</name>
     <message>
-        <location filename="../batterypresentwidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
-        <location filename="../batterypresentwidget.ui" line="44"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <source>A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</source>
+        <translation type="vanished">Элемент таргетинга «Присутствие батареи» позволяет применять элемент предпочтения к компьютерам или пользователям, только если в обрабатывающем компьютере имеется одна или несколько батарей.</translation>
+    </message>
+</context>
+<context>
+    <name>BatteryPresentWidget</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Форма</translation>
+    </message>
+    <message>
+        <source>A Battery Present targeting item allows a preference item to be applied to computers or users only if one or more batteries are present in the processing computer.</source>
+        <translation type="vanished">Элемент таргетинга Присутствие Батареи позволяет применять элемент предпочтения к компьютерам или пользователям, только если в компьютере имеется одна или несколько батарей.</translation>
+    </message>
+</context>
+<context>
+    <name>CPUSpeed</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Форма</translation>
+    </message>
+    <message>
+        <source>A CPU Speed targeting item allows a preference item to be applied to computers or users only if the processing computer&apos;s CPU speed is greater than or equal to the value specified in the targeting item.</source>
+        <translation type="vanished">Таргетинг на скорость ЦП позволяет применять предпочтения к компьютерам или пользователям только в том случае, если скорость ЦП обрабатывающего компьютера больше или равна значению, указанному в целевом элементе.</translation>
+    </message>
+    <message>
+        <source>MHz</source>
+        <translation type="vanished">МГц</translation>
+    </message>
+    <message>
+        <source>500</source>
+        <translation type="vanished">500</translation>
+    </message>
+    <message>
+        <source>1000</source>
+        <translation type="vanished">1000</translation>
+    </message>
+    <message>
+        <source>2000</source>
+        <translation type="vanished">2000</translation>
+    </message>
+    <message>
+        <source>3000</source>
+        <translation type="vanished">3000</translation>
+    </message>
+    <message>
+        <source>4000</source>
+        <translation type="vanished">4000</translation>
+    </message>
+    <message>
+        <source>5000</source>
+        <translation type="vanished">5000</translation>
+    </message>
+    <message>
+        <source>6000</source>
+        <translation type="vanished">6000</translation>
+    </message>
+    <message>
+        <source>7000</source>
+        <translation type="vanished">7000</translation>
+    </message>
+    <message>
+        <source>Greater then or equal to:</source>
+        <translation type="vanished">Больше или равно:</translation>
     </message>
 </context>
 <context>
     <name>CPUSpeedWidget</name>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="26"/>
+        <location filename="../cpuspeedwidget.ui" line="20"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="32"/>
+        <location filename="../cpuspeedwidget.ui" line="26"/>
         <source>A CPU Speed targeting item allows a preference item to be applied to computers or users only if the processing computer&apos;s CPU speed is greater than or equal to the value specified in the targeting item.</source>
-        <translation>Таргетинг на скорость ЦП позволяет применять предпочтения к компьютерам или пользователям только в том случае, если скорость ЦП обрабатывающего компьютера больше или равна значению, указанному в целевом элементе.</translation>
+        <translation>Таргетинг на скорость ЦП позволяет применять предпочтения к компьютерам или пользователям только в том случае, если скорость ЦП компьютера больше или равна значению, указанному в целевом элементе.</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="42"/>
+        <location filename="../cpuspeedwidget.ui" line="36"/>
         <source>MHz</source>
         <translation>МГц</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="63"/>
+        <location filename="../cpuspeedwidget.ui" line="57"/>
         <source>500</source>
         <translation>500</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="68"/>
+        <location filename="../cpuspeedwidget.ui" line="62"/>
         <source>1000</source>
         <translation>1000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="73"/>
+        <location filename="../cpuspeedwidget.ui" line="67"/>
         <source>2000</source>
         <translation>2000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="78"/>
+        <location filename="../cpuspeedwidget.ui" line="72"/>
         <source>3000</source>
         <translation>3000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="83"/>
+        <location filename="../cpuspeedwidget.ui" line="77"/>
         <source>4000</source>
         <translation>4000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="88"/>
+        <location filename="../cpuspeedwidget.ui" line="82"/>
         <source>5000</source>
         <translation>5000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="93"/>
+        <location filename="../cpuspeedwidget.ui" line="87"/>
         <source>6000</source>
         <translation>6000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="98"/>
+        <location filename="../cpuspeedwidget.ui" line="92"/>
         <source>7000</source>
         <translation>7000</translation>
     </message>
     <message>
-        <location filename="../cpuspeedwidget.ui" line="112"/>
+        <location filename="../cpuspeedwidget.ui" line="106"/>
         <source>Greater then or equal to:</source>
         <translation>Больше или равно:</translation>
     </message>
@@ -371,7 +427,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../diskspacewidget.ui" line="257"/>
         <source>A Disk Space targetting item allows a preference item to be applied to computers or users only if the processing computer&apos;s available disk space is greater than or equal to the amout specified in the targeting item.</source>
-        <translation>Таргетинг на дисковое пространство позволяет применять предпочтения к компьютерам или пользователям только в том случае, если доступное дисковое пространство обрабатывающего компьютера больше или равно объему, указанному в целевом элементе.</translation>
+        <translation>Таргетинг на Дисковое Пространство позволяет применять предпочтения к компьютерам или пользователям только в том случае, если доступное дисковое пространство компьютера больше или равно объему, указанному в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -404,7 +460,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../domainwidget.ui" line="91"/>
         <source>A Domain Name targetting item allows a preference item to be applied to computers or users only if the user logged on to or the computer is a member of the domain specified in the targeting item.</source>
-        <translation>Таргетинг имени домена позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь вошел в систему или компьютер является членом домена, указанного в целевом элементе.</translation>
+        <translation>Таргетинг Имени Домена позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь вошел в систему или компьютер является членом домена, указанного в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -427,7 +483,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../environmentwidget.ui" line="108"/>
         <source>A Environment Variable targetting item allows a preference item to be applied to computers or users only if the environment variable and value specified in the targeting item are equal.</source>
-        <translation>Таргетинг на переменные окружения позволяет применять предпочтения к компьютерам или пользователям, только если переменная среды и значение, указанные в целевом элементе, равны.</translation>
+        <translation>Таргетинг на Переменные Окружения позволяет применять предпочтения к компьютерам или пользователям, только если переменная среды и значение, указанные в целевом элементе, равны.</translation>
     </message>
 </context>
 <context>
@@ -508,7 +564,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../filematchwidget.ui" line="376"/>
         <source>A File Match targetting item allows a preference item to be applied to computers or users only if the file or folder specified in the targeting item exists, or only if the file exists and is a version within the range specified in the targeting item.</source>
-        <translation>Таргетинг соответствия файла позволяет применять предпочтения к компьютерам или пользователям, только если файл или папка, указанные в целевом элементе, существуют, или только если файл существует и его версия находится в пределах диапазона, указанного в целевом элементе.</translation>
+        <translation>Таргетинг Соответствия Файла позволяет применять предпочтения к компьютерам или пользователям, только если файл или папка, указанные в целевом элементе, существуют, или только если файл существует и его версия находится в пределах диапазона, указанного в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -588,7 +644,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../ipaddressrangewidget.ui" line="132"/>
         <source>An IP Address Range targetting item allows a preference item to be applied to computers or users only if the processing conputer&apos;s IP address is within the range specified in the targeting item.</source>
-        <translation>Таргетинг на диапазон IP-адресов позволяет применять предпочтения к компьютерам или пользователям только в том случае, если IP-адрес обрабатывающего компьютера находится в пределах диапазона, указанного в элементе таргетинга.</translation>
+        <translation>Таргетинг на Диапазон IP-адресов позволяет применять предпочтения к компьютерам или пользователям только в том случае, если IP-адрес компьютера находится в пределах диапазона, указанного в элементе таргетинга.</translation>
     </message>
 </context>
 <context>
@@ -644,7 +700,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../languagewidget.ui" line="48"/>
         <source>A Language targetting item allows a preference item to be applied to computers or users only if the locate specified in the targeting item is installed on the processing computer.</source>
-        <translation>Таргетинг Языка позволяет применять предпочтения к компьютерам или пользователям только в том случае, если локадизация указанная в элементе таргетинга, установлена на обрабатывающем компьютере.</translation>
+        <translation>Таргетинг Языка позволяет применять предпочтения к компьютерам или пользователям только в том случае, если совпадает локализация указанная в элементе таргетинга, с установленной на компьютере.</translation>
     </message>
     <message>
         <location filename="../languagewidget.ui" line="58"/>
@@ -682,7 +738,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../msiquerywidget.ui" line="46"/>
         <source>Target exists</source>
-        <translation>Цель существует</translation>
+        <translation>Цель содержит</translation>
     </message>
     <message>
         <location filename="../msiquerywidget.ui" line="51"/>
@@ -702,12 +758,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../msiquerywidget.ui" line="66"/>
         <source>Get information</source>
-        <translation>Взять инфо</translation>
+        <translation>Получить информацию</translation>
     </message>
     <message>
         <location filename="../msiquerywidget.ui" line="71"/>
         <source>Match information</source>
-        <translation>Инфо совпадает</translation>
+        <translation>Данные совпадают</translation>
     </message>
     <message>
         <location filename="../msiquerywidget.ui" line="85"/>
@@ -742,7 +798,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../msiquerywidget.ui" line="134"/>
         <source>A MSI Query targeting item allows a preference item to be applied to computers or users only if certain aspects of an MSI installed product, update, or component on the processing computer match the specified criteria in the targeting item.</source>
-        <translation>Таргетинг MSI Запроса позволяет применять предпочтения к компьютерам или пользователям только в том случае, если определенные аспекты продукта, обновления или компонента, установленного MSI на обрабатывающем компьютере, соответствуют указанным критериям в целевом элементе.</translation>
+        <translation>Таргетинг MSI Запроса позволяет применять предпочтения к компьютерам или пользователям только в том случае, если определенные аспекты продукта, обновления или компонента, установленного MSI на компьютере, соответствуют указанным критериям в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -771,7 +827,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../macaddressrangewidget.ui" line="138"/>
         <source>A MAC Address Range targeting item allows a preference item to be applied to computers or users only if any of the processing computer&apos;s MAC address are within the range specified in the targeting item.</source>
-        <translation>Таргетинг диапазона MAC-адресов позволяет применять предпочтения к компьютерам или пользователям только в том случае, если MAC-адрес обрабатывающего компьютера находится в диапазоне, указанном в целевом элементе.</translation>
+        <translation>Таргетинг диапазона MAC-адресов позволяет применять предпочтения к компьютерам или пользователям только в том случае, если MAC-адрес компьютера находится в диапазоне, указанном в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -897,7 +953,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../operatingsystemwidget.ui" line="154"/>
         <source>An Operating System targeting item allows a preference item to be applied to computers or users only if the processing computer&apos;s operating system&apos;s product name, release, edition, or computer role matches those specified in the targeting item.</source>
-        <translation>Таргетинг на операционную систему позволяет применять предпочтения к компьютерам или пользователям только в том случае, если название продукта, версия, релиз или роль компьютера операционной системы обрабатывающего компьютера совпадают с указанными в целевом элементе.</translation>
+        <translation>Таргетинг на операционную систему позволяет применять предпочтения к компьютерам или пользователям только в том случае, если название продукта, версия, релиз или роль компьютера операционной системы компьютера совпадают с указанными в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -920,7 +976,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../organizationuniitwidget.ui" line="92"/>
         <source>Direct member only</source>
-        <translation>Только lдля участников</translation>
+        <translation>Только для участников</translation>
     </message>
     <message>
         <location filename="../organizationuniitwidget.ui" line="99"/>
@@ -935,7 +991,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../organizationuniitwidget.ui" line="116"/>
         <source>An Organizational Unit targeting item allows a preference item to be applied to computers or users only if the user or computer is a member of the organizational unit (OU) specified in the targeting item.</source>
-        <translation>Таргетинг Организационная единица позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь или компьютер является членом организационного подразделения (OU), указанного в целевом элементе.</translation>
+        <translation>Таргетинг Организационная Единица позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь или компьютер является членом организационного подразделения (OU), указанного в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -948,7 +1004,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../pcmciawidget.ui" line="32"/>
         <source>A PCMCIA Present targeting item allows a preference item to be applied to computers or users only if the processing computer has at least one PCMCIA slot present.</source>
-        <translation>Таргетинг PCMCIA Present позволяет применять элемент предпочтения к компьютерам или пользователям только в том случае, если на обрабатывающем компьютере имеется хотя бы один слот PCMCIA.</translation>
+        <translation>Таргетинг PCMCIA Present позволяет применять элемент предпочтения к компьютерам или пользователям только в том случае, если на компьютере имеется хотя бы один слот PCMCIA.</translation>
     </message>
 </context>
 <context>
@@ -971,7 +1027,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../portablecomputerwidget.ui" line="52"/>
         <source>A Portable Computer targeting item allows a preference item to be applied to computers or users only if the processing computer is indentified as a portable computer in the current hardware profile on the processing computer or if the processing computer is indentified as a portable computer with the docking state specified in the targeting item.</source>
-        <translation>Таргетинг на переносной компьютер позволяет применять редпочтения к компьютерам или пользователям только в том случае, если обрабатывающий компьютер идентифицируется как переносной компьютер в текущем профиле оборудования на обрабатывающем компьютере или если обрабатывающий компьютер идентифицируется как переносной компьютер со стыковочным устройством. состояние, указанное в элементе.</translation>
+        <translation>Таргетинг на Переносной Компьютер позволяет применять предпочтения к компьютерам или пользователям только в том случае, если компьютер идентифицируется как переносной компьютер, в текущем профиле оборудования на компьютере; или если компьютер идентифицируется как переносной компьютер со стыковочным устройством, указанном в элементе.</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Portable Computer targeting item allows a preference item to be applied to computers or users only if the processing computer is indentified as a portable computer in the current hardware profile on the processing computer or if the processing computer is indentified as a portable computer with the docking state specified in the targeting item.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -1043,7 +1099,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../processingmodewidget.ui" line="192"/>
         <source>A Processing Mode targeting item allows a preference item to be applied to computers or users only if the Group Policy processing mode or conditions on the processing computer match at least one of those specified in the targeting item.</source>
-        <translation>Таргетинг режима обработки позволяет применять предпочтения к компьютерам или пользователям только в том случае, если режим или условия обработки групповой политики на обрабатывающем компьютере соответствуют по крайней мере одному из указанных в целевом элементе.</translation>
+        <translation>Таргетинг Режима Обработки позволяет применять предпочтения к компьютерам или пользователям только в том случае, если режим или условия обработки групповой политики на компьютере соответствуют по крайней мере одному из указанных в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1177,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../ramwidget.ui" line="129"/>
         <source>A RAM Total targeting item allows a preference item to be applied to computers or users only if total amount of physical memory in the processing computer is greater than or equal to the amount specified in the targeting item.</source>
-        <translation>Таргетинг на перативную память позволяет применять предпочтений к компьютерам или пользователям только в том случае, если общий объем физической памяти на обрабатывающем компьютере больше или равен объему, указанному в целевом элементе.</translation>
+        <translation>Таргетинг на Оперативную Память позволяет применять предпочтений к компьютерам или пользователям только в том случае, если общий объем физической памяти на компьютере больше или равен объему, указанному в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -1291,7 +1347,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../registrymatchwidget.ui" line="720"/>
         <location filename="../registrymatchwidget.ui" line="1037"/>
         <source>A Registry Match targeting item allows a preference item to be applied to computers or users only if the registry key or value specified in the targeting item exists, if the registry value contains the data specified in the targeting item, or if the version number in the registry value is within the range specified in the targeting item.</source>
-        <translation>Таргетинг Реестр совпадений позволяет применять предпочтения к компьютерам или пользователям только в том случае, если ключ реестра или указанное значение существует, если значение реестра содержит указанные данные, или если номер версии в значении реестра находится в пределах указанного диапазона.</translation>
+        <translation>Таргетинг Реестр Совпадений позволяет применять предпочтения к компьютерам или пользователям только в том случае, если ключ реестра или указанное значение существует, если значение реестра содержит указанные данные, или если номер версии в значении реестра находится в пределах указанного диапазона.</translation>
     </message>
     <message>
         <location filename="../registrymatchwidget.ui" line="412"/>
@@ -1378,7 +1434,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../securitygroupwidget.ui" line="100"/>
         <source>A Security Group targeting item allows a preference item to be applied to computers or users only if the processing computer or user is member of the group specified in the targeting item and optionaly only if the specified group is the primary group for the processing computer or user.</source>
-        <translation>Таргетинг группы безопасности позволяет применять предпочтения к компьютерам или пользователям, только если обрабатывающий компьютер или пользователь является членом группы, указанной в целевом элементе, и, необязательно, только если указанная группа является основной группой для обрабатывающего компьютера или пользователя.</translation>
+        <translation>Таргетинг Группы Безопасности позволяет применять предпочтения к компьютерам или пользователям, только если компьютер или пользователь является членом группы, указанной в целевом элементе, и опционально, только если указанная группа является основной группой для компьютера или пользователя.</translation>
     </message>
 </context>
 <context>
@@ -1401,7 +1457,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../sitewidget.ui" line="89"/>
         <source>A Site targeting item allows a preference item to be applied to computers or users only if the processing computer is in the site in Active Directory specified in the targeting item.</source>
-        <translation>Таргетинг на сайт позволяет применять предпочтения к компьютерам или пользователям только в том случае, если обрабатывающий компьютер находится в сайте Active Directory, указанном в элементе таргетинга.</translation>
+        <translation>Таргетинг на Сайт позволяет применять предпочтения к компьютерам или пользователям только в том случае, если компьютер находится в сайте Active Directory, указанном в элементе таргетинга.</translation>
     </message>
 </context>
 <context>
@@ -1454,7 +1510,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../terminalsessionwidget.ui" line="77"/>
         <source>A Terminal Session targeting item allows a preference item to be applied to computers or users only if the processing user is logged on to a terminal session with the settings specified in the targeting item.</source>
-        <translation>Таргетинг сеанса терминала позволяет применять предпочтения к компьютерам или пользователям только в том случае, если обрабатывающий пользователь вошел в сеанс терминала с параметрами, указанными в целевом элементе.</translation>
+        <translation>Таргетинг Сеанса Терминала позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь вошел в сеанс терминала с параметрами, указанными в целевом элементе.</translation>
     </message>
     <message>
         <location filename="../terminalsessionwidget.ui" line="90"/>
@@ -1529,7 +1585,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../timerangewidget.ui" line="92"/>
         <source>A Time Range targeting item allows a preference item to be applied to computers or users only if the current time om the end user&apos;s computer is within the time range specified in the targeting item.</source>
-        <translation>Таргетинг на временной диапазон позволяет применять предпочтений к компьютерам или пользователям только в том случае, если текущее время на компьютере конечного пользователя находится в пределах временного диапазона, указанного в целевом элементе.</translation>
+        <translation>Таргетинг на Временной Диапазон позволяет применять предпочтения к компьютерам или пользователям только в том случае, если текущее время на компьютере конечного пользователя находится в пределах временного диапазона, указанного в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -1547,7 +1603,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../userwidget.ui" line="48"/>
         <source>A User targeting item allows a preference item to be applied to computers or users only if the processing user is the user specified in the targeting item.</source>
-        <translation>Таргетинг на пользователя позволяет применять предпочтения к компьютерам или пользователям только в том случае, если обрабатывающий пользователь является пользователем, указанным в целевом элементе.</translation>
+        <translation>Таргетинг на Пользователя позволяет применять предпочтения к компьютерам или пользователям только в том случае, если пользователь является пользователем, указанным в целевом элементе.</translation>
     </message>
     <message>
         <location filename="../userwidget.ui" line="64"/>
@@ -1585,7 +1641,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wmiquerywidget.ui" line="81"/>
         <source>A WMI Query targeting item allows a preference item to be applied to computers or users only if the processing computer evaluates the WMI query as true.</source>
-        <translation>Таргетинг запроса WMI позволяет применять предпочтения к компьютерам или пользователям только в том случае, если обрабатывающий компьютер оценивает запрос WMI как истинный.</translation>
+        <translation>Таргетинг запроса WMI позволяет применять предпочтения к компьютерам или пользователям только в том случае, если компьютер оценивает запрос WMI как истинный.</translation>
     </message>
     <message>
         <location filename="../wmiquerywidget.ui" line="97"/>
@@ -1596,6 +1652,33 @@ p, li { white-space: pre-wrap; }
         <location filename="../wmiquerywidget.ui" line="107"/>
         <source>Root\cimv2</source>
         <translation>Root\cimv2</translation>
+    </message>
+</context>
+<context>
+    <name>computerName</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Форма</translation>
+    </message>
+    <message>
+        <source>Computer name</source>
+        <translation type="vanished">Имя компьютера</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="vanished">...</translation>
+    </message>
+    <message>
+        <source>NetBIOS</source>
+        <translation type="vanished">NetBIOS</translation>
+    </message>
+    <message>
+        <source>DNS</source>
+        <translation type="vanished">DNS</translation>
+    </message>
+    <message>
+        <source>A Computer name targeting item allows a preference item to be applied to computers or users only if the computer&apos;s name matches the specified computer name in the targeting item.</source>
+        <translation type="vanished">Таргетинг Имени Компьютера позволяет применять предпочтения к компьютерам или пользователям только в том случае, если имя компьютера совпадает с именем компьютера, указанным в целевом элементе.</translation>
     </message>
 </context>
 <context>
@@ -1628,7 +1711,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../computernamewidget.ui" line="84"/>
         <source>A Computer name targeting item allows a preference item to be applied to computers or users only if the computer&apos;s name matches the specified computer name in the targeting item.</source>
-        <translation>Nаргетинг имени компьютера позволяет применять предпочтения к компьютерам или пользователям только в том случае, если имя компьютера совпадает с именем компьютера, указанным в целевом элементе.</translation>
+        <translation>Таргетинг Имени Компьютера позволяет применять предпочтения к компьютерам или пользователям только в том случае, если имя компьютера совпадает с именем компьютера, указанным в целевом элементе.</translation>
     </message>
 </context>
 </TS>
