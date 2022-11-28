@@ -3,6 +3,7 @@ set(XSD_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/devicesschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/drivesschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/filesschema.xsd"
+    "${CMAKE_CURRENT_SOURCE_DIR}/filtersschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/foldersschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/folderoptionsschema.xsd"
     "${CMAKE_CURRENT_SOURCE_DIR}/groupsschema.xsd"

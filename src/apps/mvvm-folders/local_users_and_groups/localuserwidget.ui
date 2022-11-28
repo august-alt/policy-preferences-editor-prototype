@@ -25,6 +25,18 @@
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="renameLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <pointsize>9</pointsize>
@@ -43,6 +55,18 @@
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="passwordLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
         <string>Password:</string>
        </property>
@@ -53,6 +77,18 @@
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="fullNameLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
         <string>Full name:</string>
        </property>
@@ -80,6 +116,18 @@
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="confirmPasswordLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
         <string>Confirm password:</string>
        </property>
@@ -90,6 +138,18 @@
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="descriptionLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
         <string>Description:</string>
        </property>
@@ -107,6 +167,18 @@
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="userNameLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>142</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <pointsize>9</pointsize>
@@ -174,6 +246,18 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QLabel" name="actionLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>142</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="text">
        <string>Action:</string>
       </property>

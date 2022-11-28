@@ -31,8 +31,7 @@ namespace mvvm_folders
 //! Network container item representation for editor.
 
 class CommonItem;
-class BaseNetworkItem;
-class DialUpItem;
+class FolderOptionItem;
 
 template <typename FolderOptionItem>
 class FolderOptionsContainerItem : public ModelView::CompoundItem, public ContainerItemInterface
@@ -44,14 +43,14 @@ public:
     static inline const std::string ASSOCIATION = "association";
 
     static inline const std::string COMMON        = "common";
-    static inline const std::string FOLDER_OPTION = "network";
+    static inline const std::string FOLDER_OPTION = "option";
 
     explicit FolderOptionsContainerItem();
 
-    CommonItem getCommon() const;
+    CommonItem* getCommon() const;
     void setCommon(const CommonItem& item);
 
-    FolderOptionItem getFolderOption() const;
+    FolderOptionItem* getFolderOption() const;
     void setFolderOption(const FolderOptionItem &item);
 
     void setupListeners() override;

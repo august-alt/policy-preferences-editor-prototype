@@ -31,7 +31,24 @@ namespace mvvm_folders
 class FolderOptionsItem : public ModelView::CompoundItem
 {
 public:
-    static inline const std::string ACTION = "action";
+    static inline const std::string NO_NETCRAWLING = "noNetCrawlingType";
+    static inline const std::string fOLDER_CONTENTS_INFO_TIP = "folderContentsInfoTip";
+    static inline const std::string FRIENDLY_TREE = "friendlyTree";
+    static inline const std::string FULL_PATH_ADDRESS = "fullPathAddress";
+    static inline const std::string FULL_PATH = "fullPath";
+    static inline const std::string DISAIBLE_THUMBNAIL_CACHE = "DisableThumbnailCache";
+    static inline const std::string HIDDEN = "Hidden";
+    static inline const std::string HIDE_FILE_EXT = "HideFileExt";
+    static inline const std::string SEPARATE_PROCESS = "SeparateProcess";
+    static inline const std::string SHOW_SUPER_HIDDEN = "ShowSuperHidden";
+    static inline const std::string PERSIST_BROWSERS = "PersistBrowsers";
+    static inline const std::string CLASSIC_VIEW_STATE = "ClassicViewState";
+    static inline const std::string SHOW_CONTROL_PANEL = "ShowControlPanel";
+    static inline const std::string SHOW_COMP_COLOR = "ShowCompColor";
+    static inline const std::string SHOW_INFO_TIP = "ShowInfoTip";
+    static inline const std::string FORCE_GUEST = "ForceGuest";
+    static inline const std::string WEB_VIEW_BARRICADE = "WebViewBarricade";
+
 
     FolderOptionsItem();
     FolderOptionsItem(const FolderOptionsItem &other);

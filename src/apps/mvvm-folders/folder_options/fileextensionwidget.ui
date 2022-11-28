@@ -39,6 +39,18 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="fileExtentionLabel">
+     <property name="minimumSize">
+      <size>
+       <width>140</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>140</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="text">
       <string>File extension:</string>
      </property>
@@ -72,14 +84,20 @@
        <widget class="QLabel" name="iconPathLabel">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>117</horstretch>
+          <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>105</width>
+          <width>128</width>
           <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>128</width>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -150,6 +168,12 @@
       </item>
       <item row="3" column="2" colspan="2">
        <widget class="QPushButton" name="newPushButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>New</string>
         </property>
@@ -157,6 +181,12 @@
       </item>
       <item row="4" column="2" colspan="2">
        <widget class="QPushButton" name="editPushButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Edit</string>
         </property>
@@ -164,6 +194,12 @@
       </item>
       <item row="5" column="2" colspan="2">
        <widget class="QPushButton" name="removePushButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Remove</string>
         </property>
@@ -178,6 +214,12 @@
       </item>
       <item row="6" column="2" colspan="2">
        <widget class="QPushButton" name="setDefaultPushButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Set Default</string>
         </property>
@@ -223,10 +265,22 @@
      </property>
      <widget class="QLabel" name="actionLabel">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>1</horstretch>
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>142</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>142</width>
+        <height>16777215</height>
+       </size>
       </property>
       <property name="font">
        <font>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>443</height>
+    <width>356</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@
      <item>
       <widget class="QComboBox" name="actionComboBox">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>

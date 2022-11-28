@@ -36,6 +36,18 @@
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="monitorLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Turn off monitor:</string>
         </property>
@@ -204,6 +216,18 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="hardDiskLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Turn off hard disks:</string>
         </property>
@@ -369,6 +393,18 @@
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="standbyLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>System stand by:</string>
         </property>
@@ -537,6 +573,18 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="hibernateLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>System hebirnations:</string>
         </property>
@@ -810,7 +858,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>92</width>
+         <width>142</width>
          <height>0</height>
         </size>
        </property>
